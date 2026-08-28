@@ -1,5 +1,7 @@
+import PracticaMcpPage from '../components/practica-mcp/PracticaMcpPage'
+
 function PracticaMcp() {
-  return <div className="section-shell__body" />
+  return <PracticaMcpPage />
 }
 
 export default PracticaMcp
