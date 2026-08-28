@@ -1,5 +1,7 @@
+import PracticaRagPage from '../components/practica-rag/PracticaRagPage'
+
 function PracticaRag() {
-  return <div className="section-shell__body" />
+  return <PracticaRagPage />
 }
 
 export default PracticaRag

@@ -134,6 +134,15 @@ export const mcpToolCalling = {
   ],
 }
 
+export const ragConcepts = [
+  {
+    id: 'chunk',
+    term: 'Chunk',
+    definition:
+      'Fragmento de texto en el que se divide un documento antes de vectorizarlo. En RAG, cada chunk se convierte en un vector; al preguntar, se recuperan los chunks más similares y se pasan al modelo como contexto.',
+  },
+]
+
 export const resources = {
   attentionPaper: {
     title: 'Attention Is All You Need',

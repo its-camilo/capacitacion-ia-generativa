@@ -1,4 +1,5 @@
-import { resources } from '../../../data/fundamentosContent'
+import { ragConcepts, resources } from '../../../data/fundamentosContent'
+import ConceptCard from '../ConceptCard'
 import ResourceCard from '../ResourceCard'
 import SectionBlock from '../SectionBlock'
 import RagDiagram from '../diagrams/RagDiagram'
@@ -17,6 +18,7 @@ function IntroRag() {
       <div className="fund-section__diagram fund-section__diagram--inline">
         <RagDiagram />
       </div>
+      <ConceptCard {...ragConcepts[0]} />
       <ResourceCard {...resources.cvGenerator} />
     </SectionBlock>
   )
