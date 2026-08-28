@@ -1,9 +1,17 @@
+function resolveAssetPath(path) {
+  if (!path) return null
+  if (path.startsWith('http://') || path.startsWith('https://')) return path
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+}
+
 function ResourceCard({ title, subtitle, description, url, qrSrc }) {
+  const qrUrl = resolveAssetPath(qrSrc)
+
   return (
     <aside className="resource-card">
       <div className="resource-card__qr">
-        {qrSrc ? (
-          <img src={qrSrc} alt={`Código QR: ${title}`} />
+        {qrUrl ? (
+          <img src={qrUrl} alt={`Código QR: ${title}`} />
         ) : (
           <span>QR</span>
         )}
