@@ -5,6 +5,7 @@ export const sectionNav = [
   { id: 'paso-4', label: 'Bonus: Google Docs MCP' },
   { id: 'paso-5', label: 'Probar Google Docs' },
   { id: 'entregables', label: 'Entregables' },
+  { id: 'cierre', label: 'Cierre: quitar Google Docs MCP' },
 ]
 
 export const northwindRepo = {
@@ -85,6 +86,14 @@ export const deliverables = [
   'Un informe sobre el tema que elijan (ventas, inventario, clientes, etc.).',
   'Lista de las tools MCP que usaron y para qué sirvió cada una.',
   'Breve sustentación de por qué eligieron esas herramientas para el informe.',
+]
+
+export const mcpConfigPaths = [
+  '.cursor/mcp.json',
+  '.cursor/mcp.jsonc',
+  'mcp.json',
+  'mcp.jsonc',
+  'Claude Desktop: claude_desktop_config.json',
 ]
 
 export const gradingCriteria = [

@@ -3,6 +3,7 @@ import {
   googleDocsLinks,
   googleDocsMcpConfig,
   gradingCriteria,
+  mcpConfigPaths,
   northwindRepo,
   sampleQueries,
   sectionNav,
@@ -175,6 +176,34 @@ function PracticaMcpPage() {
           <p className="practica-mcp__note">
             Pueden sumar más bases de datos u otros MCPs (Sheets, Drive, etc.) si les ayuda a
             enriquecer el informe; documenten todo en la lista de tools.
+          </p>
+        </SectionBlock>
+
+        <SectionBlock
+          id="cierre"
+          eyebrow="Cierre"
+          title="Quitar el MCP de Google Docs"
+        >
+          <p>
+            Al terminar la práctica, <strong>elimina el servidor MCP de Google Docs</strong> del
+            archivo JSON o JSONC donde configuraste los MCPs. Si lo dejas activo, el agente podría
+            seguir accediendo a tu cuenta de Google con las credenciales OAuth que autorizaste.
+          </p>
+          <p>
+            Busca el bloque <code>google-docs</code> dentro de <code>mcpServers</code> y bórralo
+            por completo. Según tu cliente, el archivo suele estar en una de estas rutas:
+          </p>
+          <ul className="practica-mcp__bullet-list">
+            {mcpConfigPaths.map((path) => (
+              <li key={path}>
+                <code>{path}</code>
+              </li>
+            ))}
+          </ul>
+          <p>
+            Guarda el archivo, reinicia el cliente o recarga los servidores MCP, y confirma que{' '}
+            <code>google-docs</code> ya no aparece conectado. El MCP de SQLite puede quedarse si
+            sigues usándolo localmente.
           </p>
         </SectionBlock>
       </div>
