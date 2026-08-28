@@ -1,4 +1,12 @@
-function SectionBlock({ id, eyebrow, title, children, diagram, diagramFirst = false }) {
+function SectionBlock({
+  id,
+  eyebrow,
+  title,
+  children,
+  diagram,
+  diagramFirst = false,
+  afterDiagram,
+}) {
   return (
     <section className="fund-section" id={id} aria-labelledby={`${id}-title`}>
       <p className="fund-section__eyebrow">{eyebrow}</p>
@@ -12,6 +20,7 @@ function SectionBlock({ id, eyebrow, title, children, diagram, diagramFirst = fa
       {!diagramFirst && diagram && (
         <div className="fund-section__diagram">{diagram}</div>
       )}
+      {afterDiagram && <div className="fund-section__after-diagram">{afterDiagram}</div>}
     </section>
   )
 }

@@ -18,8 +18,8 @@ export const phases = [
     tag: 'Recuperación',
   },
   {
-    path: '/hackathon-agentes',
-    label: 'Hackathon Agentes',
+    path: '/practica-agentes',
+    label: 'Práctica Agentes',
     session: '04',
     tag: 'Despliegue',
   },

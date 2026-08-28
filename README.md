@@ -24,7 +24,7 @@ El deploy se hace automáticamente con GitHub Actions al hacer push a `main`.
 | `/fundamentos` | Sesión 1 — Fundamentos |
 | `/practica-mcp` | Sesión 2 — Práctica MCP |
 | `/practica-rag` | Sesión 3 — Práctica RAG |
-| `/hackathon-agentes` | Sesión 4 — Hackathon Agentes |
+| `/practica-agentes` | Sesión 4 — Práctica Agentes |
 
 ## Estructura
 

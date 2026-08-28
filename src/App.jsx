@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Fundamentos from './pages/Fundamentos'
-import HackathonAgentes from './pages/HackathonAgentes'
+import PracticaAgentes from './pages/PracticaAgentes'
 import PracticaMcp from './pages/PracticaMcp'
 import PracticaRag from './pages/PracticaRag'
 
@@ -13,7 +13,7 @@ function App() {
         <Route path="/fundamentos" element={<Fundamentos />} />
         <Route path="/practica-mcp" element={<PracticaMcp />} />
         <Route path="/practica-rag" element={<PracticaRag />} />
-        <Route path="/hackathon-agentes" element={<HackathonAgentes />} />
+        <Route path="/practica-agentes" element={<PracticaAgentes />} />
       </Route>
     </Routes>
   )

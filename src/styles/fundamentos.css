@@ -139,6 +139,10 @@
   margin-top: 0.5rem;
 }
 
+.fund-section__after-diagram {
+  margin-top: 1rem;
+}
+
 .fund-section__diagram--inline {
   margin-top: 1rem;
 }
@@ -176,6 +180,120 @@
   min-height: 8rem;
 }
 
+.skill-repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.skill-repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-panel);
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.skill-repo-card:hover {
+  border-color: rgba(0, 229, 204, 0.45);
+  background: rgba(0, 229, 204, 0.04);
+  transform: translateY(-1px);
+}
+
+.skill-repo-card__provider {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+
+.skill-repo-card__title {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.skill-repo-card__description {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.skill-repo-card__link {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-signal);
+}
+
+.tool-calling-card {
+  padding: 1rem 1.125rem;
+  border: 1px solid rgba(107, 92, 231, 0.35);
+  border-radius: var(--radius-md);
+  background: rgba(107, 92, 231, 0.06);
+}
+
+.tool-calling-card__title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+}
+
+.tool-calling-card__description {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin-bottom: 0.875rem;
+}
+
+.tool-calling-card__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.tool-calling-card__links a {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.375rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-signal);
+  text-decoration: none;
+}
+
+.tool-calling-card__links a:hover {
+  text-decoration: underline;
+}
+
+.tool-calling-card__provider {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+
 .concept-card {
   padding: 1rem 1.125rem;
   border: 1px solid var(--color-border);
@@ -195,6 +313,18 @@
   font-size: 0.8125rem;
   color: var(--color-muted);
   line-height: 1.55;
+}
+
+.concept-card__link {
+  display: inline-block;
+  margin-top: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-signal);
+}
+
+.concept-card__link:hover {
+  text-decoration: underline;
 }
 
 .provider-list {

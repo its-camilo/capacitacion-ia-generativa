@@ -12,6 +12,7 @@ function ConceptosBasicos() {
           key={concept.id}
           term={concept.term}
           definition={concept.definition}
+          link={concept.link}
           diagram={<ConceptDiagram id={concept.id} />}
         />
       ))}

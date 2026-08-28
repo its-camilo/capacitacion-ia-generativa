@@ -3,6 +3,7 @@ import { sectionNav } from '../../data/fundamentosContent'
 import HistoriaComputacion from './sections/HistoriaComputacion'
 import ConceptosBasicos from './sections/ConceptosBasicos'
 import PromptingAvanzado from './sections/PromptingAvanzado'
+import Skills from './sections/Skills'
 import TokensCostos from './sections/TokensCostos'
 import TransformersAttention from './sections/TransformersAttention'
 import IntroMcp from './sections/IntroMcp'
@@ -66,6 +67,7 @@ function FundamentosPage() {
         <HistoriaComputacion />
         <ConceptosBasicos />
         <PromptingAvanzado />
+        <Skills />
         <TokensCostos />
         <TransformersAttention />
         <IntroMcp />
