@@ -1,5 +1,6 @@
-import { tokenTips } from '../../../data/fundamentosContent'
+import { optimizationTips, tokenTips } from '../../../data/fundamentosContent'
 import DiagramCard from '../DiagramCard'
+import InsightCard from '../InsightCard'
 import SectionBlock from '../SectionBlock'
 import {
   CacheDiagram,
@@ -20,6 +21,7 @@ function TokensCostos() {
           <li key={tip}>{tip}</li>
         ))}
       </ul>
+      <InsightCard {...optimizationTips} />
       <div className="diagram-stack">
         <DiagramCard caption="El texto se divide en tokens" delay={0}>
           <TokenUnitDiagram />

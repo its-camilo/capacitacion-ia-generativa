@@ -238,6 +238,62 @@
   color: var(--color-signal);
 }
 
+.insight-card {
+  padding: 1rem 1.125rem;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.insight-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  margin-bottom: 0.375rem;
+}
+
+.insight-card__title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+}
+
+.insight-card__description {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin-bottom: 0.75rem;
+}
+
+.insight-card__description:last-child {
+  margin-bottom: 0;
+}
+
+.insight-card__steps {
+  margin: 0;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.insight-card__steps li {
+  font-size: 0.8125rem;
+  color: var(--color-fog);
+  line-height: 1.55;
+}
+
+.insight-card__steps li::marker {
+  color: var(--color-amber);
+  font-weight: 600;
+}
+
 .tool-calling-card {
   padding: 1rem 1.125rem;
   border: 1px solid rgba(107, 92, 231, 0.35);
