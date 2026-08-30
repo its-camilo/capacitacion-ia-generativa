@@ -1,5 +1,6 @@
-import { ragConcepts, resources } from '../../../data/fundamentosContent'
+import { mcpTimelineUseCase, ragConcepts, resources } from '../../../data/fundamentosContent'
 import ConceptCard from '../ConceptCard'
+import InsightCard from '../InsightCard'
 import ResourceCard from '../ResourceCard'
 import SectionBlock from '../SectionBlock'
 import RagDiagram from '../diagrams/RagDiagram'
@@ -19,6 +20,7 @@ function IntroRag() {
         <RagDiagram />
       </div>
       <ConceptCard {...ragConcepts[0]} />
+      <InsightCard {...mcpTimelineUseCase} />
       <ResourceCard {...resources.cvGenerator} />
     </SectionBlock>
   )

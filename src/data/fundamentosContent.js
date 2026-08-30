@@ -96,6 +96,26 @@ export const tokenTips = [
   'No pegues documentos enteros',
 ]
 
+export const optimizationTips = {
+  eyebrow: 'Flujo recomendado',
+  title: 'Tips de optimización',
+  description:
+    'En tareas grandes, conviene separar clarificación, planificación y ejecución para evitar divagación, errores y gasto innecesario de tokens.',
+  steps: [
+    'Con un modelo barato, pasa el plan y pídele que te haga preguntas antes de empezar.',
+    'Si la IA no tiene todo claro, suele divagar en el proceso; el resultado puede ser erróneo y consume más tokens.',
+    'Cuando las dudas estén resueltas, cambia a modo plan y elabora el plan de implementación.',
+    'Recién entonces ejecuta la tarea con el modelo y el contexto que necesites.',
+  ],
+}
+
+export const mcpTimelineUseCase = {
+  eyebrow: 'Sesión 02 · Vista previa',
+  title: 'IA + MCP: línea de tiempo de un proyecto',
+  description:
+    'Otro uso práctico de la IA junto con MCPs —en los que profundizaremos en la segunda sesión— es armar presentaciones de diapositivas con la ejecución por fases de un proyecto, como en las diapositivas finales de proyectos de estudio. Con MCPs de Google Drive y GitHub puedes escanear los archivos del proyecto, revisar fechas de creación y modificación, e ir estableciendo la línea de tiempo. Es mucho más rápido y optimizado que hacerlo manual.',
+}
+
 export const mcpToolCalling = {
   title: 'Tool calling',
   description:
