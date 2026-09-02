@@ -1,7 +1,8 @@
 export const sectionNav = [
   { id: 'paso-1', label: 'Bases de datos SQLite' },
   { id: 'paso-2', label: 'Cuenta y MCP Pinecone' },
-  { id: 'paso-3', label: 'Cuenta y MCP OpenRouter' },
+  { id: 'paso-3', label: 'API Key OpenRouter' },
+  { id: 'mcp-sqlite', label: 'MCP SQLite (configuración)' },
   { id: 'paso-4', label: 'Crear el RAG' },
   { id: 'paso-5', label: 'Chat web con el RAG' },
   { id: 'paso-6', label: 'MCP Power BI' },
@@ -102,6 +103,19 @@ export const pineconeMcpConfig = `{
   }
 }`
 
+export const sqliteMcpConfig = `{
+  "mcpServers": {
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-sqlite-npx",
+        "/ruta/a/tu/northwind.db"
+      ]
+    }
+  }
+}`
+
 export const openRouterLinks = {
   signup: 'https://openrouter.ai/',
   apiKeys: 'https://openrouter.ai/keys',
@@ -127,8 +141,12 @@ export const openRouterMcpConfigCursor = `{
 }`
 
 export const ragSetupPrompt = `Tengo bases SQLite en la carpeta ~/datos/rag/ (ajusta la ruta si la tuya es distinta).
-Elige una de ellas, léela, convierte filas relevantes en chunks de texto y súbelos a Pinecone
-en un índice nuevo. El nombre del índice lo eliges tú según la base y lo que indexaste.
+Elige una de ellas, léela usando el MCP de SQLite para explorar las tablas.
+Convierte filas relevantes en chunks de texto y súbelos a Pinecone en un índice nuevo.
+El nombre del índice lo eliges tú según la base y lo que indexaste.
+
+IMPORTANTE: Para no superar el free tier de Pinecone, sube como máximo 1000 registros
+de la base de datos. Selecciona las filas más representativas o relevantes.
 
 Al crear este RAG, usa el MCP de OpenRouter con un fallback de 3 modelos gratuitos
 (si uno falla, prueba el siguiente). Para embeddings, usa también un modelo gratuito si hace falta.
@@ -149,14 +167,179 @@ o un mini proxy local si lo necesitas.`
 export const powerBiMcpConfig = `{
   "mcpServers": {
     "powerbi": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@sulaiman013/powerbi-mcp"
-      ]
+      "command": "/RUTA/AL/PROYECTO/tools/pbix-mcp-venv/bin/pbix-mcp-server",
+      "args": []
     }
   }
 }`
+
+export const powerBiPrompt = `## Contexto
+
+Tengo la base SQLite **Northwind** (\`northwind.db\`) y los MCP ya configurados:
+
+- \`sqlite\` → apunta a mi archivo \`northwind.db\`
+- \`powerbi\` → servidor \`pbix-mcp-server\` (paquete \`pbix-mcp\`, NO usar otros MCP de Power BI)
+
+Quiero generar un **reporte Power BI (.pbix)** listo para abrir en Power BI Desktop en Windows,
+con el tablero **ya construido** (no vacío).
+
+## Objetivo del entregable
+
+Crear en mi carpeta de proyecto:
+
+  mi-proyecto/
+    build_powerbi_report.py
+    tools/pbix-mcp-venv/          # venv Python 3.12 con pbix-mcp instalado
+    powerbi/
+      northwind.pbix              # reporte final (~30-50 KB)
+      northwind-powerbi-entregable.zip
+      POWERBI_MANIFEST.json
+      data/                       # CSVs agregados (opcional, para auditoría)
+
+El zip debe contener solo \`northwind.pbix\` (datos embebidos).
+
+## Restricciones CRÍTICAS (no negociables)
+
+### 1. Límite de 10 MB en Power Query
+
+**NO** cargar la tabla \`Order Details\` completa (~609.000 filas) al modelo.
+Power BI Desktop falla con:
+  "No se pueden actualizar las consultas porque superan el límite de 10 MB de tamaño."
+
+**Solución obligatoria:** agregar los datos en SQLite **antes** de construir el PBIX.
+
+### 2. Modelo agregado (máx. ~100 filas por tabla de hechos)
+
+Usar exactamente estas 3 tablas:
+
+| Tabla | Filas aprox. | Origen |
+|-------|--------------|--------|
+| \`Totales\` | 1 | KPIs globales |
+| \`VentasCategoria\` | 8 | ventas agrupadas por categoría |
+| \`VentasProducto\` | 77 | ventas agrupadas por producto |
+
+### 3. Consultas SQL obligatorias
+
+**Totales** (1 fila):
+\`\`\`sql
+SELECT
+    ROUND(SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)), 2) AS TotalVentas,
+    COUNT(DISTINCT od.OrderID) AS TotalPedidos,
+    SUM(od.Quantity) AS TotalUnidades
+FROM "Order Details" od
+\`\`\`
+
+**VentasCategoria** (8 filas):
+\`\`\`sql
+SELECT
+    c.CategoryID,
+    c.CategoryName,
+    ROUND(SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)), 2) AS TotalVentas,
+    COUNT(DISTINCT od.OrderID) AS NumPedidos,
+    SUM(od.Quantity) AS Unidades
+FROM "Order Details" od
+JOIN Products p ON p.ProductID = od.ProductID
+JOIN Categories c ON c.CategoryID = p.CategoryID
+GROUP BY c.CategoryID, c.CategoryName
+ORDER BY TotalVentas DESC
+\`\`\`
+
+**VentasProducto** (77 filas):
+\`\`\`sql
+SELECT
+    p.ProductID,
+    p.ProductName,
+    c.CategoryName,
+    ROUND(SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)), 2) AS TotalVentas,
+    SUM(od.Quantity) AS Unidades
+FROM "Order Details" od
+JOIN Products p ON p.ProductID = od.ProductID
+LEFT JOIN Categories c ON c.CategoryID = p.CategoryID
+GROUP BY p.ProductID, p.ProductName, c.CategoryName
+ORDER BY TotalVentas DESC
+\`\`\`
+
+### 4. NO usar PBIP/TMDL manual
+
+No generar \`.pbip\` a mano ni editar \`model.tmdl\` / \`database.tmdl\`.
+Usar **\`pbix-mcp\`** (\`PBIXBuilder\` + API de servidor) para crear un \`.pbix\` nativo.
+
+### 5. Visuales con campos enlazados
+
+Los visuales no pueden quedar vacíos ("Seleccione o arrastre campos...").
+Cada visual debe tener \`projections\` + \`query\` compilados.
+
+**Medidas DAX** (nombres distintos a las columnas):
+- \`KPI Ventas\` = \`MAX(Totales[TotalVentas])\` — formato \`$#,0.00\`
+- \`KPI Pedidos\` = \`MAX(Totales[TotalPedidos])\` — formato \`#,0\`
+- \`Ventas Categoria\` = \`SUM(VentasCategoria[TotalVentas])\` — formato \`$#,0.00\`
+
+**Página:** \`Northwind Dashboard\` con 4 visuales:
+
+| Visual | Tipo | Posición | Enlace |
+|--------|------|----------|---------|
+| KPI ventas | \`card\` | 20,20 — 300×120 | medida \`KPI Ventas\` |
+| KPI pedidos | \`card\` | 340,20 — 300×120 | medida \`KPI Pedidos\` |
+| Ventas por categoría | \`clusteredBarChart\` | 20,160 — 600×520 | eje: \`VentasCategoria[CategoryName]\`, valor: \`Ventas Categoria\` |
+| Top productos | \`tableEx\` | 640,160 — 620×520 | columnas: CategoryName, ProductName, TotalVentas, Unidades de \`VentasProducto\` |
+
+### 6. Herramienta y Python
+
+- Instalar: \`pip install pbix-mcp\` en un **venv con Python 3.12** (3.14 puede fallar).
+- Comando MCP en tu archivo de configuración de MCPs:
+\`\`\`json
+"powerbi": {
+  "command": "/RUTA/AL/PROYECTO/tools/pbix-mcp-venv/bin/pbix-mcp-server",
+  "args": []
+}
+\`\`\`
+- Regenerar con:
+\`\`\`bash
+/RUTA/AL/PROYECTO/tools/pbix-mcp-venv/bin/python build_powerbi_report.py
+\`\`\`
+
+## Flujo de implementación que debes seguir
+
+1. Crear \`tools/pbix-mcp-venv\` con Python 3.12 e instalar \`pbix-mcp\`.
+2. Crear \`build_powerbi_report.py\` que:
+   - Exporte las 3 tablas agregadas desde SQLite a CSV.
+   - Construya el modelo con \`PBIXBuilder\` (página vacía).
+   - Abra el PBIX con \`pbix_open\`.
+   - Agregue los 4 visuales con \`compile_visual_binding\` (enlaces explícitos).
+   - Guarde con \`pbix_save\`.
+   - Valide que los 4 visuales tengan \`projections\` y \`query\`.
+   - Genere \`northwind-powerbi-entregable.zip\`.
+   - Escriba \`POWERBI_MANIFEST.json\`.
+3. Ejecutar el script y confirmar tamaños:
+   - \`northwind.pbix\` < 500 KB (esperado ~35 KB)
+   - zip < 1 MB
+
+## Criterios de aceptación
+
+- El \`.pbix\` abre en Power BI Desktop **sin errores**.
+- No aparece el error de límite de 10 MB.
+- En vista **Informe** se ven los 4 visuales con datos.
+- Tarjeta de ventas muestra un valor en millones (ej. ~$1.2M).
+- Gráfico de barras muestra 8 categorías.
+- Tabla muestra 77 productos.
+- Vista **Modelo** tiene 3 tablas y 3 medidas.
+- Zip entregable listo para enviar.
+
+## Rutas a adaptar
+
+- Base de datos: ruta absoluta a tu \`northwind.db\`
+- Proyecto: ruta absoluta a tu carpeta de proyecto
+
+## Lo que NO debes hacer
+
+- No embeber 600k+ filas de \`Order Details\`.
+- No generar PBIP con TMDL manual.
+- No poner \`ref database\` vacío en TMDL.
+- No usar nombres de medida iguales a columnas.
+- No entregar un PBIX sin validar que los visuales tengan \`query\` enlazado.
+
+Ejecuta todo tú mismo, crea los archivos, corre el script y entrégame las rutas finales
+del \`.pbix\` y del \`.zip\`.`
 
 export const deliverables = [
   'Un proyecto de Power BI (.pbix) comprimido en ZIP donde representen los datos que quieran de la base elegida.',

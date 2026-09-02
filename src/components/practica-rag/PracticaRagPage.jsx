@@ -9,9 +9,11 @@ import {
   pineconeLinks,
   pineconeMcpConfig,
   powerBiMcpConfig,
+  powerBiPrompt,
   ragSetupPrompt,
   sampleDatabases,
   sectionNav,
+  sqliteMcpConfig,
 } from '../../data/practicaRagContent'
 import SectionBlock from '../fundamentos/SectionBlock'
 import CodeBlock from '../practica-mcp/CodeBlock'
@@ -107,23 +109,32 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Cuenta OpenRouter y MCP">
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="API Key de OpenRouter">
+          <p>
+            Necesitas una API key de OpenRouter para dos cosas: crear el RAG (generar embeddings e
+            indexar en Pinecone) y que la página web de chat pueda consultar el RAG con un modelo
+            de lenguaje gratuito.
+          </p>
           <ol className="practica-mcp__numbered">
             <li>
-              Inicia sesión en{' '}
+              Entra a{' '}
               <a href={openRouterLinks.signup} target="_blank" rel="noreferrer">
-                OpenRouter
+                openrouter.ai
               </a>{' '}
-              (también puedes registrarte con Google o GitHub).
+              y crea una cuenta (puedes usar Google o GitHub).
             </li>
             <li>
-              Genera tu{' '}
+              Ve a{' '}
               <a href={openRouterLinks.apiKeys} target="_blank" rel="noreferrer">
-                API key
-              </a>{' '}
-              y consérvala; la usarás para embeddings y respuestas del chat.
+                openrouter.ai/keys
+              </a>
+              , haz clic en <strong>Create key</strong> y copia la clave generada.
             </li>
-            <li>Instala el MCP remoto de OpenRouter:</li>
+            <li>
+              Guarda la clave en un lugar seguro; la necesitarás al crear el RAG y al configurar
+              el chat web.
+            </li>
+            <li>Instala el MCP remoto de OpenRouter en tu cliente de IA:</li>
           </ol>
           <CodeBlock code={openRouterMcpConfigOpencode} caption="OpenCode (~/.config/opencode/opencode.json)" />
           <CodeBlock
@@ -136,6 +147,22 @@ function PracticaRagPage() {
               OpenRouter MCP
             </a>
             . La primera vez puede pedirte autenticación OAuth en el navegador.
+          </p>
+        </SectionBlock>
+
+        <SectionBlock id="mcp-sqlite" eyebrow="Recuerda" title="MCP SQLite (misma configuración de la sesión 2)">
+          <p>
+            Para crear el RAG necesitamos leer la base de datos SQLite con el agente. Es el mismo
+            MCP que configuramos en la <strong>Sesión 02</strong>; si ya lo tienes activo puedes
+            continuar. Si no, agrégalo de nuevo:
+          </p>
+          <CodeBlock
+            code={sqliteMcpConfig}
+            caption="Configuración en mcpServers — reemplaza la ruta por la de tu .db"
+          />
+          <p>
+            Reinicia el cliente o recarga los servidores MCP y verifica que{' '}
+            <code>sqlite</code> aparezca conectado antes de continuar.
           </p>
         </SectionBlock>
 
@@ -165,15 +192,24 @@ function PracticaRagPage() {
           <CodeBlock code={chatUiPrompt} caption="Vibecoding: chat web sencillo" />
         </SectionBlock>
 
-        <SectionBlock id="paso-6" eyebrow="Paso 6" title="Instalar el MCP de Power BI">
+        <SectionBlock id="paso-6" eyebrow="Paso 6" title="Crear el reporte en Power BI">
           <p>
-            Para el entregable de visualización, conecta el MCP de Power BI en tu cliente:
+            Para el entregable de visualización usaremos{' '}
+            <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">
+              pbix-mcp
+            </a>
+            , un servidor MCP que construye archivos <code>.pbix</code> nativos desde Python.
+            A diferencia de otros MCPs de Power BI, este genera el reporte con los visuales ya
+            enlazados (no vacíos).
           </p>
-          <CodeBlock code={powerBiMcpConfig} caption="Configuración en mcpServers" />
           <p>
-            Úsalo para explorar la misma base SQLite que elegiste y armar el reporte que enviarás
-            comprimido.
+            El ejemplo lo hacemos adaptado al caso de <strong>Northwind</strong>; si elegiste otra
+            base de datos, ajusta las tablas, columnas y consultas SQL según tu esquema.
           </p>
+          <p>Configura el servidor MCP una vez que hayas creado el venv (el prompt te explica cómo):</p>
+          <CodeBlock code={powerBiMcpConfig} caption="Configuración en mcpServers — reemplaza RUTA por la ruta real" />
+          <p>Luego usa este prompt para que el agente construya el reporte completo:</p>
+          <CodeBlock code={powerBiPrompt} caption="Vibecoding: reporte Power BI con Northwind" />
         </SectionBlock>
 
         <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
