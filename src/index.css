@@ -1,13 +1,21 @@
 [data-theme='light'] {
   --color-obsidian: #f0f4f8;
-  --color-panel: #e2e8f0;
-  --color-panel-hover: #d1dde8;
+  --color-panel: #dde4ef;
+  --color-panel-hover: #cdd6e6;
   --color-signal: #00a896;
-  --color-amber: #c27a0e;
+  --color-amber: #b86e0a;
   --color-violet: #5b4ac7;
   --color-fog: #1e293b;
   --color-muted: #475569;
-  --color-border: rgba(30, 41, 59, 0.15);
+  --color-border: rgba(30, 41, 59, 0.18);
+
+  --color-heading: #0f172a;
+  --color-heading-alt: #1e293b;
+  --color-surface: rgba(255, 255, 255, 0.6);
+  --color-surface-alt: rgba(255, 255, 255, 0.45);
+  --color-surface-strong: rgba(255, 255, 255, 0.65);
+  --color-code-bg: rgba(15, 23, 42, 0.07);
+  --color-code-text: #1e293b;
 
   color-scheme: light;
   color: var(--color-fog);
@@ -15,25 +23,19 @@
 }
 
 [data-theme='light'] .site-header {
-  background: rgba(240, 244, 248, 0.88);
+  background: rgba(240, 244, 248, 0.9);
 }
 
 [data-theme='light'] .phase-bar {
-  background: rgba(240, 244, 248, 0.82);
-}
-
-[data-theme='light'] .site-header__title,
-[data-theme='light'] .phase-bar__label,
-[data-theme='light'] .section-shell__title {
-  color: #0f172a;
+  background: rgba(240, 244, 248, 0.85);
 }
 
 [data-theme='light'] .section-shell__body {
-  background: rgba(226, 232, 240, 0.45);
+  background: rgba(221, 228, 239, 0.5);
 }
 
 [data-theme='light'] .app-shell__grid {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 :root {
@@ -46,6 +48,14 @@
   --color-fog: #cbd5e1;
   --color-muted: #64748b;
   --color-border: rgba(203, 213, 225, 0.1);
+
+  --color-heading: #f8fafc;
+  --color-heading-alt: #f1f5f9;
+  --color-surface: rgba(20, 29, 47, 0.5);
+  --color-surface-alt: rgba(20, 29, 47, 0.35);
+  --color-surface-strong: rgba(20, 29, 47, 0.45);
+  --color-code-bg: rgba(11, 17, 32, 0.85);
+  --color-code-text: #e2e8f0;
 
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -161,7 +171,7 @@ button {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: #f8fafc;
+  color: var(--color-heading);
 }
 
 .phase-bar {
@@ -272,7 +282,7 @@ button {
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   line-height: 1.2;
 }
 
@@ -316,7 +326,7 @@ button {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  color: #f8fafc;
+  color: var(--color-heading);
   margin-bottom: 0.75rem;
 }
 

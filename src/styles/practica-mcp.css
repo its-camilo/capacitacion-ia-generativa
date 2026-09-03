@@ -13,7 +13,7 @@
   padding: 1rem 1.125rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(20, 29, 47, 0.45);
+  background: var(--color-surface-strong);
 }
 
 .practica-mcp__steps-list {
@@ -92,10 +92,10 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.6;
-  color: #e2e8f0;
+  color: var(--color-code-text);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(11, 17, 32, 0.85);
+  background: var(--color-code-bg);
 }
 
 .practica-mcp__numbered {
@@ -133,7 +133,7 @@
 .practica-mcp__query-prompt {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.375rem;
 }
 
@@ -197,7 +197,7 @@
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.75rem;
 }
 

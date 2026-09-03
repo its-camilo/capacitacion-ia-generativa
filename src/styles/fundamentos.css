@@ -78,7 +78,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  color: #f8fafc;
+  color: var(--color-heading);
   margin-bottom: 0.75rem;
 }
 
@@ -108,7 +108,7 @@
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 1rem;
 }
 
@@ -129,7 +129,7 @@
   padding: 1.5rem 1.25rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(20, 29, 47, 0.5);
+  background: var(--color-surface);
   overflow: visible;
   display: flex;
   justify-content: center;
@@ -173,7 +173,7 @@
   padding: 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(20, 29, 47, 0.35);
+  background: var(--color-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +221,7 @@
   font-family: var(--font-mono);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
 }
 
 .skill-repo-card__description {
@@ -259,7 +259,7 @@
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
@@ -305,7 +305,7 @@
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
@@ -361,7 +361,7 @@
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
@@ -438,7 +438,7 @@
   padding: 1.25rem 1.25rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(20, 29, 47, 0.45);
+  background: var(--color-surface-strong);
 }
 
 .diagram-card__canvas {
@@ -495,7 +495,7 @@
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin-bottom: 0.25rem;
 }
 
@@ -549,7 +549,7 @@
   font-family: var(--font-display);
   font-size: 0.8125rem;
   font-weight: 600;
-  fill: #f1f5f9;
+  fill: var(--color-heading-alt);
 }
 
 .diagram-box {
@@ -586,7 +586,7 @@
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   margin: 0.5rem 0 0;
 }
 
@@ -612,7 +612,7 @@
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   text-align: center;
   line-height: 1.25;
 }
