@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import PhaseBar from './PhaseBar'
+import ThemeToggle from './ThemeToggle'
 
 function Layout() {
   return (
@@ -11,6 +12,7 @@ function Layout() {
       <main className="main-content">
         <Outlet />
       </main>
+      <ThemeToggle />
     </div>
   )
 }
