@@ -23,7 +23,7 @@ export const concepts = [
     id: 'agente',
     term: 'Agente',
     definition:
-      'Modelo + herramientas + bucle que planea, actúa y revisa el resultado casi solo.',
+      'Un agente es como un trabajador autónomo: puede tomar decisiones y ejecutar acciones por su cuenta. Su cerebro es el modelo de IA, que procesa el contexto y decide qué hacer en cada paso.',
   },
   {
     id: 'api-key',
@@ -51,7 +51,7 @@ export const concepts = [
     id: 'harness',
     term: 'Harness',
     definition:
-      'Capa que opera el modelo: conecta herramientas, reglas y memoria (Cursor, LangGraph…).',
+      'El harness es como la ciudad donde vive ese trabajador: define sus condiciones de trabajo — qué herramientas tiene, qué reglas sigue, qué memoria maneja. El éxito del agente depende en gran medida de qué tan bien construida esté esa ciudad.',
   },
 ]
 
