@@ -1,3 +1,40 @@
+:root {
+  --color-obsidian: #0b1120;
+  --color-panel: #141d2f;
+  --color-panel-hover: #1a2740;
+  --color-signal: #00e5cc;
+  --color-amber: #f5a623;
+  --color-violet: #6b5ce7;
+  --color-fog: #cbd5e1;
+  --color-muted: #64748b;
+  --color-border: rgba(203, 213, 225, 0.1);
+
+  --color-heading: #f8fafc;
+  --color-heading-alt: #f1f5f9;
+  --color-surface: rgba(20, 29, 47, 0.5);
+  --color-surface-alt: rgba(20, 29, 47, 0.35);
+  --color-surface-strong: rgba(20, 29, 47, 0.45);
+  --color-code-bg: rgba(11, 17, 32, 0.85);
+  --color-code-text: #e2e8f0;
+
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --header-height: 5.5rem;
+  --phase-bar-height: 5.75rem;
+  --content-max: 100%;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+
+  color-scheme: dark;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-fog);
+  background-color: var(--color-obsidian);
+}
+
 [data-theme='light'] {
   --color-obsidian: #f0f4f8;
   --color-panel: #dde4ef;
@@ -36,43 +73,6 @@
 
 [data-theme='light'] .app-shell__grid {
   opacity: 0.15;
-}
-
-:root {
-  --color-obsidian: #0b1120;
-  --color-panel: #141d2f;
-  --color-panel-hover: #1a2740;
-  --color-signal: #00e5cc;
-  --color-amber: #f5a623;
-  --color-violet: #6b5ce7;
-  --color-fog: #cbd5e1;
-  --color-muted: #64748b;
-  --color-border: rgba(203, 213, 225, 0.1);
-
-  --color-heading: #f8fafc;
-  --color-heading-alt: #f1f5f9;
-  --color-surface: rgba(20, 29, 47, 0.5);
-  --color-surface-alt: rgba(20, 29, 47, 0.35);
-  --color-surface-strong: rgba(20, 29, 47, 0.45);
-  --color-code-bg: rgba(11, 17, 32, 0.85);
-  --color-code-text: #e2e8f0;
-
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-
-  --header-height: 5.5rem;
-  --phase-bar-height: 5.75rem;
-  --content-max: 100%;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-
-  color-scheme: dark;
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--color-fog);
-  background-color: var(--color-obsidian);
 }
 
 *,
