@@ -109,6 +109,32 @@ export const optimizationTips = {
   ],
 }
 
+export const recommendedPlugins = {
+  title: 'Plugins recomendados',
+  description:
+    'Complementos útiles para cuidar el contexto, controlar el consumo de tokens y mejorar el flujo de trabajo con IA.',
+  links: [
+    {
+      id: 'wozcode',
+      provider: 'Plugin',
+      label: 'Wozcode',
+      url: 'https://github.com/WithWoz/wozcode-plugin',
+    },
+    {
+      id: 'token-saver',
+      provider: 'Plugin',
+      label: 'Token Saver',
+      url: 'https://github.com/aymenfurter/token-saver-mcp',
+    },
+    {
+      id: 'context-mode',
+      provider: 'Plugin',
+      label: 'Context Mode',
+      url: 'https://github.com/mksglu/context-mode',
+    },
+  ],
+}
+
 export const mcpTimelineUseCase = {
   eyebrow: 'Sesión 02 · Vista previa',
   title: 'IA + MCP: línea de tiempo de un proyecto',
