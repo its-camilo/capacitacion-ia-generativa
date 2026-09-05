@@ -1,5 +1,7 @@
+import PracticaAgentesPage from '../components/practica-agentes/PracticaAgentesPage'
+
 function PracticaAgentes() {
-  return <div className="section-shell__body" />
+  return <PracticaAgentesPage />
 }
 
 export default PracticaAgentes
