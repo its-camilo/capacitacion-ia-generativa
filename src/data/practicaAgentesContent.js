@@ -1,126 +1,107 @@
 export const sectionNav = [
   { id: 'paso-1', label: 'Prerrequisitos' },
-  { id: 'paso-2', label: 'Desplegar OpenClaw en Render' },
-  { id: 'paso-3', label: 'Entrar al dashboard' },
-  { id: 'paso-4', label: 'MCP de Canva' },
-  { id: 'paso-5', label: 'MCP de Data 360' },
-  { id: 'paso-6', label: 'Usarlo desde el celular' },
+  { id: 'paso-2', label: 'Instalar Manus AI' },
+  { id: 'paso-3', label: 'MCP de Canva' },
+  { id: 'paso-4', label: 'MCP de Data 360' },
+  { id: 'paso-5', label: 'API key de OpenRouter' },
+  { id: 'paso-6', label: 'El entregable' },
   { id: 'entregables', label: 'Entregables' },
-  { id: 'cierre', label: 'Cierre: apagar los servicios' },
 ]
 
 export const prerequisites = [
   {
-    id: 'github',
-    label: 'Cuenta de GitHub',
-    description: 'Gratuita. La usarás para hacer fork del repo de OpenClaw.',
-    url: 'https://github.com/signup',
-  },
-  {
-    id: 'render',
-    label: 'Cuenta de Render',
+    id: 'manus',
+    label: 'Cuenta de Manus AI',
     description:
-      'Gratuita (plan Free). Permite desplegar servicios web sin tarjeta para el uso que haremos hoy.',
-    url: 'https://render.com',
-  },
-  {
-    id: 'llm-key',
-    label: 'API key de un proveedor LLM',
-    description:
-      'OpenClaw necesita un modelo para razonar. Sirve una key gratuita de OpenRouter, Anthropic o cualquier proveedor que ya tengas.',
-    url: 'https://openrouter.ai/keys',
+      'Gratuita. Se puede crear con correo o cuenta de Google. Trae 1000 créditos de bienvenida y una cuota diaria de 300 créditos.',
+    url: 'https://manus.im',
   },
   {
     id: 'canva-account',
     label: 'Cuenta de Canva',
-    description: 'Gratuita. El MCP de Canva se autentica contra tu cuenta vía OAuth.',
+    description: 'Gratuita. El conector de Canva en Manus se autentica contra tu cuenta vía OAuth.',
     url: 'https://www.canva.com',
+  },
+  {
+    id: 'llm-key',
+    label: 'API key de OpenRouter',
+    description:
+      'Gratuita. Manus la usará como conector para consultar modelos de OpenRouter dentro de la tarea.',
+    url: 'https://openrouter.ai/keys',
   },
 ]
 
-export const openclawRepo = {
-  label: 'openclaw/openclaw',
-  url: 'https://github.com/openclaw/openclaw',
+export const manusApps = {
+  web: 'https://manus.im',
+  ios: 'https://apps.apple.com/app/manus/id6738007748',
+  android: 'https://play.google.com/store/apps/details?id=im.manus.app',
 }
 
-export const renderBlueprintNotes = [
-  'El repo forkeado incluye un render.yaml que define el servicio web de OpenClaw (Docker) en el puerto 8080.',
-  'Por defecto usa el plan "starter" (de pago). Para esta práctica cambia el plan a "Free" en el formulario del Blueprint y elimina el bloque de disco persistente (el plan Free no lo soporta).',
-  'Sin disco persistente la configuración y las sesiones no sobreviven un redeploy; para una práctica de una sesión no es un problema, solo tenlo en cuenta.',
-  'Render te pedirá la API key de tu proveedor LLM y un SETUP_PASSWORD para proteger la configuración inicial.',
-  'El plan Free se "duerme" tras ~15 minutos sin uso: la primera petición después de eso tarda unos segundos en despertar (cold start).',
-]
-
-export const gatewayTokenNote =
-  'Render genera automáticamente OPENCLAW_GATEWAY_TOKEN. Búscalo en tu servicio → pestaña Environment, y úsalo para iniciar sesión la primera vez que abras el dashboard.'
-
-export const canvaMcpConfig = `{
-  "mcp": {
-    "servers": {
-      "canva": {
-        "url": "https://mcp.canva.com/mcp",
-        "transport": "streamable-http",
-        "enabled": true
-      }
-    }
-  }
-}`
-
 export const data360Repo = {
-  label: 'worldbank/data360-mcp',
-  url: 'https://github.com/worldbank/data360-mcp',
+  label: 'Data 360 MCP — Banco Mundial',
+  url: 'https://data360.worldbank.org',
   description:
     'MCP del Banco Mundial sobre la plataforma Data 360: cientos de indicadores de desarrollo (PIB, pobreza, género, clima, salud, educación…) con series de tiempo y metadatos. No requiere API key.',
 }
 
-export const data360RenderSteps = [
-  'En Render, crea un segundo servicio: New + → Web Service, y conecta (o forkea primero) el repo worldbank/data360-mcp.',
-  'Runtime: Python 3. Build command: pip install uv && uv sync.',
-  'Start command: MCP_PORT=$PORT bash run_server.sh — el script respeta la variable MCP_PORT y Render inyecta $PORT automáticamente.',
-  'Plan: Free. No necesita variables de entorno adicionales ni disco persistente.',
-  'Al terminar el deploy, tu MCP quedará disponible en https://<tu-servicio-data360>.onrender.com/mcp.',
-]
+export const data360McpFields = {
+  name: 'Data360 MCP',
+  endpoint: 'https://mcpext.worldbank.org/ext/data360/mcp',
+  auth: 'Sin autenticación',
+}
 
-export const data360McpConfig = `{
-  "mcp": {
-    "servers": {
-      "data360": {
-        "url": "https://<tu-servicio-data360>.onrender.com/mcp",
-        "transport": "streamable-http",
-        "enabled": true
-      }
-    }
-  }
-}`
+export const canvaConnectorNote =
+  'Canva aparece en la lista de conectores predeterminados de Manus: solo hay que buscarlo y autorizar con tu cuenta (OAuth), sin URLs ni configuración manual.'
 
-export const mobilePromptExample =
-  '"Usando el MCP de Data 360, busca un indicador de desarrollo que te interese (pobreza, educación, cambio climático, género…) para un país o región. Trae la serie de tiempo, identifica la tendencia principal y arma un mini-informe. Luego usa el MCP de Canva para crear una infografía o presentación que resuma esos hallazgos con al menos un gráfico, y expórtala como PDF."'
+export const openrouterConnectorNote =
+  'La API key de OpenRouter también está en el listado de conectores predeterminados de Manus: solo pégala en su campo correspondiente.'
+
+export const taskPromptExample =
+  '"Usando la API key de OpenRouter siempre que se pueda, obtén datos de un tema de desarrollo que te interese (pobreza, educación, cambio climático, género, salud…) desde el MCP de Data360 para un país o región. Con esa información, arma una presentación de 10 diapositivas en Canva sobre ese tema, con al menos un gráfico y una conclusión clara. Al final, exporta la presentación en formato PDF."'
 
 export const deliverables = [
-  'El PDF exportado desde Canva (informe, presentación o infografía) con el caso de uso elegido.',
-  'Una o más capturas de pantalla de OpenClaw ejecutando el flujo completo desde el celular (llamando las tools de Data 360 y de Canva).',
+  'El PDF exportado desde Canva con la presentación de 10 diapositivas sobre el tema elegido.',
+  'Una o más capturas de pantalla de Manus ejecutando el flujo (llamando las tools de Data360 y de Canva).',
   'Una nota breve: qué indicador/tema eligieron de Data 360 y por qué.',
+]
+
+export const alternatives = [
+  {
+    title: 'Automatizaciones dentro de Manus',
+    description:
+      'Manus AI también permite crear automatizaciones (tareas programadas o disparadas por eventos) usando los mismos conectores, sin depender de que alguien inicie la tarea manualmente cada vez.',
+  },
+  {
+    title: 'Google AI Studio',
+    description:
+      'De la suite de Google, sirve para construir distintos tipos de automatizaciones e integraciones con modelos de Gemini.',
+  },
+  {
+    title: 'OpenClaw',
+    description:
+      'Runtime de agentes de código abierto. Requiere desplegarlo en un servidor relativamente potente en la nube para poder acceder desde PC y celular, a diferencia de Manus que no necesita infraestructura propia.',
+  },
 ]
 
 export const gradingCriteria = [
   {
-    title: 'Despliegue correcto',
+    title: 'Configuración correcta de conectores',
     description:
-      '¿OpenClaw quedó accesible en la nube y se pudo usar desde el celular sin depender de la laptop del equipo?',
+      '¿Quedaron bien conectados Canva, Data360 MCP (personalizado) y la API key de OpenRouter dentro de Manus?',
   },
   {
     title: 'Uso combinado de MCPs',
     description:
-      '¿El flujo realmente encadena Data 360 (datos) con Canva (entregable visual), en vez de improvisar el contenido?',
+      '¿El flujo realmente encadena Data360 (datos) con Canva (entregable visual), en vez de improvisar el contenido?',
   },
   {
     title: 'Calidad del entregable',
     description:
-      '¿El PDF comunica un hallazgo claro con datos reales, no solo texto genérico o relleno?',
+      '¿Las 10 diapositivas comunican un hallazgo claro con datos reales, no solo texto genérico o relleno?',
   },
   {
     title: 'Sustentación',
     description:
-      '¿Pueden explicar por qué eligieron ese indicador/caso de uso y qué mostró el dato?',
+      '¿Pueden explicar por qué eligieron ese indicador/tema y qué mostró el dato?',
   },
 ]
