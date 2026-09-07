@@ -5,7 +5,6 @@ export const sectionNav = [
   { id: 'paso-4', label: 'MCP de Data 360' },
   { id: 'paso-5', label: 'API key de OpenRouter' },
   { id: 'paso-6', label: 'El entregable' },
-  { id: 'entregables', label: 'Entregables' },
 ]
 
 export const prerequisites = [
@@ -59,12 +58,6 @@ export const openrouterConnectorNote =
 export const taskPromptExample =
   '"Usando la API key de OpenRouter siempre que se pueda, obtén datos de un tema de desarrollo que te interese (pobreza, educación, cambio climático, género, salud…) desde el MCP de Data360 para un país o región. Con esa información, arma una presentación de 10 diapositivas en Canva sobre ese tema, con al menos un gráfico y una conclusión clara. Al final, exporta la presentación en formato PDF."'
 
-export const deliverables = [
-  'El PDF exportado desde Canva con la presentación de 10 diapositivas sobre el tema elegido.',
-  'Una o más capturas de pantalla de Manus ejecutando el flujo (llamando las tools de Data360 y de Canva).',
-  'Una nota breve: qué indicador/tema eligieron de Data 360 y por qué.',
-]
-
 export const alternatives = [
   {
     title: 'Automatizaciones dentro de Manus',
@@ -72,7 +65,7 @@ export const alternatives = [
       'Manus AI también permite crear automatizaciones (tareas programadas o disparadas por eventos) usando los mismos conectores, sin depender de que alguien inicie la tarea manualmente cada vez.',
   },
   {
-    title: 'Google AI Studio',
+    title: 'Studio',
     description:
       'De la suite de Google, sirve para construir distintos tipos de automatizaciones e integraciones con modelos de Gemini.',
   },
@@ -80,28 +73,5 @@ export const alternatives = [
     title: 'OpenClaw',
     description:
       'Runtime de agentes de código abierto. Requiere desplegarlo en un servidor relativamente potente en la nube para poder acceder desde PC y celular, a diferencia de Manus que no necesita infraestructura propia.',
-  },
-]
-
-export const gradingCriteria = [
-  {
-    title: 'Configuración correcta de conectores',
-    description:
-      '¿Quedaron bien conectados Canva, Data360 MCP (personalizado) y la API key de OpenRouter dentro de Manus?',
-  },
-  {
-    title: 'Uso combinado de MCPs',
-    description:
-      '¿El flujo realmente encadena Data360 (datos) con Canva (entregable visual), en vez de improvisar el contenido?',
-  },
-  {
-    title: 'Calidad del entregable',
-    description:
-      '¿Las 10 diapositivas comunican un hallazgo claro con datos reales, no solo texto genérico o relleno?',
-  },
-  {
-    title: 'Sustentación',
-    description:
-      '¿Pueden explicar por qué eligieron ese indicador/tema y qué mostró el dato?',
   },
 ]
