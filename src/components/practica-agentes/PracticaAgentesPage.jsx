@@ -1,19 +1,17 @@
 import {
-  canvaMcpConfig,
-  data360McpConfig,
+  alternatives,
+  canvaConnectorNote,
+  data360McpFields,
   data360Repo,
-  data360RenderSteps,
   deliverables,
-  gatewayTokenNote,
   gradingCriteria,
-  mobilePromptExample,
-  openclawRepo,
+  manusApps,
+  openrouterConnectorNote,
   prerequisites,
-  renderBlueprintNotes,
   sectionNav,
+  taskPromptExample,
 } from '../../data/practicaAgentesContent'
 import SectionBlock from '../fundamentos/SectionBlock'
-import CodeBlock from '../practica-mcp/CodeBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
 
@@ -25,9 +23,8 @@ function PracticaAgentesPage() {
           <p className="fundamentos__hero-session">Sesión 04</p>
           <h1 className="fundamentos__hero-title">Práctica Agentes</h1>
           <p className="fundamentos__hero-lead">
-            Despliega tu propio agente OpenClaw en la nube, conéctalo a Canva y a Data 360
-            vía MCP, y úsalo desde tu celular para convertir datos abiertos en un informe
-            visual real.
+            Usa Manus AI, conecta Canva y Data 360 (Banco Mundial) vía MCP, y convierte datos
+            abiertos en una presentación real de 10 diapositivas exportada en PDF.
           </p>
         </header>
 
@@ -63,74 +60,49 @@ function PracticaAgentesPage() {
           </ul>
         </SectionBlock>
 
-        <SectionBlock
-          id="paso-2"
-          eyebrow="Paso 2"
-          title="Desplegar OpenClaw en Render"
-        >
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Instalar Manus AI">
           <p>
-            <strong>OpenClaw</strong> es un runtime de agentes de código abierto: corre como un
-            proceso persistente en la nube (no un chat que se cierra al terminar la pestaña) y
-            se conecta a herramientas externas mediante MCP.
+            <strong>Manus AI</strong> es una app de agentes con una capa gratuita generosa,
+            disponible tanto en versión móvil como de escritorio/web.
           </p>
           <ol className="practica-mcp__numbered">
             <li>
-              Haz fork del repositorio{' '}
-              <a href={openclawRepo.url} target="_blank" rel="noreferrer">
-                {openclawRepo.label}
+              Instala Manus desde{' '}
+              <a href={manusApps.web} target="_blank" rel="noreferrer">
+                manus.im
               </a>{' '}
-              a tu propia cuenta de GitHub.
+              (web/PC) o desde{' '}
+              <a href={manusApps.ios} target="_blank" rel="noreferrer">
+                App Store
+              </a>{' '}
+              /{' '}
+              <a href={manusApps.android} target="_blank" rel="noreferrer">
+                Google Play
+              </a>{' '}
+              (móvil).
             </li>
+            <li>Inicia sesión o crea una cuenta nueva.</li>
             <li>
-              En Render, crea un servicio nuevo con <strong>New + → Blueprint</strong> y conecta
-              tu fork. Render detectará el archivo <code>render.yaml</code> del repo.
+              Verifica que tienes tus 1000 créditos de bienvenida y la cuota diaria de 300
+              créditos activa.
             </li>
-            <li>Completa el formulario del Blueprint y despliega.</li>
           </ol>
-          <ul className="practica-mcp__bullet-list">
-            {renderBlueprintNotes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Entrar al dashboard">
-          <p>
-            Cuando el build termine, tu instancia queda disponible en{' '}
-            <code>https://&lt;nombre-de-tu-servicio&gt;.onrender.com/openclaw</code>.
-          </p>
-          <p>{gatewayTokenNote}</p>
-          <p>
-            Guarda esa URL: es la misma que usarás luego desde el celular, así que confírmala
-            abriéndola primero desde tu computador.
-          </p>
-        </SectionBlock>
-
-        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Conectar el MCP de Canva">
-          <p>
-            Canva expone un servidor MCP remoto ya hospedado — no hay que instalar nada, solo
-            apuntar a su URL y autorizar con OAuth.
-          </p>
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Conectar el MCP de Canva">
+          <p>{canvaConnectorNote}</p>
           <ol className="practica-mcp__numbered">
             <li>
-              En OpenClaw ve a <strong>Settings → MCP → Add server</strong>.
+              En Manus ve a <strong>Conectores</strong> (Connectors).
             </li>
             <li>
-              Nombre: <code>canva</code>. Transporte: <strong>Streamable HTTP</strong>. URL:{' '}
-              <code>https://mcp.canva.com/mcp</code>.
+              Busca <code>Canva</code> en la lista de conectores predeterminados e instálalo.
             </li>
-            <li>
-              Guarda. La primera vez que el agente use una tool de Canva, se abrirá un flujo de
-              login/autorización con tu cuenta de Canva.
-            </li>
+            <li>Autoriza con tu cuenta de Canva (OAuth) cuando te lo pida.</li>
           </ol>
-          <CodeBlock
-            code={canvaMcpConfig}
-            caption="Equivalente editando openclaw.json directamente"
-          />
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Conectar el MCP de Data 360">
+        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Conectar el MCP de Data 360">
           <p>
             <a href={data360Repo.url} target="_blank" rel="noreferrer">
               {data360Repo.label}
@@ -138,40 +110,36 @@ function PracticaAgentesPage() {
             {data360Repo.description}
           </p>
           <p>
-            Este MCP no tiene versión remota hospedada, así que hay que desplegarlo tú mismo
-            para que OpenClaw (que vive en Render, no en tu laptop) pueda alcanzarlo por
-            HTTP:
+            Este MCP no está en la lista predeterminada de Manus, así que se agrega como{' '}
+            <strong>MCP personalizado</strong> (opción de agregar mediante chat):
           </p>
-          <ol className="practica-mcp__numbered">
-            {data360RenderSteps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-          <p>
-            Con esa URL, agrega el servidor en OpenClaw igual que hiciste con Canva (Settings →
-            MCP → Add server, nombre <code>data360</code>, transporte Streamable HTTP).
-          </p>
-          <CodeBlock
-            code={data360McpConfig}
-            caption="Equivalente editando openclaw.json directamente"
-          />
+          <ul className="practica-mcp__bullet-list">
+            <li>
+              <strong>Nombre:</strong> {data360McpFields.name}
+            </li>
+            <li>
+              <strong>Endpoint:</strong> <code>{data360McpFields.endpoint}</code>
+            </li>
+            <li>
+              <strong>Autenticación:</strong> {data360McpFields.auth}
+            </li>
+          </ul>
         </SectionBlock>
 
-        <SectionBlock
-          id="paso-6"
-          eyebrow="Paso 6"
-          title="Usarlo desde el celular"
-        >
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Agregar la API key de OpenRouter">
+          <p>{openrouterConnectorNote}</p>
+        </SectionBlock>
+
+        <SectionBlock id="paso-6" eyebrow="Paso 6" title="Pedirle a Manus el entregable">
           <p>
-            Abre el navegador de tu celular y entra a la misma URL de tu servicio de OpenClaw
-            en Render (no necesitas instalar nada). Inicia sesión con el token del paso 3.
+            Con los tres conectores listos (Canva, Data360 MCP y OpenRouter), dale a Manus una
+            instrucción como:
           </p>
-          <p>Pídele al agente algo como:</p>
-          <p className="practica-mcp__query-prompt">{mobilePromptExample}</p>
+          <p className="practica-mcp__query-prompt">{taskPromptExample}</p>
           <p>
-            El agente debería encadenar las tools de <code>data360</code> para traer datos
-            reales y las de <code>canva</code> para producir el diseño y exportarlo en PDF —
-            todo desde tu teléfono.
+            Manus debería encadenar las tools de <code>Data360 MCP</code> para traer datos
+            reales, usar OpenRouter como modelo cuando sea posible, y las de{' '}
+            <code>Canva</code> para producir la presentación y exportarla en PDF.
           </p>
         </SectionBlock>
 
@@ -195,18 +163,21 @@ function PracticaAgentesPage() {
           </div>
         </SectionBlock>
 
-        <SectionBlock id="cierre" eyebrow="Cierre" title="Apagar los servicios">
+        <SectionBlock id="alternativas" eyebrow="Extra" title="Otras alternativas">
           <p>
-            Al terminar la práctica, entra a Render y elimina (o suspende) los dos servicios
-            que creaste — OpenClaw y el MCP de Data 360. Son gratuitos, pero es buena práctica
-            no dejar servicios corriendo con tokens y OAuth activos si no vas a seguir
-            usándolos.
+            Además de usar Manus como asistente puntual, vale la pena conocer otras rutas para
+            automatizar este tipo de flujos:
           </p>
-          <p>
-            Si quieres conservar tu agente para seguir explorando después del curso, puedes
-            dejarlo activo: solo recuerda que el plan Free se duerme tras inactividad y que sin
-            disco persistente perderás la configuración en cada redeploy.
-          </p>
+          <div className="practica-mcp__grading">
+            <ul className="practica-mcp__grading-list">
+              {alternatives.map(({ title, description }) => (
+                <li key={title}>
+                  <strong>{title}</strong>
+                  <span>{description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </SectionBlock>
       </div>
     </div>
