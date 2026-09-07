@@ -64,29 +64,6 @@ export const deliverables = [
   'Una o más capturas de pantalla de Manus ejecutando el flujo (llamando las tools de Data360 y de Canva).',
 ]
 
-export const gradingCriteria = [
-  {
-    title: 'Configuración correcta de conectores',
-    description:
-      '¿Quedaron bien conectados Canva, Data360 MCP (personalizado) y la API key de OpenRouter dentro de Manus?',
-  },
-  {
-    title: 'Uso combinado de MCPs',
-    description:
-      '¿El flujo realmente encadena Data360 (datos) con Canva (entregable visual), en vez de improvisar el contenido?',
-  },
-  {
-    title: 'Calidad del entregable',
-    description:
-      '¿Las 10 diapositivas comunican un hallazgo claro con datos reales, no solo texto genérico o relleno?',
-  },
-  {
-    title: 'Sustentación',
-    description:
-      '¿Pueden explicar por qué eligieron ese indicador/tema y qué mostró el dato?',
-  },
-]
-
 export const alternatives = [
   {
     title: 'Automatizaciones dentro de Manus',
