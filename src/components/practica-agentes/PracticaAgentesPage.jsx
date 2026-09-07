@@ -4,7 +4,6 @@ import {
   data360McpFields,
   data360Repo,
   deliverables,
-  gradingCriteria,
   manusApps,
   openrouterConnectorNote,
   prerequisites,
@@ -143,24 +142,13 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
+        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables">
           <p>Cada equipo entrega:</p>
           <ul className="practica-mcp__bullet-list">
             {deliverables.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <div className="practica-mcp__grading">
-            <h3 className="practica-mcp__grading-title">Criterios de calificación</h3>
-            <ul className="practica-mcp__grading-list">
-              {gradingCriteria.map(({ title, description }) => (
-                <li key={title}>
-                  <strong>{title}</strong>
-                  <span>{description}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </SectionBlock>
 
         <SectionBlock id="alternativas" eyebrow="Extra" title="Otras alternativas">
