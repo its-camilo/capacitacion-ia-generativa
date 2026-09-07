@@ -109,6 +109,20 @@ export const optimizationTips = {
   ],
 }
 
+export const costComparisonTool = {
+  title: 'Compara modelos por costo y eficiencia',
+  description:
+    'Antes de elegir un modelo para tu tarea, revisa este comparador independiente: cruza precio, velocidad y calidad de los principales modelos del mercado.',
+  links: [
+    {
+      id: 'artificial-analysis',
+      provider: 'Artificial Analysis',
+      label: 'artificialanalysis.ai — comparador de modelos',
+      url: 'https://artificialanalysis.ai',
+    },
+  ],
+}
+
 export const recommendedPlugins = {
   title: 'Plugins recomendados',
   description:
