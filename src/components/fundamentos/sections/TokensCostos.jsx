@@ -1,4 +1,5 @@
 import {
+  costComparisonTool,
   optimizationTips,
   recommendedPlugins,
   tokenTips,
@@ -27,6 +28,7 @@ function TokensCostos() {
         ))}
       </ul>
       <InsightCard {...optimizationTips} />
+      <ToolCallingCard {...costComparisonTool} />
       <ToolCallingCard {...recommendedPlugins} />
       <div className="diagram-stack">
         <DiagramCard caption="El texto se divide en tokens" delay={0}>
