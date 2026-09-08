@@ -97,15 +97,14 @@ export const tokenTips = [
 ]
 
 export const optimizationTips = {
-  eyebrow: 'Flujo recomendado',
-  title: 'Tips de optimización',
+  eyebrow: 'Tips de costos',
+  title: 'Optimiza el caché y el contexto',
   description:
-    'En tareas grandes, conviene separar clarificación, planificación y ejecución para evitar divagación, errores y gasto innecesario de tokens.',
+    'Pequeños cambios en cómo mantienes el contexto pueden evitar recargas de caché y reducir el gasto innecesario.',
   steps: [
-    'Con un modelo barato, pasa el plan y pídele que te haga preguntas antes de empezar.',
-    'Si la IA no tiene todo claro, suele divagar en el proceso; el resultado puede ser erróneo y consume más tokens.',
-    'Cuando las dudas estén resueltas, cambia a modo plan y elabora el plan de implementación.',
-    'Recién entonces ejecuta la tarea con el modelo y el contexto que necesites.',
+    'Evita cambiar de modelo o de MCPs sobre la marcha dentro de un mismo chat: al cambiar el contexto disponible, puedes afectar el caché y provocar nuevas cargas.',
+    'Pon lo importante al principio del mensaje. La IA tiende a prestar menos atención al último 30% de un mensaje, así que las instrucciones críticas no deberían quedar al final.',
+    'No mantengas una misma sesión de chat durante demasiado tiempo. El caché se cobra por hora y las recargas de caché se cobran al usuario, por lo que conviene abrir un chat nuevo cuando la tarea o el contexto ya hayan crecido demasiado.',
   ],
 }
 
