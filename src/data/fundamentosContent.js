@@ -108,6 +108,20 @@ export const optimizationTips = {
   ],
 }
 
+export const planModeCard = {
+  title: 'Modo Plan: planifica antes de ejecutar',
+  description:
+    'El modo Plan separa el razonamiento sobre la implementación de la ejecución de cambios. Para una feature grande, un flujo eficiente es usar primero un modelo económico para resolver dudas sobre arquitectura, alcance, dependencias y estrategia; cuando las dudas estén resueltas, pedir el plan de implementación y solo después solicitar la acción. Los clientes de IA ofrecen modos de planificación con distintos niveles de efectividad y profundidad; Kiro destaca por su enfoque design-first y por generar documentación estructurada antes de implementar.',
+  links: [
+    {
+      id: 'kiro-students',
+      provider: 'Kiro',
+      label: 'Programa para estudiantes — 1.000 créditos/mes gratis durante un año',
+      url: 'https://kiro.dev/students/',
+    },
+  ],
+}
+
 export const costComparisonTool = {
   title: 'Compara modelos por costo y eficiencia',
   description:
