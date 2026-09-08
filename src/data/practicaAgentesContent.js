@@ -80,4 +80,9 @@ export const alternatives = [
     description:
       'Runtime de agentes de código abierto. Requiere desplegarlo en un servidor relativamente potente en la nube para poder acceder desde PC y celular, a diferencia de Manus que no necesita infraestructura propia.',
   },
+  {
+    title: 'Otras apps de IA',
+    description:
+      'Otras aplicaciones de IA, como ChatGPT, Claude y similares, también permiten instalar conectores; algunas admiten conectores personalizados y tareas programadas. Sin embargo, Manus AI destaca en este tipo de flujos dentro de su versión gratuita por el nivel de soporte disponible. Por ejemplo, en ChatGPT algunas funciones avanzadas relacionadas con conectores, así como acciones sobre repositorios como commit, push y deploy, requieren un plan de pago.',
+  },
 ]
