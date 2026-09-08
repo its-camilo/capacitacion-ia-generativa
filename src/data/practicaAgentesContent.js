@@ -57,7 +57,7 @@ export const openrouterConnectorNote =
   'La API key de OpenRouter también está en el listado de conectores predeterminados de Manus: solo pégala en su campo correspondiente.'
 
 export const taskPromptExample =
-  '"Usando la API key de OpenRouter siempre que se pueda, obtén datos de un tema de desarrollo que te interese (pobreza, educación, cambio climático, género, salud…) desde el MCP de Data360 para un país o región. Con esa información, arma una presentación de 10 diapositivas en Canva sobre ese tema, con al menos un gráfico y una conclusión clara. Al final, exporta la presentación en formato PDF."'
+  '\"Usando la API key de OpenRouter siempre que se pueda, obtén datos de un tema de desarrollo que te interese (pobreza, educación, cambio climático, género, salud…) desde el MCP de Data360 para un país o región. Con esa información, arma una presentación de 10 diapositivas en Canva sobre ese tema, con al menos un gráfico y una conclusión clara. Al final, exporta la presentación en formato PDF.\"'
 
 export const deliverables = [
   'El PDF exportado desde Canva con la presentación de 10 diapositivas sobre el tema elegido.',
@@ -83,6 +83,6 @@ export const alternatives = [
   {
     title: 'Otras apps de IA',
     description:
-      'Otras aplicaciones de IA, como ChatGPT, Claude y similares, también permiten instalar conectores; algunas admiten conectores personalizados y tareas programadas. Sin embargo, Manus AI destaca en este tipo de flujos dentro de su versión gratuita por el nivel de soporte disponible. Por ejemplo, en ChatGPT algunas funciones avanzadas relacionadas con conectores, push y deploy, requieren un plan de pago.',
+      'Otras aplicaciones de IA, como ChatGPT, Claude y similares, también permiten instalar conectores; algunas admiten conectores personalizados y tareas programadas. Sin embargo, Manus AI destaca en este tipo de flujos dentro de su versión gratuita por el nivel de soporte disponible.',
   },
 ]
