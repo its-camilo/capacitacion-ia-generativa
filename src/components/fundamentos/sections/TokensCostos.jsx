@@ -1,6 +1,7 @@
 import {
   costComparisonTool,
   optimizationTips,
+  planModeCard,
   recommendedPlugins,
   tokenTips,
 } from '../../../data/fundamentosContent'
@@ -28,6 +29,7 @@ function TokensCostos() {
         ))}
       </ul>
       <InsightCard {...optimizationTips} />
+      <ToolCallingCard {...planModeCard} />
       <ToolCallingCard {...costComparisonTool} />
       <ToolCallingCard {...recommendedPlugins} />
       <div className="diagram-stack">
