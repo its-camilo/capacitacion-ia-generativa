@@ -80,6 +80,22 @@ export const officialSkillRepos = [
       'Repositorio actual de plugins y skills distribuibles para Codex y ChatGPT, con guías para empaquetar workflows reutilizables.',
     url: 'https://github.com/openai/plugins',
   },
+  {
+    id: 'remotion-skills',
+    provider: 'Remotion',
+    title: 'Remotion AI Skills',
+    description:
+      'Skills para agentes de IA orientadas a crear y trabajar con videos mediante Remotion, con instrucciones y recursos reutilizables para el flujo de desarrollo.',
+    url: 'https://www.remotion.dev/docs/ai/skills',
+  },
+  {
+    id: 'img2threejs',
+    provider: 'img2threejs',
+    title: 'img2threejs/img2threejs',
+    description:
+      'Herramienta que convierte imágenes en escenas 3D interactivas para Three.js, útil para explorar flujos de generación y visualización 3D asistidos por IA.',
+    url: 'https://github.com/img2threejs/img2threejs',
+  },
 ]
 
 export const promptBlocks = [
