@@ -98,6 +98,26 @@ export const officialSkillRepos = [
   },
 ]
 
+export const promptingContextCard = {
+  title: 'Dale contexto a la IA conectándola a tus fuentes',
+  description:
+    'Una forma de dar buen contexto a la IA es conectarla a MCPs que le permitan consultar tus fuentes de información, como Google Docs MCP o NotebookLM MCP.',
+  links: [
+    {
+      id: 'google-docs-mcp',
+      provider: 'MCP',
+      label: 'Google Docs MCP',
+      url: 'https://github.com/modelcontextprotocol/servers',
+    },
+    {
+      id: 'notebooklm-mcp',
+      provider: 'MCP',
+      label: 'NotebookLM MCP',
+      url: 'https://github.com/PleasePrompto/notebooklm-mcp',
+    },
+  ],
+}
+
 export const promptBlocks = [
   { label: 'Contexto', hint: 'Quién eres y qué datos hay' },
   { label: 'Solicitud', hint: 'Qué quieres que haga' },
