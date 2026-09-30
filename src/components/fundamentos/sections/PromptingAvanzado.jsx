@@ -1,4 +1,6 @@
 import SectionBlock from '../SectionBlock'
+import ToolCallingCard from '../ToolCallingCard'
+import { promptingContextCard } from '../../../data/fundamentosContent'
 import PromptTemplateDiagram from '../diagrams/PromptTemplateDiagram'
 
 function PromptingAvanzado() {
@@ -13,6 +15,7 @@ function PromptingAvanzado() {
         Estructura tu prompt en cuatro bloques. Cuanto más específico seas, menos
         ambigüedad y mejor resultado.
       </p>
+      <ToolCallingCard {...promptingContextCard} />
     </SectionBlock>
   )
 }
