@@ -138,6 +138,20 @@ export const planModeCard = {
   ],
 }
 
+export const effortSelectionCard = {
+  title: '¿Qué nivel de esfuerzo elegir?',
+  description:
+    'Claude explica cómo elegir el nivel de esfuerzo según la complejidad de la tarea, equilibrando calidad, velocidad y consumo.',
+  links: [
+    {
+      id: 'claude-spending-effort',
+      provider: 'Claude',
+      label: 'Spending your effort — guía para elegir el esfuerzo',
+      url: 'https://claude.dev/blog/spending-your-effort/',
+    },
+  ],
+}
+
 export const costComparisonTool = {
   title: 'Compara modelos por costo y eficiencia',
   description:
