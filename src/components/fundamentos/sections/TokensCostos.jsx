@@ -1,5 +1,6 @@
 import {
   costComparisonTool,
+  effortSelectionCard,
   optimizationTips,
   planModeCard,
   recommendedPlugins,
@@ -30,6 +31,7 @@ function TokensCostos() {
       </ul>
       <InsightCard {...optimizationTips} />
       <ToolCallingCard {...planModeCard} />
+      <ToolCallingCard {...effortSelectionCard} />
       <ToolCallingCard {...costComparisonTool} />
       <ToolCallingCard {...recommendedPlugins} />
       <div className="diagram-stack">
