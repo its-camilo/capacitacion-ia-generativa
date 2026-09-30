@@ -9,7 +9,7 @@ function SkillRepoCard({ provider, title, description, url }) {
       <p className="skill-repo-card__provider">{provider}</p>
       <h3 className="skill-repo-card__title">{title}</h3>
       <p className="skill-repo-card__description">{description}</p>
-      <span className="skill-repo-card__link">Ver en GitHub →</span>
+      <span className="skill-repo-card__link">Ver recurso →</span>
     </a>
   )
 }
