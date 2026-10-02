@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const SESSION_PIN = ['1','2','4','5','7','8'].join('')
+const SESSION_PIN = '124578'
 
 function SessionGate({ children }) {
   const location = useLocation()
