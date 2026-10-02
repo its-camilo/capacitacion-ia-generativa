@@ -1,6 +1,114 @@
+export const sectionNav = [
+  { id: 'historia', label: 'Historia de la computación' },
+  { id: 'conceptos', label: 'Conceptos básicos' },
+  { id: 'prompting', label: 'Prompting avanzado' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'tokens', label: 'Tokens y costos' },
+  { id: 'transformers', label: 'Transformers' },
+  { id: 'mcp', label: 'Introducción a MCP' },
+  { id: 'rag', label: 'Introducción a RAG' },
+]
+
+export const timelineSteps = [
+  { label: 'Tarjetas perforadas', detail: 'Instrucciones físicas' },
+  { label: 'Circuitos', detail: 'Ejecución eléctrica' },
+  { label: 'Ensamblador', detail: 'Símbolos para el CPU' },
+  { label: 'C++', detail: 'Control y rendimiento' },
+  { label: 'Python', detail: 'Código legible' },
+  { label: 'IA generativa', detail: 'Describes, el modelo produce' },
+]
+
+export const concepts = [
+  { id: 'agente', term: 'Agente', definition: 'Un agente puede tomar decisiones y ejecutar acciones por su cuenta. Su cerebro es el modelo de IA, que procesa el contexto y decide qué hacer en cada paso.' },
+  { id: 'api-key', term: 'API key', definition: 'Tu llave de acceso al proveedor. Sin ella no hay servicio ni control de gasto.' },
+  { id: 'proveedor', term: 'Proveedor', definition: 'Empresa que hospeda el modelo y te lo entrega por API (OpenAI, Anthropic, Google…).' },
+  { id: 'open-source', term: 'Proveedor open source', definition: 'Modelo público (Llama, Mistral…). Lo puedes correr tú; el cómputo igual cuesta.', link: { label: 'Ollama Portable', url: 'https://github.com/ekhos-ai/ollama-portable' } },
+  { id: 'harness', term: 'Harness', definition: 'El harness define las condiciones de trabajo del agente: herramientas, reglas y memoria.' },
+]
+
+export const officialSkillRepos = [
+  { id: 'anthropic-skills', provider: 'Anthropic', title: 'anthropics/skills', description: 'Skills oficiales para Claude.', url: 'https://github.com/anthropics/skills' },
+  { id: 'openai-skills', provider: 'OpenAI', title: 'openai/skills', description: 'Catálogo de skills para Codex.', url: 'https://github.com/openai/skills' },
+  { id: 'openai-plugins', provider: 'OpenAI', title: 'openai/plugins', description: 'Repositorio de plugins y skills distribuibles.', url: 'https://github.com/openai/plugins' },
+  { id: 'remotion-skills', provider: 'Remotion', title: 'Remotion AI Skills', description: 'Skills para crear y trabajar con videos mediante Remotion.', url: 'https://www.remotion.dev/docs/ai/skills' },
+  { id: 'img2threejs', provider: 'img2threejs', title: 'img2threejs/img2threejs', description: 'Herramienta para convertir imágenes en escenas 3D interactivas.', url: 'https://github.com/img2threejs/img2threejs' },
+]
+
 export const promptingContextCard = {
   title: 'Dale contexto a la IA conectándola a tus fuentes',
-  description:
-    'Una forma de dar buen contexto a la IA es conectarla a MCPs que le permitan consultar tus fuentes de información, como Google Docs MCP o NotebookLM MCP.',
+  description: 'Una forma de dar buen contexto a la IA es conectarla a MCPs que le permitan consultar tus fuentes de información, como Google Docs MCP o NotebookLM MCP.',
   links: [],
+}
+
+export const promptBlocks = [
+  { label: 'Contexto', hint: 'Quién eres y qué datos hay' },
+  { label: 'Solicitud', hint: 'Qué quieres que haga' },
+  { label: 'Formato', hint: 'Cómo debe verse la respuesta' },
+  { label: 'Restricciones', hint: 'Qué evitar o limitar' },
+]
+
+export const tokenTips = ['Chats separados por tarea', 'Resume hilos largos', 'Reutiliza instrucciones cacheables', 'No pegues documentos enteros']
+
+export const optimizationTips = {
+  eyebrow: 'Tips de costos',
+  title: 'Optimiza el caché y el contexto',
+  description: 'Pequeños cambios en cómo mantienes el contexto pueden evitar recargas de caché y reducir el gasto innecesario.',
+  steps: [
+    'Evita cambiar de modelo o de MCPs sobre la marcha dentro de un mismo chat: al cambiar el contexto disponible, puedes afectar el caché y provocar nuevas cargas.',
+    'Pon lo importante al principio del mensaje. La IA tiende a prestar menos atención al último 30% de un mensaje, así que las instrucciones críticas no deberían quedar al final.',
+    'No mantengas una misma sesión de chat durante demasiado tiempo. Conviene abrir un chat nuevo cuando la tarea o el contexto ya hayan crecido demasiado.',
+  ],
+}
+
+export const planModeCard = {
+  title: 'Modo Plan: planifica antes de ejecutar',
+  description: 'El modo Plan separa el razonamiento sobre la implementación de la ejecución de cambios. Para una feature grande, un flujo eficiente es resolver primero arquitectura, alcance, dependencias y estrategia; después pedir el plan de implementación y finalmente solicitar la acción.',
+  links: [{ id: 'kiro-students', provider: 'Kiro', label: 'Programa para estudiantes', url: 'https://kiro.dev/students/' }],
+}
+
+export const effortSelectionCard = {
+  title: '¿Qué nivel de esfuerzo elegir?',
+  description: 'Claude explica cómo elegir el nivel de esfuerzo según la complejidad de la tarea, equilibrando calidad, velocidad y consumo.',
+  links: [{ id: 'claude-spending-effort', provider: 'Claude', label: 'Spending your effort — guía para elegir el esfuerzo', url: 'https://claude.dev/blog/spending-your-effort/' }],
+}
+
+export const costComparisonTool = {
+  title: 'Compara modelos por costo y eficiencia',
+  description: 'Antes de elegir un modelo para tu tarea, revisa un comparador independiente que cruza precio, velocidad y calidad.',
+  links: [{ id: 'artificial-analysis', provider: 'Artificial Analysis', label: 'Comparador de modelos', url: 'https://artificialanalysis.ai' }],
+}
+
+export const recommendedPlugins = {
+  title: 'Plugins recomendados',
+  description: 'Complementos útiles para cuidar el contexto, controlar el consumo de tokens y mejorar el flujo de trabajo con IA.',
+  links: [
+    { id: 'wozcode', provider: 'Plugin', label: 'Wozcode', url: 'https://github.com/WithWoz/wozcode-plugin' },
+    { id: 'token-saver', provider: 'Plugin', label: 'Token Saver', url: 'https://github.com/aymenfurter/token-saver-mcp' },
+    { id: 'context-mode', provider: 'Plugin', label: 'Context Mode', url: 'https://github.com/mksglu/context-mode' },
+  ],
+}
+
+export const mcpTimelineUseCase = {
+  eyebrow: 'Sesión 02 · Vista previa',
+  title: 'IA + MCP: línea de tiempo de un proyecto',
+  description: 'Otro uso práctico de la IA junto con MCPs es armar presentaciones de diapositivas con la ejecución por fases de un proyecto. Con MCPs de Google Drive y GitHub puedes escanear los archivos del proyecto y establecer la línea de tiempo.',
+}
+
+export const mcpToolCalling = {
+  title: 'Tool calling',
+  description: 'En MCP, una tool es una función que el servidor expone al modelo. El LLM elige cuándo invocarla; el servidor la ejecuta y devuelve el resultado. Ese ciclo es el tool calling.',
+  links: [
+    { id: 'opencode-tools', provider: 'OpenCode', label: 'Tools integradas', url: 'https://opencode.ai/docs/tools/' },
+    { id: 'opencode-mcp', provider: 'OpenCode', label: 'Servidores MCP', url: 'https://opencode.ai/v2/docs/mcp-servers' },
+    { id: 'anthropic-mcp', provider: 'Anthropic', label: 'MCP connector', url: 'https://platform.claude.com/docs/en/agents-and-tools/mcp-connector' },
+    { id: 'openai-tools', provider: 'OpenAI', label: 'Using tools', url: 'https://developers.openai.com/api/docs/guides/tools' },
+    { id: 'openai-mcp', provider: 'OpenAI', label: 'MCP y conectores', url: 'https://developers.openai.com/api/docs/guides/tools-connectors-mcp' },
+  ],
+}
+
+export const ragConcepts = [{ id: 'chunk', term: 'Chunk', definition: 'Fragmento de texto en el que se divide un documento antes de vectorizarlo. En RAG, cada chunk se convierte en un vector y se recuperan los más similares como contexto.' }]
+
+export const resources = {
+  attentionPaper: { title: 'Attention Is All You Need', subtitle: 'Vaswani et al., 2017', url: 'https://arxiv.org/pdf/1706.03762', qrSrc: '/attention-is-all-you-need-qr.png', description: 'Paper fundacional del Transformer.' },
+  cvGenerator: { title: 'Generador de hojas de vida con IA', subtitle: 'Ejemplo de aplicación cotidiana', url: 'https://cv-ai-generator-rho.vercel.app/login', qrSrc: '/cv-generator-qr.png', description: 'Tomas tu experiencia, la IA genera un CV. Ejemplo general de IA aplicada — no usa RAG.' },
 }
