@@ -14,10 +14,55 @@ import CodeBlock from './CodeBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
 
+const subagentsExamplePrompt = `Investiga "Casos de agentes de IA que automaticen análisis económico"
+
+AGENTE 1 - Agentes en Fintech:
+Busca 2-3 startups/productos que usen agentes IA para:
+- Rebalanceo automático de carteras
+- Detección de anomalías en transacciones
+- Asesoramiento financiero personalizado
+Reporta: nombre, qué hace, MCPs/tools que usa, costo/acceso
+
+AGENTE 2 - Agentes en Datos Públicos:
+Investiga cómo organismos (BM, OECD, bancos centrales) usan agentes IA para:
+- Monitoreo de indicadores macroeconómicos
+- Alertas de cambios en política monetaria
+- Reportes automáticos de coyuntura
+Reporta: organismo, qué automatizó, herramientas, públicamente disponible sí/no
+
+AGENTE 3 - Frameworks Open Source:
+Localiza 2-3 frameworks de agentes económicos que estudiantes podrían usar:
+- Orchestradores de agentes (CrewAI, AutoGen, Manus)
+- MCPs para datos económicos (Data360, FRED MCP, etc.)
+- Integraciones con herramientas económicas (Jupyter, Power BI)
+Reporta: nombre, GitHub/docs, curva de aprendizaje, relevancia para Ciencias Económicas
+
+ENTREGA FINAL:
+- Tabla: Agente tipo | Caso de uso económico | Herramientas mínimas | Dificultad
+- Top 3 ideas para entregas de estudiantes (Sesión 04)`
+
 function PracticaMcpPage() {
   return (
     <div className="practica-mcp">
       <div className="practica-mcp__content">
+        <section
+          aria-labelledby="ejemplo-subagentes-title"
+          className="practica-mcp__query-card"
+          style={{ marginBottom: '2rem' }}
+        >
+          <p className="practica-mcp__query-hint">Ejemplo · Subagentes</p>
+          <h2 id="ejemplo-subagentes-title" style={{ marginTop: '0.35rem' }}>
+            Investigación económica con subagentes
+          </h2>
+          <p>
+            Este es el ejemplo que usaremos para mostrar cómo dividir una investigación entre
+            varios subagentes especializados y consolidar sus resultados en una entrega final.
+          </p>
+          <pre style={{ whiteSpace: 'pre-wrap', overflowX: 'auto', margin: '1rem 0 0' }}>
+            {subagentsExamplePrompt}
+          </pre>
+        </section>
+
         <header className="fundamentos__hero">
           <p className="fundamentos__hero-session">Sesión 02</p>
           <h1 className="fundamentos__hero-title">Práctica MCP</h1>
@@ -117,8 +162,7 @@ function PracticaMcpPage() {
               pantalla de consentimiento OAuth.
             </li>
             <li>
-              Crea credenciales OAuth (tipo Desktop), copia Client ID y Client Secret, y autoriza
-              con{' '}
+              Crea credenciales OAuth (tipo Desktop), copia Client ID y Client Secret, y autoriza con{' '}
               <code>
                 GOOGLE_CLIENT_ID=&quot;…&quot; GOOGLE_CLIENT_SECRET=&quot;…&quot; npx -y
                 @a-bonus/google-docs-mcp auth
