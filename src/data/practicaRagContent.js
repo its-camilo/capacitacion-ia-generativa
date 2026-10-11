@@ -5,7 +5,7 @@ export const sectionNav = [
   { id: 'mcp-sqlite', label: 'MCP SQLite (configuración)' },
   { id: 'paso-4', label: 'Crear el RAG' },
   { id: 'paso-5', label: 'Chat web con el RAG' },
-  { id: 'paso-6', label: 'MCP Power BI' },
+  { id: 'paso-6', label: 'Power BI en la web' },
   { id: 'entregables', label: 'Entregables' },
   { id: 'cierre', label: 'Cierre: quitar MCP Pinecone' },
 ]
