@@ -28,8 +28,8 @@ function PracticaRagPage() {
           <p className="fundamentos__hero-session">Sesión 03</p>
           <h1 className="fundamentos__hero-title">Práctica RAG</h1>
           <p className="fundamentos__hero-lead">
-            Indexa una base SQLite en Pinecone, chatea con ese conocimiento usando OpenRouter
-            (modelos gratuitos) y cierra con un reporte en Power BI.
+            Crea un RAG con herramientas MCP, pruébalo en una página HTML independiente y visualiza
+            un reporte de Power BI en el navegador, sin instalar Power BI Desktop.
           </p>
         </header>
 
@@ -168,12 +168,11 @@ function PracticaRagPage() {
 
         <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear el RAG en Pinecone">
           <p>
-            Con Pinecone y OpenRouter conectados, dile a tu cliente de IA en qué carpeta están tus
-            bases <code>.db</code> y pídele que indexe una de ellas en un índice nuevo en Pinecone.
-            El <strong>nombre del índice</strong> lo define la IA según la base y el contenido que
-            indexe. Solo al <strong>crear el RAG</strong>, usa el <strong>MCP de OpenRouter</strong>{' '}
-            con un fallback de <strong>3 modelos gratuitos</strong> (si uno falla, prueba el
-            siguiente).
+            Con los MCP de SQLite, Pinecone y OpenRouter ya configurados, pide a la IA que explore
+            la base SQLite mediante sus herramientas MCP y cargue hasta 1000 chunks en un índice
+            nuevo de Pinecone. El nombre del índice lo elige la IA según la base y el contenido.
+            No hace falta ejecutar comandos ni instalar paquetes durante este paso; la IA debe
+            operar mediante las herramientas MCP disponibles y reportar cualquier bloqueo.
           </p>
           <p>Prompt de ejemplo para copiar y adaptar:</p>
           <CodeBlock code={ragSetupPrompt} caption="Vibecoding: indexar SQLite en Pinecone" />
@@ -186,30 +185,40 @@ function PracticaRagPage() {
 
         <SectionBlock id="paso-5" eyebrow="Paso 5" title="Interfaz de chat con el RAG">
           <p>
-            Cuando el índice esté listo, pasa a modo vibecoding y pide una interfaz mínima de chat
-            que consulte ese RAG:
+            Cuando el índice esté listo, pide una página autocontenida <code>index.html</code> con
+            HTML, CSS y JavaScript vanilla. No debe requerir npm, Node.js, compilación, servidor,
+            backend ni comandos. Guarda el archivo y ábrelo en el navegador. Las llamadas directas
+            a Pinecone y OpenRouter pueden fallar por CORS o por restricciones del proveedor; si
+            ocurre, no se debe simular el resultado ni pedir ejecutar comandos.
+          </p>
+          <p className="practica-mcp__note">
+            Para esta prueba se permite ingresar claves temporales en la página, pero cualquier
+            persona que acceda al HTML o al navegador puede verlas. No uses claves personales ni
+            de producción y revócalas al terminar.
           </p>
           <CodeBlock code={chatUiPrompt} caption="Vibecoding: chat web sencillo" />
         </SectionBlock>
 
         <SectionBlock id="paso-6" eyebrow="Paso 6" title="Crear el reporte en Power BI">
           <p>
-            Para el entregable de visualización usaremos{' '}
-            <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">
-              pbix-mcp
-            </a>
-            , un servidor MCP que construye archivos <code>.pbix</code> nativos desde Python.
-            A diferencia de otros MCPs de Power BI, este genera el reporte con los visuales ya
-            enlazados (no vacíos).
+            En los computadores de capacitación no se instalará Power BI Desktop ni se ejecutarán
+            comandos. El archivo <code>.pbix</code> debe estar generado previamente por el instructor
+            o en un entorno autorizado. Los estudiantes solo lo cargarán y visualizarán desde el
+            navegador en{' '}
+            <a href="https://app.powerbi.com/" target="_blank" rel="noreferrer">Power BI Service</a>.
           </p>
-          <p>
-            El ejemplo lo hacemos adaptado al caso de <strong>Northwind</strong>; si elegiste otra
-            base de datos, ajusta las tablas, columnas y consultas SQL según tu esquema.
+          <ol className="practica-mcp__numbered">
+            <li>Inicia sesión con una cuenta institucional o educativa de Microsoft.</li>
+            <li>Abre un espacio de trabajo autorizado y busca la opción para cargar o importar un archivo <code>.pbix</code>.</li>
+            <li>Selecciona el archivo, espera la importación y abre el informe en el navegador.</li>
+            <li>Verifica que los gráficos aparezcan y que el informe no muestre errores.</li>
+            <li>Si no aparece la opción de carga o el acceso está restringido, informa al instructor; no intentes evadir las políticas de la institución.</li>
+          </ol>
+          <p className="practica-mcp__note">
+            Una cuenta educativa no garantiza todas las funciones: las licencias y políticas institucionales pueden limitar la carga o el uso compartido. No uses “Publicar en la web” con datos confidenciales, ya que puede exponer el informe públicamente.
           </p>
-          <p>Configura el servidor MCP una vez que hayas creado el venv (el prompt te explica cómo):</p>
-          <CodeBlock code={powerBiMcpConfig} caption="Configuración en mcpServers — reemplaza RUTA por la ruta real" />
-          <p>Luego usa este prompt para que el agente construya el reporte completo:</p>
-          <CodeBlock code={powerBiPrompt} caption="Vibecoding: reporte Power BI con Northwind" />
+          <p>Prompt de apoyo para la actividad:</p>
+          <CodeBlock code={powerBiPrompt} caption="Instrucciones para visualizar el .pbix en Power BI Service" />
         </SectionBlock>
 
         <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
