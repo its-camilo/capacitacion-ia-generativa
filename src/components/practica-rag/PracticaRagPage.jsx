@@ -201,24 +201,32 @@ function PracticaRagPage() {
 
         <SectionBlock id="paso-6" eyebrow="Paso 6" title="Crear el reporte en Power BI">
           <p>
-            En los computadores de capacitación no se instalará Power BI Desktop ni se ejecutarán
-            comandos. El archivo <code>.pbix</code> debe estar generado previamente por el instructor
-            o en un entorno autorizado. Los estudiantes solo lo cargarán y visualizarán desde el
-            navegador en{' '}
-            <a href="https://app.powerbi.com/" target="_blank" rel="noreferrer">Power BI Service</a>.
+            Para generar el archivo usaremos{' '}
+            <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">
+              pbix-mcp
+            </a>
+            , un servidor MCP que construye archivos <code>.pbix</code> nativos. En esta parte sí
+            se prepara el entorno en el equipo donde se ejecutará OpenCode; no es necesario que
+            cada computador restringido de los participantes tenga ese entorno instalado.
           </p>
-          <ol className="practica-mcp__numbered">
-            <li>Inicia sesión con una cuenta institucional o educativa de Microsoft.</li>
-            <li>Abre un espacio de trabajo autorizado y busca la opción para cargar o importar un archivo <code>.pbix</code>.</li>
-            <li>Selecciona el archivo, espera la importación y abre el informe en el navegador.</li>
-            <li>Verifica que los gráficos aparezcan y que el informe no muestre errores.</li>
-            <li>Si no aparece la opción de carga o el acceso está restringido, informa al instructor; no intentes evadir las políticas de la institución.</li>
-          </ol>
-          <p className="practica-mcp__note">
-            Una cuenta educativa no garantiza todas las funciones: las licencias y políticas institucionales pueden limitar la carga o el uso compartido. No uses “Publicar en la web” con datos confidenciales, ya que puede exponer el informe públicamente.
+          <p>
+            El ejemplo está adaptado a la base <strong>Northwind</strong>. Si se usa otra base,
+            ajusta las tablas, columnas y consultas SQL del prompt.
           </p>
-          <p>Prompt de apoyo para la actividad:</p>
-          <CodeBlock code={powerBiPrompt} caption="Instrucciones para visualizar el .pbix en Power BI Service" />
+          <p>Configuración del servidor MCP para OpenCode. Reemplaza la ruta por la ubicación real del proyecto:</p>
+          <CodeBlock code={powerBiMcpConfig} caption="Configuración mcpServers — pbix-mcp" />
+          <p>Después de configurar y conectar el MCP, usa este prompt en OpenCode para generar y validar el archivo .pbix y el ZIP:</p>
+          <CodeBlock code={powerBiPrompt} caption="OpenCode: generar reporte Power BI con Northwind" />
+          <div className="practica-mcp__note">
+            <strong>Visualizar el resultado desde los computadores de capacitación:</strong> una vez
+            generado el archivo <code>.pbix</code>, súbelo desde el navegador a{' '}
+            <a href="https://app.powerbi.com/" target="_blank" rel="noreferrer">Power BI Service</a>
+            {' '}con una cuenta educativa o institucional que tenga los permisos necesarios. Abre
+            el informe en el navegador; los estudiantes no necesitan Power BI Desktop ni ejecutar
+            comandos. La disponibilidad de carga y visualización depende de las licencias y políticas
+            institucionales. No uses “Publicar en la web” para datos confidenciales, porque puede
+            exponerlos públicamente.
+          </div>
         </SectionBlock>
 
         <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
