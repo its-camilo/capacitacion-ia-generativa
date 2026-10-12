@@ -1,88 +1,80 @@
 export const sectionNav = [
   { id: 'paso-1', label: 'Prerrequisitos' },
-  { id: 'paso-2', label: 'Instalar Manus AI' },
-  { id: 'paso-3', label: 'MCP de Canva' },
-  { id: 'paso-4', label: 'MCP de Data 360' },
-  { id: 'paso-5', label: 'API key de OpenRouter' },
-  { id: 'paso-6', label: 'El entregable' },
+  { id: 'paso-2', label: 'Entrar a Hark' },
+  { id: 'paso-3', label: 'Consultar Data360' },
+  { id: 'paso-4', label: 'Crear la presentación en Canva' },
+  { id: 'paso-5', label: 'Exportar y verificar el PDF' },
   { id: 'entregables', label: 'Entregables' },
 ]
 
 export const prerequisites = [
   {
-    id: 'manus',
-    label: 'Cuenta de Manus AI',
+    id: 'hark-account',
+    label: 'Cuenta gratuita de Hark',
     description:
-      'Gratuita. Se puede crear con correo o cuenta de Google. Trae 1000 créditos de bienvenida y una cuota diaria de 300 créditos.',
-    url: 'https://manus.im',
+      'Hark ofrece sus funciones en el plan gratuito; los planes pagos aumentan el uso disponible. La tarea puede consumir la cuota, así que conviene trabajar con un tema acotado.',
+    url: 'https://hark.com',
   },
   {
     id: 'canva-account',
     label: 'Cuenta de Canva',
-    description: 'Gratuita. El conector de Canva en Manus se autentica contra tu cuenta vía OAuth.',
+    description:
+      'Necesaria para crear y editar la presentación. La cuenta gratuita puede tener límites de plantillas, recursos y exportación.',
     url: 'https://www.canva.com',
   },
   {
-    id: 'llm-key',
-    label: 'API key de OpenRouter',
+    id: 'data360',
+    label: 'Data360 del Banco Mundial',
     description:
-      'Gratuita. Manus la usará como conector para consultar modelos de OpenRouter dentro de la tarea.',
-    url: 'https://openrouter.ai/keys',
+      'Fuente de indicadores y datos comparables sobre desarrollo. Se consulta desde el navegador; esta práctica no requiere configurar un servidor MCP.',
+    url: 'https://data360.worldbank.org/en/search',
   },
 ]
 
-export const manusApps = {
-  web: 'https://manus.im',
-  ios: 'https://apps.apple.com/app/manus/id6738007748',
-  android: 'https://play.google.com/store/apps/details?id=im.manus.app',
+export const harkLinks = {
+  web: 'https://hark.com',
+  pricing: 'https://hark.com/pricing',
+  guide: 'https://hark.com/using-hark',
 }
 
 export const data360Repo = {
-  label: 'Data 360 MCP — Banco Mundial',
-  url: 'https://data360.worldbank.org',
+  label: 'Data360 — Banco Mundial',
+  url: 'https://data360.worldbank.org/en/search',
   description:
-    'MCP del Banco Mundial sobre la plataforma Data 360: cientos de indicadores de desarrollo (PIB, pobreza, género, clima, salud, educación…) con series de tiempo y metadatos. No requiere API key.',
+    'Portal de datos de desarrollo con indicadores, series temporales y metadatos de más de 200 economías. Permite explorar por tema, país, indicador y periodo.',
 }
-
-export const data360McpFields = {
-  name: 'Data360 MCP',
-  endpoint: 'https://mcpext.worldbank.org/ext/data360/mcp',
-  auth: 'Sin autenticación',
-}
-
-export const canvaConnectorNote =
-  'Canva aparece en la lista de conectores predeterminados de Manus: solo hay que buscarlo y autorizar con tu cuenta (OAuth), sin URLs ni configuración manual.'
-
-export const openrouterConnectorNote =
-  'La API key de OpenRouter también está en el listado de conectores predeterminados de Manus: solo pégala en su campo correspondiente.'
 
 export const taskPromptExample =
-  '\"Usando la API key de OpenRouter siempre que se pueda, obtén datos de un tema de desarrollo que te interese (pobreza, educación, cambio climático, género, salud…) desde el MCP de Data360 para un país o región. Con esa información, arma una presentación de 10 diapositivas en Canva sobre ese tema, con al menos un gráfico y una conclusión clara. Al final, exporta la presentación en formato PDF.\"'
+  'Investiga un tema de desarrollo para Colombia usando datos reales del portal Data360 del Banco Mundial: https://data360.worldbank.org/en/search. Elige un tema con series temporales disponibles, por ejemplo pobreza, educación, salud, género, empleo o cambio climático. Antes de diseñar, identifica entre 3 y 5 indicadores pertinentes y registra para cada uno el nombre exacto, unidad, años disponibles, valores utilizados y enlace a la fuente. No inventes ni completes datos faltantes; señala los vacíos y las limitaciones. Después, entra a Canva con mi autorización y crea una presentación editable de exactamente 10 diapositivas, en español, con narrativa clara para una audiencia universitaria. Incluye: título y pregunta central; contexto; metodología y fuentes; al menos dos gráficos legibles basados en los datos verificados; interpretación de resultados; limitaciones; conclusión y recomendaciones. Incluye fuente y año junto a cada gráfico y una diapositiva final de referencias con enlaces. Usa un diseño consistente, accesible y sobrio, evita párrafos largos y no presentes correlación como causalidad. Muéstrame una vista previa y verifica títulos, cifras, etiquetas, unidades y referencias antes de exportar. Finalmente, exporta el diseño desde Canva como PDF y entrégame el archivo descargable. Si no puedes acceder a Data360, editar Canva o exportar el archivo, explícame qué paso quedó bloqueado y no simules que lo completaste.'
 
 export const deliverables = [
-  'El PDF exportado desde Canva con la presentación de 10 diapositivas sobre el tema elegido.',
-  'Una o más capturas de pantalla de Manus ejecutando el flujo (llamando las tools de Data360 y de Canva).',
+  'El PDF exportado desde Canva con exactamente 10 diapositivas, gráficos basados en datos verificados y enlaces a las fuentes.',
+  'Capturas de pantalla del flujo en Hark: consulta de Data360, construcción o edición de la presentación en Canva y exportación del PDF.',
+  'Una breve nota con el tema, los indicadores seleccionados, los años analizados y cualquier limitación o paso que haya requerido intervención manual.',
 ]
 
 export const alternatives = [
   {
-    title: 'Automatizaciones dentro de Manus',
+    title: 'Manus AI',
+    url: 'https://manus.im',
     description:
-      'Manus AI también permite crear automatizaciones (tareas programadas o disparadas por eventos) usando los mismos conectores, sin depender de que alguien inicie la tarea manualmente cada vez.',
+      'Agente de propósito general para investigar y completar tareas en varios pasos. Alternativa a Hark para explorar flujos de investigación y creación de entregables; las funciones y cuotas gratuitas pueden cambiar.',
   },
   {
-    title: 'Studio',
+    title: 'Hermes Agent',
+    url: 'https://hermes-agent.nousresearch.com/docs/',
     description:
-      'De la suite de Google, sirve para construir distintos tipos de automatizaciones e integraciones con modelos de Gemini.',
+      'Agente de código abierto de Nous Research con memoria, herramientas web, habilidades reutilizables, automatizaciones y soporte para MCP. Requiere instalación o un entorno donde ejecutarlo y configurar un proveedor de modelos.',
   },
   {
     title: 'OpenClaw',
+    url: 'https://github.com/openclaw/openclaw',
     description:
-      'Runtime de agentes de código abierto. Requiere desplegarlo en un servidor relativamente potente en la nube para poder acceder desde PC y celular, a diferencia de Manus que no necesita infraestructura propia.',
+      'Runtime de agentes de código abierto para automatizar tareas e integraciones. Su despliegue y mantenimiento requieren más configuración técnica que una aplicación web alojada.',
   },
   {
-    title: 'Otras apps de IA',
+    title: 'ChatGPT y Claude',
     description:
-      'Otras aplicaciones de IA, como ChatGPT, Claude y similares, también permiten instalar conectores; algunas admiten conectores personalizados y tareas programadas. Sin embargo, Manus AI destaca en este tipo de flujos dentro de su versión gratuita por el nivel de soporte disponible.',
+      'Asistentes que pueden apoyar investigación, análisis y creación de contenido; las capacidades de conectores, uso del navegador y exportación dependen del producto, plan y permisos disponibles.',
   },
 ]
