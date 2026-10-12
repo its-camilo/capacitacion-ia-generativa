@@ -61,6 +61,12 @@ export const alternatives = [
       'Agente de propósito general para investigar y completar tareas en varios pasos. Alternativa a Hark para explorar flujos de investigación y creación de entregables; las funciones y cuotas gratuitas pueden cambiar.',
   },
   {
+    title: 'Studio de Google Workspace',
+    url: 'https://workspace.google.com/',
+    description:
+      'Herramienta de Google Workspace para crear automatizaciones y flujos de trabajo con IA e integraciones del ecosistema de Google. Las funciones disponibles dependen de la cuenta, el plan y la disponibilidad del producto.',
+  },
+  {
     title: 'Hermes Agent',
     url: 'https://hermes-agent.nousresearch.com/docs/',
     description:
