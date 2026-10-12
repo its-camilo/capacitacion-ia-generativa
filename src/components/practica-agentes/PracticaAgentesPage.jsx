@@ -1,11 +1,8 @@
 import {
   alternatives,
-  canvaConnectorNote,
-  data360McpFields,
   data360Repo,
   deliverables,
-  manusApps,
-  openrouterConnectorNote,
+  harkLinks,
   prerequisites,
   sectionNav,
   taskPromptExample,
@@ -22,8 +19,10 @@ function PracticaAgentesPage() {
           <p className="fundamentos__hero-session">Sesión 04</p>
           <h1 className="fundamentos__hero-title">Práctica Agentes</h1>
           <p className="fundamentos__hero-lead">
-            Usa Manus AI, conecta Canva y Data 360 (Banco Mundial) vía MCP, y convierte datos
-            abiertos en una presentación real de 10 diapositivas exportada en PDF.
+            Usa el plan gratuito de Hark para investigar datos de desarrollo en Data360
+            (Banco Mundial), crear una presentación de 10 diapositivas en Canva y exportarla
+            como PDF. El agente trabaja desde un navegador en la nube; no necesitas configurar
+            MCP ni instalar herramientas de desarrollo para esta práctica.
           </p>
         </header>
 
@@ -42,7 +41,9 @@ function PracticaAgentesPage() {
 
         <SectionBlock id="paso-1" eyebrow="Paso 1" title="Prerrequisitos">
           <p>
-            Todo lo que usaremos hoy tiene una capa gratuita. Antes de empezar, ten a la mano:
+            La práctica está diseñada para realizarse con herramientas web. Hark ofrece un plan
+            gratuito, aunque el uso del agente tiene límites y una tarea larga puede agotar la
+            cuota disponible. Antes de empezar, ten a la mano:
           </p>
           <ul className="practica-mcp__bullet-list">
             {prerequisites.map(({ id, label, description, url }) => (
@@ -57,88 +58,102 @@ function PracticaAgentesPage() {
               </li>
             ))}
           </ul>
+          <p>
+            No se necesita una API key de OpenRouter para el flujo principal. Tampoco se agrega
+            un servidor MCP de Canva o Data360: Hark puede navegar sitios web mediante Handoff.
+          </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Instalar Manus AI">
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Entrar a Hark">
           <p>
-            <strong>Manus AI</strong> es una app de agentes con una capa gratuita generosa,
-            disponible tanto en versión móvil como de escritorio/web.
+            <a href={harkLinks.web} target="_blank" rel="noreferrer">Hark</a> es un asistente
+            que puede delegar tareas al navegador de un computador en la nube mediante su
+            función Handoff. Su plan gratuito incluye las funciones principales, mientras que
+            los planes pagos aumentan el uso disponible. Consulta los{' '}
+            <a href={harkLinks.pricing} target="_blank" rel="noreferrer">planes vigentes</a>.
           </p>
           <ol className="practica-mcp__numbered">
             <li>
-              Instala Manus desde{' '}
-              <a href={manusApps.web} target="_blank" rel="noreferrer">
-                manus.im
-              </a>{' '}
-              (web/PC) o desde{' '}
-              <a href={manusApps.ios} target="_blank" rel="noreferrer">
-                App Store
-              </a>{' '}
-              /{' '}
-              <a href={manusApps.android} target="_blank" rel="noreferrer">
-                Google Play
-              </a>{' '}
-              (móvil).
+              Abre <a href={harkLinks.web} target="_blank" rel="noreferrer">hark.com</a> e
+              inicia sesión o crea una cuenta.
             </li>
-            <li>Inicia sesión o crea una cuenta nueva.</li>
+            <li>Inicia una conversación o crea un proyecto para mantener reunida la tarea.</li>
             <li>
-              Verifica que tienes tus 1000 créditos de bienvenida y la cuota diaria de 300
-              créditos activa.
+              Explica que necesitas investigar datos, crear una presentación en Canva y
+              descargar el PDF. Cuando Hark necesite usar un navegador, permite iniciar la
+              tarea de Handoff.
+            </li>
+            <li>
+              Si solicita entrar a Canva, inicia sesión tú mismo en la ventana segura y revisa
+              los permisos antes de autorizar cualquier acción.
             </li>
           </ol>
-        </SectionBlock>
-
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Conectar el MCP de Canva">
-          <p>{canvaConnectorNote}</p>
-          <ol className="practica-mcp__numbered">
-            <li>
-              En Manus ve a <strong>Conectores</strong> (Connectors).
-            </li>
-            <li>
-              Busca <code>Canva</code> en la lista de conectores predeterminados e instálalo.
-            </li>
-            <li>Autoriza con tu cuenta de Canva (OAuth) cuando te lo pida.</li>
-          </ol>
-        </SectionBlock>
-
-        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Conectar el MCP de Data 360">
           <p>
-            <a href={data360Repo.url} target="_blank" rel="noreferrer">
-              {data360Repo.label}
-            </a>{' '}
+            Handoff usa su propio navegador en la nube para interactuar con sitios web. Por eso,
+            los pasos de esta sesión no dependen de instalar Manus, registrar conectores MCP ni
+            proporcionar una API key de OpenRouter.
+          </p>
+        </SectionBlock>
+
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Consultar datos en Data360">
+          <p>
+            <a href={data360Repo.url} target="_blank" rel="noreferrer">{data360Repo.label}</a>{' '}
             {data360Repo.description}
           </p>
+          <ol className="practica-mcp__numbered">
+            <li>Elige un tema de desarrollo y define una pregunta que se pueda responder con datos.</li>
+            <li>
+              Busca indicadores para Colombia u otra economía y revisa la unidad de medida, la
+              cobertura temporal, la definición y la fuente original.
+            </li>
+            <li>
+              Conserva los enlaces de los indicadores y los años exactos que usarás. No aceptes
+              cifras sin fuente ni permitas que el agente invente valores cuando falten datos.
+            </li>
+          </ol>
           <p>
-            Este MCP no está en la lista predeterminada de Manus, así que se agrega como{' '}
-            <strong>MCP personalizado</strong> (opción de agregar mediante chat):
+            Data360 reúne información de distintas fuentes y conjuntos de datos. Verifica la
+            fuente específica de cada indicador; no asumas que todos los indicadores provienen
+            de la misma unidad del Banco Mundial.
           </p>
-          <ul className="practica-mcp__bullet-list">
-            <li>
-              <strong>Nombre:</strong> {data360McpFields.name}
-            </li>
-            <li>
-              <strong>Endpoint:</strong> <code>{data360McpFields.endpoint}</code>
-            </li>
-            <li>
-              <strong>Autenticación:</strong> {data360McpFields.auth}
-            </li>
-          </ul>
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Agregar la API key de OpenRouter">
-          <p>{openrouterConnectorNote}</p>
+        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear la presentación en Canva">
+          <p>
+            Copia el siguiente prompt en Hark. El agente debe investigar primero, comprobar los
+            datos y luego usar el navegador para construir la presentación. La creación y
+            exportación dependen de que Hark pueda interactuar con Canva y de las funciones
+            disponibles en la cuenta utilizada.
+          </p>
+          <div className="practica-mcp__query-prompt">{taskPromptExample}</div>
+          <p>
+            Si Hark solicita intervención para iniciar sesión, elegir una plantilla o confirmar
+            una acción, completa ese paso manualmente. Revisa la presentación antes de aceptar
+            la versión final: los gráficos deben corresponder a los valores consultados y cada
+            cifra debe tener una fuente identificable.
+          </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-6" eyebrow="Paso 6" title="Pedirle a Manus el entregable">
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Exportar y verificar el PDF">
+          <ol className="practica-mcp__numbered">
+            <li>
+              Pide a Hark que exporte el diseño de Canva como PDF y que adjunte el archivo
+              resultante a la conversación.
+            </li>
+            <li>
+              Abre el PDF y verifica que tenga exactamente 10 diapositivas, que los gráficos y
+              las etiquetas se lean correctamente y que los enlaces a las fuentes estén incluidos.
+            </li>
+            <li>
+              Si la descarga automática no funciona, abre la presentación en Canva y utiliza
+              Compartir o Descargar → PDF. Esta intervención manual es válida; indícala en la
+              nota de entrega.
+            </li>
+          </ol>
           <p>
-            Con los tres conectores listos (Canva, Data360 MCP y OpenRouter), dale a Manus una
-            instrucción como:
-          </p>
-          <p className="practica-mcp__query-prompt">{taskPromptExample}</p>
-          <p>
-            Manus debería encadenar las tools de <code>Data360 MCP</code> para traer datos
-            reales, usar OpenRouter como modelo cuando sea posible, y las de{' '}
-            <code>Canva</code> para producir la presentación y exportarla en PDF.
+            La cuota gratuita de Hark puede limitar cuánto trabajo puede realizar en una sesión.
+            Si se alcanza ese límite, guarda lo ya producido y continúa manualmente en Canva; no
+            es necesario contratar un plan para completar la actividad.
           </p>
         </SectionBlock>
 
@@ -153,14 +168,19 @@ function PracticaAgentesPage() {
 
         <SectionBlock id="alternativas" eyebrow="Extra" title="Otras alternativas">
           <p>
-            Además de usar Manus como asistente puntual, vale la pena conocer otras rutas para
-            automatizar este tipo de flujos:
+            Hark es la herramienta del flujo principal de esta sesión. Estas otras opciones
+            permiten comparar distintos enfoques de agentes, desde servicios web hasta agentes
+            de código abierto:
           </p>
           <div className="practica-mcp__grading">
             <ul className="practica-mcp__grading-list">
-              {alternatives.map(({ title, description }) => (
+              {alternatives.map(({ title, description, url }) => (
                 <li key={title}>
-                  <strong>{title}</strong>
+                  <strong>
+                    {url ? (
+                      <a href={url} target="_blank" rel="noreferrer">{title}</a>
+                    ) : title}
+                  </strong>
                   <span>{description}</span>
                 </li>
               ))}
