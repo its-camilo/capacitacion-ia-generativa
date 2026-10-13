@@ -1,21 +1,22 @@
 import {
+  assetUrl,
   chatUiPrompt,
+  classFiles,
   deliverables,
   gradingCriteria,
-  mcpConfigPaths,
   openRouterLinks,
   openRouterMcpConfigCursor,
   openRouterMcpConfigOpencode,
-  pineconeLinks,
-  pineconeMcpConfig,
-  powerBiMcpConfig,
+  pineconeRemoteConfigCursor,
+  pineconeRemoteConfigOpencode,
   powerBiPrompt,
   ragSetupPrompt,
-  sampleDatabases,
   sectionNav,
-  sqliteMcpConfig,
+  sqliteRemoteConfigCursor,
+  sqliteRemoteConfigOpencode,
 } from '../../data/practicaRagContent'
 import SectionBlock from '../fundamentos/SectionBlock'
+import InsightCard from '../fundamentos/InsightCard'
 import CodeBlock from '../practica-mcp/CodeBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
@@ -33,6 +34,18 @@ function PracticaRagPage() {
           </p>
         </header>
 
+        <InsightCard
+          eyebrow="Antes de empezar"
+          title="La importancia del formato ASD-STE100"
+          description="ASD-STE100 (Simplified Technical English) es la norma aeroespacial de inglés técnico simplificado: vocabulario aprobado, una sola idea por frase, frases cortas, voz activa y nada de jerga ni sinónimos a la deriva. En esta práctica escribimos cada chunk así —por ejemplo: «Producto Côte de Blaye (ID 38). Categoría: Beverages. Precio: $263.5. Estado: disponible.»— en vez de párrafos largos y ambiguos."
+          steps={[
+            'Chunks autocontenidos: cada fragmento se entiende solo, sin leer el resto.',
+            'Vocabulario consistente (siempre «pedido», nunca alternar con «orden» o «solicitud»).',
+            'Una idea por frase: el embedding representa un concepto por vector.',
+            'Mejor recuperación por similitud y respuestas del modelo más fieles.',
+          ]}
+        />
+
         <nav className="practica-mcp__steps-nav" aria-label="Pasos de la práctica">
           <ol className="practica-mcp__steps-list">
             {sectionNav.map(({ id, label }, index) => (
@@ -49,64 +62,39 @@ function PracticaRagPage() {
         <SectionBlock
           id="paso-1"
           eyebrow="Paso 1"
-          title="Descargar una base de datos de ejemplo"
+          title="Base de datos sin descargas"
         >
           <p>
-            Elige <strong>una</strong> de estas bases para la práctica. Guárdalas en una carpeta
-            común (por ejemplo <code>~/datos/rag/</code>) y anota la ruta absoluta; la usarás más
-            adelante con tu cliente de IA.
+            En esta edición <strong>no se descarga nada</strong>. La base <strong>Northwind</strong>{' '}
+            (productos, clientes y órdenes comerciales) vive en el servidor de clase y se consulta
+            con el MCP remoto de SQLite. Agrega este bloque en la configuración de tu cliente y
+            verifica que <code>sqlite-northwind</code> aparezca conectado antes de continuar.
           </p>
-          <ul className="practica-mcp__query-list">
-            {sampleDatabases.map(({ id, label, url, fileName, downloadUrl, description }) => (
-              <li key={id} className="practica-mcp__query-card">
-                <p className="practica-mcp__query-prompt">
-                  <a href={url} target="_blank" rel="noreferrer">
-                    {label}
-                  </a>{' '}
-                  — <code>{fileName}</code>
-                </p>
-                <p className="practica-mcp__query-hint">{description}</p>
-                <p>
-                  <a
-                    className="practica-mcp__download"
-                    href={downloadUrl}
-                    download={fileName}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Descargar {fileName}
-                  </a>
-                </p>
-              </li>
-            ))}
-          </ul>
+          <CodeBlock
+            code={sqliteRemoteConfigOpencode}
+            caption="OpenCode (~/.config/opencode/opencode.json) — BASE y CLAVE de clase"
+          />
+          <CodeBlock
+            code={sqliteRemoteConfigCursor}
+            caption="Cursor y otros clientes (~/.cursor/mcp.json)"
+          />
         </SectionBlock>
 
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Cuenta Pinecone y MCP">
-          <ol className="practica-mcp__numbered">
-            <li>
-              Crea una cuenta gratuita en{' '}
-              <a href={pineconeLinks.signup} target="_blank" rel="noreferrer">
-                Pinecone
-              </a>
-              .
-            </li>
-            <li>
-              Dentro del panel, genera una <strong>API key</strong> y guárdala en un lugar seguro.
-            </li>
-            <li>
-              Agrega el servidor MCP de Pinecone en la configuración de tu cliente (Cursor,
-              OpenCode, Claude Desktop…):
-            </li>
-          </ol>
-          <CodeBlock
-            code={pineconeMcpConfig}
-            caption="Configuración en mcpServers — reemplaza YOUR_API_KEY"
-          />
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="MCP Pinecone remoto">
           <p>
-            Reinicia el cliente o recarga los servidores MCP. Verifica que aparezca{' '}
-            <code>pinecone</code> conectado antes de continuar.
+            En esta edición usamos la infraestructura de clase: <strong>no necesitas crear cuenta
+            ni descargar nada</strong>. Agrega el MCP remoto de Pinecone con la{' '}
+            <strong>BASE y la CLAVE</strong> que te entregue el docente y verifica que{' '}
+            <code>pinecone</code> aparezca conectado antes de continuar.
           </p>
+          <CodeBlock
+            code={pineconeRemoteConfigOpencode}
+            caption="OpenCode (~/.config/opencode/opencode.json) — BASE y CLAVE de clase"
+          />
+          <CodeBlock
+            code={pineconeRemoteConfigCursor}
+            caption="Cursor y otros clientes (~/.cursor/mcp.json)"
+          />
         </SectionBlock>
 
         <SectionBlock id="paso-3" eyebrow="Paso 3" title="API Key de OpenRouter">
@@ -150,22 +138,6 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="mcp-sqlite" eyebrow="Recuerda" title="MCP SQLite (misma configuración de la sesión 2)">
-          <p>
-            Para crear el RAG necesitamos leer la base de datos SQLite con el agente. Es el mismo
-            MCP que configuramos en la <strong>Sesión 02</strong>; si ya lo tienes activo puedes
-            continuar. Si no, agrégalo de nuevo:
-          </p>
-          <CodeBlock
-            code={sqliteMcpConfig}
-            caption="Configuración en mcpServers — reemplaza la ruta por la de tu .db"
-          />
-          <p>
-            Reinicia el cliente o recarga los servidores MCP y verifica que{' '}
-            <code>sqlite</code> aparezca conectado antes de continuar.
-          </p>
-        </SectionBlock>
-
         <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear el RAG en Pinecone">
           <p>
             Con los MCP de SQLite, Pinecone y OpenRouter ya configurados, pide a la IA que explore
@@ -176,6 +148,11 @@ function PracticaRagPage() {
           </p>
           <p>Prompt de ejemplo para copiar y adaptar:</p>
           <CodeBlock code={ragSetupPrompt} caption="Vibecoding: indexar SQLite en Pinecone" />
+          <p className="practica-mcp__note">
+            El índice es compartido por todo el curso: cada equipo trabaja en su propio{' '}
+            <strong>namespace</strong> (usa el nombre de tu equipo). Si el proyecto alcanza el
+            límite de índices, reutiliza el índice de clase con tu namespace en vez de crear otro.
+          </p>
           <p className="practica-mcp__note">
             Recuerda lo visto en la Sesión 01: un <strong>chunk</strong> es un fragmento de texto
             que se vectoriza y recupera por similitud. Cada fila o bloque que subas a Pinecone
@@ -197,26 +174,58 @@ function PracticaRagPage() {
             de producción y revócalas al terminar.
           </p>
           <CodeBlock code={chatUiPrompt} caption="Vibecoding: chat web sencillo" />
+          <p className="practica-mcp__note">
+            Modelo preseleccionado para esta edición:{' '}
+            <code>dots-studio/dots-3-note-preview:free</code>. Si deja de estar gratuito, usa el
+            botón <strong>Cargar modelos :free</strong> de la página y elige otro.
+          </p>
+          <p>
+            <a
+              className="practica-mcp__download"
+              href={assetUrl(classFiles.ragChat)}
+              download="rag-chat-index.html"
+            >
+              Descargar index.html del chat (claves de clase precargadas)
+            </a>
+          </p>
         </SectionBlock>
 
         <SectionBlock id="paso-6" eyebrow="Paso 6" title="Crear el reporte en Power BI">
           <p>
-            Para generar el archivo usaremos{' '}
+            En esta edición <strong>no se configura ningún MCP de Power BI</strong>: el reporte se
+            genera directamente con Python y el paquete{' '}
             <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">
               pbix-mcp
-            </a>
-            , un servidor MCP que construye archivos <code>.pbix</code> nativos. En esta parte sí
-            se prepara el entorno en el equipo donde se ejecutará OpenCode; no es necesario que
-            cada computador restringido de los participantes tenga ese entorno instalado.
+            </a>{' '}
+            (venv Python 3.12 + <code>build_powerbi_report.py</code>), sin instalar nada en los
+            computadores restringidos.
           </p>
           <p>
             El ejemplo está adaptado a la base <strong>Northwind</strong>. Si se usa otra base,
             ajusta las tablas, columnas y consultas SQL del prompt.
           </p>
-          <p>Configuración del servidor MCP para OpenCode. Reemplaza la ruta por la ubicación real del proyecto:</p>
-          <CodeBlock code={powerBiMcpConfig} caption="Configuración mcpServers — pbix-mcp" />
-          <p>Después de configurar y conectar el MCP, usa este prompt en OpenCode para generar y validar el archivo .pbix y el ZIP:</p>
+          <p>Usa este prompt en OpenCode para generar y validar el archivo .pbix y el ZIP:</p>
           <CodeBlock code={powerBiPrompt} caption="OpenCode: generar reporte Power BI con Northwind" />
+          <p>
+            Ejemplo verificado de esta edición (ábrelo en Power BI Desktop o súbelo a Power BI
+            Service):
+          </p>
+          <p>
+            <a
+              className="practica-mcp__download"
+              href={assetUrl(classFiles.pbix)}
+              download="northwind.pbix"
+            >
+              Descargar northwind.pbix
+            </a>{' '}
+            <a
+              className="practica-mcp__download"
+              href={assetUrl(classFiles.pbixZip)}
+              download="northwind-powerbi-entregable.zip"
+            >
+              Descargar ZIP entregable
+            </a>
+          </p>
           <div className="practica-mcp__note">
             <strong>Visualizar el resultado desde los computadores de capacitación:</strong> una vez
             generado el archivo <code>.pbix</code>, súbelo desde el navegador a{' '}
@@ -252,29 +261,17 @@ function PracticaRagPage() {
         <SectionBlock
           id="cierre"
           eyebrow="Cierre"
-          title="Quitar el MCP de Pinecone"
+          title="Eliminar los archivos de la interfaz del RAG"
         >
           <p>
-            Al terminar la práctica, <strong>elimina el servidor MCP de Pinecone</strong> del
-            archivo donde configuraste los MCPs. Si lo dejas activo, el agente podría seguir
-            accediendo a tu cuenta de Pinecone con la API key que configuraste.
+            Al terminar la práctica, <strong>elimina los archivos de la interfaz del RAG</strong>{' '}
+            de tu computador: el <code>index.html</code> del chat (descargado o generado) y
+            cualquier copia del ZIP entregable que no vayas a conservar.
           </p>
           <p>
-            Busca el bloque <code>pinecone</code> dentro de <code>mcpServers</code> (o la sección{' '}
-            <code>mcp</code> en OpenCode) y bórralo por completo. Según tu cliente, el archivo suele
-            estar en una de estas rutas:
-          </p>
-          <ul className="practica-mcp__bullet-list">
-            {mcpConfigPaths.map((path) => (
-              <li key={path}>
-                <code>{path}</code>
-              </li>
-            ))}
-          </ul>
-          <p>
-            Guarda el archivo, reinicia el cliente o recarga los servidores MCP, y confirma que{' '}
-            <code>pinecone</code> ya no aparece conectado. Puedes revocar la API key desde el panel
-            de Pinecone si ya no la necesitas.
+            Si en la página activaste <strong>“Recordar claves en este navegador”</strong>,
+            desmárcalo antes de cerrar, o borra los datos del sitio en tu navegador, para que las
+            claves de clase no queden guardadas.
           </p>
         </SectionBlock>
       </div>

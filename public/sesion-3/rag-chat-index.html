@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northwind RAG — Chat didáctico (Pinecone + OpenRouter)</title>
+<style>
+  :root { --bg:#0f172a; --panel:#1e293b; --ink:#e2e8f0; --mut:#94a3b8;
+          --acc:#38bdf8; --ok:#34d399; --warn:#fbbf24; --err:#f87171; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         background:var(--bg); color:var(--ink); }
+  header { padding:16px 20px; border-bottom:1px solid #334155; }
+  header h1 { margin:0 0 4px; font-size:20px; }
+  header p { margin:0; color:var(--mut); font-size:13px; }
+  .warn { margin:12px 20px 0; padding:10px 14px; border:1px solid var(--warn);
+          border-radius:8px; font-size:13px; background:#451a0355; }
+  main { max-width:900px; margin:0 auto; padding:12px 20px 40px; }
+  details.cfg { background:var(--panel); border-radius:10px; padding:10px 14px; margin:12px 0; }
+  details.cfg summary { cursor:pointer; font-weight:600; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:8px 12px; margin-top:10px; }
+  .grid label { font-size:12px; color:var(--mut); display:flex; flex-direction:column; gap:4px; }
+  .grid label.full { grid-column:1 / -1; }
+  input, select, button { font-size:14px; padding:8px 10px; border-radius:8px;
+    border:1px solid #475569; background:#0b1220; color:var(--ink); }
+  button { background:var(--acc); color:#06283a; border:none; font-weight:700; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--acc); border:1px solid var(--acc); }
+  button:disabled { opacity:.5; cursor:wait; }
+  .row { display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap; }
+  #log { display:flex; flex-direction:column; gap:10px; margin:14px 0; min-height:120px; }
+  .msg { background:var(--panel); border-radius:10px; padding:10px 14px; }
+  .msg.q { border-left:3px solid var(--acc); }
+  .msg.a { border-left:3px solid var(--ok); }
+  .msg.err { border-left:3px solid var(--err); }
+  .msg .who { font-size:11px; color:var(--mut); margin-bottom:4px; }
+  .msg .body { white-space:pre-wrap; line-height:1.5; }
+  .msg .body code { background:#0b1220; padding:1px 5px; border-radius:4px; }
+  .chunks { margin-top:8px; font-size:13px; }
+  .chunks summary { cursor:pointer; color:var(--acc); }
+  .chunk { border-top:1px dashed #475569; padding:6px 0; }
+  .tag { display:inline-block; font-size:11px; background:#0b1220; border:1px solid #475569;
+         border-radius:6px; padding:0 6px; margin-right:6px; color:var(--mut); }
+  #status { min-height:22px; font-size:13px; color:var(--mut); }
+  #status.busy { color:var(--acc); }
+  #status.bad { color:var(--err); }
+  form.ask { display:flex; gap:8px; position:sticky; bottom:0; background:var(--bg); padding:10px 0; }
+  form.ask input { flex:1; }
+  .hint { font-size:12px; color:var(--mut); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Northwind RAG — chat didáctico</h1>
+  <p>Recupera contexto del índice Pinecone y redacta la respuesta con un modelo gratuito de OpenRouter. Todo ocurre en tu navegador.</p>
+</header>
+<div class="warn">Demostración didáctica: esta copia trae las claves de clase precargadas (visibles para quien abra el archivo). No las uses fuera de la capacitación y revócalas al terminar.</div>
+<main>
+  <details class="cfg" open>
+    <summary>Configuración (claves y endpoints)</summary>
+    <div class="grid">
+      <label class="full">Pinecone API key
+        <input id="pcKey" type="password" value="pcsk_4Ap3FC_LkjYSFmS87TLUPe22qcn7cJwPGSXWTTEcaqxcwxZDNMSz9fJVFz5MPRMFdMMzNf" autocomplete="off"></label>
+      <label>Host del índice
+        <input id="pcHost" value="northwind-rag-dfebtv3.svc.aped-4627-b74a.pinecone.io"></label>
+      <label>Índice
+        <input id="pcIndex" value="northwind-rag"></label>
+      <label>Namespace
+        <input id="pcNs" value="prueba"></label>
+      <label>Top-K (chunks a recuperar)
+        <input id="topK" type="number" value="5" min="1" max="20"></label>
+      <label class="full">OpenRouter API key
+        <input id="orKey" type="password" placeholder="sk-or-v1-... (pídela al docente)" autocomplete="off"></label>
+      <label class="full">Modelo OpenRouter (debe ser gratuito, :free)
+        <div class="row" style="margin:0">
+          <input id="orModel" value="dots-studio/dots-3-note-preview:free" style="flex:1">
+          <button type="button" class="ghost" id="btnModels">Cargar modelos :free</button>
+        </div>
+        <select id="freeModels" style="display:none; margin-top:6px"></select></label>
+      <label class="full"><span><input id="remember" type="checkbox"> Recordar claves en este navegador (localStorage)</span></label>
+    </div>
+  </details>
+
+  <div id="log" aria-live="polite"></div>
+  <div id="status"></div>
+  <form class="ask" id="askForm">
+    <input id="q" placeholder="Ej.: ¿Qué vinos caros hay en stock?" autocomplete="off">
+    <button type="submit" id="btnSend">Enviar</button>
+    <button type="button" class="ghost" id="btnClear">Limpiar</button>
+  </form>
+  <p class="hint">Enter envía. Si el navegador bloquea alguna petición (CORS/red), se mostrará el error tal cual, sin respuestas inventadas.</p>
+</main>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const log = $("log"), statusEl = $("status");
+
+function setStatus(msg, cls) {
+  statusEl.textContent = msg || "";
+  statusEl.className = cls || "";
+}
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                  .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+// Render mínimo: escapa HTML, **negrita**, `código`, saltos de línea.
+function liteMd(s) {
+  const parts = String(s).split("`");
+  let out = "";
+  for (let i = 0; i < parts.length; i++) {
+    let p = esc(parts[i]);
+    if (i % 2 === 0) p = p.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    else p = "<code>" + p + "</code>";
+    out += p;
+  }
+  return out.replace(/\n/g, "<br>");
+}
+function addMsg(kind, who, html) {
+  const d = document.createElement("div");
+  d.className = "msg " + kind;
+  const w = document.createElement("div");
+  w.className = "who"; w.textContent = who;
+  const b = document.createElement("div");
+  b.className = "body"; b.innerHTML = html;
+  d.appendChild(w); d.appendChild(b);
+  log.appendChild(d);
+  d.scrollIntoView({ behavior: "smooth", block: "end" });
+  return b;
+}
+function addError(text) {
+  addMsg("err", "Error", liteMd(text));
+  setStatus("Error — revisa el mensaje en el historial.", "bad");
+}
+function normHost(h) {
+  h = String(h || "").trim().replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+  return h ? "https://" + h : "";
+}
+async function readError(res) {
+  try { const j = await res.json(); return JSON.stringify(j).slice(0, 500); }
+  catch (e) { try { return (await res.text()).slice(0, 500); } catch (e2) { return ""; } }
+}
+
+// --- Pinecone: POST https://<host>/records/namespaces/<ns>/search
+// (índice con embedding integrado; ver docs "Search with text").
+// OJO verificado: el plano de datos de Pinecone NO devuelve
+// Access-Control-Allow-Origin, así que los navegadores normalmente BLOQUEAN
+// esta petición (CORS). El error se muestra tal cual, sin inventar datos.
+async function pineconeSearch(host, key, indexIgnored, ns, topK, text) {
+  const url = host + "/records/namespaces/" + encodeURIComponent(ns) + "/search";
+  let res;
+  try {
+    res = await fetch(url, {
+      method: "POST",
+      headers: { "Api-Key": key, "Content-Type": "application/json",
+                 "X-Pinecone-Api-Version": "2026-04" },
+      body: JSON.stringify({ query: { inputs: { text: text }, top_k: topK },
+                             fields: ["chunk_text", "tabla", "categoria"] }),
+      signal: AbortSignal.timeout(90000)
+    });
+  } catch (e) {
+    throw new Error("No se pudo leer la respuesta de Pinecone (" + (e && e.name ? e.name : "error de red") + "). " +
+      "Causa probable: el navegador bloqueó la petición por CORS — Pinecone no envía " +
+      "'Access-Control-Allow-Origin' en su API. En ese caso el acceso directo desde el navegador " +
+      "no es viable en este entorno (verificado contra la API real). Esta demo no usa backend.");
+  }
+  if (!res.ok) {
+    const detail = await readError(res);
+    if (res.status === 401) throw new Error("Pinecone 401: API key inválida o sin permiso. " + detail);
+    if (res.status === 404) throw new Error("Pinecone 404: host o índice inexistente. Revisa el host. " + detail);
+    throw new Error("Pinecone HTTP " + res.status + ": " + detail);
+  }
+  const data = await res.json();
+  const hits = (data && data.result && data.result.hits) || data.hits || [];
+  return hits.map((h) => ({
+    id: h._id || h.id || "?",
+    score: typeof h._score === "number" ? h._score : (typeof h.score === "number" ? h.score : null),
+    fields: h.fields || h.metadata || {}
+  }));
+}
+
+// --- OpenRouter: modelos :free disponibles (endpoint público, sin clave)
+async function loadFreeModels() {
+  const sel = $("freeModels");
+  sel.style.display = "none";
+  setStatus("Consultando modelos gratuitos de OpenRouter…", "busy");
+  let res;
+  try {
+    res = await fetch("https://openrouter.ai/api/v1/models", { signal: AbortSignal.timeout(60000) });
+  } catch (e) {
+    setStatus("", ""); addError("No se pudo listar modelos de OpenRouter (red/CORS). Escribe el ID manual.");
+    return;
+  }
+  if (!res.ok) { setStatus("", ""); addError("OpenRouter devolvió HTTP " + res.status + " al listar modelos."); return; }
+  const data = await res.json();
+  const frees = ((data && data.data) || []).map((m) => m.id).filter((id) => /:free$/.test(id));
+  sel.innerHTML = "";
+  if (!frees.length) { setStatus("", ""); addError("OpenRouter no reportó modelos :free en este momento."); return; }
+  frees.forEach((id) => {
+    const o = document.createElement("option"); o.value = id; o.textContent = id; sel.appendChild(o);
+  });
+  if (frees.includes($("orModel").value)) sel.value = $("orModel").value;
+  sel.style.display = "";
+  setStatus("Modelos :free cargados (" + frees.length + "). Elige uno.", "");
+  sel.onchange = () => { $("orModel").value = sel.value; };
+}
+
+// --- OpenRouter: chat/completions
+async function openRouterChat(key, model, system, user) {
+  let res;
+  try {
+    res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: { "Authorization": "Bearer " + key, "Content-Type": "application/json",
+                 "HTTP-Referer": location.href, "X-Title": "Northwind RAG demo" },
+      body: JSON.stringify({ model: model, messages: [
+        { role: "system", content: system }, { role: "user", content: user }
+      ] }),
+      signal: AbortSignal.timeout(120000)
+    });
+  } catch (e) {
+    throw new Error("No se pudo contactar a OpenRouter (" + (e && e.name ? e.name : "error de red") + "). " +
+      "Posibles causas: sin internet o bloqueo del navegador (CORS).");
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.error) {
+    const msg = (data.error && (data.error.message || JSON.stringify(data.error))) || ("HTTP " + res.status);
+    if (res.status === 401) throw new Error("OpenRouter 401: API key inválida. " + msg);
+    if (res.status === 402) throw new Error("OpenRouter 402: el modelo requiere pago o no tiene crédito. Prueba otro :free. " + msg);
+    if (res.status === 404) throw new Error("OpenRouter 404: modelo '" + model + "' inexistente. Carga la lista :free y elige otro. " + msg);
+    if (res.status === 429) throw new Error("OpenRouter 429: límite de peticiones. Espera un minuto o cambia de modelo :free. " + msg);
+    throw new Error("OpenRouter HTTP " + res.status + ": " + msg);
+  }
+  const text = data.choices && data.choices[0] && data.choices[0].message &&
+               data.choices[0].message.content;
+  if (!text) throw new Error("OpenRouter respondió sin contenido utilizable.");
+  return String(text);
+}
+
+function buildContext(hits) {
+  return hits.map((h, i) => {
+    const f = h.fields || {};
+    const txt = f.chunk_text || f.text || JSON.stringify(f);
+    return "[chunk " + (i + 1) + " | id=" + h.id +
+      " | score=" + (h.score === null ? "?" : h.score.toFixed(3)) +
+      " | tabla=" + (f.tabla || "?") + "]\n" + txt;
+  }).join("\n\n");
+}
+function chunksDetails(hits) {
+  const det = document.createElement("details");
+  det.className = "chunks";
+  const sum = document.createElement("summary");
+  sum.textContent = hits.length ? ("Contexto recuperado (" + hits.length + " chunks) — ver") : "Sin contexto recuperado";
+  det.appendChild(sum);
+  if (!hits.length) {
+    const p = document.createElement("div");
+    p.innerHTML = "Pinecone no devolvió resultados para esta pregunta. La respuesta del modelo (si la hay) <strong>no</strong> usa datos del índice.";
+    det.appendChild(p);
+    return det;
+  }
+  hits.forEach((h, i) => {
+    const f = h.fields || {};
+    const d = document.createElement("div");
+    d.className = "chunk";
+    const head = document.createElement("div");
+    head.innerHTML = "<span class='tag'>#" + (i + 1) + "</span>" +
+      "<span class='tag'>" + esc(h.id) + "</span>" +
+      "<span class='tag'>score " + (h.score === null ? "?" : esc(h.score.toFixed(3))) + "</span>" +
+      "<span class='tag'>" + esc(f.tabla || "?") + "</span>" +
+      "<span class='tag'>" + esc(f.categoria || "?") + "</span>";
+    const body = document.createElement("div");
+    body.textContent = f.chunk_text || f.text || JSON.stringify(f);
+    d.appendChild(head); d.appendChild(body); det.appendChild(d);
+  });
+  return det;
+}
+
+// --- Claves opcionales en localStorage
+const LS = "nwrag-keys";
+function saveKeys() {
+  if (!$("remember").checked) { try { localStorage.removeItem(LS); } catch (e) {} return; }
+  try { localStorage.setItem(LS, JSON.stringify({ p: $("pcKey").value, o: $("orKey").value })); }
+  catch (e) {}
+}
+function loadKeys() {
+  try {
+    const j = JSON.parse(localStorage.getItem(LS) || "null");
+    if (j) { $("pcKey").value = j.p || ""; $("orKey").value = j.o || "";
+             if (j.p || j.o) $("remember").checked = true; }
+  } catch (e) {}
+}
+["pcKey", "orKey"].forEach((id) => $(id).addEventListener("input", saveKeys));
+$("remember").addEventListener("change", saveKeys);
+loadKeys();
+
+$("btnModels").addEventListener("click", loadFreeModels);
+$("btnClear").addEventListener("click", () => { log.innerHTML = ""; setStatus("", ""); });
+
+$("askForm").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const q = $("q").value.trim();
+  if (!q) return;
+  const pcKey = $("pcKey").value.trim(), orKey = $("orKey").value.trim();
+  const host = normHost($("pcHost").value), ns = $("pcNs").value.trim() || "prueba";
+  const topK = Math.max(1, Math.min(20, parseInt($("topK").value, 10) || 5));
+  const model = $("orModel").value.trim();
+  if (!pcKey || !orKey || !host || !model) {
+    addError("Faltan datos: completa ambas API keys, el host y el modelo.");
+    return;
+  }
+  addMsg("q", "Tú", liteMd(q));
+  $("q").value = "";
+  $("btnSend").disabled = true;
+  try {
+    setStatus("Buscando contexto en Pinecone…", "busy");
+    const hits = await pineconeSearch(host, pcKey, $("pcIndex").value.trim(), ns, topK, q);
+    setStatus("Redactando respuesta con OpenRouter (" + model + ")…", "busy");
+    const system = "Eres un asistente de datos de la tienda Northwind. Responde en español, " +
+      "breve y solo con el CONTEXTO proporcionado. Si el contexto no alcanza, dilo explícitamente. " +
+      "Menciona precios, stock y cifras cuando vengan en el contexto.";
+    const user = hits.length
+      ? "Pregunta: " + q + "\n\nCONTEXTO de Pinecone:\n" + buildContext(hits)
+      : "Pregunta: " + q + "\n\n(SIN CONTEXTO: Pinecone no devolvió chunks. Responde solo con conocimiento general y aclara que no hay datos del índice.)";
+    const answer = await openRouterChat(orKey, model, system, user);
+    const body = addMsg("a", "Asistente" + (hits.length ? "" : " (sin contexto)"), liteMd(answer));
+    body.appendChild(chunksDetails(hits));
+    body.lastChild.scrollIntoView({ behavior: "smooth", block: "end" });
+    setStatus(hits.length ? ("Listo: " + hits.length + " chunks usados.") : "Listo (sin contexto de Pinecone).", "");
+  } catch (e) {
+    addError(e && e.message ? e.message : String(e));
+  } finally {
+    $("btnSend").disabled = false;
+  }
+});
+</script>
+</body>
+</html>

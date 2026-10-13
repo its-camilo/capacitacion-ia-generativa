@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const SESSION_PIN = '839174620581493726405817'
+const SESSION_PIN = '123456'
 
 function SessionGate({ children }) {
   const [pin, setPin] = useState('')

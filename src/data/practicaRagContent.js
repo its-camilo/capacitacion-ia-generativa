@@ -1,121 +1,73 @@
 export const sectionNav = [
-  { id: 'paso-1', label: 'Bases de datos SQLite' },
-  { id: 'paso-2', label: 'Cuenta y MCP Pinecone' },
+  { id: 'paso-1', label: 'Base de datos sin descargas' },
+  { id: 'paso-2', label: 'MCP Pinecone remoto' },
   { id: 'paso-3', label: 'API Key OpenRouter' },
-  { id: 'mcp-sqlite', label: 'MCP SQLite (configuración)' },
   { id: 'paso-4', label: 'Crear el RAG' },
   { id: 'paso-5', label: 'Chat web con el RAG' },
-  { id: 'paso-6', label: 'Power BI en la web' },
+  { id: 'paso-6', label: 'Reporte Power BI directo' },
   { id: 'entregables', label: 'Entregables' },
-  { id: 'cierre', label: 'Cierre: quitar MCP Pinecone' },
+  { id: 'cierre', label: 'Cierre: eliminar interfaz del RAG' },
 ]
 
-export const sampleDatabases = [
-  {
-    id: 'northwind',
-    label: 'jpwhite3/northwind-SQLite3',
-    url: 'https://github.com/jpwhite3/northwind-SQLite3',
-    fileName: 'northwind.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/jpwhite3/northwind-SQLite3/main/dist/northwind.db',
-    description:
-      'Catálogo de productos, clientes y órdenes comerciales.',
-  },
-  {
-    id: 'chinook',
-    label: 'lerocha/chinook-database',
-    url: 'https://github.com/lerocha/chinook-database',
-    fileName: 'chinook.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite',
-    description:
-      'Tienda de música con canciones, artistas, géneros y ventas.',
-  },
-  {
-    id: 'sakila',
-    label: 'siara-cc/sakila_sqlite3',
-    url: 'https://github.com/siara-cc/sakila_sqlite3',
-    fileName: 'sakila.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/siara-cc/sakila_sqlite3/master/sakila.db',
-    description:
-      'Sistema de alquiler de películas con descripciones, reparto y categorías.',
-  },
-  {
-    id: 'world',
-    label: 'factbook/factbook.sql',
-    url: 'https://github.com/factbook/factbook.sql',
-    fileName: 'factbook.db',
-    downloadUrl:
-      'https://github.com/factbook/factbook.sql/releases/download/v0.1/factbook.db',
-    description:
-      'Datos demográficos con países, ciudades, idiomas y poblaciones.',
-  },
-  {
-    id: 'imdb',
-    label: 'hamzafoy/imdb_sqlite3_sequelize',
-    url: 'https://github.com/hamzafoy/imdb_sqlite3_sequelize',
-    fileName: 'movies.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/hamzafoy/imdb_sqlite3_sequelize/master/movies.db',
-    description:
-      'Metadatos de películas, directores, actores y valoraciones.',
-  },
-  {
-    id: 'classicmodels',
-    label: 'Yash-Kavaiya/Chatwithsql',
-    url: 'https://github.com/Yash-Kavaiya/Chatwithsql',
-    fileName: 'ClassicModels.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/Yash-Kavaiya/Chatwithsql/main/ClassicModels.db',
-    description:
-      'Empresa de venta de modelos a escala, clientes, pagos y empleados.',
-  },
-  {
-    id: 'salesco',
-    label: 'EAName/Database-Systems-and-Data-Preparation',
-    url: 'https://github.com/EAName/Database-Systems-and-Data-Preparation',
-    fileName: 'SalesCO.db',
-    downloadUrl:
-      'https://raw.githubusercontent.com/EAName/Database-Systems-and-Data-Preparation/main/data/sample/SalesCO.db',
-    description:
-      'Ventas comerciales con clientes, productos y territorios; esquema relacional amplio para practicar.',
-  },
-]
+export const assetUrl = (path) => `${import.meta.env.BASE_URL}${String(path).replace(/^\//, '')}`
 
-export const pineconeLinks = {
-  signup: 'https://app.pinecone.io/',
-  apiKeys: 'https://app.pinecone.io/',
+export const classFiles = {
+  ragChat: 'sesion-3/rag-chat-index.html',
+  pbix: 'sesion-3/northwind.pbix',
+  pbixZip: 'sesion-3/northwind-powerbi-entregable.zip',
 }
 
-export const pineconeMcpConfig = `{
-  "mcpServers": {
-    "pinecone": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@pinecone-database/mcp"
-      ],
-      "env": {
-        "PINECONE_API_KEY": "YOUR_API_KEY"
+export const sqliteRemoteConfigOpencode = `{
+  "mcp": {
+    "servers": {
+      "sqlite-northwind": {
+        "type": "remote",
+        "url": "http://129.213.100.174:8080/sqlite/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer 377314"
+        }
       }
     }
   }
 }`
 
-export const sqliteMcpConfig = `{
+export const sqliteRemoteConfigCursor = `{
   "mcpServers": {
-    "sqlite": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-server-sqlite-npx",
-        "/ruta/a/tu/northwind.db"
-      ]
+    "sqlite-northwind": {
+      "url": "http://129.213.100.174:8080/sqlite/mcp",
+      "headers": {
+        "Authorization": "Bearer 377314"
+      }
     }
   }
 }`
 
+export const pineconeRemoteConfigOpencode = `{
+  "mcp": {
+    "servers": {
+      "pinecone": {
+        "type": "remote",
+        "url": "http://129.213.100.174:8080/pinecone/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer 377314"
+        }
+      }
+    }
+  }
+}`
+
+export const pineconeRemoteConfigCursor = `{
+  "mcpServers": {
+    "pinecone": {
+      "url": "http://129.213.100.174:8080/pinecone/mcp",
+      "headers": {
+        "Authorization": "Bearer 377314"
+      }
+    }
+  }
+}`
 export const openRouterLinks = {
   signup: 'https://openrouter.ai/',
   apiKeys: 'https://openrouter.ai/keys',
@@ -157,14 +109,6 @@ Construye una interfaz de chat que consulte el índice Pinecone que ya creamos y
 - No simules respuestas ni afirmes que la consulta funcionó si la API devuelve un error.
 
 Es una demostración didáctica: las claves introducidas en el HTML/navegador pueden ser vistas por quien use la página. No reutilices claves personales o de producción. Usa claves temporales de prueba con permisos mínimos y revócalas al terminar. Si CORS o las restricciones del proveedor impiden las llamadas desde el navegador, explica que el acceso directo no es viable en ese entorno; no añadas un backend ni solicites ejecutar comandos.`
-export const powerBiMcpConfig = `{
-  "mcpServers": {
-    "powerbi": {
-      "command": "/RUTA/AL/PROYECTO/tools/pbix-mcp-venv/bin/pbix-mcp-server",
-      "args": []
-    }
-  }
-}`
 export const powerBiPrompt = `## Contexto
 
 Tengo la base SQLite **Northwind** (\`northwind.db\`) y los MCP ya configurados:
@@ -355,11 +299,3 @@ export const gradingCriteria = [
   },
 ]
 
-export const mcpConfigPaths = [
-  '.cursor/mcp.json',
-  '.cursor/mcp.jsonc',
-  '~/.config/opencode/opencode.json',
-  'mcp.json',
-  'mcp.jsonc',
-  'Claude Desktop: claude_desktop_config.json',
-]

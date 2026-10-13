@@ -13,7 +13,7 @@ function App() {
         <Route index element={<Navigate to="/fundamentos" replace />} />
         <Route path="/fundamentos" element={<Fundamentos />} />
         <Route path="/practica-mcp" element={<PracticaMcp />} />
-        <Route path="/practica-rag" element={<SessionGate><PracticaRag /></SessionGate>} />
+        <Route path="/practica-rag" element={<PracticaRag />} />
         <Route path="/practica-agentes" element={<SessionGate><PracticaAgentes /></SessionGate>} />
       </Route>
     </Routes>
