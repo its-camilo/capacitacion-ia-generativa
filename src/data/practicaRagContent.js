@@ -1,10 +1,9 @@
 export const sectionNav = [
-  { id: 'paso-1', label: 'Base de datos sin descargas' },
-  { id: 'paso-2', label: 'MCP Pinecone remoto' },
-  { id: 'paso-3', label: 'API Key OpenRouter' },
-  { id: 'paso-4', label: 'Crear el RAG' },
-  { id: 'paso-5', label: 'Chat web con el RAG' },
-  { id: 'paso-6', label: 'Reporte Power BI directo' },
+  { id: 'paso-1', label: 'Todos los MCP' },
+  { id: 'paso-2', label: 'API Key OpenRouter' },
+  { id: 'paso-3', label: 'Crear el RAG' },
+  { id: 'paso-4', label: 'Chat web con el RAG' },
+  { id: 'paso-5', label: 'Reporte Power BI directo' },
   { id: 'entregables', label: 'Entregables' },
   { id: 'cierre', label: 'Cierre: eliminar interfaz del RAG' },
 ]
@@ -17,7 +16,7 @@ export const classFiles = {
   pbixZip: 'sesion-3/northwind-powerbi-entregable.zip',
 }
 
-export const sqliteRemoteConfigOpencode = `{
+export const allMcpConfigOpencode = `{
   "mcp": {
     "servers": {
       "sqlite-northwind": {
@@ -27,28 +26,22 @@ export const sqliteRemoteConfigOpencode = `{
         "headers": {
           "Authorization": "Bearer 377314"
         }
-      }
-    }
-  }
-}`
-
-export const sqliteRemoteConfigCursor = `{
-  "mcpServers": {
-    "sqlite-northwind": {
-      "url": "http://129.213.100.174:8080/sqlite/mcp",
-      "headers": {
-        "Authorization": "Bearer 377314"
-      }
-    }
-  }
-}`
-
-export const pineconeRemoteConfigOpencode = `{
-  "mcp": {
-    "servers": {
+      },
       "pinecone": {
         "type": "remote",
         "url": "http://129.213.100.174:8080/pinecone/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer 377314"
+        }
+      },
+      "openrouter": {
+        "type": "remote",
+        "url": "https://mcp.openrouter.ai/mcp"
+      },
+      "powerbi": {
+        "type": "remote",
+        "url": "http://129.213.100.174:8080/powerbi/mcp",
         "oauth": false,
         "headers": {
           "Authorization": "Bearer 377314"
@@ -58,13 +51,22 @@ export const pineconeRemoteConfigOpencode = `{
   }
 }`
 
-export const pineconeRemoteConfigCursor = `{
+export const allMcpConfigCursor = `{
   "mcpServers": {
+    "sqlite-northwind": {
+      "url": "http://129.213.100.174:8080/sqlite/mcp",
+      "headers": { "Authorization": "Bearer 377314" }
+    },
     "pinecone": {
       "url": "http://129.213.100.174:8080/pinecone/mcp",
-      "headers": {
-        "Authorization": "Bearer 377314"
-      }
+      "headers": { "Authorization": "Bearer 377314" }
+    },
+    "openrouter": {
+      "url": "https://mcp.openrouter.ai/mcp"
+    },
+    "powerbi": {
+      "url": "http://129.213.100.174:8080/powerbi/mcp",
+      "headers": { "Authorization": "Bearer 377314" }
     }
   }
 }`
@@ -74,29 +76,13 @@ export const openRouterLinks = {
   mcpDocs: 'https://openrouter.ai/docs/guides/overview/mcp-server',
 }
 
-export const openRouterMcpConfigOpencode = `{
-  "mcp": {
-    "openrouter": {
-      "type": "remote",
-      "url": "https://mcp.openrouter.ai/mcp",
-      "enabled": true
-    }
-  }
-}`
+export const ragSetupPrompt = `Usa los MCP remotos de SQLite, Pinecone y OpenRouter ya conectados. No ejecutes comandos de terminal, no instales paquetes y no crees scripts.
 
-export const openRouterMcpConfigCursor = `{
-  "mcpServers": {
-    "openrouter": {
-      "url": "https://mcp.openrouter.ai/mcp"
-    }
-  }
-}`
+Explora la base Northwind disponible por el MCP de SQLite. Usa el índice compartido northwind-rag y crea los chunks en un namespace exclusivo para mi equipo: reemplaza NOMBRE-EQUIPO por un nombre corto (por ejemplo, equipo-01). No crees otro índice si northwind-rag está disponible. El índice usa embeddings integrados de Pinecone; al subir texto, Pinecone genera los vectores. Usa hasta 1000 registros/chunks, legibles por sí solos y con una sola idea principal.
 
-export const ragSetupPrompt = `Usa las herramientas MCP de SQLite, Pinecone y OpenRouter que ya están conectadas. No ejecutes comandos de terminal, no instales paquetes y no crees scripts para ejecutar.
+Mantén un esquema consistente en todos los registros: _id, chunk_text, tabla y categoria. Elige las tablas más útiles y convierte filas representativas en texto autocontenido; no subas filas sin transformar ni datos personales innecesarios.
 
-Explora la base SQLite disponible mediante el MCP de SQLite. Elige las tablas más útiles, convierte filas representativas en chunks de texto legibles por sí solos y crea un índice nuevo en Pinecone. No superes 1000 registros/chunks para esta demostración. Usa un modelo gratuito de embeddings compatible con Pinecone y, si necesitas generar embeddings mediante OpenRouter, prueba hasta 3 modelos gratuitos en orden si alguno falla.
-
-No inventes resultados: confirma con las herramientas que el índice se creó y que los vectores se subieron. Al terminar, informa el nombre del índice, las tablas consultadas, el número de chunks cargados, el modelo de embeddings y cualquier limitación encontrada. Si alguna operación no está disponible mediante MCP, explica el bloqueo; no intentes resolverlo ejecutando comandos.`
+No inventes resultados: confirma el índice y el conteo del namespace con las herramientas Pinecone después de subir los registros. Prueba una búsqueda semántica y reporta el índice, namespace, tablas consultadas, número real de chunks y modelo integrado de embeddings. Si alguna herramienta no está disponible o devuelve error, explica el bloqueo; no lo soluciones con terminal ni scripts.`
 export const chatUiPrompt = `Crea un único archivo llamado index.html, autocontenido, con HTML, CSS y JavaScript vanilla. No uses React, Vite, npm, Node.js, paquetes, compilación, backend, servidor local ni comandos de terminal. La página debe poder guardarse y abrirse en un navegador moderno.
 
 Construye una interfaz de chat que consulte el índice Pinecone que ya creamos y use OpenRouter para redactar respuestas:

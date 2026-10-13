@@ -1,19 +1,15 @@
 import {
+  allMcpConfigCursor,
+  allMcpConfigOpencode,
   assetUrl,
   chatUiPrompt,
   classFiles,
   deliverables,
   gradingCriteria,
   openRouterLinks,
-  openRouterMcpConfigCursor,
-  openRouterMcpConfigOpencode,
-  pineconeRemoteConfigCursor,
-  pineconeRemoteConfigOpencode,
   powerBiPrompt,
   ragSetupPrompt,
   sectionNav,
-  sqliteRemoteConfigCursor,
-  sqliteRemoteConfigOpencode,
 } from '../../data/practicaRagContent'
 import SectionBlock from '../fundamentos/SectionBlock'
 import InsightCard from '../fundamentos/InsightCard'
@@ -59,45 +55,31 @@ function PracticaRagPage() {
           </ol>
         </nav>
 
-        <SectionBlock
-          id="paso-1"
-          eyebrow="Paso 1"
-          title="Base de datos sin descargas"
-        >
+        <SectionBlock id="paso-1" eyebrow="Paso 1" title="Configura todos los MCP de una vez">
           <p>
-            En esta edición <strong>no se descarga nada</strong>. La base <strong>Northwind</strong>{' '}
-            (productos, clientes y órdenes comerciales) vive en el servidor de clase y se consulta
-            con el MCP remoto de SQLite. Agrega este bloque en la configuración de tu cliente y
-            verifica que <code>sqlite-northwind</code> aparezca conectado antes de continuar.
+            La base <strong>Northwind</strong> ya está en el servidor de clase: no descargues una
+            base ni instales los MCP remotos. Copia un solo bloque a la configuración de tu cliente.
+            Incluye SQLite, Pinecone, OpenRouter y Power BI con <code>pbix-mcp</code>.
           </p>
           <CodeBlock
-            code={sqliteRemoteConfigOpencode}
-            caption="OpenCode (~/.config/opencode/opencode.json) — BASE y CLAVE de clase"
+            code={allMcpConfigOpencode}
+            caption="OpenCode V2 — ~/.config/opencode/opencode.json"
           />
           <CodeBlock
-            code={sqliteRemoteConfigCursor}
-            caption="Cursor y otros clientes (~/.cursor/mcp.json)"
+            code={allMcpConfigCursor}
+            caption="Cursor — .cursor/mcp.json"
           />
-        </SectionBlock>
-
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="MCP Pinecone remoto">
-          <p>
-            En esta edición usamos la infraestructura de clase: <strong>no necesitas crear cuenta
-            ni descargar nada</strong>. Agrega el MCP remoto de Pinecone con la{' '}
-            <strong>BASE y la CLAVE</strong> que te entregue el docente y verifica que{' '}
-            <code>pinecone</code> aparezca conectado antes de continuar.
+          <p className="practica-mcp__note">
+            SQLite, Pinecone y Power BI usan la BASE y CLAVE de clase; OpenRouter usa autenticación
+            OAuth. No instales paquetes, no ejecutes comandos y no necesitas Tailscale.
           </p>
-          <CodeBlock
-            code={pineconeRemoteConfigOpencode}
-            caption="OpenCode (~/.config/opencode/opencode.json) — BASE y CLAVE de clase"
-          />
-          <CodeBlock
-            code={pineconeRemoteConfigCursor}
-            caption="Cursor y otros clientes (~/.cursor/mcp.json)"
-          />
+          <p>
+            Recarga los MCP. OpenRouter puede pedir autenticación OAuth en el navegador. Para usar el
+            chat web, cada equipo crea una API key temporal de OpenRouter en el paso siguiente.
+          </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="API Key de OpenRouter">
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="API Key de OpenRouter">
           <p>
             Necesitas una API key de OpenRouter para dos cosas: crear el RAG (generar embeddings e
             indexar en Pinecone) y que la página web de chat pueda consultar el RAG con un modelo
@@ -120,25 +102,17 @@ function PracticaRagPage() {
             </li>
             <li>
               Guarda la clave en un lugar seguro; la necesitarás al crear el RAG y al configurar
-              el chat web.
+              el chat web. No la pegues en el repositorio público.
             </li>
-            <li>Instala el MCP remoto de OpenRouter en tu cliente de IA:</li>
           </ol>
-          <CodeBlock code={openRouterMcpConfigOpencode} caption="OpenCode (~/.config/opencode/opencode.json)" />
-          <CodeBlock
-            code={openRouterMcpConfigCursor}
-            caption="Cursor y otros clientes (~/.cursor/mcp.json)"
-          />
           <p>
-            Si usas otro cliente, sigue la guía oficial en{' '}
-            <a href={openRouterLinks.mcpDocs} target="_blank" rel="noreferrer">
-              OpenRouter MCP
-            </a>
-            . La primera vez puede pedirte autenticación OAuth en el navegador.
+            El MCP remoto de OpenRouter ya está incluido en el bloque del paso 1. Si usas otro
+            cliente, revisa la guía oficial de{' '}
+            <a href={openRouterLinks.mcpDocs} target="_blank" rel="noreferrer">OpenRouter MCP</a>.
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear el RAG en Pinecone">
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Crear el RAG en Pinecone">
           <p>
             Con los MCP de SQLite, Pinecone y OpenRouter ya configurados, pide a la IA que explore
             la base SQLite mediante sus herramientas MCP y cargue hasta 1000 chunks en un índice
@@ -160,7 +134,7 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Interfaz de chat con el RAG">
+        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Interfaz de chat con el RAG">
           <p>
             Cuando el índice esté listo, pide una página autocontenida <code>index.html</code> con
             HTML, CSS y JavaScript vanilla. No debe requerir npm, Node.js, compilación, servidor,
@@ -185,20 +159,19 @@ function PracticaRagPage() {
               href={assetUrl(classFiles.ragChat)}
               download="rag-chat-index.html"
             >
-              Descargar index.html del chat (claves de clase precargadas)
+              Descargar index.html del chat (Pinecone de clase precargado; agrega tu clave OpenRouter)
             </a>
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-6" eyebrow="Paso 6" title="Crear el reporte en Power BI">
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Crear el reporte en Power BI">
           <p>
-            En esta edición <strong>no se configura ningún MCP de Power BI</strong>: el reporte se
-            genera directamente con Python y el paquete{' '}
+            El MCP remoto <code>powerbi</code> ya está configurado en el paso 1. Usa el paquete{' '}
             <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">
               pbix-mcp
             </a>{' '}
-            (venv Python 3.12 + <code>build_powerbi_report.py</code>), sin instalar nada en los
-            computadores restringidos.
+            para construir el PBIX mediante el servidor MCP de clase. Los alumnos no necesitan
+            instalar pbix-mcp ni conectarse al VPS mediante Tailscale.
           </p>
           <p>
             El ejemplo está adaptado a la base <strong>Northwind</strong>. Si se usa otra base,
