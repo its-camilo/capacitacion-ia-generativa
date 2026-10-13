@@ -55,6 +55,12 @@ export const deliverables = [
 
 export const alternatives = [
   {
+    title: 'My Tierroom',
+    url: 'https://my-tierroom.party/',
+    description:
+      'Alternativa adicional para explorar. Verifica directamente en el sitio sus funciones, requisitos de acceso y condiciones de uso.',
+  },
+  {
     title: 'Manus AI',
     url: 'https://manus.im',
     description:
