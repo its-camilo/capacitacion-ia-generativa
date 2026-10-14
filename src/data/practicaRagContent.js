@@ -260,6 +260,20 @@ Cada visual debe tener \`projections\` + \`query\` compilados.
 
 Ejecuta todo tú mismo, crea los archivos, corre el script y entrégame las rutas finales
 del \`.pbix\` y del \`.zip\`.`
+export const powerBiRemotePrompt = `## Alternativa: construir el PBIX con el MCP remoto (sin Python local)
+
+Este prompt complementa el prompt original de arriba; no lo reemplaza. Conserva sus tres consultas SQL, agregaciones, medidas DAX, página, cuatro visuales, posiciones y criterios de validación.
+
+Usa únicamente los MCP remotos de SQLite Northwind y powerbi (pbix-mcp) ya conectados. No ejecutes comandos de terminal, no instales paquetes, no crees ni ejecutes scripts Python y no pidas acceso a Tailscale. El servidor pbix-mcp puede usar Python internamente en la VPS; los equipos de capacitación no deben instalarlo localmente.
+
+1. Ejecuta por el MCP SQLite las tres consultas SQL del prompt original y recupera únicamente sus resultados agregados. No cargues la tabla completa Order Details. Comprueba que Totales tenga 1 fila, VentasCategoria 8 y VentasProducto 77.
+2. Usa las herramientas de Power BI MCP directamente: crea el archivo con pbix_create usando exactamente las tres tablas, columnas, filas y las tres medidas del prompt original. No construyas un PBIP ni edites TMDL a mano.
+3. Crea la página Northwind Dashboard y añade las cuatro visuales especificadas. En cada llamada a pbix_add_visual, proporciona enlaces explícitos de campos, projections y prototypeQuery; deja que el servidor compile query y dataTransforms. Inspecciona las cuatro visuales con las herramientas MCP y confirma que cada una tenga la consulta compilada. No entregues visuales vacías.
+4. Guarda el PBIX con pbix_save en una ruta del servidor MCP que esté disponible para escritura, con un nombre único para el equipo. Valida el modelo, las medidas y el tamaño con las herramientas MCP disponibles.
+5. No afirmes que entregaste archivos descargables si el MCP solo devuelve una ruta interna de la VPS. Si no hay una herramienta MCP para crear el ZIP o un enlace HTTPS de descarga, informa ese bloqueo explícitamente; no intentes resolverlo con Python local, terminal, Tailscale ni scripts.
+
+Al final informa los resultados SQL, las filas por tabla, la validación de los cuatro visuales, el tamaño y la ruta real del PBIX, y si el PBIX/ZIP quedó accesible para descargar. No inventes ni simules resultados.`
+
 export const deliverables = [
   'Un proyecto de Power BI (.pbix) comprimido en ZIP donde representen los datos que quieran de la base elegida.',
   'Una captura de pantalla de una respuesta del RAG que muestre claramente en qué chunks se basó la respuesta.',

@@ -8,6 +8,7 @@ import {
   gradingCriteria,
   openRouterLinks,
   powerBiPrompt,
+  powerBiRemotePrompt,
   ragSetupPrompt,
   sectionNav,
 } from '../../data/practicaRagContent'
@@ -179,6 +180,17 @@ function PracticaRagPage() {
           </p>
           <p>Usa este prompt en OpenCode para generar y validar el archivo .pbix y el ZIP:</p>
           <CodeBlock code={powerBiPrompt} caption="OpenCode: generar reporte Power BI con Northwind" />
+          <p className="practica-mcp__note">
+            <strong>Alternativa para las PCs sin Python:</strong> prueba el siguiente prompt junto
+            con el MCP remoto. El prompt original de arriba se conserva intacto; esta alternativa
+            usa sus mismos SQL, medidas, visuales y validaciones, pero construye el reporte mediante
+            las herramientas MCP. El servidor puede usar Python en la VPS; no se ejecuta en el PC
+            del alumno.
+          </p>
+          <CodeBlock
+            code={powerBiRemotePrompt}
+            caption="Prompt alternativo: pbix-mcp remoto, sin Python local"
+          />
           <p>
             Ejemplo verificado de esta edición (ábrelo en Power BI Desktop o súbelo a Power BI
             Service):
