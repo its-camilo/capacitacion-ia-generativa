@@ -178,7 +178,7 @@ function PracticaRagPage() {
             El ejemplo está adaptado a la base <strong>Northwind</strong>. Si se usa otra base,
             ajusta las tablas, columnas y consultas SQL del prompt.
           </p>
-          <p>Usa este prompt en OpenCode para generar y validar el archivo .pbix y el ZIP:</p>
+          <p>Usa este prompt en OpenCode para generar y validar el archivo .pbix:</p>
           <CodeBlock code={powerBiPrompt} caption="OpenCode: generar reporte Power BI con Northwind" />
           <p className="practica-mcp__note">
             <strong>Alternativa para las PCs sin Python:</strong> prueba el siguiente prompt junto
@@ -192,8 +192,7 @@ function PracticaRagPage() {
             caption="Prompt alternativo: pbix-mcp remoto, sin Python local"
           />
           <p>
-            Ejemplo verificado de esta edición (ábrelo en Power BI Desktop o súbelo a Power BI
-            Service):
+            Ejemplo verificado de esta edición (ábrelo con Power BI Desktop):
           </p>
           <p>
             <a
@@ -202,24 +201,13 @@ function PracticaRagPage() {
               download="northwind.pbix"
             >
               Descargar northwind.pbix
-            </a>{' '}
-            <a
-              className="practica-mcp__download"
-              href={assetUrl(classFiles.pbixZip)}
-              download="northwind-powerbi-entregable.zip"
-            >
-              Descargar ZIP entregable
             </a>
           </p>
           <div className="practica-mcp__note">
-            <strong>Visualizar el resultado desde los computadores de capacitación:</strong> una vez
-            generado el archivo <code>.pbix</code>, súbelo desde el navegador a{' '}
-            <a href="https://app.powerbi.com/" target="_blank" rel="noreferrer">Power BI Service</a>
-            {' '}con una cuenta educativa o institucional que tenga los permisos necesarios. Abre
-            el informe en el navegador; los estudiantes no necesitan Power BI Desktop ni ejecutar
-            comandos. La disponibilidad de carga y visualización depende de las licencias y políticas
-            institucionales. No uses “Publicar en la web” para datos confidenciales, porque puede
-            exponerlos públicamente.
+            <strong>Visualizar el resultado:</strong> las PCs de capacitación tienen Power BI
+            Desktop instalado. Abre el <code>.pbix</code> descargado con Power BI Desktop; no hace
+            falta subirlo a ningún servicio. Si el reporte pide actualizar datos, no es necesario:
+            los datos están embebidos.
           </div>
         </SectionBlock>
 
