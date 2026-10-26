@@ -1,3 +1,5 @@
+import AudienceToggle from './AudienceToggle'
+
 function Header() {
   return (
     <header className="site-header">
@@ -5,6 +7,7 @@ function Header() {
         <span className="site-header__eyebrow">UIFCE · UNAL</span>
         <h1 className="site-header__title">Capacitación IA Generativa</h1>
       </div>
+      <AudienceToggle />
     </header>
   )
 }

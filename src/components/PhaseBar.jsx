@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { phases } from '../data/navigation'
 
-function PhaseBar() {
+function PhaseBar({ basePath }) {
   return (
     <nav className="phase-bar" aria-label="Módulos del curso">
       <div className="phase-bar__track">
@@ -9,7 +9,7 @@ function PhaseBar() {
         {phases.map((phase, index) => (
           <NavLink
             key={phase.path}
-            to={phase.path}
+            to={`${basePath}${phase.path}`}
             className={({ isActive }) =>
               `phase-bar__segment${isActive ? ' phase-bar__segment--active' : ''}`
             }
