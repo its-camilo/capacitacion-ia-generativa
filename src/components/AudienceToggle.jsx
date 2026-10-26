@@ -1,15 +1,19 @@
 import { useLocation, useNavigate } from 'react-router-dom'
+import { phases, professorPhases } from '../data/navigation'
 import '../styles/audience-toggle.css'
 
 function AudienceToggle() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const isProfessorRoute = pathname.startsWith('/profesores')
-  const sessionPath = pathname.replace(/^\/(estudiantes|profesores)/, '')
-  const destination = sessionPath || '/fundamentos'
+  const currentPath = pathname.replace(/^\/(estudiantes|profesores)/, '')
+  const currentPhases = isProfessorRoute ? professorPhases : phases
+  const currentPhase = currentPhases.find((phase) => phase.path === currentPath)
 
   const selectAudience = (audience) => {
-    navigate(`/${audience}${destination}`)
+    const targetPhases = audience === 'profesores' ? professorPhases : phases
+    const targetPhase = targetPhases.find((phase) => phase.key === currentPhase?.key)
+    navigate(`/${audience}${targetPhase?.path || '/fundamentos'}`)
   }
 
   return (

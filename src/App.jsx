@@ -17,9 +17,12 @@ function App() {
         <Route path="/estudiantes/practica-agentes" element={<PracticaAgentes />} />
         <Route path="/profesores" element={<Navigate to="/profesores/fundamentos" replace />} />
         <Route path="/profesores/fundamentos" element={null} />
-        <Route path="/profesores/practica-rag" element={null} />
-        <Route path="/profesores/practica-mcp" element={null} />
-        <Route path="/profesores/practica-agentes" element={null} />
+        <Route path="/profesores/rag" element={null} />
+        <Route path="/profesores/mcp" element={null} />
+        <Route path="/profesores/agentes" element={null} />
+        <Route path="/profesores/practica-rag" element={<Navigate to="/profesores/rag" replace />} />
+        <Route path="/profesores/practica-mcp" element={<Navigate to="/profesores/mcp" replace />} />
+        <Route path="/profesores/practica-agentes" element={<Navigate to="/profesores/agentes" replace />} />
         <Route path="/fundamentos" element={<Navigate to="/estudiantes/fundamentos" replace />} />
         <Route path="/practica-mcp" element={<Navigate to="/estudiantes/practica-mcp" replace />} />
         <Route path="/practica-rag" element={<Navigate to="/estudiantes/practica-rag" replace />} />
