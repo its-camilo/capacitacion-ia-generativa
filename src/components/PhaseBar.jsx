@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { phases } from '../data/navigation'
 
-function PhaseBar({ basePath }) {
+function PhaseBar({ basePath, phases }) {
   return (
     <nav className="phase-bar" aria-label="Módulos del curso">
       <div className="phase-bar__track">

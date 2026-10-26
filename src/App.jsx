@@ -15,10 +15,10 @@ function App() {
         <Route path="/estudiantes/practica-mcp" element={<PracticaMcp />} />
         <Route path="/estudiantes/practica-rag" element={<PracticaRag />} />
         <Route path="/estudiantes/practica-agentes" element={<PracticaAgentes />} />
-        <Route path="/profesores" element={null} />
+        <Route path="/profesores" element={<Navigate to="/profesores/fundamentos" replace />} />
         <Route path="/profesores/fundamentos" element={null} />
-        <Route path="/profesores/practica-mcp" element={null} />
         <Route path="/profesores/practica-rag" element={null} />
+        <Route path="/profesores/practica-mcp" element={null} />
         <Route path="/profesores/practica-agentes" element={null} />
         <Route path="/fundamentos" element={<Navigate to="/estudiantes/fundamentos" replace />} />
         <Route path="/practica-mcp" element={<Navigate to="/estudiantes/practica-mcp" replace />} />

@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import PhaseBar from './PhaseBar'
 import ThemeToggle from './ThemeToggle'
+import { phases, professorPhases } from '../data/navigation'
 
 function Layout() {
   const { pathname } = useLocation()
@@ -11,7 +12,10 @@ function Layout() {
     <div className="app-shell">
       <div className="app-shell__grid" aria-hidden="true" />
       <Header />
-      {!isProfessorRoute && <PhaseBar basePath="/estudiantes" />}
+      <PhaseBar
+        basePath={isProfessorRoute ? '/profesores' : '/estudiantes'}
+        phases={isProfessorRoute ? professorPhases : phases}
+      />
       <main className="main-content">
         <Outlet />
       </main>

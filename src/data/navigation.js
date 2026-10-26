@@ -24,3 +24,10 @@ export const phases = [
     tag: 'Despliegue',
   },
 ]
+
+export const professorPhases = [
+  phases[0],
+  { ...phases[2], session: '02' },
+  { ...phases[1], session: '03' },
+  phases[3],
+]
