@@ -4,6 +4,8 @@ import Fundamentos from './pages/Fundamentos'
 import PracticaAgentes from './pages/PracticaAgentes'
 import PracticaMcp from './pages/PracticaMcp'
 import PracticaRag from './pages/PracticaRag'
+import Profesores from './pages/Profesores'
+import ProfesorSesion from './pages/ProfesorSesion'
 
 function App() {
   return (
@@ -15,11 +17,11 @@ function App() {
         <Route path="/estudiantes/practica-mcp" element={<PracticaMcp />} />
         <Route path="/estudiantes/practica-rag" element={<PracticaRag />} />
         <Route path="/estudiantes/practica-agentes" element={<PracticaAgentes />} />
-        <Route path="/profesores" element={<Navigate to="/profesores/fundamentos" replace />} />
-        <Route path="/profesores/fundamentos" element={null} />
-        <Route path="/profesores/rag" element={null} />
-        <Route path="/profesores/mcp" element={null} />
-        <Route path="/profesores/agentes" element={null} />
+        <Route path="/profesores" element={<Profesores />} />
+        <Route path="/profesores/fundamentos" element={<ProfesorSesion sessionId="fundamentos" />} />
+        <Route path="/profesores/rag" element={<ProfesorSesion sessionId="rag" />} />
+        <Route path="/profesores/mcp" element={<ProfesorSesion sessionId="mcp" />} />
+        <Route path="/profesores/agentes" element={<ProfesorSesion sessionId="agentes" />} />
         <Route path="/profesores/practica-rag" element={<Navigate to="/profesores/rag" replace />} />
         <Route path="/profesores/practica-mcp" element={<Navigate to="/profesores/mcp" replace />} />
         <Route path="/profesores/practica-agentes" element={<Navigate to="/profesores/agentes" replace />} />

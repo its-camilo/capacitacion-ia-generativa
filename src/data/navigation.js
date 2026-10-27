@@ -30,8 +30,8 @@ export const phases = [
 ]
 
 export const professorPhases = [
-  phases[0],
-  { ...phases[2], path: '/rag', label: 'RAG', session: '02' },
-  { ...phases[1], path: '/mcp', label: 'MCP', session: '03' },
-  { ...phases[3], path: '/agentes', label: 'Agentes', session: '04' },
+  { key: 'fundamentos', path: '/fundamentos', label: 'Tareas y evaluación', session: '01', tag: 'Prompting aplicado' },
+  { key: 'rag', path: '/rag', label: 'NotebookLM', session: '02', tag: 'RAG sin código' },
+  { key: 'mcp', path: '/mcp', label: 'Herramientas', session: '03', tag: 'Workspace y Microsoft' },
+  { key: 'agentes', path: '/agentes', label: 'Agentes y flujos', session: '04', tag: 'Piloto en clase' },
 ]
