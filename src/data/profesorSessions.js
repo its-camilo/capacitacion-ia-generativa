@@ -42,7 +42,7 @@ export const sessionSummaries = [
     title: 'Formular tareas, evaluar respuestas, elegir herramienta',
     focus:
       'Cómo pedirle algo a la IA de forma que sirva para enseñar, cómo revisar lo que devuelve y qué herramienta usar según la tarea.',
-    deliverable: 'Gem o Proyecto «Asistente de mi curso» + parcial con rúbrica, clave y archivo para Moodle.',
+    deliverable: 'Habilidad o Proyecto «Asistente de mi curso» + parcial con rúbrica, clave y archivo para Moodle.',
     tools: 'Gemini · ChatGPT · Claude · Copilot · Moodle',
     tag: 'Prompting aplicado',
   },
@@ -86,14 +86,14 @@ export const formatRules = [
   { label: '90 min de práctica', detail: 'Pasos con tiempo asignado, sobre el programa de su propia asignatura.' },
   { label: '15 min de entregable', detail: 'Se termina en clase y se comparte el enlace. Lo que no se alcanza queda como tarea corta.' },
   { label: 'Datos ficticios', detail: 'Todo ejercicio con notas o estudiantes usa datos inventados. Nunca datos reales.' },
-  { label: 'Navegador y cuenta UNAL', detail: 'Gemini y NotebookLM con la cuenta institucional; ChatGPT y Claude en versión gratuita.' },
+  { label: 'Navegador y cuenta UNAL', detail: 'Gemini, NotebookLM, ChatGPT, Claude y Copilot con sesión iniciada en la cuenta @unal.edu.co.' },
   { label: 'Grabación', detail: 'Pendiente de confirmar. La encuesta mostró demanda de opción virtual o grabada.' },
 ]
 
 export const entersAndLeaves = {
   entra: [
     'NotebookLM completo: cuaderno, citas, guía, mapa mental, audio y video.',
-    'Gems y Proyectos como asistentes del curso, sin código.',
+    'Habilidades (antes Gems) y Proyectos como asistentes del curso, sin código.',
     'Conectores de un clic y MCP contado sin JSON.',
     'Moodle: preguntas en GIFT y Aiken, rúbricas y retroalimentación.',
     'Comparación de herramientas por necesidad, no por marca.',
@@ -109,7 +109,7 @@ export const entersAndLeaves = {
 }
 
 export const pendingConfirmations = [
-  'NotebookLM y Gems habilitados en las cuentas @unal.edu.co.',
+  'NotebookLM habilitado en las cuentas @unal.edu.co (las Habilidades de Gemini ya funcionan).',
   'Licencia de Google Workspace con Gemini y, si existe, Microsoft 365 Copilot.',
   'Acceso a Scopus para el MCP de bibliografía.',
   'Permisos de importación en los cursos de Moodle de cada profe.',
@@ -137,7 +137,7 @@ export const profesorSessions = {
     meta: [
       { label: 'Duración', value: '2 horas' },
       { label: 'Formato', value: '15 idea · 90 práctica · 15 entregable' },
-      { label: 'Requiere', value: 'Portátil, cuenta @unal, ChatGPT y Claude gratis' },
+      { label: 'Requiere', value: 'Portátil y sesión iniciada con la cuenta @unal en Gemini, ChatGPT, Claude y Copilot' },
       { label: 'Traer', value: 'Programa de su asignatura y un parcial o guía previa' },
     ],
     agenda: [
@@ -145,7 +145,7 @@ export const profesorSessions = {
       { time: '10 min', label: 'Práctica 1', detail: 'Reescribir una tarea real que ya haya hecho con IA.' },
       { time: '25 min', label: 'Práctica 2', detail: 'Parcial con rúbrica y clave a partir del programa.' },
       { time: '15 min', label: 'Práctica 3', detail: 'Pasar las preguntas a Moodle en GIFT o Aiken.' },
-      { time: '20 min', label: 'Práctica 4', detail: 'Construir el Gem o Proyecto «Asistente de mi curso».' },
+      { time: '20 min', label: 'Práctica 4', detail: 'Construir la habilidad «Asistente de mi curso».' },
       { time: '20 min', label: 'Práctica 5', detail: 'Revisión cruzada con otro profe y ajuste del asistente.' },
       { time: '15 min', label: 'Entregable', detail: 'Socializar el asistente y el parcial; cerrar con la lista de verificación.' },
     ],
@@ -292,7 +292,7 @@ Entrega en este orden:
 3. Clave con justificación de la respuesta correcta y de por qué fallan las otras.
 4. Rúbrica de [N] puntos para las preguntas de desarrollo.
 
-Restricciones: no incluyas temas que no estén en el programa, no uses datos de estudiantes y no inventes referencias. Al final, señala 3 preguntas que podrían ser ambiguas y cómo las mejoraría.`,
+Restricciones: no incluyas temas que no estén en el programa, no uses datos de estudiantes y no inventes referencias.`,
           },
           {
             type: 'p',
@@ -317,6 +317,10 @@ Restricciones: no incluyas temas que no estén en el programa, no uses datos de 
           {
             type: 'note',
             text: 'No entregue un parcial sin resolverlo usted primero. La IA puede escribir la clave y equivocarse en la misma pregunta.',
+          },
+          {
+            type: 'note',
+            text: 'Si un prompt largo llega cortado o la IA responde «no puedo ayudarte con eso», pegue el prompt completo de nuevo o use **Reintentar**. Suele salir bien al segundo intento.',
           },
           { type: 'links', items: toolLinks },
         ],
@@ -391,7 +395,24 @@ ANSWER: B`,
         blocks: [
           {
             type: 'p',
-            text: 'Un **Gem** en Gemini, un **Proyecto** en ChatGPT o un **Proyecto** en Claude son la misma idea: instrucciones que se quedan guardadas y archivos que el modelo usa en cada conversación. Deja de repetir el contexto del curso y empieza a tener un asistente estable.',
+            text: 'Una **habilidad** en Gemini o en Claude, o un **Proyecto** en ChatGPT o Copilot, son la misma idea: instrucciones que se quedan guardadas y archivos que el modelo usa en cada conversación. Deja de repetir el contexto del curso y empieza a tener un asistente estable.',
+          },
+          {
+            type: 'callout',
+            tone: 'warn',
+            title: 'Los Gems ahora son habilidades',
+            text: 'Desde el 17 de noviembre de 2026, Gemini migra los Gems a **habilidades**. Con la cuenta @unal no aparece el menú de Gems: cree directamente una habilidad.',
+          },
+          {
+            type: 'numbered',
+            items: [
+              'En gemini.google.com abra **Personalizar** (barra lateral) y luego la pestaña **Habilidades**.',
+              'Pulse **Crear → Crear manualmente**.',
+              'Escriba el nombre y una **descripción** (es obligatoria; sin ella no guarda).',
+              'Pegue las instrucciones y, en **Añadir archivos**, suba el programa en PDF. Pulse **Crear**.',
+              'Para usarla, en un chat nuevo escriba **@** y elija su habilidad, o en la habilidad use **⋯ → Usar ahora**.',
+              'En Claude: **Configuración → Personalización → Skills → Agregar Skill → Crear una Skill** (o **Crear con Claude**).',
+            ],
           },
           {
             type: 'p',
@@ -412,6 +433,7 @@ Reglas:
 - Si falta información, di qué falta y pregunta antes de responder.
 - Si la pregunta está fuera del programa, dilo y ofrece el tema más cercano.
 - No pidas ni proceses datos personales de estudiantes.
+- No cites libros ni autores que no estén en los archivos.
 - Cierra las respuestas de contenido con la fuente o el archivo en que te apoyaste.`,
           },
           {
@@ -424,7 +446,11 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'Compartir el Gem o el Proyecto no siempre comparte los archivos. Revise los permisos antes de enviarlo al curso y pruebe el enlace con una cuenta distinta.',
+            text: 'Si el PDF no sube dentro de la habilidad, adjúntelo en el chat o pegue en las instrucciones los acuerdos del curso y la lista de temas. En Claude las Skills no reciben archivos del computador: pegue el texto.',
+          },
+          {
+            type: 'note',
+            text: 'Las habilidades de Gemini no se comparten con enlace: use **⋯ → Descargar** y pase el archivo, que el colega sube con **Sustituir habilidad** o al crear la suya. En Claude Free, compartir Skills exige plan Team. Compartir un Proyecto no siempre comparte los archivos: pruebe con otra cuenta.',
           },
           { type: 'links', items: toolLinks },
         ],
@@ -463,7 +489,7 @@ Reglas:
           {
             type: 'list',
             items: [
-              'El enlace a su Gem o Proyecto «Asistente de mi curso», con instrucciones y archivos cargados.',
+              'Su habilidad o Proyecto «Asistente de mi curso», con instrucciones y archivos cargados (enlace o archivo descargado).',
               'Un parcial con tabla de especificaciones, clave y rúbrica, revisado por usted.',
               'El archivo GIFT o Aiken importado en Moodle, con captura del banco de preguntas.',
               'Un registro breve de 3 errores encontrados y cómo los corrigió.',
@@ -491,7 +517,7 @@ Reglas:
         eyebrow: 'Para el docente',
         title: 'Por confirmar y advertencias',
         blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que Gemini y los Gems estén habilitados en las cuentas @unal.edu.co, y que cada profe tenga permisos de edición en su curso de Moodle para importar preguntas.' },
+          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que cada profe pueda iniciar sesión con la cuenta @unal en Gemini, ChatGPT, Claude y Copilot, y que tenga permisos de edición en su curso de Moodle para importar preguntas.' },
           { type: 'note', text: 'La encuesta ubicó al grupo en 2–3 de 5: el repaso de fundamentos debe ser corto, con ejemplos de su asignatura, no una clase de teoría.' },
           { type: 'note', text: 'Si el grupo no trae programa, entregue un programa ficticio de una asignatura común para que la práctica no se detenga.' },
           { type: 'note', text: 'La comparación entre modelos va al final y con fecha: cualquier tabla de «cuál es mejor» queda vieja en semanas.' },
