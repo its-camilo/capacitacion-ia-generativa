@@ -145,7 +145,7 @@ export const profesorSessions = {
       { time: '10 min', label: 'Práctica 1', detail: 'Reescribir una tarea real que ya haya hecho con IA.' },
       { time: '25 min', label: 'Práctica 2', detail: 'Parcial con rúbrica y clave a partir del programa.' },
       { time: '15 min', label: 'Práctica 3', detail: 'Pasar las preguntas a Moodle en GIFT o Aiken.' },
-      { time: '20 min', label: 'Práctica 4', detail: 'Construir la habilidad «Asistente de mi curso».' },
+      { time: '20 min', label: 'Práctica 4', detail: 'Construir el «Asistente de mi curso»: habilidad en Gemini o Proyecto en ChatGPT o Claude.' },
       { time: '20 min', label: 'Práctica 5', detail: 'Revisión cruzada con otro profe y ajuste del asistente.' },
       { time: '15 min', label: 'Entregable', detail: 'Socializar el asistente y el parcial; cerrar con la lista de verificación.' },
     ],
@@ -395,7 +395,7 @@ ANSWER: B`,
         blocks: [
           {
             type: 'p',
-            text: 'Una **habilidad** en Gemini o en Claude, o un **Proyecto** en ChatGPT o Copilot, son la misma idea: instrucciones que se quedan guardadas y archivos que el modelo usa en cada conversación. Deja de repetir el contexto del curso y empieza a tener un asistente estable.',
+            text: 'Una **habilidad** en Gemini o un **Proyecto** en ChatGPT o Claude son la misma idea: instrucciones que se quedan guardadas y archivos que el modelo usa en cada conversación. Deja de repetir el contexto del curso y empieza a tener un asistente estable.',
           },
           {
             type: 'callout',
@@ -411,7 +411,7 @@ ANSWER: B`,
               'Escriba el nombre y una **descripción** (es obligatoria; sin ella no guarda).',
               'Pegue las instrucciones y, en **Añadir archivos**, suba el programa en PDF. Pulse **Crear**.',
               'Para usarla, en un chat nuevo escriba **@** y elija su habilidad, o en la habilidad use **⋯ → Usar ahora**.',
-              'En Claude: **Configuración → Personalización → Skills → Agregar Skill → Crear una Skill** (o **Crear con Claude**).',
+              'En ChatGPT o Claude: cree un **Proyecto**, pegue las instrucciones del asistente y suba los archivos del curso.',
             ],
           },
           {
@@ -446,13 +446,13 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'Si el PDF no sube dentro de la habilidad, adjúntelo en el chat o pegue en las instrucciones los acuerdos del curso y la lista de temas. En Claude las Skills no reciben archivos del computador: pegue el texto.',
+            text: 'Si el PDF no sube dentro de la habilidad, adjúntelo en el chat o pegue en las instrucciones los acuerdos del curso y la lista de temas.',
           },
           {
             type: 'note',
-            text: 'Las habilidades de Gemini no se comparten con enlace: use **⋯ → Descargar** y pase el archivo, que el colega sube con **Sustituir habilidad** o al crear la suya. En Claude Free, compartir Skills exige plan Team. Compartir un Proyecto no siempre comparte los archivos: pruebe con otra cuenta.',
+            text: 'Las habilidades de Gemini no se comparten con enlace: use **⋯ → Descargar** y pase el archivo, que el colega sube con **Sustituir habilidad** o al crear la suya. Compartir un Proyecto no siempre comparte los archivos: pruebe con otra cuenta.',
           },
-          { type: 'links', items: toolLinks },
+          { type: 'links', items: toolLinks.filter((t) => t.label !== 'Copilot') },
         ],
       },
       {
