@@ -607,7 +607,7 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'No suba exámenes sin aplicar, datos de estudiantes ni material de terceros sin permiso. Compartir un cuaderno es publicar sus fuentes.',
+            text: 'No suba exámenes que aún no ha aplicado, datos de estudiantes ni material de terceros sin permiso. Compartir un cuaderno es publicar sus fuentes.',
           },
         ],
       },
@@ -648,11 +648,11 @@ Reglas:
           {
             type: 'numbered',
             items: [
-              'Entre a notebooklm.google.com con la cuenta de la universidad.',
+              'Entre a notebook.google.com (NotebookLM, ahora llamado Gemini Notebook) con la cuenta @unal.edu.co.',
               'Cree un cuaderno y póngale el nombre del curso y el periodo.',
               'Suba las fuentes una por una; espere a que cada una quede procesada.',
               'Confirme que el número de fuentes y los títulos coinciden con lo que subió.',
-              'Si una fuente quedó ilegible, vuelva a subirla en PDF con texto u otro formato.',
+              'Si una fuente quedó ilegible o no sube, vuelva a subirla en PDF con texto, o use Añadir fuente → Texto copiado y pegue el contenido.',
             ],
           },
           {
@@ -665,7 +665,7 @@ Reglas:
             title: 'Un cuaderno por curso, no por tema',
             text: 'Separe por asignatura y periodo. Si mezcla tres cursos, las citas se cruzan y el tutor responde con material que no corresponde.',
           },
-          { type: 'links', items: [{ label: 'NotebookLM', url: 'https://notebooklm.google.com', provider: 'Google' }] },
+          { type: 'links', items: [{ label: 'NotebookLM (Gemini Notebook)', url: 'https://notebook.google.com', provider: 'Google' }] },
         ],
       },
       {
@@ -681,7 +681,7 @@ Reglas:
             type: 'numbered',
             items: [
               '«¿Qué evalúa el corte 2 según el programa?»',
-              '«Resume la lectura 2 en cinco ideas y cita la página de cada una».',
+              '«Resume la lectura 2 en cinco ideas y cita la fuente de cada una».',
               '«Compara la definición de [concepto] en las dos lecturas; si no coinciden, dime en qué».',
               '«¿Qué tema del programa no está cubierto por las fuentes cargadas?».',
               '«Propón tres preguntas de parcial y dime en qué fuente se responde cada una».',
@@ -719,26 +719,33 @@ Reglas:
           {
             type: 'cards',
             items: [
-              { title: 'Guía de estudio', description: 'Ideas clave, preguntas y vacíos por unidad. La salida más útil para Moodle.', tag: 'Texto' },
+              { title: 'Informe · Resumen de aprendizaje', description: 'En Informes, plantilla «Resumen de aprendizaje» (Interactivo o Documento), con un campo para escribir instrucciones. Hace las veces de guía de estudio.', tag: 'Texto' },
               { title: 'Mapa mental', description: 'Relaciones entre conceptos. Sirve para abrir o cerrar una unidad.', tag: 'Visual' },
-              { title: 'Tarjetas y cuestionario', description: 'Repaso espaciado y autoevaluación. Verifique cada respuesta.', tag: 'Práctica' },
-              { title: 'Audio overview', description: 'Dos voces discutiendo el material. Bueno para estudiantes que escuchan; malo si el guion no se revisa.', tag: 'Audio' },
-              { title: 'Video overview', description: 'Resumen visual con diapositivas. Útil como repaso, no como clase nueva.', tag: 'Video' },
-              { title: 'Informe', description: 'Documento estructurado con citas, listo para adaptar a una guía o a una presentación.', tag: 'Texto' },
+              { title: 'Tarjetas didácticas y cuestionario', description: 'Repaso y autoevaluación; en el cuestionario elige cantidad y dificultad. Verifique cada respuesta.', tag: 'Práctica' },
+              { title: 'Resumen de audio', description: 'Dos voces discutiendo el material (Detallado, Breve, Crítica o Debate). Bueno para estudiantes que escuchan; malo si el guion no se revisa.', tag: 'Audio' },
+              { title: 'Resumen de vídeo', description: 'Corto (vertical) o Explicativo (horizontal). Útil como repaso, no como clase nueva.', tag: 'Video' },
+              { title: 'Presentación, infografía y tabla de datos', description: 'Otras salidas del panel Studio para abrir una clase o resumir una unidad.', tag: 'Visual' },
             ],
           },
           {
             type: 'numbered',
             items: [
-              'Genere la salida con una instrucción concreta: tema, extensión, nivel y uso.',
+              'Lance primero el audio y el video: pueden tardar más de 10 minutos. Mientras tanto, genere las demás.',
+              'Genere cada salida con una instrucción concreta en su campo de texto: tema, extensión, nivel y uso.',
               'Revise datos, tildes y citas antes de descargar.',
               'Ajuste el texto o regenere con instrucciones más específicas; el audio no se edita, se vuelve a generar.',
-              'Descargue o copie el resultado y súbalo a Moodle como material de la unidad.',
+              'Lleve el resultado a Moodle: el mapa mental se descarga; el informe y el cuestionario se comparten con enlace o se copian.',
             ],
           },
           {
             type: 'note',
-            text: 'El podcast y el video son borradores. Escúchelos completos antes de compartirlos: un error de tono o de dato se nota más en audio que en texto.',
+            text: 'El podcast y el video son borradores. Escúchelos completos antes de compartirlos: un error de tono o de dato se nota más en audio que en texto. En el plan gratuito las salidas llevan marca de agua.',
+          },
+          {
+            type: 'callout',
+            tone: 'warn',
+            title: 'El informe puede suavizar contradicciones',
+            text: 'En la prueba, una lectura con un error («el impuesto siempre lo paga el consumidor») apareció en el informe como una «perspectiva práctica», no como un error. Revise el informe contra las fuentes antes de entregarlo.',
           },
         ],
       },
@@ -750,8 +757,8 @@ Reglas:
           {
             type: 'numbered',
             items: [
-              'Abra Compartir y revise los permisos: ver o editar; quién puede preguntar.',
-              'Decida si comparte con el dominio de la universidad o solo con el enlace.',
+              'Abra Compartir cuaderno y, en «Añade personas y grupos», agregue a sus estudiantes o el grupo del curso con el rol que corresponda.',
+              'Use «Copiar enlace», o en Más opciones de copia «Copiar enlace a la vista de conversación» para que abran directo en el chat.',
               'Pegue el enlace en Moodle con instrucciones de uso de tres líneas.',
               'Pruébelo con una cuenta de estudiante o en una ventana sin sesión.',
               'Anote qué puede ver el estudiante: fuentes, respuestas, historial.',
@@ -765,7 +772,7 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'Revise si su cuenta permite compartir fuera del dominio y si los estudiantes pueden ver las fuentes. Si no, comparta la guía de estudio como documento y reserve el cuaderno para su preparación.',
+            text: 'No hay opción de compartir con todo el dominio ni un modo «solo chat»: quien tiene acceso ve las fuentes, el chat y las salidas. Si no quiere mostrar las fuentes, comparta el informe y reserve el cuaderno para su preparación.',
           },
         ],
       },
@@ -820,7 +827,7 @@ Reglas:
             type: 'list',
             items: [
               'El enlace al cuaderno del curso, con las fuentes cargadas y los permisos definidos.',
-              'Una guía de estudio descargada y revisada, lista para Moodle.',
+              'Un informe «Resumen de aprendizaje» revisado contra las fuentes, listo para Moodle.',
               'Una tabla de bibliografía normalizada, con los datos faltantes marcados.',
               'Tres citas verificadas: pregunta, respuesta y fuente abierta.',
             ],
@@ -830,7 +837,7 @@ Reglas:
             items: [
               'El cuaderno responde solo con las fuentes del curso.',
               'Cada respuesta que voy a usar tiene una cita que abrí y verifiqué.',
-              'La guía de estudio no contiene datos inventados ni referencias falsas.',
+              'El informe no contiene datos inventados, referencias falsas ni contradicciones suavizadas.',
               'El enlace funciona con una cuenta distinta a la mía.',
             ],
           },
@@ -847,7 +854,7 @@ Reglas:
         eyebrow: 'Para el docente',
         title: 'Por confirmar y advertencias',
         blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que NotebookLM esté habilitado en las cuentas @unal.edu.co, si se puede compartir fuera del dominio y si la universidad tiene acceso a Scopus para el MCP de bibliografía.' },
+          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'NotebookLM ya está habilitado en las cuentas @unal.edu.co (probado el 31 oct 2026). Falta confirmar si la universidad tiene acceso a la API de Scopus para el MCP de bibliografía; la biblioteca sí tiene Scopus.' },
           { type: 'note', text: 'Los límites de fuentes y de cuadernos cambian. Revise la cifra vigente el día anterior y ajuste el número de documentos de la práctica.' },
           { type: 'note', text: 'Si no hay acceso a Scopus, la práctica 6 se hace con Zotero y Google Scholar; el entregable no cambia.' },
           { type: 'note', text: 'MarkItDown requiere instalación local. Si el grupo no tiene Python, muestre el resultado ya convertido y deje el enlace como recurso.' },
