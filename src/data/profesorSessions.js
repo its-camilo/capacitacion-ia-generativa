@@ -438,7 +438,7 @@ Reglas:
           },
           {
             type: 'p',
-            text: '**Archivos que valen la pena.** Programa, lecturas obligatorias, parciales anteriores con su clave, rúbricas y acuerdos del curso. **No** suba listas de notas, trabajos de estudiantes ni exámenes sin aplicar.',
+            text: '**Archivos que valen la pena.** Programa, lecturas obligatorias, parciales anteriores con su clave, rúbricas y acuerdos del curso. **No** suba listas de notas, trabajos de estudiantes ni exámenes que aún no ha aplicado.',
           },
           {
             type: 'p',
@@ -1228,7 +1228,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
               ['Correos institucionales', 'Con cuidado', 'Solo con conector autorizado y revisión antes de enviar.'],
               ['Trabajos de estudiantes', 'No sin permiso', 'Requiere consentimiento y una razón de uso clara.'],
               ['Datos de salud, menores o denuncias', 'No', 'Fuera de la capacitación y de cualquier herramienta externa.'],
-              ['Exámenes sin aplicar', 'No', 'Riesgo de filtración; use un examen viejo o inventado.'],
+              ['Exámenes que aún no ha aplicado', 'No', 'Riesgo de filtración; use un examen viejo o inventado.'],
             ],
           },
           {
