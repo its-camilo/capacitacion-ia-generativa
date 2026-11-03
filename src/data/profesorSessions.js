@@ -30,7 +30,7 @@ export const designChanges = [
   {
     title: 'PDF a Markdown entra como truco de contexto',
     description:
-      'MarkItDown (Microsoft) convierte PDF, Word o PowerPoint a Markdown limpio antes de pasarlos a Claude o ChatGPT. Menos tokens, menos ruido de tablas y columnas. Se usa en la sesión 2 para bibliografía y en la 4 para insumos.',
+      'MarkItDown (Microsoft) convierte PDF, Word o PowerPoint a Markdown limpio antes de pasarlos a Claude o ChatGPT. Menos tokens, menos ruido de tablas y columnas. Se usa en la sesión 4 para insumos; en la sesión 2 se reemplaza por la conversión dentro del chat, sin instalar nada.',
   },
 ]
 
@@ -54,7 +54,7 @@ export const sessionSummaries = [
     focus:
       'Responder con sus documentos y citar la fuente. Cuaderno con programa, lecturas y artículos; material derivado y bibliografía sistematizada.',
     deliverable: 'Cuaderno compartido con estudiantes + guía de estudio + bibliografía normalizada.',
-    tools: 'NotebookLM · Zotero · MarkItDown · Scopus (si hay acceso)',
+    tools: 'NotebookLM · ZoteroBib · Zotero web · Scopus (si hay acceso)',
     tag: 'RAG sin código',
   },
   {
@@ -548,7 +548,7 @@ Reglas:
       { time: '20 min', label: 'Práctica 3', detail: 'Preguntar con citas y detectar huecos.' },
       { time: '15 min', label: 'Práctica 4', detail: 'Convertir el cuaderno en guía, mapa, audio y video.' },
       { time: '15 min', label: 'Práctica 5', detail: 'Compartirlo como tutor del curso.' },
-      { time: '15 min', label: 'Práctica 6', detail: 'Sistematizar la bibliografía: Zotero, Scopus y PDF a Markdown.' },
+      { time: '15 min', label: 'Práctica 6', detail: 'Sistematizar la bibliografía con IA, ZoteroBib y Zotero web.' },
       { time: '15 min', label: 'Entregable', detail: 'Probar el cuaderno con un colega y cerrar.' },
     ],
     goals: [
@@ -786,24 +786,24 @@ Reglas:
         blocks: [
           {
             type: 'p',
-            text: 'Este paso es opcional y se puede dejar como tarea. Hay tres caminos, de menor a mayor complejidad:',
+            text: 'Este paso es opcional y se puede dejar como tarea. Todo se hace en el navegador, sin instalar nada. Hay tres caminos, de menor a mayor complejidad:',
           },
           {
             type: 'cards',
             items: [
-              { title: 'Zotero', description: 'Gestor de referencias gratuito. Guarda, organiza y exporta en APA, BibTeX o RIS. Es el piso mínimo.', tag: 'Gestor', url: 'https://www.zotero.org' },
+              { title: 'ZoteroBib', description: 'Versión web de Zotero, sin cuenta ni instalación. Pegue un DOI, ISBN o URL y arma la bibliografía en APA lista para copiar.', tag: 'Web', url: 'https://zbib.org' },
+              { title: 'Zotero web', description: 'Con una cuenta gratuita en zotero.org guarda y organiza la biblioteca del curso desde el navegador y la exporta en APA, BibTeX o RIS.', tag: 'Gestor', url: 'https://www.zotero.org' },
               { title: 'MCP de Scopus', description: 'Si la universidad tiene acceso, un conector consulta metadatos y DOIs sin salir del chat. Depende de la licencia y del conector.', tag: 'Conector' },
-              { title: 'MarkItDown', description: 'Herramienta de Microsoft que convierte PDF, Word o PowerPoint a Markdown limpio. Menos tokens y menos ruido de tablas.', tag: 'Contexto', url: 'https://github.com/microsoft/markitdown' },
             ],
           },
           {
             type: 'p',
-            text: 'Un flujo realista: bajar los PDF del curso, convertirlos a Markdown con MarkItDown, pasarlos a Claude o ChatGPT con el programa y pedir una tabla de referencias normalizada. Después se importa esa tabla a Zotero.',
+            text: 'Un flujo realista: subir el programa y la bibliografía del curso a Claude o ChatGPT, pedir una tabla de referencias normalizada y pasar los DOI o ISBN a ZoteroBib o a Zotero web para obtener la lista final en APA.',
           },
           {
             type: 'prompt',
             label: 'Normalizar la bibliografía',
-            text: `Te paso el programa y las referencias del curso en Markdown.
+            text: `Te paso el programa y las referencias del curso.
 
 1. Normaliza cada referencia en APA 7.
 2. Elimina duplicados y marca los que no tengan datos completos como «verificar».
@@ -813,11 +813,11 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'MarkItDown no resume el PDF: lo convierte a texto limpio. Úselo cuando el PDF tenga tablas o columnas y el copiar y pegar salga desordenado. Así también gasta menos tokens al pasarlo a Claude.',
+            text: 'Si el PDF tiene tablas o columnas y la IA lo lee desordenado, pídale primero: «Convierte este documento a Markdown limpio, sin resumir». Luego use ese texto para normalizar la bibliografía.',
           },
           {
             type: 'note',
-            text: 'Si no hay acceso a Scopus, use Google Scholar y Zotero. El flujo es el mismo; cambia la fuente de los metadatos.',
+            text: 'Si no hay acceso a Scopus, use Google Scholar y ZoteroBib. El flujo es el mismo; cambia la fuente de los metadatos.',
           },
         ],
       },
@@ -859,8 +859,8 @@ Reglas:
         blocks: [
           { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'NotebookLM ya está habilitado en las cuentas @unal.edu.co (probado el 31 oct 2026). Falta confirmar si la universidad tiene acceso a la API de Scopus para el MCP de bibliografía; la biblioteca sí tiene Scopus.' },
           { type: 'note', text: 'Los límites de fuentes y de cuadernos cambian. Revise la cifra vigente el día anterior y ajuste el número de documentos de la práctica.' },
-          { type: 'note', text: 'Si no hay acceso a Scopus, la práctica 6 se hace con Zotero y Google Scholar; el entregable no cambia.' },
-          { type: 'note', text: 'MarkItDown requiere instalación local. Si el grupo no tiene Python, muestre el resultado ya convertido y deje el enlace como recurso.' },
+          { type: 'note', text: 'Si no hay acceso a Scopus, la práctica 6 se hace con ZoteroBib y Google Scholar; el entregable no cambia.' },
+          { type: 'note', text: 'La sesión no requiere instalar nada ni permisos de administrador en los equipos: todo funciona en el navegador con la cuenta @unal.' },
         ],
       },
     ],
