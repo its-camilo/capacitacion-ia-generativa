@@ -20,7 +20,7 @@ export const designChanges = [
   {
     title: 'La sesión 3 depende de las licencias',
     description:
-      'Se plantea como «IA integrada a las herramientas de trabajo», con el mismo ejercicio en Google Workspace y en Microsoft 365. Se dicta con la suite que esté habilitada y queda un plan B con cuentas gratuitas.',
+      'Se plantea como «IA integrada a las herramientas de trabajo» con Gemini en Google Workspace, que es la suite de la cuenta @unal. Queda un plan B con Claude y sus conectores.',
   },
   {
     title: 'La sesión 4 se recorta a un piloto',
@@ -43,7 +43,7 @@ export const sessionSummaries = [
     focus:
       'Cómo pedirle algo a la IA de forma que sirva para enseñar, cómo revisar lo que devuelve y qué herramienta usar según la tarea.',
     deliverable: 'Habilidad o Proyecto «Asistente de mi curso» + parcial con rúbrica, clave y archivo para Moodle.',
-    tools: 'Gemini · ChatGPT · Claude · Copilot · Moodle',
+    tools: 'Gemini · ChatGPT · Claude · Moodle',
     tag: 'Prompting aplicado',
   },
   {
@@ -63,10 +63,10 @@ export const sessionSummaries = [
     label: 'Herramientas',
     title: 'IA dentro de las herramientas de trabajo',
     focus:
-      'La IA donde ya trabaja: documentos, hojas, correo y presentaciones. Mismo caso en Google Workspace y en Microsoft 365, según licencia.',
+      'La IA donde ya trabaja: documentos, hojas, correo y presentaciones con Gemini en Google Workspace.',
     deliverable: 'Hoja analizada con datos ficticios + 3 retroalimentaciones en borrador + presentación corta.',
-    tools: 'Gemini en Workspace · Copilot en Microsoft 365 · Conectores de Claude',
-    tag: 'Workspace y Microsoft',
+    tools: 'Gemini en Workspace · Conectores de Claude',
+    tag: 'Google Workspace',
   },
   {
     session: '04',
@@ -86,7 +86,7 @@ export const formatRules = [
   { label: '90 min de práctica', detail: 'Pasos con tiempo asignado, sobre el programa de su propia asignatura.' },
   { label: '15 min de entregable', detail: 'Se termina en clase y se comparte el enlace. Lo que no se alcanza queda como tarea corta.' },
   { label: 'Datos ficticios', detail: 'Todo ejercicio con notas o estudiantes usa datos inventados. Nunca datos reales.' },
-  { label: 'Navegador y cuenta UNAL', detail: 'Gemini, NotebookLM, ChatGPT, Claude y Copilot con sesión iniciada en la cuenta @unal.edu.co.' },
+  { label: 'Navegador y cuenta UNAL', detail: 'Gemini, NotebookLM, ChatGPT y Claude con sesión iniciada en la cuenta @unal.edu.co.' },
   { label: 'Grabación', detail: 'Pendiente de confirmar. La encuesta mostró demanda de opción virtual o grabada.' },
 ]
 
@@ -110,7 +110,7 @@ export const entersAndLeaves = {
 
 export const pendingConfirmations = [
   'NotebookLM habilitado en las cuentas @unal.edu.co (las Habilidades de Gemini ya funcionan).',
-  'Licencia de Google Workspace con Gemini y, si existe, Microsoft 365 Copilot.',
+  'Funciones de Gemini dentro de Docs, Sheets, Gmail y Slides en las cuentas @unal.edu.co.',
   'Acceso a Scopus para el MCP de bibliografía.',
   'Permisos de importación en los cursos de Moodle de cada profe.',
   'Sede y horario: viernes 4–6 pm tiene el mejor promedio; jueves 6–8 pm es el más elegido de primero.',
@@ -120,7 +120,6 @@ const toolLinks = [
   { label: 'Gemini', url: 'https://gemini.google.com', provider: 'Google' },
   { label: 'ChatGPT', url: 'https://chatgpt.com', provider: 'OpenAI' },
   { label: 'Claude', url: 'https://claude.ai', provider: 'Anthropic' },
-  { label: 'Copilot', url: 'https://copilot.microsoft.com', provider: 'Microsoft' },
 ]
 
 const moodleLinks = [
@@ -137,8 +136,8 @@ export const profesorSessions = {
     meta: [
       { label: 'Duración', value: '2 horas' },
       { label: 'Formato', value: '15 idea · 90 práctica · 15 entregable' },
-      { label: 'Requiere', value: 'Portátil y sesión iniciada con la cuenta @unal en Gemini, ChatGPT, Claude y Copilot' },
-      { label: 'Traer', value: 'Programa de su asignatura y un parcial o guía previa' },
+      { label: 'Requiere', value: 'Portátil y sesión iniciada con la cuenta @unal en Gemini, ChatGPT y Claude' },
+      { label: 'Traer', value: 'Programa, un parcial ya aplicado con clave, una rúbrica, los acuerdos del curso y una tarea que ya hizo con IA' },
     ],
     agenda: [
       { time: '15 min', label: 'Idea', detail: 'Qué hace un LLM, qué no subir, fórmula de tarea, evaluación y elección de herramienta.' },
@@ -174,6 +173,12 @@ export const profesorSessions = {
             tone: 'warn',
             title: 'Qué no se sube',
             text: 'Nombres, cédulas, correos, notas, historias clínicas, trabajos de estudiantes sin permiso ni exámenes que aún no se han aplicado. Si necesita ejemplos, use datos ficticios o reemplace el nombre por un código.',
+          },
+          {
+            type: 'callout',
+            tone: 'ok',
+            title: 'Privacidad según la cuenta: qué cubre la licencia de la universidad',
+            text: '**Gemini y Gemini Notebook (NotebookLM) con la cuenta @unal** están cubiertos por el contrato de Google Workspace for Education de la universidad: lo que escribe y los archivos que sube no los revisan personas ni se usan para entrenar modelos de IA, y no salen de la organización sin su permiso. **ChatGPT y Claude** no tienen contrato con la universidad: aunque entre con el correo @unal, es una cuenta personal gratuita. Ahí desactive el entrenamiento (ChatGPT: Configuración → Controles de datos → «Mejorar el modelo para todos»; Claude: Configuración → Privacidad → «Ayudar a mejorar Claude») y suba solo material público o ficticio. En ningún caso la licencia autoriza subir datos personales de estudiantes: la regla de qué no se sube aplica igual.',
           },
           {
             type: 'p',
@@ -221,10 +226,9 @@ export const profesorSessions = {
             headers: ['Necesidad', 'Herramienta que suele ir mejor', 'Por qué'],
             rows: [
               ['Leer documentos largos y citar la fuente', 'NotebookLM', 'Trabaja solo con lo que usted sube y muestra la cita.'],
-              ['Escribir o editar dentro del documento', 'Gemini en Docs o Copilot en Word, según licencia', 'No hay que copiar y pegar; respeta el formato.'],
+              ['Escribir o editar dentro del documento', 'Gemini en Docs', 'No hay que copiar y pegar; respeta el formato.'],
               ['Razonamiento largo, código o análisis de datos', 'Claude o ChatGPT', 'Mejor manejo de contextos extensos y de archivos.'],
               ['Búsqueda con fuentes actuales', 'ChatGPT, Gemini o Claude con búsqueda web', 'Verifique siempre los enlaces antes de citar.'],
-              ['Trabajar con hojas de cálculo', 'Gemini en Sheets o Copilot en Excel', 'Escribe fórmulas y explica el paso a paso.'],
             ],
           },
           {
@@ -452,7 +456,7 @@ Reglas:
             type: 'note',
             text: 'Las habilidades de Gemini no se comparten con enlace: use **⋯ → Descargar** y pase el archivo, que el colega sube con **Sustituir habilidad** o al crear la suya. Compartir un Proyecto no siempre comparte los archivos: pruebe con otra cuenta.',
           },
-          { type: 'links', items: toolLinks.filter((t) => t.label !== 'Copilot') },
+          { type: 'links', items: toolLinks },
         ],
       },
       {
@@ -517,7 +521,7 @@ Reglas:
         eyebrow: 'Para el docente',
         title: 'Por confirmar y advertencias',
         blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que cada profe pueda iniciar sesión con la cuenta @unal en Gemini, ChatGPT, Claude y Copilot, y que tenga permisos de edición en su curso de Moodle para importar preguntas.' },
+          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que cada profe pueda iniciar sesión con la cuenta @unal en Gemini, ChatGPT y Claude, y que tenga permisos de edición en su curso de Moodle para importar preguntas.' },
           { type: 'note', text: 'La encuesta ubicó al grupo en 2–3 de 5: el repaso de fundamentos debe ser corto, con ejemplos de su asignatura, no una clase de teoría.' },
           { type: 'note', text: 'Si el grupo no trae programa, entregue un programa ficticio de una asignatura común para que la práctica no se detenga.' },
           { type: 'note', text: 'La comparación entre modelos va al final y con fecha: cualquier tabla de «cuál es mejor» queda vieja en semanas.' },
@@ -868,11 +872,11 @@ Reglas:
     session: '03',
     title: 'IA dentro de las herramientas de trabajo',
     lead:
-      'El mismo caso de aula, resuelto dos veces: una con Google Workspace y otra con Microsoft 365. La sesión se adapta a la licencia que haya. Si no hay licencia, el ejercicio se hace con cuentas gratuitas y se pierde la edición dentro de la herramienta, no el aprendizaje.',
+      'Un caso de aula resuelto con Gemini dentro de Google Workspace, la suite de la cuenta @unal. Si alguna función no está habilitada, el ejercicio se hace con el chat y los conectores de Claude: se pierde la edición dentro de la herramienta, no el aprendizaje.',
     meta: [
       { label: 'Duración', value: '2 horas' },
       { label: 'Formato', value: '15 idea · 90 práctica · 15 entregable' },
-      { label: 'Requiere', value: 'Cuenta @unal y la suite que esté licenciada' },
+      { label: 'Requiere', value: 'Cuenta @unal con Google Workspace' },
       { label: 'Traer', value: 'Una hoja de notas ficticia y el programa del curso' },
     ],
     agenda: [
@@ -906,13 +910,13 @@ Reglas:
           },
           {
             type: 'table',
-            headers: ['Tarea docente', 'Google Workspace', 'Microsoft 365'],
+            headers: ['Tarea docente', 'Con Gemini en Workspace', 'Plan B sin la función'],
             rows: [
-              ['Analizar notas y hacer un gráfico', 'Gemini en Sheets', 'Copilot en Excel'],
-              ['Escribir retroalimentación y borradores de correo', 'Gemini en Gmail', 'Copilot en Outlook'],
-              ['Convertir apuntes en presentación', 'Docs a Slides con Gemini', 'Word a PowerPoint con Copilot'],
-              ['Resumir una reunión o clase', 'Meet y Docs', 'Teams y Word'],
-              ['Buscar en los archivos del curso', 'Drive', 'OneDrive y SharePoint'],
+              ['Analizar notas y hacer un gráfico', 'Gemini en Sheets', 'Subir la hoja como CSV al chat de Gemini o Claude'],
+              ['Escribir retroalimentación y borradores de correo', 'Gemini en Gmail', 'Claude con el conector de Gmail'],
+              ['Convertir apuntes en presentación', 'Docs a Slides con Gemini', 'Pedir el esquema en el chat y armarlo en Slides'],
+              ['Resumir una reunión o clase', 'Gemini en Meet y Docs', 'Pegar la transcripción en el chat'],
+              ['Buscar en los archivos del curso', 'Gemini con Drive', 'Claude con el conector de Drive'],
             ],
           },
           {
@@ -971,7 +975,7 @@ No uses nombres reales. Devuélvelo como CSV.`,
         blocks: [
           {
             type: 'p',
-            text: 'Abra la hoja y use el panel de IA de la suite (Gemini en Sheets o Copilot en Excel). Si no lo tiene, descargue la hoja como CSV y súbala al chat; el análisis es el mismo.',
+            text: 'Abra la hoja y use el panel de Gemini en Sheets. Si no lo tiene, descargue la hoja como CSV y súbala al chat; el análisis es el mismo.',
           },
           {
             type: 'prompt',
@@ -1080,14 +1084,13 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
         blocks: [
           {
             type: 'p',
-            text: 'Si su cuenta no tiene Gemini en Workspace ni Copilot, hay tres caminos gratuitos para el mismo ejercicio:',
+            text: 'Si su cuenta no tiene Gemini en Workspace, hay tres caminos gratuitos para el mismo ejercicio:',
           },
           {
             type: 'cards',
             items: [
               { title: 'Claude con conectores', description: 'Conecte Google Drive o Gmail desde la configuración de Claude y pídale leer una carpeta o un documento. Revise qué carpeta autoriza.', tag: 'Gratis', url: 'https://claude.ai' },
               { title: 'Gemini web con archivos', description: 'Descargue la hoja como CSV o Excel y súbala al chat. El análisis y los correos se pueden hacer igual.', tag: 'Gratis', url: 'https://gemini.google.com' },
-              { title: 'Copilot web', description: 'Versión gratuita para probar el flujo de Microsoft sin licencia institucional. Los límites de uso son distintos.', tag: 'Gratis', url: 'https://copilot.microsoft.com' },
             ],
           },
           {
@@ -1142,7 +1145,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
         eyebrow: 'Para el docente',
         title: 'Por confirmar y advertencias',
         blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Qué suite tiene licencia la universidad, si Gemini está habilitado en Workspace for Education y si hay Microsoft 365 Copilot. Sin esa respuesta, la sesión se dicta con el plan B.' },
+          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Qué funciones de Gemini están habilitadas dentro de Sheets, Gmail, Docs y Slides en las cuentas @unal. Si alguna falta, esa parte se dicta con el plan B.' },
           { type: 'note', text: 'Si hay licencia de una sola suite, prepare la práctica con esa y deje la otra como demostración de 10 minutos. No divida al grupo en dos flujos completos.' },
           { type: 'note', text: 'Las funciones de IA dentro de las suites cambian por plan y por país. Verifique el día anterior qué botón existe realmente en la cuenta de clase.' },
           { type: 'note', text: 'Nunca use notas reales de estudiantes en la demostración. Prepare la hoja ficticia antes de la sesión.' },
