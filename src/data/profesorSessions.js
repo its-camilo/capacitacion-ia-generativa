@@ -30,7 +30,7 @@ export const designChanges = [
   {
     title: 'PDF a Markdown entra como truco de contexto',
     description:
-      'MarkItDown (Microsoft) convierte PDF, Word o PowerPoint a Markdown limpio antes de pasarlos a Claude o ChatGPT. Menos tokens, menos ruido de tablas y columnas. Se usa en la sesión 4 para insumos; en la sesión 2 se reemplaza por la conversión dentro del chat, sin instalar nada.',
+      'Antes de trabajar un PDF con tablas o columnas, se le pide al chat que lo convierta a Markdown limpio, sin resumir. Menos ruido y menos tokens, sin instalar nada. Se usa en la sesión 2 para bibliografía y en la 4 para insumos.',
   },
 ]
 
@@ -1375,13 +1375,13 @@ No inventes datos. Si falta algo, escribe [verificar]. Devuelve solo asunto y cu
           },
           {
             type: 'p',
-            text: '**Variante PDF a Markdown.** Si el cuello de botella son los PDF largos, conviértalos con MarkItDown antes de pasarlos a Claude: menos tokens, tablas ordenadas y contexto más limpio. Úselo para el material del curso, no para trabajos de estudiantes sin permiso.',
+            text: '**Variante PDF a Markdown.** Si el cuello de botella son los PDF largos, pídale a Claude o a Gemini: «Convierte este documento a Markdown limpio, sin resumir», y trabaje con ese texto: menos tokens, tablas ordenadas y contexto más limpio. Úselo para el material del curso, no para trabajos de estudiantes sin permiso.',
           },
           {
             type: 'note',
             text: 'Si no hay tiempo para automatizar, el piloto puede ser el flujo manual: formulario, hoja y plantilla de correo. Lo que se evalúa es el diseño del flujo, no la herramienta.',
           },
-          { type: 'links', items: [{ label: 'Google Forms', url: 'https://forms.google.com', provider: 'Google' }, { label: 'Make', url: 'https://www.make.com', provider: 'Make' }, { label: 'MarkItDown', url: 'https://github.com/microsoft/markitdown', provider: 'Microsoft' }] },
+          { type: 'links', items: [{ label: 'Google Forms', url: 'https://forms.google.com', provider: 'Google' }, { label: 'Make', url: 'https://www.make.com', provider: 'Make' }] },
         ],
       },
       {
