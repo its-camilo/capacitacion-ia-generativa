@@ -481,7 +481,7 @@ Reglas:
           },
           {
             type: 'note',
-            text: 'Registre los errores que encontró. Es el insumo del entregable y la mejor evidencia de que aprendió a evaluar, no solo a pedir.',
+            text: 'Registre los errores que encontró: es la mejor evidencia de que aprendió a evaluar, no solo a pedir.',
           },
         ],
       },
@@ -496,7 +496,6 @@ Reglas:
               'Su habilidad o Proyecto «Asistente de mi curso», con instrucciones y archivos cargados (enlace o archivo descargado).',
               'Un parcial con tabla de especificaciones, clave y rúbrica, revisado por usted.',
               'El archivo GIFT o Aiken importado en Moodle, con captura del banco de preguntas.',
-              'Un registro breve de 3 errores encontrados y cómo los corrigió.',
             ],
           },
           {
