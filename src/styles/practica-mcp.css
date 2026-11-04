@@ -246,7 +246,7 @@
 }
 
 .fund-section__body strong {
-  color: #f1f5f9;
+  color: var(--color-heading-alt);
   font-weight: 600;
 }
 
