@@ -108,14 +108,6 @@ export const entersAndLeaves = {
   ],
 }
 
-export const pendingConfirmations = [
-  'NotebookLM habilitado en las cuentas @unal.edu.co (las Habilidades de Gemini ya funcionan).',
-  'Funciones de Gemini dentro de Docs, Sheets, Gmail y Slides en las cuentas @unal.edu.co.',
-  'Acceso a Scopus para el MCP de bibliografía.',
-  'Permisos de importación en los cursos de Moodle de cada profe.',
-  'Sede y horario: viernes 4–6 pm tiene el mejor promedio; jueves 6–8 pm es el más elegido de primero.',
-]
-
 const toolLinks = [
   { label: 'Gemini', url: 'https://gemini.google.com', provider: 'Google' },
   { label: 'ChatGPT', url: 'https://chatgpt.com', provider: 'OpenAI' },
@@ -515,17 +507,6 @@ Reglas:
           { title: 'Moodle funcionando', description: 'Las preguntas se importan, se califican y conservan tildes y opciones.' },
         ],
       },
-      {
-        id: 'notas',
-        eyebrow: 'Para el docente',
-        title: 'Por confirmar y advertencias',
-        blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Que cada profe pueda iniciar sesión con la cuenta @unal en Gemini, ChatGPT y Claude, y que tenga permisos de edición en su curso de Moodle para importar preguntas.' },
-          { type: 'note', text: 'La encuesta ubicó al grupo en 2–3 de 5: el repaso de fundamentos debe ser corto, con ejemplos de su asignatura, no una clase de teoría.' },
-          { type: 'note', text: 'Si el grupo no trae programa, entregue un programa ficticio de una asignatura común para que la práctica no se detenga.' },
-          { type: 'note', text: 'La comparación entre modelos va al final y con fecha: cualquier tabla de «cuál es mejor» queda vieja en semanas.' },
-        ],
-      },
     ],
     next: { label: 'Sesión 02 · NotebookLM', slug: 'rag' },
   },
@@ -852,17 +833,6 @@ Reglas:
           { title: 'Permisos claros', description: 'Se sabe quién puede ver, preguntar y descargar el cuaderno.' },
         ],
       },
-      {
-        id: 'notas',
-        eyebrow: 'Para el docente',
-        title: 'Por confirmar y advertencias',
-        blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'NotebookLM ya está habilitado en las cuentas @unal.edu.co (probado el 31 oct 2026). Falta confirmar si la universidad tiene acceso a la API de Scopus para el MCP de bibliografía; la biblioteca sí tiene Scopus.' },
-          { type: 'note', text: 'Los límites de fuentes y de cuadernos cambian. Revise la cifra vigente el día anterior y ajuste el número de documentos de la práctica.' },
-          { type: 'note', text: 'Si no hay acceso a Scopus, la práctica 6 se hace con ZoteroBib y Google Scholar; el entregable no cambia.' },
-          { type: 'note', text: 'La sesión no requiere instalar nada ni permisos de administrador en los equipos: todo funciona en el navegador con la cuenta @unal.' },
-        ],
-      },
     ],
     next: { label: 'Sesión 03 · Herramientas', slug: 'mcp' },
   },
@@ -1137,17 +1107,6 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
           { title: 'Retroalimentación honesta', description: 'Cada correo cita un dato real y propone una acción concreta.' },
           { title: 'Uso consciente de permisos', description: 'Se autoriza lo mínimo y se revoca al terminar.' },
           { title: 'Adaptación a la licencia', description: 'El flujo funciona con la suite disponible o con el plan B.' },
-        ],
-      },
-      {
-        id: 'notas',
-        eyebrow: 'Para el docente',
-        title: 'Por confirmar y advertencias',
-        blocks: [
-          { type: 'callout', tone: 'warn', title: 'Por confirmar antes de dictar', text: 'Qué funciones de Gemini están habilitadas dentro de Sheets, Gmail, Docs y Slides en las cuentas @unal. Si alguna falta, esa parte se dicta con el plan B.' },
-          { type: 'note', text: 'Si hay licencia de una sola suite, prepare la práctica con esa y deje la otra como demostración de 10 minutos. No divida al grupo en dos flujos completos.' },
-          { type: 'note', text: 'Las funciones de IA dentro de las suites cambian por plan y por país. Verifique el día anterior qué botón existe realmente en la cuenta de clase.' },
-          { type: 'note', text: 'Nunca use notas reales de estudiantes en la demostración. Prepare la hoja ficticia antes de la sesión.' },
         ],
       },
     ],
@@ -1438,17 +1397,6 @@ No inventes datos. Si falta algo, escribe [verificar]. Devuelve solo asunto y cu
           { title: 'Funciona una vez', description: 'Se probó con datos ficticios y se mostró en la demo.' },
           { title: 'Datos protegidos', description: 'No hay datos personales y se explica qué se excluyó.' },
           { title: 'Revisión humana', description: 'El flujo identifica el punto exacto donde una persona revisa y decide.' },
-        ],
-      },
-      {
-        id: 'notas',
-        eyebrow: 'Para el docente',
-        title: 'Por confirmar y advertencias',
-        blocks: [
-          { type: 'callout', tone: 'warn', title: 'La sesión más apretada', text: 'Si el grupo va lento, el camino B se demuestra y se deja como plantilla. El entregable mínimo es un camino terminado y la ficha, no los dos.' },
-          { type: 'note', text: 'La socialización de la sesión 3 es opcional y dura 5 minutos. Si se salta, ese tiempo pasa al entregable.' },
-          { type: 'note', text: 'Verifique el día anterior que Claude Artifacts y Gemini Canvas estén disponibles en las cuentas gratuitas del grupo. Si no, el camino A se hace con las preguntas en un documento y se muestra la app ya construida.' },
-          { type: 'note', text: 'La tabla de datos es una guía de conversación. Antes de afirmar algo sobre una herramienta, revise su política vigente y la normativa de la universidad.' },
         ],
       },
     ],

@@ -464,8 +464,7 @@
 
 /* Lists used on the overview page */
 .prof-changes,
-.prof-format,
-.prof-pending {
+.prof-format {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -494,21 +493,6 @@
   font-size: 0.8125rem;
   line-height: 1.55;
   color: var(--color-muted);
-}
-
-.prof-pending {
-  padding-left: 1.1rem;
-  list-style: disc;
-}
-
-.prof-pending li {
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  color: var(--color-fog);
-}
-
-.prof-pending li::marker {
-  color: var(--color-amber);
 }
 
 /* Session cards (overview) */

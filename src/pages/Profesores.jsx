@@ -4,7 +4,6 @@ import {
   designChanges,
   entersAndLeaves,
   formatRules,
-  pendingConfirmations,
   sessionSummaries,
 } from '../data/profesorSessions'
 import SectionBlock from '../components/fundamentos/SectionBlock'
@@ -87,19 +86,6 @@ function Profesores() {
               </ul>
             </article>
           </div>
-        </SectionBlock>
-
-        <SectionBlock id="pendientes" eyebrow="Antes de dictar" title="Por confirmar">
-          <ul className="prof-pending">
-            {pendingConfirmations.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="practica-mcp__note">
-            Esta página es la propuesta de trabajo: el contenido de cada sesión está pensado para
-            probarse y ajustarse después de la primera cohorte. Los tiempos y las herramientas
-            cambian con las licencias y con el ritmo del grupo.
-          </p>
         </SectionBlock>
       </div>
     </div>

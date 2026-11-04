@@ -220,13 +220,33 @@ input {
 }
 
 .main-content {
+  --main-content-padding-top: max(var(--radius-card), clamp(2rem, 5vw, 4.5rem));
+  --main-content-padding-x: clamp(1rem, 3vw, 3rem);
+  --main-content-cap-height: var(--radius-card);
   flex: 1;
   width: 100%;
   margin: 0 auto;
-  padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 3vw, 3rem) clamp(3rem, 7vw, 6rem);
+  padding: var(--main-content-padding-top) var(--main-content-padding-x) clamp(3rem, 7vw, 6rem);
   border-radius: var(--radius-card);
   background: var(--color-surface-base);
   box-shadow: var(--shadow-soft);
+}
+
+.main-content::before {
+  content: '';
+  position: sticky;
+  top: calc(var(--header-height) + var(--phase-bar-height) + 0.3rem);
+  z-index: 2;
+  display: block;
+  height: var(--main-content-cap-height);
+  margin-top: calc(0rem - var(--main-content-padding-top));
+  margin-right: calc(0rem - var(--main-content-padding-x));
+  margin-bottom: calc(var(--main-content-padding-top) - var(--main-content-cap-height));
+  margin-left: calc(0rem - var(--main-content-padding-x));
+  background:
+    radial-gradient(circle at 100% 100%, transparent var(--main-content-cap-height), var(--color-primary) calc(var(--main-content-cap-height) + 1px)) left top / var(--main-content-cap-height) var(--main-content-cap-height) no-repeat,
+    radial-gradient(circle at 0 100%, transparent var(--main-content-cap-height), var(--color-primary) calc(var(--main-content-cap-height) + 1px)) right top / var(--main-content-cap-height) var(--main-content-cap-height) no-repeat;
+  pointer-events: none;
 }
 
 .section-shell__header {
@@ -353,8 +373,11 @@ input {
   }
 
   .main-content {
+    --main-content-padding-top: 2rem;
+    --main-content-padding-x: 1rem;
+    --main-content-cap-height: 1.5rem;
     width: calc(100% - 1.5rem);
-    padding: 2rem 1rem 3rem;
+    padding: var(--main-content-padding-top) var(--main-content-padding-x) 3rem;
     border-radius: 1.5rem;
   }
 
@@ -476,5 +499,17 @@ input {
   .main-content .insight-card__description,
   .main-content .tool-calling-card__description {
     max-width: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content::before {
+    top: var(--header-height);
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content::before {
+    top: 4.3rem;
   }
 }
