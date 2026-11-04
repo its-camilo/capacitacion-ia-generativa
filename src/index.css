@@ -462,3 +462,19 @@ input {
     width: 100%;
   }
 }
+
+@media (min-width: 601px) {
+  .main-content {
+    width: calc(100% - 1.5rem);
+  }
+
+  .main-content .section-shell__tag,
+  .main-content .fundamentos__hero-title,
+  .main-content .fundamentos__hero-lead,
+  .main-content .fund-section__body p,
+  .main-content .fund-section__note,
+  .main-content .insight-card__description,
+  .main-content .tool-calling-card__description {
+    max-width: none;
+  }
+}
