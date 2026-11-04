@@ -156,7 +156,7 @@
   padding: 0.875rem 1rem;
   border-left: 3px solid var(--color-violet);
   background: rgba(107, 92, 231, 0.08);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   color: var(--color-muted);
   max-width: 65ch;

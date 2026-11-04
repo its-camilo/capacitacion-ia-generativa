@@ -1,6 +1,6 @@
 .prof-page {
   --color-signal: var(--color-primary-dark);
-  max-width: 54rem;
+  max-width: none;
 }
 
 .prof-page .fund-section {

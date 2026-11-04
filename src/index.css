@@ -38,6 +38,7 @@ p {
 button,
 input {
   font: inherit;
+  border-radius: var(--radius-sm);
 }
 
 :focus-visible {
@@ -132,7 +133,7 @@ input {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
-  width: min(100%, var(--content-max));
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -220,10 +221,10 @@ input {
 
 .main-content {
   flex: 1;
-  width: min(calc(100% - clamp(1.5rem, 4vw, 4rem)), 88rem);
+  width: 100%;
   margin: 0 auto;
-  padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4.5vw, 4.5rem) clamp(3rem, 7vw, 6rem);
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 3vw, 3rem) clamp(3rem, 7vw, 6rem);
+  border-radius: var(--radius-card);
   background: var(--color-surface-base);
   box-shadow: var(--shadow-soft);
 }
@@ -354,7 +355,7 @@ input {
   .main-content {
     width: calc(100% - 1.5rem);
     padding: 2rem 1rem 3rem;
-    border-radius: 1.5rem 1.5rem 0 0;
+    border-radius: 1.5rem;
   }
 
   .site-footer {
@@ -449,5 +450,15 @@ input {
     bottom: 0.2rem;
     left: auto;
     width: 3rem;
+  }
+}
+
+.main-content svg rect:not([rx]) {
+  rx: 6px;
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+  .main-content {
+    width: 100%;
   }
 }
