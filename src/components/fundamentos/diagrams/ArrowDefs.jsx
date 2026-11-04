@@ -9,7 +9,7 @@ function ArrowDefs({ id = 'arrowhead' }) {
         refY="3"
         orient="auto"
       >
-        <polygon points="0 0, 8 3, 0 6" fill="#64748b" />
+        <polygon points="0 0, 8 3, 0 6" fill="var(--color-muted)" />
       </marker>
     </defs>
   )

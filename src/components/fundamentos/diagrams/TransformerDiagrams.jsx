@@ -217,7 +217,7 @@ export function AttentionOverviewDiagram() {
       <path
         d="M 74 36 C 120 8, 210 8, 348 36"
         fill="none"
-        stroke="rgba(0,229,204,0.35)"
+        stroke="rgba(68,211,254,0.55)"
         strokeWidth="1.5"
       />
       <text x="210" y="118" textAnchor="middle" className="diagram-label diagram-label--accent">

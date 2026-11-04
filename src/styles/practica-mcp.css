@@ -249,3 +249,83 @@
   color: #f1f5f9;
   font-weight: 600;
 }
+
+
+
+.practica-mcp__steps-nav,
+.practica-mcp__query-card,
+.practica-mcp__grading {
+  border-color: var(--color-border);
+  border-radius: 1.5rem;
+  background: var(--color-surface-base);
+  box-shadow: 0 5px 20px rgba(4, 35, 97, 0.07);
+}
+
+.practica-mcp__steps-num {
+  color: var(--color-primary-dark);
+  border-color: rgba(244, 203, 24, 0.65);
+  background: var(--color-cream);
+  font-family: var(--font-display);
+}
+
+.practica-mcp__download {
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  color: var(--color-surface-base);
+  background: var(--color-primary-dark);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.practica-mcp__download:hover {
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+  filter: none;
+  transform: translateY(-2px);
+}
+
+.practica-code__pre {
+  border: 8px solid var(--color-cream);
+  border-radius: 1.5rem;
+  background: var(--color-ink);
+  color: var(--color-accent);
+  font-family: var(--font-code);
+}
+
+.practica-mcp__query-prompt,
+.practica-mcp__grading {
+  color: var(--color-text-soft);
+}
+
+.practica-mcp__grading {
+  background: rgba(68, 211, 254, 0.1);
+}
+
+.practica-mcp__grading-list strong,
+.practica-mcp__numbered code,
+.practica-mcp__links a,
+.fund-section__body code,
+.fund-section__body a:not(.practica-mcp__download) {
+  color: var(--color-primary-dark);
+}
+
+.fund-section__body strong {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.fund-section__body code {
+  padding: 0.08em 0.28em;
+  border-radius: 0.35em;
+  background: rgba(68, 211, 254, 0.13);
+}
+
+.practica-mcp__query-prompt {
+  color: var(--color-primary-dark);
+}
+
+.practica-mcp__steps-link:hover {
+  color: var(--color-primary-dark);
+}

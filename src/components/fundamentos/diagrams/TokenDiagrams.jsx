@@ -83,7 +83,7 @@ export function ContextWindowDiagram() {
         width="250"
         height="24"
         rx="3"
-        fill="rgba(0,229,204,0.4)"
+        fill="rgba(68,211,254,0.5)"
         className="context-fill context-fill--ok"
       />
       <rect
@@ -92,7 +92,7 @@ export function ContextWindowDiagram() {
         width="84"
         height="24"
         rx="3"
-        fill="rgba(245,166,35,0.5)"
+        fill="rgba(244,203,24,0.6)"
         className="context-fill context-fill--warn"
       />
       <text x="210" y="98" textAnchor="middle" className="diagram-label">

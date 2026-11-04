@@ -20,7 +20,7 @@ function TimelineDiagram() {
         y1="24"
         x2="28"
         y2={totalHeight - 24}
-        stroke="rgba(203,213,225,0.25)"
+        stroke="rgba(175,198,228,0.8)"
         strokeWidth="2"
       />
       {timelineSteps.map((step, index) => {

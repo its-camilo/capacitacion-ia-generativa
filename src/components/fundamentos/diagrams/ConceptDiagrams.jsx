@@ -57,7 +57,7 @@ export function ApiKeyDiagram() {
         Plan
       </text>
       <rect x="16" y="32" width="108" height="56" rx="8" className="diagram-box diagram-box--accent" />
-      <rect x="28" y="48" width="84" height="10" rx="2" fill="rgba(0,229,204,0.45)" />
+      <rect x="28" y="48" width="84" height="10" rx="2" fill="rgba(68,211,254,0.5)" />
       <text x="70" y="76" textAnchor="middle" className="diagram-label">
         Predecible
       </text>
@@ -66,8 +66,8 @@ export function ApiKeyDiagram() {
         Prepago
       </text>
       <rect x="156" y="32" width="108" height="56" rx="8" className="diagram-box" />
-      <rect x="168" y="48" width="36" height="10" rx="2" fill="rgba(245,166,35,0.5)" />
-      <rect x="208" y="48" width="22" height="10" rx="2" fill="rgba(245,166,35,0.3)" />
+      <rect x="168" y="48" width="36" height="10" rx="2" fill="rgba(244,203,24,0.6)" />
+      <rect x="208" y="48" width="22" height="10" rx="2" fill="rgba(244,203,24,0.35)" />
       <text x="210" y="76" textAnchor="middle" className="diagram-label">
         Se agota
       </text>

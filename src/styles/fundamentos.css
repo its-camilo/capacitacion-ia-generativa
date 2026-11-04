@@ -810,3 +810,198 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+/* Academic visual system: calm white cards framed by the institutional blue. */
+.fundamentos__content {
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.fundamentos__hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 15rem;
+  padding: 0.5rem 14rem 2rem 0;
+  border-bottom-color: var(--color-border);
+}
+
+.fundamentos__hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -1rem 0 0 auto;
+  width: 56%;
+  background-image: radial-gradient(circle, var(--color-texture) 1.3px, transparent 1.6px);
+  background-size: 9px 9px;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 52%, black 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 100% 52%, black 0%, transparent 72%);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.fundamentos__hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: 1rem;
+  bottom: -1.5rem;
+  width: clamp(10rem, 22vw, 14rem);
+  aspect-ratio: 280 / 250;
+  background: url('../assets/ai-robot.svg') center / contain no-repeat;
+  animation: robot-float 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes robot-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.fundamentos__hero-session,
+.fundamentos__toc-title,
+.fund-section__eyebrow {
+  color: var(--color-primary-dark);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.fundamentos__hero-title {
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.fundamentos__hero-lead {
+  max-width: 58ch;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.fundamentos__toc-link--active {
+  color: var(--color-primary-dark);
+  border-left-color: var(--color-accent);
+  font-weight: 600;
+}
+
+.fund-section {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.75rem;
+  background: var(--color-surface-base);
+  box-shadow: var(--shadow-soft);
+}
+
+.fund-section__title {
+  color: var(--color-primary-dark);
+  font-weight: 800;
+}
+
+.fund-section__body p,
+.fund-section__body li {
+  color: var(--color-text-soft);
+}
+
+.fund-section__body code,
+.practica-mcp code {
+  color: var(--color-primary-dark);
+  font-family: var(--font-code);
+}
+
+.skill-repo-card:hover,
+.concept-card:hover {
+  border-color: var(--color-accent);
+  background: #f7fcff;
+}
+
+.skill-repo-card__link,
+.tool-calling-card__links a,
+.concept-card__link,
+.resource-card__link,
+.diagram-label--accent,
+.flow-diagram__caption {
+  color: var(--color-primary-dark);
+}
+
+.skill-repo-card__provider,
+.insight-card__eyebrow,
+.tool-calling-card__provider,
+.resource-card__subtitle {
+  color: var(--color-primary-dark);
+}
+
+.insight-card {
+  border-color: rgba(234, 233, 203, 0.95);
+  background: var(--color-cream);
+}
+
+.tool-calling-card {
+  border-color: var(--color-border);
+  background: rgba(175, 198, 228, 0.18);
+}
+
+.provider-tag {
+  color: var(--color-primary-dark);
+  border-color: rgba(68, 211, 254, 0.65);
+  background: rgba(68, 211, 254, 0.14);
+}
+
+.diagram-box {
+  stroke: var(--color-border);
+}
+
+.diagram-box--accent,
+.flow-node--accent {
+  stroke: rgba(68, 211, 254, 0.85);
+  border-color: rgba(68, 211, 254, 0.85);
+  fill: rgba(68, 211, 254, 0.16);
+  background: rgba(68, 211, 254, 0.16);
+}
+
+.resource-card__qr {
+  border-color: var(--color-border);
+  background: var(--color-surface-base);
+}
+
+@media (max-width: 700px) {
+  .fundamentos__hero {
+    min-height: 13rem;
+    padding: 0.25rem 0 8.5rem;
+  }
+
+  .fundamentos__hero::before {
+    inset: auto -0.5rem -1.5rem 18%;
+    width: 82%;
+    height: 12rem;
+  }
+
+  .fundamentos__hero::after {
+    right: calc(50% - 5rem);
+    bottom: -1.5rem;
+    width: 10rem;
+  }
+
+  .fund-section {
+    padding: 1.125rem;
+    border-radius: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fundamentos__hero::after {
+    animation: none;
+  }
+}
+
+
+
+.fundamentos__toc-link--active {
+  background: rgba(68, 211, 254, 0.12);
+  border-color: rgba(68, 211, 254, 0.75);
+}
+
+.fund-section__note {
+  border-left-color: var(--color-accent);
+  background: rgba(175, 198, 228, 0.2);
+}

@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import PhaseBar from './PhaseBar'
-import ThemeToggle from './ThemeToggle'
 import { phases, professorPhases } from '../data/navigation'
 
 function Layout() {
@@ -19,7 +18,17 @@ function Layout() {
       <main className="main-content">
         <Outlet />
       </main>
-      <ThemeToggle />
+      <footer className="site-footer">
+        <div className="site-footer__institution">
+          <span>Facultad de Ciencias Económicas</span>
+          <span>Unidad de Informática</span>
+          <span>Sede Bogotá</span>
+        </div>
+        <div className="site-footer__wordmark">
+          Universidad Nacional<br />
+          de Colombia
+        </div>
+      </footer>
     </div>
   )
 }
