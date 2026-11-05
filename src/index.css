@@ -322,7 +322,7 @@ input {
 
 .site-footer__escudo {
   display: block;
-  height: calc(0.8rem * 1.5 * 2);
+  height: calc(0.8rem * 1.5 * 2 * 1.5);
   width: auto;
 }
 
