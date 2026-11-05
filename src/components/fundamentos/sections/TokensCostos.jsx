@@ -19,7 +19,7 @@ import {
 
 function TokensCostos() {
   return (
-    <SectionBlock id="tokens" eyebrow="Eficiencia" title="Tokens y optimización de costos">
+    <SectionBlock id="tokens" eyebrow="Eficiencia" title="Tokens y optimización de costos" mascot="explicando">
       <p>
         El modelo lee y cobra por <strong>tokens</strong> (pedazos de texto). Gestiona
         la ventana de contexto y el gasto con estas ideas:

@@ -7,7 +7,7 @@ import RagDiagram from '../diagrams/RagDiagram'
 
 function IntroRag() {
   return (
-    <SectionBlock id="rag" eyebrow="Conocimiento" title="Introducción a RAG">
+    <SectionBlock id="rag" eyebrow="Conocimiento" title="Introducción a RAG" mascot="despedida">
       <p>
         El contexto del chat es limitado: si subes muchos PDFs de golpe, se llena, cuesta
         más y la respuesta empeora.

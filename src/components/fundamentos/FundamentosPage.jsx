@@ -9,6 +9,7 @@ import TransformersAttention from './sections/TransformersAttention'
 import IntroMcp from './sections/IntroMcp'
 import IntroRag from './sections/IntroRag'
 import '../../styles/fundamentos.css'
+import Uifcito from '../Uifcito'
 
 function FundamentosPage() {
   const [activeSection, setActiveSection] = useState(sectionNav[0].id)
@@ -56,6 +57,7 @@ function FundamentosPage() {
 
       <div className="fundamentos__content">
         <header className="fundamentos__hero">
+          <Uifcito pose="saludo" variant="hero" />
           <p className="fundamentos__hero-session">Sesión 01</p>
           <h1 className="fundamentos__hero-title">Fundamentos</h1>
           <p className="fundamentos__hero-lead">

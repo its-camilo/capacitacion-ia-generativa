@@ -10,12 +10,14 @@ import {
 import SectionBlock from '../fundamentos/SectionBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
+import Uifcito from '../Uifcito'
 
 function PracticaAgentesPage() {
   return (
     <div className="practica-mcp">
       <div className="practica-mcp__content">
         <header className="fundamentos__hero">
+          <Uifcito pose="saludo" variant="hero" />
           <p className="fundamentos__hero-session">Sesión 04</p>
           <h1 className="fundamentos__hero-title">Práctica Agentes</h1>
           <p className="fundamentos__hero-lead">
@@ -157,7 +159,7 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables">
+        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables" mascot="senalando">
           <p>Cada equipo entrega:</p>
           <ul className="practica-mcp__bullet-list">
             {deliverables.map((item) => (
@@ -166,7 +168,7 @@ function PracticaAgentesPage() {
           </ul>
         </SectionBlock>
 
-        <SectionBlock id="alternativas" eyebrow="Extra" title="Otras alternativas">
+        <SectionBlock id="alternativas" eyebrow="Extra" title="Otras alternativas" mascot="despedida">
           <p>
             Hark es la herramienta del flujo principal de esta sesión. Estas otras opciones
             permiten comparar distintos enfoques de agentes, desde servicios web hasta agentes

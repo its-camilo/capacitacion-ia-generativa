@@ -13,6 +13,7 @@ import SectionBlock from '../fundamentos/SectionBlock'
 import CodeBlock from './CodeBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
+import Uifcito from '../Uifcito'
 
 const subagentsExamplePrompt = `Investiga "Casos de agentes de IA que automaticen análisis económico"
 
@@ -64,6 +65,7 @@ function PracticaMcpPage() {
         </section>
 
         <header className="fundamentos__hero">
+          <Uifcito pose="saludo" variant="hero" />
           <p className="fundamentos__hero-session">Sesión 02</p>
           <h1 className="fundamentos__hero-title">Práctica MCP</h1>
           <p className="fundamentos__hero-lead">
@@ -196,7 +198,7 @@ function PracticaMcpPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
+        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación" mascot="senalando">
           <p>
             Con SQLite y Google Docs funcionando, el reto es integrarlos en un mini proyecto. Cada
             equipo entrega:
@@ -227,6 +229,7 @@ function PracticaMcpPage() {
           id="cierre"
           eyebrow="Cierre"
           title="Quitar el MCP de Google Docs"
+          mascot="despedida"
         >
           <p>
             Al terminar la práctica, <strong>elimina el servidor MCP de Google Docs</strong> del

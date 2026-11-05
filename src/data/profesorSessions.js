@@ -149,6 +149,7 @@ export const profesorSessions = {
     sections: [
       {
         id: 'idea',
+        mascot: 'alerta',
         eyebrow: 'Idea · 15 min',
         title: 'Lo que hay que entender antes de escribir un prompt',
         blocks: [
@@ -479,6 +480,7 @@ Reglas:
       },
       {
         id: 'entregable',
+        mascot: 'despedida',
         eyebrow: 'Entregable · 15 min',
         title: 'Lo que se lleva',
         blocks: [
@@ -541,6 +543,7 @@ Reglas:
     sections: [
       {
         id: 'idea',
+        mascot: 'sorpresa',
         eyebrow: 'Idea · 15 min',
         title: 'RAG: responder con sus documentos y mostrar la fuente',
         blocks: [
@@ -804,6 +807,7 @@ Reglas:
       },
       {
         id: 'entregable',
+        mascot: 'despedida',
         eyebrow: 'Entregable · 15 min',
         title: 'Lo que se lleva',
         blocks: [
@@ -866,6 +870,7 @@ Reglas:
     sections: [
       {
         id: 'idea',
+        mascot: 'alerta',
         eyebrow: 'Idea · 15 min',
         title: 'De la pestaña del chat a la herramienta donde ya trabaja',
         blocks: [
@@ -1080,6 +1085,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
       },
       {
         id: 'entregable',
+        mascot: 'despedida',
         eyebrow: 'Entregable · 15 min',
         title: 'Lo que se lleva',
         blocks: [
@@ -1142,6 +1148,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
     sections: [
       {
         id: 'idea',
+        mascot: 'explicando',
         eyebrow: 'Idea · 10 min',
         title: 'De chatbot a agente, sin perder el control',
         blocks: [
@@ -1365,6 +1372,7 @@ No inventes datos. Si falta algo, escribe [verificar]. Devuelve solo asunto y cu
       },
       {
         id: 'entregable',
+        mascot: 'despedida',
         eyebrow: 'Entregable · 20 min',
         title: 'El piloto y su ficha',
         blocks: [

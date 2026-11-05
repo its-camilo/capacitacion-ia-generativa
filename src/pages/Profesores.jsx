@@ -10,11 +10,13 @@ import SectionBlock from '../components/fundamentos/SectionBlock'
 import '../styles/fundamentos.css'
 import '../styles/practica-mcp.css'
 import '../styles/profesor.css'
+import Uifcito from '../components/Uifcito'
 function Profesores() {
   return (
     <div className="practica-mcp prof-page">
       <div className="practica-mcp__content">
         <header className="fundamentos__hero">
+          <Uifcito pose="feliz" variant="hero" />
           <p className="fundamentos__hero-session">{courseSnapshot.eyebrow}</p>
           <h1 className="fundamentos__hero-title">{courseSnapshot.title}</h1>
           <p className="fundamentos__hero-lead">{courseSnapshot.lead}</p>

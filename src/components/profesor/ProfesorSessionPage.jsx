@@ -5,6 +5,7 @@ import ProfesorBlocks from './ProfesorBlocks'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
 import '../../styles/profesor.css'
+import Uifcito from '../Uifcito'
 
 function ProfesorSessionPage({ sessionId }) {
   const session = profesorSessions[sessionId]
@@ -15,6 +16,7 @@ function ProfesorSessionPage({ sessionId }) {
     <div className="practica-mcp prof-page">
       <div className="practica-mcp__content">
         <header className="fundamentos__hero">
+          <Uifcito pose="saludo" variant="hero" />
           <p className="fundamentos__hero-session">Sesión {session.session} · Profesores</p>
           <h1 className="fundamentos__hero-title">{session.title}</h1>
           <p className="fundamentos__hero-lead">{session.lead}</p>
@@ -69,8 +71,8 @@ function ProfesorSessionPage({ sessionId }) {
           </ol>
         </nav>
 
-        {session.sections.map(({ id, eyebrow, title, blocks }) => (
-          <SectionBlock id={id} eyebrow={eyebrow} title={title} key={id}>
+        {session.sections.map(({ id, eyebrow, title, blocks, mascot }) => (
+          <SectionBlock id={id} eyebrow={eyebrow} title={title} mascot={mascot} key={id}>
             <ProfesorBlocks blocks={blocks} />
           </SectionBlock>
         ))}

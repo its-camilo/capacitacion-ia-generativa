@@ -17,12 +17,14 @@ import InsightCard from '../fundamentos/InsightCard'
 import CodeBlock from '../practica-mcp/CodeBlock'
 import '../../styles/fundamentos.css'
 import '../../styles/practica-mcp.css'
+import Uifcito from '../Uifcito'
 
 function PracticaRagPage() {
   return (
     <div className="practica-mcp">
       <div className="practica-mcp__content">
         <header className="fundamentos__hero">
+          <Uifcito pose="saludo" variant="hero" />
           <p className="fundamentos__hero-session">Sesión 03</p>
           <h1 className="fundamentos__hero-title">Práctica RAG</h1>
           <p className="fundamentos__hero-lead">
@@ -80,7 +82,7 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="API Key de OpenRouter">
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="API Key de OpenRouter" mascot="alerta">
           <p>
             Necesitas una API key de OpenRouter para dos cosas: crear el RAG (generar embeddings e
             indexar en Pinecone) y que la página web de chat pueda consultar el RAG con un modelo
@@ -235,6 +237,7 @@ function PracticaRagPage() {
           id="cierre"
           eyebrow="Cierre"
           title="Eliminar los archivos de la interfaz del RAG"
+          mascot="despedida"
         >
           <p>
             Al terminar la práctica, <strong>elimina los archivos de la interfaz del RAG</strong>{' '}

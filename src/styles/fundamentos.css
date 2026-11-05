@@ -840,20 +840,47 @@
   pointer-events: none;
 }
 
-.fundamentos__hero::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  right: 1rem;
-  bottom: -1.5rem;
-  width: clamp(10rem, 22vw, 14rem);
-  aspect-ratio: 280 / 250;
-  background: url('../assets/ai-robot.svg') center / contain no-repeat;
-  animation: robot-float 4s ease-in-out infinite;
+.uifcito {
+  display: block;
+  height: auto;
+  object-fit: contain;
   pointer-events: none;
+  user-select: none;
 }
 
-@keyframes robot-float {
+.uifcito--hero {
+  position: absolute;
+  z-index: -1;
+  right: 1.5rem;
+  bottom: -1rem;
+  width: auto;
+  max-width: clamp(9rem, 20vw, 12.5rem);
+  max-height: 13.5rem;
+  animation: uifcito-float 4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
+}
+
+.uifcito--section {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 7.5rem;
+  max-height: 7.5rem;
+  margin: -0.5rem 0 -0.25rem;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
+}
+
+.fund-section__head--mascot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.fund-section__head-text {
+  min-width: 0;
+}
+
+@keyframes uifcito-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
@@ -976,10 +1003,16 @@
     height: 12rem;
   }
 
-  .fundamentos__hero::after {
-    right: calc(50% - 5rem);
-    bottom: -1.5rem;
-    width: 10rem;
+  .uifcito--hero {
+    right: calc(50% - 4.5rem);
+    bottom: -1rem;
+    max-width: 9rem;
+    max-height: 9rem;
+  }
+
+  .uifcito--section {
+    max-width: 4.75rem;
+    max-height: 4.75rem;
   }
 
   .fund-section {
@@ -989,7 +1022,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fundamentos__hero::after {
+  .uifcito--hero {
     animation: none;
   }
 }
