@@ -20,7 +20,7 @@ export const designChanges = [
   {
     title: 'La sesión 3 depende de las licencias',
     description:
-      'Se plantea como «IA integrada a las herramientas de trabajo» con Gemini en Google Workspace, que es la suite de la cuenta @unal. Queda un plan B con Claude y sus conectores.',
+      'Se plantea como «IA integrada a las herramientas de trabajo»: Claude con sus conectores de Google (Drive, Sheets y Gmail) y Gemini dentro de Google Docs, que es donde está activo en la cuenta @unal.',
   },
   {
     title: 'La sesión 4 se recorta a un piloto',
@@ -63,9 +63,9 @@ export const sessionSummaries = [
     label: 'Herramientas',
     title: 'IA dentro de las herramientas de trabajo',
     focus:
-      'La IA donde ya trabaja: documentos, hojas, correo y presentaciones con Gemini en Google Workspace.',
+      'La IA donde ya trabaja: hojas, correo y presentaciones con Claude y sus conectores, y Gemini en Docs.',
     deliverable: 'Hoja analizada con datos ficticios + 3 retroalimentaciones en borrador + presentación corta.',
-    tools: 'Gemini en Workspace · Conectores de Claude',
+    tools: 'Claude con conectores · Gemini en Docs',
     tag: 'Google Workspace',
   },
   {
@@ -723,6 +723,11 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             text: 'Nombre los archivos con el mismo criterio: `01_programa`, `02_lectura_modelos`, `03_articulo_rag`. Un PDF escaneado como foto no se lee bien: si el texto no se puede seleccionar, pase el archivo por OCR antes de subirlo.',
           },
           {
+            type: 'p',
+            text: 'Para la práctica use estos cinco archivos de ejemplo de Microeconomía I. Ya están en Drive y siguen esa misma estructura:',
+          },
+          { type: 'links', items: [s1Docs.programaPdf, s234Docs.lectura1, s234Docs.lectura2, s234Docs.articulo, s234Docs.transcripcion] },
+          {
             type: 'note',
             text: 'Revise los derechos de autor antes de compartir el cuaderno fuera del curso. Para uso interno de clase suele estar bien; para publicarlo, use materiales propios o de acceso abierto.',
           },
@@ -739,7 +744,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               'Entre a notebook.google.com (NotebookLM, ahora llamado Gemini Notebook) con la cuenta @unal.edu.co.',
               'Cree un cuaderno y póngale el nombre del curso y el periodo.',
-              'Suba las fuentes una por una; espere a que cada una quede procesada.',
+              'Pulse Añadir fuente → Drive y elija los cinco archivos de ejemplo (o suba los suyos). Espere a que cada uno quede procesado.',
               'Confirme que el número de fuentes y los títulos coinciden con lo que subió.',
               'Si una fuente quedó ilegible o no sube, vuelva a subirla en PDF con texto, o use Añadir fuente → Texto copiado y pegue el contenido.',
             ],
@@ -772,7 +777,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               '«¿Qué evalúa el corte 2 según el programa?»',
               '«Resume la lectura 2 en cinco ideas y cita la fuente de cada una».',
-              '«Compara la definición de [concepto] en las dos lecturas; si no coinciden, dime en qué».',
+              '«¿Quién paga un impuesto según las fuentes? Si no coinciden, dime en qué». (La lectura 2 trae un error a propósito: el cuaderno debe señalarlo).',
               '«¿Qué tema del programa no está cubierto por las fuentes cargadas?».',
               '«Propón tres preguntas de parcial y dime en qué fuente se responde cada una».',
             ],
@@ -836,7 +841,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             type: 'callout',
             tone: 'warn',
             title: 'El informe puede suavizar contradicciones',
-            text: 'En la prueba, una lectura con un error («el impuesto siempre lo paga el consumidor») apareció en el informe como una «perspectiva práctica», no como un error. Revise el informe contra las fuentes antes de entregarlo.',
+            text: 'En la prueba con los archivos de ejemplo, el informe corrigió el error de la lectura 2 («el impuesto siempre lo paga el consumidor»), pero sin decir de qué fuente salía. En otra prueba lo presentó como una «perspectiva práctica». Revise el informe contra las fuentes antes de entregarlo.',
           },
         ],
       },
@@ -907,20 +912,20 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
     session: '03',
     title: 'IA dentro de las herramientas de trabajo',
     lead:
-      'Un caso de aula resuelto con Gemini dentro de Google Workspace, la suite de la cuenta @unal. Si alguna función no está habilitada, el ejercicio se hace con el chat y los conectores de Claude: se pierde la edición dentro de la herramienta, no el aprendizaje.',
+      'Un caso de aula resuelto con Claude y sus conectores de Google (Drive, Sheets y Gmail) sobre la cuenta @unal. En la cuenta @unal, Gemini solo está activo dentro de Google Docs: ahí lo usamos para preparar la presentación.',
     meta: [
       { label: 'Duración', value: '2 horas' },
       { label: 'Formato', value: '15 idea · 90 práctica · 15 entregable' },
-      { label: 'Requiere', value: 'Cuenta @unal con Google Workspace' },
-      { label: 'Traer', value: 'Una hoja de notas ficticia y el programa del curso' },
+      { label: 'Requiere', value: 'Cuenta @unal y Claude con los conectores de Google' },
+      { label: 'Traer', value: 'Nada: los archivos de ejemplo están en Drive' },
     ],
     agenda: [
       { time: '15 min', label: 'Idea', detail: 'Qué cambia cuando la IA vive dentro de la herramienta; permisos y límites.' },
-      { time: '10 min', label: 'Práctica 1', detail: 'Preparar una hoja de notas ficticia de 25 estudiantes.' },
+      { time: '10 min', label: 'Práctica 1', detail: 'Activar los conectores de Claude y abrir la hoja de notas ficticia.' },
       { time: '25 min', label: 'Práctica 2', detail: 'Analizar el grupo: promedios, distribución, riesgo y gráfico.' },
       { time: '20 min', label: 'Práctica 3', detail: 'Tres retroalimentaciones personalizadas como borradores de correo.' },
-      { time: '20 min', label: 'Práctica 4', detail: 'De documento a presentación de clase.' },
-      { time: '15 min', label: 'Práctica 5', detail: 'Conectores de un clic y plan B sin licencia.' },
+      { time: '20 min', label: 'Práctica 4', detail: 'De apuntes a presentación: esquema con Gemini en Docs y archivo con Claude.' },
+      { time: '15 min', label: 'Práctica 5', detail: 'Revisar permisos y desconectar al terminar.' },
       { time: '15 min', label: 'Entregable', detail: 'Socializar la hoja, los correos y la presentación.' },
     ],
     goals: [
@@ -946,13 +951,13 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
           },
           {
             type: 'table',
-            headers: ['Tarea docente', 'Con Gemini en Workspace', 'Plan B sin la función'],
+            headers: ['Tarea docente', 'Herramienta', 'Cómo'],
             rows: [
-              ['Analizar notas y hacer un gráfico', 'Gemini en Sheets', 'Subir la hoja como CSV al chat de Gemini o Claude'],
-              ['Escribir retroalimentación y borradores de correo', 'Gemini en Gmail', 'Claude con el conector de Gmail'],
-              ['Convertir apuntes en presentación', 'Docs a Slides con Gemini', 'Pedir el esquema en el chat y armarlo en Slides'],
-              ['Resumir una reunión o clase', 'Gemini en Meet y Docs', 'Pegar la transcripción en el chat'],
-              ['Buscar en los archivos del curso', 'Gemini con Drive', 'Claude con el conector de Drive'],
+              ['Analizar notas y hacer un gráfico', 'Claude + Google Drive', 'Claude busca la hoja en su Drive y la analiza'],
+              ['Escribir retroalimentación', 'Claude + Gmail', 'Claude deja borradores en su Gmail; usted revisa y envía'],
+              ['Preparar el esquema de una clase', 'Gemini en Google Docs', 'Panel «Pregúntale a Gemini» sobre el documento abierto'],
+              ['Convertir apuntes en presentación', 'Claude + Google Drive', 'Claude lee el documento y entrega un PowerPoint'],
+              ['Resumir una reunión', 'Granola', 'Notas y tareas a partir del audio, sin bot'],
             ],
           },
           {
@@ -973,7 +978,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
           },
           {
             type: 'note',
-            text: 'No vamos a comparar suites. Usamos la que esté licenciada y, si no hay ninguna, el plan B de cuentas gratuitas de la práctica 5.',
+            text: 'En la cuenta @unal, Gemini no aparece en Sheets ni en Gmail; solo en Docs. Por eso la hoja y los correos se trabajan con Claude.',
           },
         ],
       },
@@ -981,33 +986,20 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         id: 'practica-1',
         mascot: 'sorpresa',
         eyebrow: 'Práctica 1 · 10 min',
-        title: 'Preparar la hoja de notas ficticia',
+        title: 'Activar los conectores y abrir la hoja',
         blocks: [
           {
-            type: 'p',
-            text: 'Cree una hoja en Sheets o Excel con 25 filas y datos inventados. Nada de nombres reales: use códigos (E01, E02…). La hoja debe tener:',
-          },
-          {
-            type: 'list',
+            type: 'numbered',
             items: [
-              'Código del estudiante y programa.',
-              'Nota del corte 1, corte 2 y una actividad.',
-              'Porcentaje de asistencia.',
-              'Una columna de observaciones con texto libre, dos o tres con dificultades concretas.',
+              'Entre a claude.ai con la cuenta @unal (Continuar con Google).',
+              'En un chat nuevo pulse «+» y revise los conectores. Active Google Drive y Gmail; si no aparecen, pulse Añadir conectores y conéctelos con la cuenta @unal.',
+              'Abra la hoja de notas ficticia y haga una copia en su Drive (Archivo → Hacer una copia). Así trabaja sobre la suya.',
             ],
           },
+          { type: 'links', items: [s234Docs.notas, { label: 'Claude', url: 'https://claude.ai', provider: 'Anthropic' }] },
           {
             type: 'note',
-            text: 'Si usa la plantilla de clase, cambie los valores antes de trabajar. El ejercicio es sobre el método, no sobre los datos.',
-          },
-          {
-            type: 'prompt',
-            label: 'Para generar la hoja si no la trae',
-            text: `Genera una tabla de 25 estudiantes ficticios para un curso de [asignatura].
-Columnas: código (E01 a E25), programa, corte_1 (0.0 a 5.0), corte_2, actividad, asistencia (%), observaciones.
-Usa datos verosímiles: algunos en riesgo, la mayoría en el medio, dos sobresalientes.
-En observaciones, escribe una dificultad concreta y distinta por estudiante.
-No uses nombres reales. Devuélvelo como CSV.`,
+            text: 'La hoja tiene 25 estudiantes inventados (E01 a E25) con corte 1, corte 2, actividad, asistencia y observaciones. Nada de nombres reales.',
           },
         ],
       },
@@ -1019,32 +1011,28 @@ No uses nombres reales. Devuélvelo como CSV.`,
         blocks: [
           {
             type: 'p',
-            text: 'Abra la hoja y use el panel de Gemini en Sheets. Si no lo tiene, descargue la hoja como CSV y súbala al chat; el análisis es el mismo.',
+            text: 'Pegue el prompt en Claude. Claude busca la hoja en su Drive, calcula y dibuja el gráfico en el chat.',
           },
           {
             type: 'prompt',
             label: 'Análisis del grupo',
-            text: `Con esta hoja de notas ficticia:
+            text: `Busca en mi Google Drive la hoja «S3-01 Notas ficticias del grupo» y con ella:
 1. Calcula promedio, mediana y desviación por corte.
-2. Dime cuántos estudiantes están en riesgo (promedio < 3.0 o asistencia < 70%) y cuáles son sus códigos.
+2. Dime cuántos estudiantes están en riesgo (promedio de corte_1, corte_2 y actividad < 3.0 o asistencia < 70%) y cuáles son sus códigos.
 3. Compara corte 1 y corte 2: ¿mejoró o empeoró el grupo?
-4. Propón un gráfico que muestre la distribución y explícame qué se ve.
+4. Haz un gráfico de la distribución y explícame qué se ve.
 5. Escribe 5 hallazgos en lenguaje de consejo de facultad, sin nombrar estudiantes.
 6. Al final, lista los supuestos que usaste y los datos que faltan.`,
           },
           {
             type: 'p',
-            text: '**Verifique los números.** Pida que muestre las fórmulas o el paso a paso, y compruebe dos celdas a mano. Un promedio mal calculado en una reunión de facultad es peor que no tener el análisis.',
+            text: '**Verifique los números.** Con la hoja de ejemplo, el resultado correcto es: promedio del corte 1 = 3,61; del corte 2 = 3,44; en riesgo E09, E11, E15 y E25. Si Claude da otra cosa, pídale el paso a paso.',
           },
           {
             type: 'callout',
             tone: 'ok',
-            title: 'Pregunta por el método, no solo por el resultado',
-            text: '«¿Cómo calculaste el riesgo?», «¿qué pasa si cambio el umbral a 3.2?», «¿qué estudiantes quedan justo en el límite?». Eso convierte el panel en un asistente y no en una caja negra.',
-          },
-          {
-            type: 'note',
-            text: 'El gráfico debe quedar dentro de la hoja, no solo descrito en el chat. Si la IA no lo inserta, pídale los pasos exactos y hágalo usted.',
+            title: 'Pregunte por el método, no solo por el resultado',
+            text: '«¿Cómo calculaste el riesgo?», «¿qué pasa si cambio el umbral a 3,2?», «¿qué estudiantes quedan justo en el límite?».',
           },
         ],
       },
@@ -1056,12 +1044,12 @@ No uses nombres reales. Devuélvelo como CSV.`,
         blocks: [
           {
             type: 'p',
-            text: 'El objetivo es producir tres borradores de correo con la información de la hoja y la rúbrica del curso. La IA redacta; usted revisa y envía.',
+            text: 'En el mismo chat, pida tres borradores. Claude los deja en su Gmail como borradores; usted los revisa y decide si los envía.',
           },
           {
             type: 'prompt',
-            label: 'Tres borradores de retroalimentación',
-            text: `Con los datos de los estudiantes [E04, E11, E19] y la rúbrica adjunta, escribe un borrador de correo para cada uno.
+            label: 'Tres borradores en Gmail',
+            text: `Con los datos de E04, E11 y E19 de esa hoja y la rúbrica «04 Rúbrica de desarrollo» de mi Drive, crea en mi Gmail tres BORRADORES (no los envíes) dirigidos a mí mismo, uno por estudiante.
 
 Cada correo debe:
 - Saludar por el código, no por nombre.
@@ -1070,22 +1058,22 @@ Cada correo debe:
 - Cerrar con una acción y un plazo.
 - Tener máximo 120 palabras y tono respetuoso, sin paternalismo.
 
-No inventes datos que no estén en la hoja. Si falta información, escribe [verificar].
-Devuélvelos en una tabla: código, asunto, cuerpo.`,
+No inventes datos que no estén en la hoja. Si falta información, escribe [verificar].`,
           },
           {
-            type: 'p',
-            text: '**Revise cada borrador** con esta lista: ¿el dato es real?, ¿el tono es adecuado?, ¿la acción es concreta?, ¿el estudiante puede responder?, ¿el correo no revela información de otros?',
+            type: 'numbered',
+            items: [
+              'Claude pide permiso para usar «Create draft email». Elija Permitir una vez.',
+              'Abra Gmail → Borradores y revise los tres: ¿el dato es real?, ¿el tono es adecuado?, ¿la acción es concreta?',
+              'Corrija lo que haga falta. No envíe nada a estudiantes en esta práctica.',
+            ],
           },
+          { type: 'links', items: [s1Docs.rubrica] },
           {
             type: 'callout',
             tone: 'warn',
-            title: 'No active el envío automático',
-            text: 'La retroalimentación personalizada se revisa una por una. Un correo con la nota equivocada o con el nombre de otro estudiante es un problema de privacidad, no un error de formato.',
-          },
-          {
-            type: 'note',
-            text: 'Si la suite lo permite, guarde los borradores en la bandeja y envíelos después de revisarlos. Si no, copie el texto y envíelo manualmente.',
+            title: 'Nunca «Permitir siempre» para enviar',
+            text: 'Autorice crear borradores, no enviar. Un correo con la nota equivocada o con datos de otro estudiante es un problema de privacidad, no un error de formato.',
           },
         ],
       },
@@ -1093,33 +1081,36 @@ Devuélvelos en una tabla: código, asunto, cuerpo.`,
         id: 'practica-4',
         mascot: 'explicando',
         eyebrow: 'Práctica 4 · 20 min',
-        title: 'De documento a presentación de clase',
+        title: 'De apuntes a presentación de clase',
         blocks: [
           {
             type: 'p',
-            text: 'Use los apuntes de una unidad o la guía generada en la sesión 2. El objetivo es una presentación de 5 diapositivas para abrir o cerrar la clase, no un mazo de 30.',
+            text: 'Dos pasos: el esquema se piensa con Gemini dentro del documento y el archivo lo arma Claude. El objetivo son 5 diapositivas para abrir la clase.',
           },
+          { type: 'links', items: [s234Docs.apuntes] },
           {
             type: 'numbered',
             items: [
-              'Abra el documento de apuntes y pida un esquema de 5 diapositivas: una idea por diapositiva.',
-              'Genere la presentación en Slides o PowerPoint desde el panel de IA.',
-              'Revise que cada diapositiva tenga una sola idea y que los datos coincidan con el documento.',
-              'Ajuste el diseño: tipografía legible, sin párrafos, una imagen o esquema por diapositiva.',
-              'Exporte a PDF y pruébelo en el proyector del salón, no solo en el portátil.',
+              'Abra los apuntes en Google Docs y pulse el ícono de Gemini arriba a la derecha («Pregúntale a Gemini»).',
+              'Pegue el prompt del esquema y ajústelo hasta que le guste.',
+              'Vaya a Claude, pegue el prompt de la presentación y descargue el PowerPoint.',
+              'Revise que cada diapositiva tenga una sola idea y que los datos coincidan con los apuntes.',
+              'Ábralo en PowerPoint o Google Slides y pruébelo en el proyector.',
             ],
           },
           {
             type: 'prompt',
-            label: 'Esquema de la presentación',
-            text: `Con este documento, prepara una presentación de 5 diapositivas para [curso, tema].
-Cada diapositiva debe tener: título corto, una idea, 3 puntos máximo y una pregunta para el grupo.
-La última debe cerrar con una actividad de 5 minutos.
-No agregues temas que no estén en el documento. Devuélveme primero el esquema en texto y espera mi aprobación.`,
+            label: '1. En Gemini, dentro del documento',
+            text: `Con este documento, prepara el esquema de una presentación de 5 diapositivas para abrir la clase: título corto, una idea, 3 puntos máximo y una pregunta para el grupo por diapositiva. La última cierra con una actividad de 5 minutos. No agregues temas que no estén en el documento.`,
+          },
+          {
+            type: 'prompt',
+            label: '2. En Claude',
+            text: `Busca en mi Drive el documento «S3-02 Apuntes · Unidad 2 Elasticidades» y prepara una presentación de 5 diapositivas siguiendo este esquema: [pegue el esquema de Gemini]. No agregues temas que no estén en el documento. Entrégamela como archivo de PowerPoint descargable.`,
           },
           {
             type: 'note',
-            text: 'Si la generación de diapositivas no está disponible en su licencia, el esquema en texto ya es el 70% del trabajo: péguelo en Slides o PowerPoint y arme el diseño a mano.',
+            text: 'En la prueba, Claude entregó el .pptx en menos de 2 minutos y dejó las respuestas en las notas del orador. Si inventa preguntas que no están en los apuntes, se lo dice: revíselas.',
           },
         ],
       },
@@ -1127,32 +1118,22 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
         id: 'practica-5',
         mascot: 'senalando',
         eyebrow: 'Práctica 5 · 15 min',
-        title: 'Conectores de un clic y plan B',
+        title: 'Revisar permisos y desconectar',
         blocks: [
           {
-            type: 'p',
-            text: 'Si su cuenta no tiene Gemini en Workspace, hay tres caminos gratuitos para el mismo ejercicio:',
-          },
-          {
-            type: 'cards',
+            type: 'numbered',
             items: [
-              { title: 'Claude con conectores', description: 'Conecte Google Drive o Gmail desde la configuración de Claude y pídale leer una carpeta o un documento. Revise qué carpeta autoriza.', tag: 'Gratis', url: 'https://claude.ai' },
-              { title: 'Gemini web con archivos', description: 'Descargue la hoja como CSV o Excel y súbala al chat. El análisis y los correos se pueden hacer igual.', tag: 'Gratis', url: 'https://gemini.google.com' },
+              'En Claude, abra Configuración → Conectores y revise qué cuentas y servicios quedaron conectados.',
+              'Desconecte Gmail si no lo va a seguir usando; deje Drive solo si lo necesita.',
+              'Borre de Gmail los borradores de prueba y de Drive su copia de la hoja.',
+              'Si tiene Granola instalado en su equipo personal, pruebe a tomar notas de una reunión corta.',
             ],
-          },
-          {
-            type: 'p',
-            text: '**Qué se pierde sin licencia y qué no.** Se pierde la edición dentro del documento y la posibilidad de insertar el gráfico o la diapositiva con un clic. No se pierde el análisis, la redacción de la retroalimentación ni la revisión.',
           },
           {
             type: 'callout',
             tone: 'warn',
             title: 'Antes de conectar la cuenta institucional',
-            text: 'Revise quién administra el dominio, qué servicios están permitidos y qué datos se comparten. Si tiene dudas, use una cuenta personal para la prueba y datos ficticios.',
-          },
-          {
-            type: 'note',
-            text: 'Revocar el acceso es parte del ejercicio: al terminar, desconecte el conector y borre los archivos de prueba que subió.',
+            text: 'Un conector ve lo que su cuenta ve. Autorice solo lo necesario, use datos ficticios para practicar y revoque el acceso al terminar.',
           },
         ],
       },
@@ -1304,7 +1285,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
         blocks: [
           {
             type: 'p',
-            text: 'Antes de construir, observe uno. Use una herramienta de investigación profunda (Deep Research de ChatGPT, Gemini o Claude) sobre un tema de su unidad. La instrucción debe pedir fuentes y un producto concreto.',
+            text: 'Antes de construir, observe uno. En Gemini, abra «Subidas y herramientas» y elija Deep Research. Gemini muestra un plan; revíselo y pulse «Empezar la investigación». Lance la investigación al comienzo: tarda varios minutos y puede cerrar el chat mientras trabaja.',
           },
           {
             type: 'prompt',
@@ -1337,25 +1318,29 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         blocks: [
           {
             type: 'p',
-            text: 'Elija este camino si quiere una actividad para la próxima clase: un quiz en vivo, una encuesta o un repaso. Se construye con Claude Artifacts o Gemini Canvas y se abre en el navegador del salón o del celular.',
+            text: 'Elija este camino si quiere una actividad para la próxima clase: un quiz en vivo con los dos archivos de ejemplo. Se construye con Claude o con Gemini Canvas y se abre en el navegador del salón o del celular.',
+          },
+          { type: 'links', items: [s234Docs.lectura1, s234Docs.articulo] },
+          {
+            type: 'p',
+            text: 'Primero pida las preguntas y apruébelas:',
           },
           {
             type: 'prompt',
-            label: 'Quiz en vivo a partir de su material',
-            text: `Crea una app HTML de una sola página para un quiz en vivo de clase.
-Tema: [tema de la unidad]. Curso: [asignatura].
-8 preguntas de selección múltiple, 4 opciones, una correcta.
-Al responder: muestra si es correcta, la explicación y la fuente (archivo o lectura).
-Al final: puntaje, preguntas falladas y botón para reiniciar.
-Diseño legible en proyector y en celular, alto contraste, sin dependencias externas.
-No inventes contenido: usa solo el material adjunto.`,
+            label: '1. Las preguntas',
+            text: `Busca en mi Google Drive «S2-02 Lectura 1 · Oferta, demanda y equilibrio» y «S2-04 Artículo · Controles de precios». Con ellos escribe 8 preguntas de selección múltiple (4 opciones, una correcta) con explicación y la fuente de cada una. Solo texto por ahora, espera mi aprobación.`,
+          },
+          {
+            type: 'prompt',
+            label: '2. La app',
+            text: `Aprobadas. Crea una app HTML de una sola página para un quiz en vivo de clase con esas 8 preguntas: al responder muestra si es correcta, la explicación y la fuente; al final puntaje, preguntas falladas y botón para reiniciar. Diseño legible en proyector y celular, alto contraste, sin dependencias externas.`,
           },
           {
             type: 'numbered',
             items: [
-              'Adjunte el material de la unidad y pegue el prompt en Claude o Gemini.',
-              'Pida primero las 8 preguntas en texto y apruébelas antes de generar la app.',
-              'Genere el artifact o canvas y ábralo en una pestaña nueva.',
+              'En Claude, el conector de Drive encuentra los archivos. En Gemini, active Canvas en «Subidas y herramientas» y adjunte los archivos con «Añadir desde Drive».',
+              'Revise las 8 preguntas antes de aprobar: la respuesta del equilibrio es P = 30 y Q = 80.',
+              'Responda dos preguntas en la vista previa y compruebe el puntaje y el botón «Reiniciar quiz».',
               'Pruébelo en el celular y en el proyector: tamaño de letra, contraste y botones.',
               'Guarde el enlace y prepare un plan B (las preguntas en un documento) por si falla el internet.',
             ],
