@@ -939,6 +939,12 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             ],
           },
           {
+            type: 'cards',
+            items: [
+              { title: 'Granola: notas de reuniones sin bot', description: 'Toma las notas de una reunión de comité, una asesoría o una clase por Meet, Zoom o Teams a partir del audio del equipo, sin meter un bot a la llamada. Al final entrega resumen y tareas. Es una app para Windows, Mac o celular: úsela en su equipo personal, no en los PC de la sala. Plan gratis con notas ilimitadas; las de más de 30 días piden plan pago.', tag: 'Reuniones', url: 'https://www.granola.ai' },
+            ],
+          },
+          {
             type: 'callout',
             tone: 'warn',
             title: 'El permiso es el riesgo',
