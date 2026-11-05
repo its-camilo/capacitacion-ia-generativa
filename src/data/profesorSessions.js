@@ -197,6 +197,12 @@ export const profesorSessions = {
             text: '**Gemini y Gemini Notebook (NotebookLM) con la cuenta @unal** están cubiertos por el contrato de Google Workspace for Education de la universidad: lo que escribe y los archivos que sube no los revisan personas ni se usan para entrenar modelos de IA, y no salen de la organización sin su permiso. **ChatGPT y Claude** no tienen contrato con la universidad: aunque entre con el correo @unal, es una cuenta personal gratuita. Ahí desactive el entrenamiento (ChatGPT: Configuración → Controles de datos → «Mejorar el modelo para todos»; Claude: Configuración → Privacidad → «Ayudar a mejorar Claude») y suba solo material público o ficticio. En ningún caso la licencia autoriza subir datos personales de estudiantes: la regla de qué no se sube aplica igual.',
           },
           {
+            type: 'callout',
+            tone: 'ok',
+            title: 'Seguridad de sus cuentas',
+            text: '**Una contraseña distinta para cada servicio:** si se filtra la de ChatGPT, no deben caer también el correo @unal ni el banco. **Use un gestor de contraseñas** (Google Password Manager ya viene en Chrome; Bitwarden es gratuito) para crearlas largas y no tener que recordarlas. **Active la verificación en dos pasos** en la cuenta @unal, en ChatGPT y en Claude, con una app de autenticación o la notificación del celular. Y no comparta la cuenta con monitores ni la deje abierta en los PC de la sala: cierre sesión al terminar.',
+          },
+          {
             type: 'p',
             text: '**La fórmula mínima de una tarea.** Contexto · Solicitud · Formato · Restricciones. Si la tarea es grande, agregue rol y un ejemplo de lo que espera.',
           },
