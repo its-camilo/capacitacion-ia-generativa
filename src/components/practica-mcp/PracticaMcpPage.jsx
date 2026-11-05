@@ -89,6 +89,7 @@ function PracticaMcpPage() {
 
         <SectionBlock
           id="paso-1"
+          mascot="senalando"
           eyebrow="Paso 1"
           title="Descargar la base de datos de ejemplo"
         >
@@ -117,7 +118,7 @@ function PracticaMcpPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Instalar el MCP de SQLite">
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Instalar el MCP de SQLite" mascot="explicando">
           <p>
             Agrega el servidor MCP de SQLite en la configuración de tu cliente. Reemplaza la ruta
             del último argumento con la ubicación de tu <code>northwind.db</code>.
@@ -150,6 +151,7 @@ function PracticaMcpPage() {
 
         <SectionBlock
           id="paso-4"
+          mascot="feliz"
           eyebrow="Paso 4 · Bonus"
           title="Instalar el MCP de Google Docs"
         >
@@ -186,7 +188,7 @@ function PracticaMcpPage() {
           </ul>
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Crear un Doc y probarlo">
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Crear un Doc y probarlo" mascot="sorpresa">
           <p>
             Crea un documento vacío en tu Google Drive. Luego, desde OpenCode o tu cliente, haz una
             solicitud simple: por ejemplo, que lea el título, inserte un párrafo con un resumen de

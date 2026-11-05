@@ -7,6 +7,7 @@ function IntroMcp() {
   return (
     <SectionBlock
       id="mcp"
+      mascot="senalando"
       eyebrow="Herramientas"
       title="Introducción a MCP"
       diagram={<McpSqlDiagram />}

@@ -13,7 +13,7 @@ import {
 
 function TransformersAttention() {
   return (
-    <SectionBlock id="transformers" eyebrow="Arquitectura" title="Transformers">
+    <SectionBlock id="transformers" eyebrow="Arquitectura" title="Transformers" mascot="sorpresa">
       <p>
         En 2017, <em>Attention Is All You Need</em> propuso una forma nueva de procesar
         texto que hoy usan casi todos los modelos.

@@ -232,6 +232,7 @@ export const profesorSessions = {
       },
       {
         id: 'practica-1',
+        mascot: 'explicando',
         eyebrow: 'Práctica 1 · 10 min',
         title: 'Reescribir una tarea real',
         blocks: [
@@ -325,6 +326,7 @@ Restricciones: no incluyas temas que no estén en el programa, no uses datos de 
       },
       {
         id: 'practica-3',
+        mascot: 'senalando',
         eyebrow: 'Práctica 3 · 15 min',
         title: 'Moodle sin pegar pregunta por pregunta',
         blocks: [
@@ -388,6 +390,7 @@ ANSWER: B`,
       },
       {
         id: 'practica-4',
+        mascot: 'feliz',
         eyebrow: 'Práctica 4 · 20 min',
         title: 'El asistente que conoce mi curso',
         blocks: [
@@ -455,6 +458,7 @@ Reglas:
       },
       {
         id: 'practica-5',
+        mascot: 'pensando',
         eyebrow: 'Práctica 5 · 20 min',
         title: 'Revisión cruzada y ajuste',
         blocks: [
@@ -601,6 +605,7 @@ Reglas:
       },
       {
         id: 'practica-1',
+        mascot: 'neutral',
         eyebrow: 'Práctica 1 · 10 min',
         title: 'Reunir y nombrar las fuentes',
         blocks: [
@@ -630,6 +635,7 @@ Reglas:
       },
       {
         id: 'practica-2',
+        mascot: 'explicando',
         eyebrow: 'Práctica 2 · 15 min',
         title: 'Crear el cuaderno y cargar',
         blocks: [
@@ -698,6 +704,7 @@ Reglas:
       },
       {
         id: 'practica-4',
+        mascot: 'senalando',
         eyebrow: 'Práctica 4 · 15 min',
         title: 'Convertirlo en material de estudio',
         blocks: [
@@ -740,6 +747,7 @@ Reglas:
       },
       {
         id: 'practica-5',
+        mascot: 'feliz',
         eyebrow: 'Práctica 5 · 15 min',
         title: 'Compartirlo como tutor del curso',
         blocks: [
@@ -767,6 +775,7 @@ Reglas:
       },
       {
         id: 'practica-6',
+        mascot: 'pensando',
         eyebrow: 'Práctica 6 · 15 min',
         title: 'Bibliografía sistematizada (si el tiempo alcanza)',
         blocks: [
@@ -913,6 +922,7 @@ Reglas:
       },
       {
         id: 'practica-1',
+        mascot: 'sorpresa',
         eyebrow: 'Práctica 1 · 10 min',
         title: 'Preparar la hoja de notas ficticia',
         blocks: [
@@ -983,6 +993,7 @@ No uses nombres reales. Devuélvelo como CSV.`,
       },
       {
         id: 'practica-3',
+        mascot: 'alerta',
         eyebrow: 'Práctica 3 · 20 min',
         title: 'Retroalimentación personalizada, sin enviar',
         blocks: [
@@ -1023,6 +1034,7 @@ Devuélvelos en una tabla: código, asunto, cuerpo.`,
       },
       {
         id: 'practica-4',
+        mascot: 'explicando',
         eyebrow: 'Práctica 4 · 20 min',
         title: 'De documento a presentación de clase',
         blocks: [
@@ -1056,6 +1068,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
       },
       {
         id: 'practica-5',
+        mascot: 'senalando',
         eyebrow: 'Práctica 5 · 15 min',
         title: 'Conectores de un clic y plan B',
         blocks: [
@@ -1212,6 +1225,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
       },
       {
         id: 'socializacion',
+        mascot: 'feliz',
         eyebrow: 'Práctica 0 · 5 min (opcional)',
         title: 'Qué quedó de la sesión 3',
         blocks: [
@@ -1260,6 +1274,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
       },
       {
         id: 'camino-a',
+        mascot: 'pensando',
         eyebrow: 'Práctica 2 · Camino A · 30 min',
         title: 'App interactiva de clase',
         blocks: [
@@ -1303,6 +1318,7 @@ No inventes contenido: usa solo el material adjunto.`,
       },
       {
         id: 'camino-b',
+        mascot: 'sorpresa',
         eyebrow: 'Práctica 3 · Camino B · 30 min',
         title: 'Flujo automatizado de retroalimentación',
         blocks: [
@@ -1356,6 +1372,7 @@ No inventes datos. Si falta algo, escribe [verificar]. Devuelve solo asunto y cu
       },
       {
         id: 'cierre',
+        mascot: 'alerta',
         eyebrow: 'Cierre · 5 min',
         title: 'IA y evaluación: lo que no se puede delegar',
         blocks: [

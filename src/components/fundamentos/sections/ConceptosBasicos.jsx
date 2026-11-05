@@ -5,7 +5,7 @@ import { ConceptDiagram } from '../diagrams/ConceptDiagrams'
 
 function ConceptosBasicos() {
   return (
-    <SectionBlock id="conceptos" eyebrow="Vocabulario" title="Conceptos básicos">
+    <SectionBlock id="conceptos" eyebrow="Vocabulario" title="Conceptos básicos" mascot="explicando">
       <p>Vocabulario mínimo para hablar de IA en el curso.</p>
       {concepts.map((concept) => (
         <ConceptRow

@@ -58,7 +58,7 @@ function PracticaRagPage() {
           </ol>
         </nav>
 
-        <SectionBlock id="paso-1" eyebrow="Paso 1" title="Configura todos los MCP de una vez">
+        <SectionBlock id="paso-1" eyebrow="Paso 1" title="Configura todos los MCP de una vez" mascot="explicando">
           <p>
             La base <strong>Northwind</strong> ya está en el servidor de clase: no descargues una
             base ni instales los MCP remotos. Copia un solo bloque a la configuración de tu cliente.
@@ -115,7 +115,7 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Crear el RAG en Pinecone">
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Crear el RAG en Pinecone" mascot="pensando">
           <p>
             Con los MCP de SQLite, Pinecone y OpenRouter ya configurados, pide a la IA que explore
             la base SQLite mediante sus herramientas MCP y cargue hasta 1000 chunks en un índice
@@ -137,7 +137,7 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Interfaz de chat con el RAG">
+        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Interfaz de chat con el RAG" mascot="feliz">
           <p>
             Cuando el índice esté listo, pide una página autocontenida <code>index.html</code> con
             HTML, CSS y JavaScript vanilla. No debe requerir npm, Node.js, compilación, servidor,
@@ -167,7 +167,7 @@ function PracticaRagPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Crear el reporte en Power BI">
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Crear el reporte en Power BI" mascot="neutral">
           <p>
             El MCP remoto <code>powerbi</code> ya está configurado en el paso 1. Usa el paquete{' '}
             <a href="https://github.com/d0nk3yhm/pbix-mcp" target="_blank" rel="noreferrer">

@@ -41,7 +41,7 @@ function PracticaAgentesPage() {
           </ol>
         </nav>
 
-        <SectionBlock id="paso-1" eyebrow="Paso 1" title="Prerrequisitos">
+        <SectionBlock id="paso-1" eyebrow="Paso 1" title="Prerrequisitos" mascot="explicando">
           <p>
             La práctica está diseñada para realizarse con herramientas web. Hark ofrece un plan
             gratuito, aunque el uso del agente tiene límites y una tarea larga puede agotar la
@@ -66,7 +66,7 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Entrar a Hark">
+        <SectionBlock id="paso-2" eyebrow="Paso 2" title="Entrar a Hark" mascot="feliz">
           <p>
             <a href={harkLinks.web} target="_blank" rel="noreferrer">Hark</a> es un asistente
             que puede delegar tareas al navegador de un computador en la nube mediante su
@@ -120,7 +120,7 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear la presentación en Canva">
+        <SectionBlock id="paso-4" eyebrow="Paso 4" title="Crear la presentación en Canva" mascot="senalando">
           <p>
             Copia el siguiente prompt en Hark. El agente debe investigar primero, comprobar los
             datos y luego usar el navegador para construir la presentación. La creación y
@@ -136,7 +136,7 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Exportar y verificar el PDF">
+        <SectionBlock id="paso-5" eyebrow="Paso 5" title="Exportar y verificar el PDF" mascot="neutral">
           <ol className="practica-mcp__numbered">
             <li>
               Pide a Hark que exporte el diseño de Canva como PDF y que adjunte el archivo

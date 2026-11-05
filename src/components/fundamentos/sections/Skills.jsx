@@ -6,6 +6,7 @@ function Skills() {
   return (
     <SectionBlock
       id="skills"
+      mascot="feliz"
       eyebrow="Extensibilidad"
       title="Skills"
     >
