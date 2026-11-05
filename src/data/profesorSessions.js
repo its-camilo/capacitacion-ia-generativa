@@ -130,6 +130,11 @@ const s1Docs = {
   respuesta: { label: '05 Respuesta de estudiante E07', url: 'https://docs.google.com/document/d/1RkQWT3C5Gdk1Iv0-RLN98aykKQw12aj0A2a--xVdkmw/edit', provider: 'Docs' },
 }
 
+const s1Entregas = {
+  formulario: { label: 'Formulario de entregables', url: 'https://docs.google.com/forms/d/e/1FAIpQLSe9G_ktvdYvwZfpVqgBnxbOVoEmOkz1m-ZI3p_e17XOJYlAXg/viewform', provider: 'Forms' },
+  kahoot: { label: 'Iniciar el Kahoot (facilitador)', url: 'https://create.kahoot.it/details/sesion-1-ia-generativa-para-profesores-uifce/01334253-1075-4f3e-8bfc-6d92cda205d1', provider: 'Kahoot' },
+}
+
 export const profesorSessions = {
   fundamentos: {
     session: '01',
@@ -148,8 +153,8 @@ export const profesorSessions = {
       { time: '25 min', label: 'Práctica 2', detail: 'Parcial con rúbrica y clave a partir del programa.' },
       { time: '15 min', label: 'Práctica 3', detail: 'Pasar las preguntas a Moodle en GIFT o Aiken.' },
       { time: '20 min', label: 'Práctica 4', detail: 'Construir el «Asistente de mi curso»: habilidad en Gemini o Proyecto en ChatGPT o Claude.' },
-      { time: '20 min', label: 'Práctica 5', detail: 'Revisión cruzada con otro profe y ajuste del asistente.' },
-      { time: '15 min', label: 'Entregable', detail: 'Socializar el asistente y el parcial; cerrar con la lista de verificación.' },
+      { time: '20 min', label: 'Práctica 5', detail: 'Guía de corrección de errores para seguir mejorando el asistente después de la sesión.' },
+      { time: '15 min', label: 'Entregable', detail: 'Subir los pantallazos del asistente y el PDF del parcial; cerrar con el Kahoot.' },
     ],
     goals: [
       'Convertir una tarea de su curso en un encargo que la IA pueda ejecutar y usted pueda evaluar.',
@@ -510,28 +515,51 @@ Reglas:
         id: 'practica-5',
         mascot: 'pensando',
         eyebrow: 'Práctica 5 · 20 min',
-        title: 'Revisión cruzada y ajuste',
+        title: 'Guía de corrección de errores para el trabajo a futuro',
         blocks: [
           {
             type: 'p',
-            text: 'Intercambie el asistente y el parcial con un colega. Cada uno busca fallas en el trabajo del otro con la lista de verificación. La IA se evalúa como se evalúa un borrador: con criterios y con evidencia.',
+            text: 'El asistente y los prompts que armó hoy los va a seguir usando. Cuando algo salga mal en su trabajo diario, no empiece de cero: identifique el síntoma, cambie una sola cosa y vuelva a probar. Esta guía queda para consultarla después de la sesión.',
           },
-          { type: 'links', items: [s1Docs.rubrica, s1Docs.respuesta] },
           {
             type: 'table',
-            headers: ['Falla típica', 'Qué ajustar'],
+            headers: ['Síntoma', 'Causa probable', 'Qué hacer'],
             rows: [
-              ['Respuestas correctas pero genéricas', 'Falta contexto: agregue programa, nivel y un ejemplo de lo que espera.'],
-              ['Cita una fuente que no dice eso', 'Pida la cita textual y verifique el archivo. Si no aparece, elimine la referencia.'],
-              ['Inventa un acuerdo del curso', 'Refuerce la restricción y suba el documento donde está el acuerdo.'],
-              ['Califica con una rúbrica distinta', 'Adjunte la rúbrica y pida que explique criterio por criterio antes de la nota.'],
-              ['Responde con demasiado texto', 'Fije formato y extensión; pida tabla o lista, no ensayo.'],
+              ['Respuestas correctas pero genéricas', 'Falta contexto del curso', 'Agregue programa, nivel y un ejemplo de lo que espera.'],
+              ['Cita una fuente que no dice eso', 'El modelo completó con lo que «suena bien»', 'Pida la cita textual y búsquela en el archivo. Si no aparece, elimine la referencia.'],
+              ['Inventa un acuerdo del curso', 'El acuerdo no está en los archivos', 'Suba el documento del acuerdo y refuerce la regla de no inventar.'],
+              ['Califica con otra rúbrica', 'No leyó la rúbrica o la resumió', 'Adjunte la rúbrica y pida criterio por criterio antes de la nota.'],
+              ['Responde con demasiado texto', 'No fijó formato ni extensión', 'Pida tabla o lista y un máximo de líneas.'],
+              ['Responde algo fuera del programa', 'Falta la regla de los límites', 'Agregue: «si no está en los materiales, dilo y ofrece el tema más cercano».'],
+              ['Ignora el PDF que subió', 'El archivo no cargó o es una imagen escaneada', 'Vuelva a subirlo, adjúntelo en el chat o pegue el texto.'],
+              ['Se corta o dice «no puedo ayudarte»', 'Prompt muy largo o filtro momentáneo', 'Pegue el prompt completo de nuevo o use Reintentar.'],
+              ['Tildes rotas al importar en Moodle', 'El archivo no quedó en UTF-8', 'Guárdelo como .txt en UTF-8 y vuelva a importar.'],
             ],
           },
           {
-            type: 'note',
-            text: 'Registre los errores que encontró: es la mejor evidencia de que aprendió a evaluar, no solo a pedir.',
+            type: 'numbered',
+            items: [
+              'Guarde el prompt y la respuesta que fallaron.',
+              'Busque el síntoma en la tabla.',
+              'Cambie una sola cosa: el contexto, el formato, una regla o un archivo.',
+              'Repita la misma solicitud de prueba para comparar.',
+              'Si funcionó, pase el ajuste a las instrucciones de la habilidad o del Proyecto para que no se repita.',
+            ],
           },
+          {
+            type: 'prompt',
+            label: 'Pedirle a la IA que diagnostique su propio error',
+            text: `Esta fue mi solicitud: [pegue el prompt].
+Esta fue tu respuesta: [pegue la respuesta].
+El problema es: [qué salió mal].
+
+Explica qué parte de mi solicitud o de tus instrucciones causó el error y propón un cambio concreto a las instrucciones del asistente. No reescribas toda la respuesta.`,
+          },
+          {
+            type: 'note',
+            text: 'Haga ahora el primer ciclo con el error más claro que encontró en su asistente durante la Práctica 4. Si quiere, use **05 Respuesta de estudiante E07** y **04 Rúbrica** para probar la calificación.',
+          },
+          { type: 'links', items: [s1Docs.rubrica, s1Docs.respuesta] },
         ],
       },
       {
@@ -541,28 +569,29 @@ Reglas:
         title: 'Lo que se lleva',
         blocks: [
           {
-            type: 'list',
-            items: [
-              'Su habilidad o Proyecto «Asistente de mi curso», con instrucciones y archivos cargados (enlace o archivo descargado).',
-              'Un parcial con tabla de especificaciones, clave y rúbrica, revisado por usted.',
-              'El archivo GIFT o Aiken importado en Moodle, con captura del banco de preguntas.',
-            ],
+            type: 'p',
+            text: 'Suba estos cuatro archivos en el formulario de entregables, con su cuenta @unal:',
           },
           {
-            type: 'checklist',
+            type: 'list',
             items: [
-              'El asistente responde con el programa del curso y reconoce lo que no está en los archivos.',
-              'El parcial tiene clave coherente y rúbrica utilizable.',
-              'Las preguntas importaron en Moodle sin errores de tildes ni de respuesta correcta.',
-              'Puedo explicar por qué cada ítem está en el examen.',
+              'Pantallazo de las **instrucciones** de su habilidad o Proyecto.',
+              'Pantallazo de los **archivos** cargados en la habilidad o el Proyecto.',
+              'Pantallazo de **una solicitud de ejemplo** de la Práctica 4 y la respuesta del asistente.',
+              '**PDF del parcial revisado**, con tabla de especificaciones, clave y rúbrica.',
             ],
           },
+          { type: 'links', items: [s1Entregas.formulario] },
+          {
+            type: 'note',
+            text: 'Para cerrar, el facilitador abre el Kahoot de la sesión: 10 preguntas sobre lo que vimos hoy. Únase desde el celular en kahoot.it con el PIN que aparece en pantalla.',
+          },
+          { type: 'links', items: [s1Entregas.kahoot] },
         ],
         criteria: [
           { title: 'Tarea bien formulada', description: 'La instrucción tiene contexto, solicitud, formato y restricciones verificables.' },
           { title: 'Evaluación real', description: 'Se identifican errores concretos y se corrigen; no se acepta la respuesta por apariencia.' },
           { title: 'Uso del curso', description: 'El parcial y el asistente se apoyan en el programa y los acuerdos de la asignatura.' },
-          { title: 'Moodle funcionando', description: 'Las preguntas se importan, se califican y conservan tildes y opciones.' },
         ],
       },
     ],
