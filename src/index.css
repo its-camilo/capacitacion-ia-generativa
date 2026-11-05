@@ -320,6 +320,12 @@ input {
   text-transform: uppercase;
 }
 
+.site-footer__escudo {
+  display: block;
+  height: calc(0.8rem * 1.5 * 2);
+  width: auto;
+}
+
 @media (max-width: 900px) {
   .phase-bar {
     top: auto;

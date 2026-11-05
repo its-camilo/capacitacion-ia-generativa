@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import PhaseBar from './PhaseBar'
 import { phases, professorPhases } from '../data/navigation'
+import escudoUnal from '../assets/escudoUnal.svg'
 
 function Layout() {
   const { pathname } = useLocation()
@@ -25,8 +26,11 @@ function Layout() {
           <span>Sede Bogotá</span>
         </div>
         <div className="site-footer__wordmark">
-          Universidad Nacional<br />
-          de Colombia
+          <img
+            className="site-footer__escudo"
+            src={escudoUnal}
+            alt="Universidad Nacional de Colombia"
+          />
         </div>
       </footer>
     </div>
