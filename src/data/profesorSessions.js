@@ -52,9 +52,9 @@ export const sessionSummaries = [
     label: 'NotebookLM',
     title: 'RAG sin código: el cuaderno del curso',
     focus:
-      'Responder con sus documentos y citar la fuente. Cuaderno con programa, lecturas y artículos; material derivado y bibliografía sistematizada.',
-    deliverable: 'Cuaderno compartido con estudiantes + guía de estudio + bibliografía normalizada.',
-    tools: 'NotebookLM · ZoteroBib · Zotero web · Scopus (si hay acceso)',
+      'Responder con sus documentos y citar la fuente. Cuaderno con programa, lecturas y artículos, material derivado y compartido con estudiantes.',
+    deliverable: 'Cuaderno compartido con estudiantes + guía de estudio.',
+    tools: 'NotebookLM',
     tag: 'RAG sin código',
   },
   {
@@ -699,7 +699,6 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
               'Dos lecturas obligatorias del curso.',
               'Dos artículos o capítulos que use en clase.',
               'Una transcripción suya, una guía o un video propio (opcional).',
-              'La norma de citación de su facultad (opcional, pero útil para la práctica 6).',
             ],
           },
           {
