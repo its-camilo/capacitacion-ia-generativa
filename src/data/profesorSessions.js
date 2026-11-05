@@ -130,6 +130,17 @@ const s1Docs = {
   respuesta: { label: '05 Respuesta de estudiante E07', url: 'https://docs.google.com/document/d/1RkQWT3C5Gdk1Iv0-RLN98aykKQw12aj0A2a--xVdkmw/edit', provider: 'Docs' },
 }
 
+const s234Docs = {
+  carpeta: { label: 'Carpeta con todo el material', url: 'https://drive.google.com/drive/folders/1k7NvsQHdvqo_-4D6wCoeQxTtDs7sNYNt', provider: 'Drive' },
+  lectura1: { label: 'S2-02 Lectura 1 · Oferta, demanda y equilibrio', url: 'https://docs.google.com/document/d/1nge5stWMQDjvxN9BPDEuH6H3UGdckEJWJs7ENDp7fCw/edit', provider: 'Docs' },
+  lectura2: { label: 'S2-03 Lectura 2 · Elasticidades', url: 'https://docs.google.com/document/d/1V2ctz7I-62hsX6QQ-FQlW1aS4Fs1Licj2AWF4x7-7rs/edit', provider: 'Docs' },
+  articulo: { label: 'S2-04 Artículo · Controles de precios', url: 'https://docs.google.com/document/d/1c6iZSVeaXz7IAcFELMPmiRkTffwsnI6bkPyKA3yJvYM/edit', provider: 'Docs' },
+  transcripcion: { label: 'S2-05 Transcripción de clase · Semana 4', url: 'https://docs.google.com/document/d/1F1gku4b1dZj1RUAn0iCKz5tw2K5QRmGTDJcngPIyaFc/edit', provider: 'Docs' },
+  notas: { label: 'S3-01 Notas ficticias del grupo', url: 'https://docs.google.com/spreadsheets/d/1Q3JPJyBOLXjz3XAxIaZn8p6Vj9h24UYakskBx3yh90o/edit', provider: 'Sheets' },
+  apuntes: { label: 'S3-02 Apuntes · Unidad 2 Elasticidades', url: 'https://docs.google.com/document/d/1vgkN4w_RGqnxOd7Mk-IPCfybXORO3E-sVXpN5JAKUmA/edit', provider: 'Docs' },
+  reflexiones: { label: 'S4-01 Respuestas ficticias de reflexión', url: 'https://docs.google.com/spreadsheets/d/1VJspt6TLy7wmZgXpTzUOteLfDEwsp1N8THHHmgds7VU/edit', provider: 'Sheets' },
+}
+
 const s1Entregas = {
   formulario: { label: 'Formulario de entregables', url: 'https://docs.google.com/forms/d/e/1FAIpQLSe9G_ktvdYvwZfpVqgBnxbOVoEmOkz1m-ZI3p_e17XOJYlAXg/viewform', provider: 'Forms' },
   kahoot: { label: 'Iniciar el Kahoot (facilitador)', url: 'https://create.kahoot.it/details/sesion-1-ia-generativa-para-profesores-uifce/01334253-1075-4f3e-8bfc-6d92cda205d1', provider: 'Kahoot' },
@@ -1197,7 +1208,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
       { time: '5 min', label: 'Socialización', detail: 'Qué quedó de la sesión 3. Se salta si el grupo viene atrasado.' },
       { time: '20 min', label: 'Demo', detail: 'Ver un agente trabajar con Deep Research y revisar sus fuentes.' },
       { time: '30 min', label: 'Camino A', detail: 'App interactiva de clase con Claude Artifacts o Gemini Canvas.' },
-      { time: '30 min', label: 'Camino B', detail: 'Flujo automatizado: Forms, hoja y borradores de correo; o PDF a Markdown.' },
+      { time: '30 min', label: 'Camino B', detail: 'Flujo de retroalimentación con un agente (Instinct o Hark): formulario, hoja y borradores.' },
       { time: '5 min', label: 'Cierre', detail: 'IA y evaluación: detectores, evidencia y tareas que piden proceso.' },
       { time: '20 min', label: 'Entregable', detail: 'Demo de 2 minutos por mesa y ficha del piloto.' },
     ],
@@ -1366,54 +1377,30 @@ No inventes contenido: usa solo el material adjunto.`,
         id: 'camino-b',
         mascot: 'sorpresa',
         eyebrow: 'Práctica 3 · Camino B · 30 min',
-        title: 'Flujo automatizado de retroalimentación',
+        title: 'Flujo de retroalimentación con un agente: Instinct o Hark',
         blocks: [
-          {
-            type: 'p',
-            text: 'Elija este camino si quiere ahorrar tiempo recurrente: un formulario que recibe una entrega, una hoja que la organiza y un borrador de retroalimentación que usted revisa. Sin enviar nada automáticamente.',
-          },
-          {
-            type: 'p',
-            text: '**Ruta mínima con herramientas de la universidad:** Google Forms → hoja de respuestas → borrador de correo. Se puede hacer con Apps Script o con un automatizador como Make o Zapier.',
-          },
           {
             type: 'numbered',
             items: [
-              'Cree un formulario con: código del estudiante, unidad, tres preguntas de reflexión y un enlace al trabajo.',
-              'Conecte las respuestas a una hoja de cálculo.',
-              'Defina la plantilla de retroalimentación: logro, dificultad, acción y plazo.',
-              'Genere el borrador con la plantilla y los datos de la fila; déjelo en Borradores, no en Enviados.',
-              'Pruebe con dos respuestas ficticias y revise el resultado antes de invitar al grupo.',
+              'Abra el agente: **Instinct** se usa por WhatsApp o iMessage (requiere invitación); **Hark** se usa en el chat de la app o la web.',
+              'Si el agente lo pide, conecte su cuenta de Google @unal para que pueda crear el formulario, la hoja y los borradores.',
+              'Copie el enlace de los dos archivos de ejemplo y péguelos en el prompt.',
+              'Envíe el prompt y espere a que el agente le devuelva los enlaces.',
+              'Revise el formulario, la hoja y cada borrador. Nada se envía a estudiantes.',
             ],
           },
+          { type: 'links', items: [s234Docs.reflexiones, s1Docs.rubrica] },
           {
             type: 'prompt',
-            label: 'Plantilla del borrador',
-            text: `Eres asistente del curso [asignatura]. Con esta fila de la hoja:
-[código, unidad, respuestas, enlace]
-
-Escribe un borrador de correo de máximo 120 palabras:
-- Reconoce un aspecto concreto de la respuesta.
-- Señala una dificultad y por qué importa.
-- Propone una acción para la próxima entrega con plazo.
-- Tono respetuoso, sin comparar con otros estudiantes.
-No inventes datos. Si falta algo, escribe [verificar]. Devuelve solo asunto y cuerpo.`,
+            label: 'Prompt para el agente',
+            text: `Arma un flujo de retroalimentación para mi curso de Microeconomía I con mi cuenta de Google:
+1. Crea un formulario de Google llamado «Reflexión de unidad» con: código del estudiante, unidad, ¿qué aprendí?, ¿qué me costó?, ¿qué haré distinto? y enlace al trabajo. Conecta sus respuestas a una hoja de cálculo.
+2. Usa como respuestas de prueba las 5 filas de esta hoja: [enlace a S4-01 Respuestas ficticias de reflexión].
+3. Con la rúbrica [enlace a 04 Rúbrica de desarrollo], escribe para cada fila un borrador de correo de máximo 120 palabras: un logro concreto, una dificultad y por qué importa, una acción para la próxima entrega con plazo. Tono respetuoso, sin comparar con otros estudiantes. Si falta un dato, escribe [verificar].
+4. Deja los borradores en mi Gmail dirigidos a mí mismo. No envíes nada.
+5. Al final dame los enlaces del formulario, de la hoja y un resumen de qué filas necesitan revisión.`,
           },
-          {
-            type: 'callout',
-            tone: 'warn',
-            title: 'El flujo no envía solo',
-            text: 'El último paso siempre es una persona. Un flujo que envía notas o retroalimentación sin revisión es un riesgo de privacidad y de errores difíciles de revertir.',
-          },
-          {
-            type: 'p',
-            text: '**Variante PDF a Markdown.** Si el cuello de botella son los PDF largos, pídale a Claude o a Gemini: «Convierte este documento a Markdown limpio, sin resumir», y trabaje con ese texto: menos tokens, tablas ordenadas y contexto más limpio. Úselo para el material del curso, no para trabajos de estudiantes sin permiso.',
-          },
-          {
-            type: 'note',
-            text: 'Si no hay tiempo para automatizar, el piloto puede ser el flujo manual: formulario, hoja y plantilla de correo. Lo que se evalúa es el diseño del flujo, no la herramienta.',
-          },
-          { type: 'links', items: [{ label: 'Google Forms', url: 'https://forms.google.com', provider: 'Google' }, { label: 'Make', url: 'https://www.make.com', provider: 'Make' }] },
+          { type: 'links', items: [{ label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }, { label: 'Hark', url: 'https://hark.com', provider: 'Hark' }] },
         ],
       },
       {
