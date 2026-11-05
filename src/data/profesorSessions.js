@@ -119,6 +119,17 @@ const moodleLinks = [
   { label: 'Formato Aiken', url: 'https://docs.moodle.org/en/Aiken_format', provider: 'Moodle' },
 ]
 
+const s1Docs = {
+  carpeta: { label: 'Carpeta con todo el material', url: 'https://drive.google.com/drive/folders/1k7NvsQHdvqo_-4D6wCoeQxTtDs7sNYNt', provider: 'Drive' },
+  traer: { label: '00 Qué traer a la sesión', url: 'https://docs.google.com/document/d/1nSSC6pQqDdC9Fg2X3lx7b5CbEwG35jSPG-6MgylHCm4/edit', provider: 'Docs' },
+  programa: { label: '01 Programa Microeconomía I', url: 'https://docs.google.com/document/d/1UzHhCqBU7IhZtu8lIrh6Zrm_1QQ4Pmwo5J5mRoPVjM0/edit', provider: 'Docs' },
+  programaPdf: { label: '01 Programa (PDF para adjuntar)', url: 'https://drive.google.com/file/d/1Q7xcslivKtUMifqT9yAx_T3Z-GfRYtQ5/view', provider: 'PDF' },
+  parcial: { label: '02 Parcial anterior con clave', url: 'https://docs.google.com/document/d/1fMZAiwE7L8Ma-UBy_ohTnOIeDJbxoyca7hLVMYK98d8/edit', provider: 'Docs' },
+  tarea: { label: '03 Tarea hecha con IA', url: 'https://docs.google.com/document/d/1V_vnITlPg3oQQZkqBX8--dNdwosHbMGcPQbiux73Rak/edit', provider: 'Docs' },
+  rubrica: { label: '04 Rúbrica de desarrollo', url: 'https://docs.google.com/document/d/1xETwUOeJ_2ikn4JSM3kXMHCnWGqNWcXGinBhoC4e2yY/edit', provider: 'Docs' },
+  respuesta: { label: '05 Respuesta de estudiante E07', url: 'https://docs.google.com/document/d/1RkQWT3C5Gdk1Iv0-RLN98aykKQw12aj0A2a--xVdkmw/edit', provider: 'Docs' },
+}
+
 export const profesorSessions = {
   fundamentos: {
     session: '01',
@@ -153,6 +164,13 @@ export const profesorSessions = {
         eyebrow: 'Idea · 15 min',
         title: 'Lo que hay que entender antes de escribir un prompt',
         blocks: [
+          {
+            type: 'callout',
+            tone: 'ok',
+            title: 'Material de ejemplo para toda la sesión',
+            text: 'Si no trajo su propio material, use el de ejemplo: un curso ficticio de **Microeconomía I** con programa, parcial, rúbrica y una respuesta de estudiante. Todo es inventado, así que se puede subir a cualquier herramienta. En cada práctica encontrará el enlace directo al documento que necesita.',
+          },
+          { type: 'links', items: [s1Docs.carpeta, s1Docs.traer] },
           {
             type: 'p',
             text: 'Un modelo de lenguaje no busca la respuesta en un archivo: calcula el texto que sigue. Puede sonar seguro, ordenar ideas y escribir en segundos, pero no sabe si lo que dice es cierto. Su trabajo es proponer; el suyo es decidir.',
@@ -241,6 +259,11 @@ export const profesorSessions = {
             text: 'Elija una tarea que ya haya hecho con IA esta semana: un correo, una guía, un parcial, una retroalimentación. Péguela tal como la escribió. No la mejore todavía.',
           },
           {
+            type: 'note',
+            text: '**Con el material de ejemplo:** abra **03 Tarea hecha con IA**, pegue el pedido original («hazme un taller de elasticidades para mis estudiantes») y luego la versión 2 del mismo documento, adjuntando **01 Programa**. Compare idioma, nivel y si respeta el Corte 1.',
+          },
+          { type: 'links', items: [s1Docs.tarea, s1Docs.programaPdf] },
+          {
             type: 'numbered',
             items: [
               'Escriba la versión actual en una hoja o en el chat.',
@@ -277,6 +300,11 @@ Antes de responder, hazme las preguntas que necesites.`,
             type: 'p',
             text: 'Use el programa de su asignatura y un corte real. La IA puede proponer el parcial, pero usted decide qué entra y con qué nivel. Adjunte el programa y, si tiene, un parcial anterior como ejemplo de formato.',
           },
+          {
+            type: 'note',
+            text: '**Con el material de ejemplo:** adjunte **01 Programa** y **02 Parcial anterior**. En el prompt use Microeconomía I, corte 1 (oferta, demanda, equilibrio, excedentes, controles de precios, impuestos y elasticidades), 5 preguntas (3 de selección múltiple, 1 de desarrollo y 1 de caso), segundo semestre y 90 minutos. Pida que use el parcial anterior solo como ejemplo de formato y la estructura de **04 Rúbrica**.',
+          },
+          { type: 'links', items: [s1Docs.programaPdf, s1Docs.parcial, s1Docs.rubrica] },
           {
             type: 'prompt',
             label: 'Prompt base para el parcial',
@@ -356,6 +384,11 @@ Reglas:
 
 Devuélveme solo el texto plano dentro de un bloque de código, listo para guardar como preguntas.txt.`,
           },
+          {
+            type: 'note',
+            text: 'Use las preguntas de selección múltiple del parcial que hizo en la Práctica 2. Si no alcanzó a terminarlo, convierta las de **02 Parcial anterior**.',
+          },
+          { type: 'links', items: [s1Docs.parcial] },
           {
             type: 'prompt',
             label: 'Ejemplo del resultado esperado',
@@ -442,9 +475,26 @@ Reglas:
             text: '**Archivos que valen la pena.** Programa, lecturas obligatorias, parciales anteriores con su clave, rúbricas y acuerdos del curso. **No** suba listas de notas, trabajos de estudiantes ni exámenes que aún no ha aplicado.',
           },
           {
+            type: 'note',
+            text: '**Con el material de ejemplo:** cree la habilidad o el Proyecto con **01 Programa** (PDF), **02 Parcial** y **04 Rúbrica**, y en las instrucciones ponga Microeconomía I, Economía, segundo semestre y tono cercano.',
+          },
+          { type: 'links', items: [s1Docs.programaPdf, s1Docs.parcial, s1Docs.rubrica] },
+          {
             type: 'p',
             text: 'Pruebe el asistente con tres preguntas: una conceptual, una de nota y una fuera del programa. La tercera es la más importante: debe reconocer que no está en los materiales.',
           },
+          {
+            type: 'prompt',
+            label: 'Preguntas de prueba (material de ejemplo)',
+            text: `1. ¿Qué diferencia hay entre un cambio en la cantidad demandada y un cambio en la demanda?
+2. Si entrego un taller 2 días tarde, ¿cuánto pierdo? ¿Puedo usar IA en el parcial?
+3. Explícame la teoría de juegos y el equilibrio de Nash.`,
+          },
+          {
+            type: 'note',
+            text: '**Prueba extra:** pegue **05 Respuesta de estudiante E07** y pida calificarla con la rúbrica. Un buen asistente detecta que el estudiante habla de «exceso de oferta» cuando debía decir escasez.',
+          },
+          { type: 'links', items: [s1Docs.respuesta, s1Docs.rubrica] },
           {
             type: 'note',
             text: 'Si el PDF no sube dentro de la habilidad, adjúntelo en el chat o pegue en las instrucciones los acuerdos del curso y la lista de temas.',
@@ -466,6 +516,7 @@ Reglas:
             type: 'p',
             text: 'Intercambie el asistente y el parcial con un colega. Cada uno busca fallas en el trabajo del otro con la lista de verificación. La IA se evalúa como se evalúa un borrador: con criterios y con evidencia.',
           },
+          { type: 'links', items: [s1Docs.rubrica, s1Docs.respuesta] },
           {
             type: 'table',
             headers: ['Falla típica', 'Qué ajustar'],
