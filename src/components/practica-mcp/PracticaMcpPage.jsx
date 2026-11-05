@@ -132,7 +132,7 @@ function PracticaMcpPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Probar con consultas">
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Probar con consultas" mascot="pensando">
           <p>
             Desde OpenCode, Cursor o tu cliente, pide al modelo que use las tools de SQLite. Empieza
             con un par de preguntas en lenguaje natural y confirma que ejecuta SQL y devuelve

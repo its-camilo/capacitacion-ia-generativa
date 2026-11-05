@@ -8,6 +8,7 @@ function PromptingAvanzado() {
     <SectionBlock
       id="prompting"
       eyebrow="Comunicación"
+      mascot="pensando"
       title="Prompting avanzado"
       diagram={<PromptTemplateDiagram />}
     >

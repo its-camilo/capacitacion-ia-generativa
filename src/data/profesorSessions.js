@@ -268,6 +268,7 @@ Antes de responder, hazme las preguntas que necesites.`,
       },
       {
         id: 'practica-2',
+        mascot: 'pensando',
         eyebrow: 'Práctica 2 · 25 min',
         title: 'Parcial con rúbrica y clave',
         blocks: [
@@ -657,6 +658,7 @@ Reglas:
       },
       {
         id: 'practica-3',
+        mascot: 'pensando',
         eyebrow: 'Práctica 3 · 20 min',
         title: 'Preguntar con citas y buscar huecos',
         blocks: [
@@ -944,6 +946,7 @@ No uses nombres reales. Devuélvelo como CSV.`,
       },
       {
         id: 'practica-2',
+        mascot: 'explicando',
         eyebrow: 'Práctica 2 · 25 min',
         title: 'Analizar el grupo',
         blocks: [
@@ -1224,6 +1227,7 @@ No agregues temas que no estén en el documento. Devuélveme primero el esquema 
       },
       {
         id: 'demo',
+        mascot: 'senalando',
         eyebrow: 'Práctica 1 · 20 min',
         title: 'Ver un agente trabajar',
         blocks: [

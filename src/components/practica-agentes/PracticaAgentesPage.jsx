@@ -97,7 +97,7 @@ function PracticaAgentesPage() {
           </p>
         </SectionBlock>
 
-        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Consultar datos en Data360">
+        <SectionBlock id="paso-3" eyebrow="Paso 3" title="Consultar datos en Data360" mascot="pensando">
           <p>
             <a href={data360Repo.url} target="_blank" rel="noreferrer">{data360Repo.label}</a>{' '}
             {data360Repo.description}

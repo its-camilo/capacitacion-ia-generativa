@@ -213,7 +213,7 @@ function PracticaRagPage() {
           </div>
         </SectionBlock>
 
-        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación">
+        <SectionBlock id="entregables" eyebrow="Actividad" title="Entregables y evaluación" mascot="senalando">
           <p>Cada equipo entrega:</p>
           <ul className="practica-mcp__bullet-list">
             {deliverables.map((item) => (
