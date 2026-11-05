@@ -613,10 +613,9 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
       { time: '15 min', label: 'Idea', detail: 'Qué es RAG, qué resuelve y qué no, y por qué la cita es la diferencia.' },
       { time: '10 min', label: 'Práctica 1', detail: 'Reunir y nombrar 5–8 fuentes del curso.' },
       { time: '15 min', label: 'Práctica 2', detail: 'Crear el cuaderno y cargar las fuentes.' },
-      { time: '20 min', label: 'Práctica 3', detail: 'Preguntar con citas y detectar huecos.' },
-      { time: '15 min', label: 'Práctica 4', detail: 'Convertir el cuaderno en guía, mapa, audio y video.' },
-      { time: '15 min', label: 'Práctica 5', detail: 'Compartirlo como tutor del curso.' },
-      { time: '15 min', label: 'Práctica 6', detail: 'Sistematizar la bibliografía con IA, ZoteroBib y Zotero web.' },
+      { time: '25 min', label: 'Práctica 3', detail: 'Preguntar con citas y detectar huecos.' },
+      { time: '20 min', label: 'Práctica 4', detail: 'Convertir el cuaderno en guía, mapa, audio y video.' },
+      { time: '20 min', label: 'Práctica 5', detail: 'Compartirlo como tutor del curso.' },
       { time: '15 min', label: 'Entregable', detail: 'Probar el cuaderno con un colega y cerrar.' },
     ],
     goals: [
@@ -745,7 +744,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
       {
         id: 'practica-3',
         mascot: 'pensando',
-        eyebrow: 'Práctica 3 · 20 min',
+        eyebrow: 'Práctica 3 · 25 min',
         title: 'Preguntar con citas y buscar huecos',
         blocks: [
           {
@@ -785,7 +784,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
       {
         id: 'practica-4',
         mascot: 'senalando',
-        eyebrow: 'Práctica 4 · 15 min',
+        eyebrow: 'Práctica 4 · 20 min',
         title: 'Convertirlo en material de estudio',
         blocks: [
           {
@@ -828,7 +827,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
       {
         id: 'practica-5',
         mascot: 'feliz',
-        eyebrow: 'Práctica 5 · 15 min',
+        eyebrow: 'Práctica 5 · 20 min',
         title: 'Compartirlo como tutor del curso',
         blocks: [
           {
@@ -854,49 +853,6 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         ],
       },
       {
-        id: 'practica-6',
-        mascot: 'pensando',
-        eyebrow: 'Práctica 6 · 15 min',
-        title: 'Bibliografía sistematizada (si el tiempo alcanza)',
-        blocks: [
-          {
-            type: 'p',
-            text: 'Este paso es opcional y se puede dejar como tarea. Todo se hace en el navegador, sin instalar nada. Hay tres caminos, de menor a mayor complejidad:',
-          },
-          {
-            type: 'cards',
-            items: [
-              { title: 'ZoteroBib', description: 'Versión web de Zotero, sin cuenta ni instalación. Pegue un DOI, ISBN o URL y arma la bibliografía en APA lista para copiar.', tag: 'Web', url: 'https://zbib.org' },
-              { title: 'Zotero web', description: 'Con una cuenta gratuita en zotero.org guarda y organiza la biblioteca del curso desde el navegador y la exporta en APA, BibTeX o RIS.', tag: 'Gestor', url: 'https://www.zotero.org' },
-              { title: 'MCP de Scopus', description: 'Si la universidad tiene acceso, un conector consulta metadatos y DOIs sin salir del chat. Depende de la licencia y del conector.', tag: 'Conector' },
-            ],
-          },
-          {
-            type: 'p',
-            text: 'Un flujo realista: subir el programa y la bibliografía del curso a Claude o ChatGPT, pedir una tabla de referencias normalizada y pasar los DOI o ISBN a ZoteroBib o a Zotero web para obtener la lista final en APA.',
-          },
-          {
-            type: 'prompt',
-            label: 'Normalizar la bibliografía',
-            text: `Te paso el programa y las referencias del curso.
-
-1. Normaliza cada referencia en APA 7.
-2. Elimina duplicados y marca los que no tengan datos completos como «verificar».
-3. Clasifica por unidad del programa y por tipo (libro, artículo, capítulo, norma).
-4. Devuelve una tabla con: autor, año, título, tipo, unidad, DOI o URL y estado.
-5. No inventes DOI, editoriales ni años. Si no está en el texto, escribe «verificar».`,
-          },
-          {
-            type: 'note',
-            text: 'Si el PDF tiene tablas o columnas y la IA lo lee desordenado, pídale primero: «Convierte este documento a Markdown limpio, sin resumir». Luego use ese texto para normalizar la bibliografía.',
-          },
-          {
-            type: 'note',
-            text: 'Si no hay acceso a Scopus, use Google Scholar y ZoteroBib. El flujo es el mismo; cambia la fuente de los metadatos.',
-          },
-        ],
-      },
-      {
         id: 'entregable',
         mascot: 'despedida',
         eyebrow: 'Entregable · 15 min',
@@ -907,7 +863,6 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               'El enlace al cuaderno del curso, con las fuentes cargadas y los permisos definidos.',
               'Un informe «Resumen de aprendizaje» revisado contra las fuentes, listo para Moodle.',
-              'Una tabla de bibliografía normalizada, con los datos faltantes marcados.',
               'Tres citas verificadas: pregunta, respuesta y fuente abierta.',
             ],
           },
