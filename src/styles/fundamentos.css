@@ -856,7 +856,8 @@
   width: auto;
   max-width: clamp(9rem, 20vw, 12.5rem);
   max-height: 13.5rem;
-  animation: uifcito-float 4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  animation: uifcito-float 3.6s ease-in-out infinite;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
 }
 
@@ -868,7 +869,8 @@
   width: auto;
   max-width: clamp(8.5rem, 17vw, 11rem);
   max-height: 11rem;
-  animation: uifcito-float 4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+  animation: uifcito-float 3.6s ease-in-out infinite;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
 }
 
@@ -906,8 +908,8 @@
 }
 
 @keyframes uifcito-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.045); }
 }
 
 .fundamentos__hero-session,
@@ -1075,4 +1077,14 @@
 .fund-section__note {
   border-left-color: var(--color-accent);
   background: rgba(175, 198, 228, 0.2);
+}
+
+/* Bloques de código oscuros: el <code> interno no hereda el estilo de código en línea */
+.fund-section__body pre code,
+.practica-mcp pre code,
+.practica-code__pre code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
 }
