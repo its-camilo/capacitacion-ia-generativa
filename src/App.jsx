@@ -6,6 +6,7 @@ import PracticaMcp from './pages/PracticaMcp'
 import PracticaRag from './pages/PracticaRag'
 import Profesores from './pages/Profesores'
 import ProfesorSesion from './pages/ProfesorSesion'
+import PinGate from './components/PinGate'
 
 function App() {
   return (
@@ -13,15 +14,15 @@ function App() {
       <Route element={<Layout />}>
         <Route index element={<Navigate to="/estudiantes/fundamentos" replace />} />
         <Route path="/estudiantes" element={<Navigate to="/estudiantes/fundamentos" replace />} />
-        <Route path="/estudiantes/fundamentos" element={<Fundamentos />} />
-        <Route path="/estudiantes/practica-mcp" element={<PracticaMcp />} />
-        <Route path="/estudiantes/practica-rag" element={<PracticaRag />} />
-        <Route path="/estudiantes/practica-agentes" element={<PracticaAgentes />} />
+        <Route path="/estudiantes/fundamentos" element={<PinGate><Fundamentos /></PinGate>} />
+        <Route path="/estudiantes/practica-mcp" element={<PinGate><PracticaMcp /></PinGate>} />
+        <Route path="/estudiantes/practica-rag" element={<PinGate><PracticaRag /></PinGate>} />
+        <Route path="/estudiantes/practica-agentes" element={<PinGate><PracticaAgentes /></PinGate>} />
         <Route path="/profesores" element={<Profesores />} />
         <Route path="/profesores/fundamentos" element={<ProfesorSesion sessionId="fundamentos" />} />
-        <Route path="/profesores/rag" element={<ProfesorSesion sessionId="rag" />} />
-        <Route path="/profesores/mcp" element={<ProfesorSesion sessionId="mcp" />} />
-        <Route path="/profesores/agentes" element={<ProfesorSesion sessionId="agentes" />} />
+        <Route path="/profesores/rag" element={<PinGate><ProfesorSesion sessionId="rag" /></PinGate>} />
+        <Route path="/profesores/mcp" element={<PinGate><ProfesorSesion sessionId="mcp" /></PinGate>} />
+        <Route path="/profesores/agentes" element={<PinGate><ProfesorSesion sessionId="agentes" /></PinGate>} />
         <Route path="/profesores/practica-rag" element={<Navigate to="/profesores/rag" replace />} />
         <Route path="/profesores/practica-mcp" element={<Navigate to="/profesores/mcp" replace />} />
         <Route path="/profesores/practica-agentes" element={<Navigate to="/profesores/agentes" replace />} />
