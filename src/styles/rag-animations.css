@@ -1,0 +1,183 @@
+/* Card de animación 3D (Sesión 2 · RAG · profesores) */
+
+.rag-anim {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 0.75rem 0.75rem 1.1rem;
+  background: var(--color-surface-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* Escenario oscuro azul marino, como el bloque de código del sitio */
+.rag-anim__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: calc(var(--radius-md) - 0.5rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 42%, rgba(69, 116, 185, 0.38) 0%, rgba(69, 116, 185, 0) 70%),
+    radial-gradient(ellipse at 50% 100%, #031a4d 0%, var(--color-primary-dark) 55%, #021536 100%);
+  box-shadow: inset 0 0 0 1px rgba(68, 211, 254, 0.14);
+}
+
+.rag-loop {
+  position: absolute;
+  inset: 0;
+}
+
+.rag-loop canvas {
+  transition: none;
+}
+
+/* Pills de pasos */
+.rag-anim__steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0 0.25rem;
+  list-style: none;
+}
+
+.rag-anim__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.85rem 0.3rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-base);
+  color: var(--color-primary-dark);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.rag-anim__pill-num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: rgba(175, 198, 228, 0.35);
+  color: var(--color-primary-dark);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.rag-anim__pill--active {
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+  box-shadow: 0 4px 14px rgba(244, 203, 24, 0.45);
+  font-weight: 600;
+}
+
+.rag-anim__pill--active .rag-anim__pill-num {
+  background: var(--color-primary-dark);
+  color: var(--color-highlight);
+}
+
+/* Una sola línea de caption */
+.rag-anim__caption {
+  margin: 0;
+  padding: 0 0.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: rag-anim-caption 0.45s ease both;
+}
+
+@keyframes rag-anim-caption {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Móvil: escenario más alto y pills compactas (solo el activo muestra su nombre) */
+@media (max-width: 640px) {
+  .rag-anim {
+    padding: 0.5rem 0.5rem 0.9rem;
+    gap: 0.75rem;
+  }
+
+  .rag-anim__stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .rag-anim__steps {
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    padding: 0;
+  }
+
+  .rag-anim__pill {
+    flex: 0 0 auto;
+    padding: 0.2rem;
+  }
+
+  .rag-anim__pill-num {
+    width: 1.55rem;
+    height: 1.55rem;
+    font-size: 0.72rem;
+  }
+
+  .rag-anim__pill-label {
+    display: none;
+  }
+
+  .rag-anim__pill--active {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-right: 0.6rem;
+    font-size: 0.78rem;
+  }
+
+  .rag-anim__pill--active .rag-anim__pill-label {
+    display: inline;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rag-anim__caption {
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rag-anim__caption {
+    animation: none;
+  }
+
+  .rag-anim__pill,
+  .rag-anim__pill-num {
+    transition: none;
+  }
+}

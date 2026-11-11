@@ -1,6 +1,17 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import InsightCard from '../fundamentos/InsightCard'
 import RichText from './RichText'
+
+// Las animaciones 3D cargan three.js (~800 kB): se piden bajo demanda, fuera del bundle principal.
+const ANIMATIONS = {
+  idea: lazy(() => import('./animations/IdeaAnimation')),
+  practica1: lazy(() => import('./animations/Practica1Animation')),
+  practica2: lazy(() => import('./animations/Practica2Animation')),
+  practica3: lazy(() => import('./animations/Practica3Animation')),
+  practica4: lazy(() => import('./animations/Practica4Animation')),
+  practica5: lazy(() => import('./animations/Practica5Animation')),
+  entregable: lazy(() => import('./animations/EntregableAnimation')),
+}
 
 function CopyButton({ text }) {
   const [copied, setCopied] = useState(false)
@@ -175,6 +186,16 @@ function Block({ block }) {
           ))}
         </ul>
       )
+
+    case 'animation': {
+      if (!Object.hasOwn(ANIMATIONS, block.animation)) return null
+      const Animation = ANIMATIONS[block.animation]
+      return (
+        <Suspense fallback={null}>
+          <Animation />
+        </Suspense>
+      )
+    }
 
     default:
       return null

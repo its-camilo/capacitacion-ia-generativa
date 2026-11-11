@@ -648,6 +648,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Idea · 15 min',
         title: 'RAG: responder con sus documentos y mostrar la fuente',
         blocks: [
+          { type: 'animation', animation: 'idea' },
           {
             type: 'p',
             text: 'RAG significa recuperar primero y responder después. La IA busca en los documentos que usted cargó, arma un contexto con los fragmentos más parecidos y responde citando de dónde salió. No es que «sepa» su curso: es que lee lo que usted le dio.',
@@ -705,6 +706,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 1 · 10 min',
         title: 'Reunir y nombrar las fuentes',
         blocks: [
+          { type: 'animation', animation: 'practica1' },
           {
             type: 'p',
             text: 'Un cuaderno sirve si las fuentes son las correctas. Para esta práctica bastan cinco a ocho documentos:',
@@ -739,6 +741,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 2 · 15 min',
         title: 'Crear el cuaderno y cargar',
         blocks: [
+          { type: 'animation', animation: 'practica2' },
           {
             type: 'numbered',
             items: [
@@ -768,6 +771,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 3 · 25 min',
         title: 'Preguntar con citas y buscar huecos',
         blocks: [
+          { type: 'animation', animation: 'practica3' },
           {
             type: 'p',
             text: 'Empiece con preguntas fáciles y suba la dificultad. En cada respuesta, abra la cita antes de aceptar la frase.',
@@ -808,6 +812,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 4 · 20 min',
         title: 'Convertirlo en material de estudio',
         blocks: [
+          { type: 'animation', animation: 'practica4' },
           {
             type: 'p',
             text: 'El cuaderno no es solo un chat: genera material a partir de las mismas fuentes. Elija dos salidas y revíselas como revisaría un borrador de un monitor.',
@@ -851,6 +856,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 5 · 20 min',
         title: 'Compartirlo como tutor del curso',
         blocks: [
+          { type: 'animation', animation: 'practica5' },
           {
             type: 'numbered',
             items: [
@@ -879,6 +885,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Entregable · 15 min',
         title: 'Lo que se lleva',
         blocks: [
+          { type: 'animation', animation: 'entregable' },
           {
             type: 'list',
             items: [
