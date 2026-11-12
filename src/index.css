@@ -105,7 +105,7 @@ input {
   margin-bottom: 0.2rem;
   color: var(--color-surface-base);
   font-family: var(--font-display);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 800;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -114,7 +114,7 @@ input {
 .site-header__title {
   color: var(--color-surface-base);
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+  font-size: clamp(1.54rem, 3.36vw, 2.17rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
@@ -190,7 +190,7 @@ input {
 .phase-bar__session {
   color: var(--color-primary);
   font-family: var(--font-display);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -203,7 +203,7 @@ input {
 .phase-bar__label {
   color: var(--color-primary-dark);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -211,7 +211,7 @@ input {
 
 .phase-bar__tag {
   color: var(--color-text-soft);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   line-height: 1.3;
 }
 
@@ -259,7 +259,7 @@ input {
   margin-bottom: 0.5rem;
   color: var(--color-primary-dark);
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -269,7 +269,7 @@ input {
   margin-bottom: 0.75rem;
   color: var(--color-primary-dark);
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(2.8rem, 7vw, 3.85rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -278,7 +278,7 @@ input {
 .section-shell__tag {
   max-width: 55ch;
   color: var(--color-text-soft);
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .section-shell__body {
@@ -297,7 +297,7 @@ input {
   color: var(--color-surface-base);
   background: var(--color-primary);
   font-family: var(--font-footer);
-  font-size: 0.95rem;
+  font-size: 1.9rem;
   font-style: italic;
   line-height: 1.45;
 }
@@ -312,7 +312,7 @@ input {
   border-left: 1px solid rgba(254, 254, 254, 0.55);
   color: var(--color-surface-base);
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -345,18 +345,22 @@ input {
 
 @media (max-width: 600px) {
   .site-header {
+    flex-wrap: wrap;
     gap: 0.75rem;
     min-height: 0;
     padding: 0.9rem 1rem;
   }
 
   .site-header__eyebrow {
-    font-size: 0.58rem;
+    font-size: 1.16rem;
   }
 
   .site-header__title {
-    max-width: 12rem;
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .section-shell__title {
+    font-size: 2.4rem;
   }
 
   .phase-bar__track {
@@ -371,7 +375,7 @@ input {
   }
 
   .phase-bar__label {
-    font-size: 0.8125rem;
+    font-size: 1.625rem;
   }
 
   .phase-bar__tag {
@@ -434,7 +438,7 @@ input {
     background: rgba(4, 35, 97, 0.22);
     color: var(--color-surface-base);
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
   }
@@ -516,6 +520,6 @@ input {
 
 @media (max-width: 600px) {
   .main-content::before {
-    top: 4.3rem;
+    top: 9.7rem;
   }
 }

@@ -13,7 +13,7 @@
 
 .fundamentos__toc-title {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -33,7 +33,7 @@
 .fundamentos__toc-link {
   display: block;
   padding: 0.375rem 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   border-left: 2px solid transparent;
   transition:
@@ -64,7 +64,7 @@
 
 .fundamentos__hero-session {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -74,7 +74,7 @@
 
 .fundamentos__hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: clamp(2.8rem, 7vw, 3.85rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -84,7 +84,7 @@
 
 .fundamentos__hero-lead {
   max-width: 52ch;
-  font-size: 1rem;
+  font-size: 2rem;
   color: var(--color-muted);
   line-height: 1.65;
 }
@@ -95,7 +95,7 @@
 
 .fund-section__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -105,7 +105,7 @@
 
 .fund-section__title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-size: clamp(2.1rem, 4.9vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-heading-alt);
@@ -118,10 +118,12 @@
   gap: 1rem;
 }
 
-.fund-section__body p {
+.fund-section__body p:not([class]) {
   max-width: 65ch;
   color: var(--color-fog);
+  font-size: 2rem;
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .fund-section__diagram {
@@ -157,7 +159,7 @@
   border-left: 3px solid var(--color-violet);
   background: rgba(107, 92, 231, 0.08);
   border-radius: var(--radius-sm);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--color-muted);
   max-width: 65ch;
 }
@@ -182,7 +184,7 @@
 
 .skill-repos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr));
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
@@ -210,7 +212,7 @@
 
 .skill-repo-card__provider {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -219,21 +221,23 @@
 
 .skill-repo-card__title {
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
+  overflow-wrap: anywhere;
 }
 
 .skill-repo-card__description {
   flex: 1;
-  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.55;
 }
 
 .skill-repo-card__link {
   margin-top: 0.375rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 500;
   color: var(--color-signal);
 }
@@ -247,7 +251,7 @@
 
 .insight-card__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -257,14 +261,14 @@
 
 .insight-card__title {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
 .insight-card__description {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.6;
   max-width: 65ch;
@@ -284,7 +288,7 @@
 }
 
 .insight-card__steps li {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-fog);
   line-height: 1.55;
 }
@@ -303,14 +307,14 @@
 
 .tool-calling-card__title {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
 .tool-calling-card__description {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.6;
   max-width: 65ch;
@@ -331,7 +335,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.375rem 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 500;
   color: var(--color-signal);
   text-decoration: none;
@@ -343,7 +347,7 @@
 
 .tool-calling-card__provider {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -359,14 +363,14 @@
 
 .concept-card__term {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
 }
 
 .concept-card__definition {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.55;
 }
@@ -374,7 +378,7 @@
 .concept-card__link {
   display: inline-block;
   margin-top: 0.625rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 500;
   color: var(--color-signal);
 }
@@ -393,7 +397,7 @@
 .provider-tag {
   padding: 0.25rem 0.625rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   color: var(--color-signal);
   border: 1px solid rgba(0, 229, 204, 0.25);
   border-radius: 999px;
@@ -410,7 +414,7 @@
 
 .tip-list li {
   color: var(--color-fog);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   line-height: 1.55;
 }
 
@@ -423,7 +427,7 @@
 }
 
 .tip-list--compact li {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
 }
 
 .diagram-stack {
@@ -449,7 +453,7 @@
 
 .diagram-card__caption {
   margin-top: 0.625rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   text-align: center;
   line-height: 1.45;
@@ -475,7 +479,7 @@
   border: 2px dashed rgba(203, 213, 225, 0.2);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   color: var(--color-muted);
   text-align: center;
   line-height: 1.4;
@@ -493,7 +497,7 @@
 
 .resource-card__title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.25rem;
@@ -501,13 +505,13 @@
 
 .resource-card__subtitle {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   color: var(--color-amber);
   margin-bottom: 0.5rem;
 }
 
 .resource-card__description {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--color-muted);
   line-height: 1.55;
   margin-bottom: 0.75rem;
@@ -515,7 +519,7 @@
 
 .resource-card__link {
   display: inline-block;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 500;
   color: var(--color-signal);
   word-break: break-all;
@@ -535,9 +539,10 @@
   margin-inline: auto;
 }
 
+/* Excepción al ×2: la geometría SVG es fija; a ×1.17 (0.875 / 0.9375rem) es lo máximo que cabe en sus cajas */
 .diagram-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   fill: var(--color-muted);
 }
 
@@ -547,7 +552,7 @@
 
 .diagram-label--title {
   font-family: var(--font-display);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   fill: var(--color-heading-alt);
 }
@@ -584,7 +589,7 @@
 
 .flow-diagram__title {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin: 0.5rem 0 0;
@@ -610,7 +615,7 @@
   border-radius: var(--radius-md);
   background: var(--color-panel);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   text-align: center;
@@ -646,7 +651,7 @@
 .flow-diagram__caption {
   margin: 0.75rem 0 0;
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-signal);
   text-align: center;
 }
@@ -788,7 +793,7 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     padding: 0.375rem 0.625rem;
-    font-size: 0.75rem;
+    font-size: 1.5rem;
   }
 
   .fundamentos__toc-link--active {
@@ -821,8 +826,8 @@
 .fundamentos__hero {
   position: relative;
   isolation: isolate;
-  min-height: 15rem;
-  padding: 0.5rem 14rem 2rem 0;
+  min-height: 19rem;
+  padding: 0.5rem 20rem 2rem 0;
   border-bottom-color: var(--color-border);
 }
 
@@ -854,8 +859,8 @@
   right: 1.5rem;
   bottom: -1rem;
   width: auto;
-  max-width: clamp(9rem, 20vw, 12.5rem);
-  max-height: 13.5rem;
+  max-width: clamp(13.5rem, 30vw, 18.75rem);
+  max-height: 20rem;
   transform-origin: 50% 100%;
   animation: uifcito-float 3.2s ease-in-out infinite;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
@@ -867,8 +872,8 @@
   right: 1rem;
   bottom: -0.85rem;
   width: auto;
-  max-width: clamp(8.5rem, 17vw, 11rem);
-  max-height: 11rem;
+  max-width: clamp(12.75rem, 25vw, 16.5rem);
+  max-height: 16rem;
   transform-origin: 50% 100%;
   animation: uifcito-float 3.2s ease-in-out infinite;
   filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
@@ -879,9 +884,9 @@
   isolation: isolate;
   display: flex;
   align-items: flex-end;
-  min-height: 11.5rem;
+  min-height: 15rem;
   margin-bottom: 1.75rem;
-  padding: 0 clamp(10rem, 19vw, 12.5rem) 1rem 0;
+  padding: 0 clamp(15rem, 28vw, 18.75rem) 1rem 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -922,14 +927,14 @@
 
 .fundamentos__hero-title {
   max-width: 18ch;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(3.15rem, 7vw, 4.9rem);
   letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 
 .fundamentos__hero-lead {
   max-width: 58ch;
-  font-size: 1.0625rem;
+  font-size: 2.125rem;
   line-height: 1.65;
 }
 
@@ -952,7 +957,16 @@
   font-weight: 800;
 }
 
-.fund-section__body p,
+/* Solo los párrafos sin clase (texto corrido) llevan 2rem: con .fund-section__body p
+   la especificidad (0,1,1) pisaba las reglas propias (0,1,0) de descripciones,
+   callouts, tarjetas e hints, dejándolas a 32px por encima de sus títulos.
+   Las li ya tienen tamaño propio o lo heredan de su lista; no van aquí. */
+.fund-section__body p:not([class]) {
+  color: var(--color-text-soft);
+  font-size: 2rem;
+  overflow-wrap: anywhere;
+}
+
 .fund-section__body li {
   color: var(--color-text-soft);
 }
@@ -1021,7 +1035,7 @@
 @media (max-width: 700px) {
   .fundamentos__hero {
     min-height: 13rem;
-    padding: 0.25rem 0 8.5rem;
+    padding: 0.25rem 0 15.5rem;
   }
 
   .fundamentos__hero::before {
@@ -1031,21 +1045,21 @@
   }
 
   .uifcito--hero {
-    right: calc(50% - 4.5rem);
+    right: calc(50% - 6.75rem);
     bottom: -1rem;
-    max-width: 9rem;
-    max-height: 9rem;
+    max-width: 13.5rem;
+    max-height: 13.5rem;
   }
 
   .uifcito--section {
-    right: calc(50% - 4rem);
-    max-width: 8rem;
-    max-height: 8rem;
+    right: calc(50% - 6rem);
+    max-width: 12rem;
+    max-height: 12rem;
   }
 
   .fund-section__head--mascot {
     min-height: 0;
-    padding: 0 0 8.75rem;
+    padding: 0 0 13.125rem;
   }
 
   .fund-section__head--mascot::before {
@@ -1087,4 +1101,17 @@
   border-radius: 0;
   background: transparent;
   color: inherit;
+}
+
+/* Móvil: títulos largos sin recortes (sigue por encima del cuerpo de 32px) */
+@media (max-width: 600px) {
+  .fundamentos__hero-title {
+    font-size: 2.4rem;
+  }
+}
+
+.fund-section__title,
+.fundamentos__hero-title {
+  hyphens: auto;
+  overflow-wrap: break-word;
 }

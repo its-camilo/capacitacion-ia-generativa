@@ -39,8 +39,8 @@ export default function PinGate({ children }) {
         style={{ width: '100%', maxWidth: 360, display: 'grid', gap: '0.9rem', padding: '2rem', borderRadius: 16, border: '1px solid rgba(127,127,127,0.3)', textAlign: 'center' }}
       >
         <div style={{ fontSize: '2rem' }} aria-hidden="true">🔒</div>
-        <h1 style={{ margin: 0, fontSize: '1.4rem' }}>Contenido protegido</h1>
-        <p style={{ margin: 0, opacity: 0.8 }}>Ingrese el PIN que le dieron en la capacitación.</p>
+        <h1 style={{ margin: 0, fontSize: '1.96rem' }}>Contenido protegido</h1>
+        <p style={{ margin: 0, opacity: 0.8, fontSize: '2rem' }}>Ingrese el PIN que le dieron en la capacitación.</p>
         <input
           type="password"
           inputMode="numeric"
@@ -50,10 +50,10 @@ export default function PinGate({ children }) {
           onChange={(e) => { setPin(e.target.value); setError('') }}
           placeholder="PIN"
           aria-label="PIN"
-          style={{ padding: '0.75rem 1rem', fontSize: '1.1rem', borderRadius: 10, border: '1px solid rgba(127,127,127,0.5)', textAlign: 'center', letterSpacing: '0.2em', background: 'transparent', color: 'inherit' }}
+          style={{ padding: '0.75rem 1rem', fontSize: '2.2rem', borderRadius: 10, border: '1px solid rgba(127,127,127,0.5)', textAlign: 'center', letterSpacing: '0.2em', background: 'transparent', color: 'inherit' }}
         />
-        {error && <p role="alert" style={{ margin: 0, color: '#d33' }}>{error}</p>}
-        <button type="submit" style={{ padding: '0.75rem 1rem', fontSize: '1rem', borderRadius: 10, border: 'none', cursor: 'pointer', background: '#2563eb', color: '#fff', fontWeight: 600 }}>
+        {error && <p role="alert" style={{ margin: 0, color: '#d33', fontSize: '2rem' }}>{error}</p>}
+        <button type="submit" style={{ padding: '0.75rem 1rem', fontSize: '2rem', borderRadius: 10, border: 'none', cursor: 'pointer', background: '#2563eb', color: '#fff', fontWeight: 600 }}>
           Entrar
         </button>
       </form>
