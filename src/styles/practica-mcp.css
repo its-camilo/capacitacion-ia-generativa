@@ -30,7 +30,7 @@
   align-items: center;
   gap: 0.625rem;
   padding: 0.375rem 0.25rem;
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--color-fog);
   transition: color 160ms ease;
 }
@@ -44,10 +44,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.375rem;
-  height: 1.375rem;
+  width: 2.75rem;
+  height: 2.75rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 600;
   color: var(--color-amber);
   border: 1px solid rgba(245, 166, 35, 0.35);
@@ -59,7 +59,7 @@
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 0.875rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 600;
   color: var(--color-obsidian);
   background: var(--color-signal);
@@ -77,12 +77,13 @@
 
 .practica-code__caption {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
   margin-bottom: 0.5rem;
+  overflow-wrap: anywhere;
 }
 
 .practica-code__pre {
@@ -90,7 +91,7 @@
   padding: 1rem 1.125rem;
   overflow-x: auto;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   line-height: 1.6;
   color: var(--color-code-text);
   border: 1px solid var(--color-border);
@@ -105,12 +106,18 @@
   flex-direction: column;
   gap: 0.625rem;
   color: var(--color-fog);
+  font-size: 2rem;
   line-height: 1.65;
+}
+
+.practica-mcp__numbered li,
+.practica-mcp__bullet-list li {
+  overflow-wrap: anywhere;
 }
 
 .practica-mcp__numbered code {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-signal);
 }
 
@@ -131,14 +138,15 @@
 }
 
 .practica-mcp__query-prompt {
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 500;
   color: var(--color-heading-alt);
   margin-bottom: 0.375rem;
+  overflow-wrap: anywhere;
 }
 
 .practica-mcp__query-hint {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.55;
 }
@@ -157,7 +165,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.375rem 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 500;
   color: var(--color-signal);
 }
@@ -168,7 +176,7 @@
 
 .practica-mcp__link-provider {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -182,6 +190,7 @@
   flex-direction: column;
   gap: 0.5rem;
   color: var(--color-fog);
+  font-size: 2rem;
   line-height: 1.65;
 }
 
@@ -195,7 +204,7 @@
 
 .practica-mcp__grading-title {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.75rem;
@@ -217,18 +226,18 @@
 }
 
 .practica-mcp__grading-list strong {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-signal);
 }
 
 .practica-mcp__grading-list span {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-muted);
   line-height: 1.55;
 }
 
 .practica-mcp__note {
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   color: var(--color-muted);
   font-style: italic;
 }
@@ -274,7 +283,7 @@
   color: var(--color-surface-base);
   background: var(--color-primary-dark);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 700;
   transition: color 200ms ease, background-color 200ms ease, transform 200ms ease;
 }

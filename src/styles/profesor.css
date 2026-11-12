@@ -25,7 +25,7 @@
 
 .prof-meta__label {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -34,7 +34,7 @@
 
 .prof-meta__value {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-fog);
   line-height: 1.45;
 }
@@ -58,7 +58,7 @@
 
 .prof-fact__value {
   font-family: var(--font-display);
-  font-size: 1.375rem;
+  font-size: 1.925rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-signal);
@@ -66,7 +66,7 @@
 }
 
 .prof-fact__label {
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   color: var(--color-muted);
   line-height: 1.35;
 }
@@ -76,7 +76,7 @@
   align-items: center;
   margin-top: 1.5rem;
   padding: 0.55rem 0.95rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 600;
   color: #04110f;
   background: var(--color-signal);
@@ -105,7 +105,7 @@
 
 .prof-panel__eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -115,7 +115,7 @@
 
 .prof-panel__title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.75rem;
@@ -132,11 +132,11 @@
 
 .prof-agenda__row {
   display: grid;
-  grid-template-columns: 4.25rem 1fr;
+  grid-template-columns: 5rem 1fr;
   gap: 0.625rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px dashed var(--color-border);
-  font-size: 0.7812rem;
+  font-size: 1.5624rem;
 }
 
 .prof-agenda__row:last-child {
@@ -146,7 +146,7 @@
 
 .prof-agenda__time {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 500;
   color: var(--color-signal);
 }
@@ -158,13 +158,14 @@
 }
 
 .prof-agenda__body strong {
-  font-size: 0.7812rem;
+  font-size: 1.5624rem;
   color: var(--color-heading-alt);
 }
 
 .prof-agenda__body span {
   color: var(--color-muted);
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .prof-goals {
@@ -173,7 +174,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.55;
   color: var(--color-fog);
 }
@@ -192,7 +193,7 @@
 .prof-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.5;
 }
 
@@ -200,7 +201,7 @@
   padding: 0.625rem 0.75rem;
   text-align: left;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -216,6 +217,7 @@
   border-bottom: 1px solid var(--color-border);
   vertical-align: top;
   min-width: 7rem;
+  overflow-wrap: anywhere;
 }
 
 .prof-table tbody tr:last-child td {
@@ -261,7 +263,7 @@
 
 .prof-compare__tag {
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -271,7 +273,7 @@
 
 .prof-compare__title {
   font-family: var(--font-display);
-  font-size: 0.9375rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.5rem;
@@ -283,7 +285,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.5;
   color: var(--color-fog);
 }
@@ -295,7 +297,7 @@
 /* Cards */
 .prof-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
   gap: 0.75rem;
 }
 
@@ -322,7 +324,7 @@
 
 .prof-card__tag {
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -331,15 +333,17 @@
 
 .prof-card__title {
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 1.8125rem;
   font-weight: 600;
   color: var(--color-heading-alt);
+  overflow-wrap: anywhere;
 }
 
 .prof-card__description {
-  font-size: 0.7812rem;
+  font-size: 1.5624rem;
   line-height: 1.5;
   color: var(--color-muted);
+  overflow-wrap: anywhere;
 }
 
 /* Prompt block */
@@ -363,7 +367,7 @@
 
 .prof-prompt__label {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -373,7 +377,7 @@
 .prof-prompt__copy {
   padding: 0.25rem 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -395,7 +399,7 @@
   margin: 0;
   padding: 0.875rem 1rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   line-height: 1.65;
   color: var(--color-code-text);
   white-space: pre-wrap;
@@ -422,14 +426,14 @@
 
 .prof-callout__title {
   font-family: var(--font-display);
-  font-size: 0.8125rem;
+  font-size: 1.875rem;
   font-weight: 600;
   color: var(--color-heading-alt);
   margin-bottom: 0.25rem;
 }
 
 .prof-callout__text {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.55;
   color: var(--color-fog);
 }
@@ -446,16 +450,16 @@
 
 .prof-checklist li {
   display: grid;
-  grid-template-columns: 1rem 1fr;
+  grid-template-columns: 2rem 1fr;
   gap: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.55;
   color: var(--color-fog);
 }
 
 .prof-checklist__box {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 1.9rem;
+  height: 1.9rem;
   margin-top: 0.2rem;
   border: 1px solid rgba(68, 211, 254, 0.45);
   border-radius: 3px;
@@ -484,13 +488,13 @@
 
 .prof-changes strong,
 .prof-format strong {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   color: var(--color-heading-alt);
 }
 
 .prof-changes span,
 .prof-format span {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   line-height: 1.55;
   color: var(--color-muted);
 }
@@ -524,7 +528,7 @@
 
 .prof-session-card__session {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -533,20 +537,20 @@
 
 .prof-session-card__title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   line-height: 1.25;
   color: var(--color-heading-alt);
 }
 
 .prof-session-card__focus {
-  font-size: 0.7812rem;
+  font-size: 1.5624rem;
   line-height: 1.5;
   color: var(--color-muted);
 }
 
 .prof-session-card__line {
-  font-size: 0.7812rem;
+  font-size: 1.5624rem;
   line-height: 1.5;
   color: var(--color-fog);
   padding-top: 0.4rem;
@@ -556,7 +560,7 @@
 .prof-session-card__label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -566,14 +570,14 @@
 
 .prof-session-card__tools {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.25rem;
   line-height: 1.5;
   color: var(--color-muted);
 }
 
 .prof-session-card__link {
   margin-top: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-signal);
 }
@@ -587,7 +591,7 @@
 }
 
 .prof-next__link {
-  font-size: 0.8125rem;
+  font-size: 1.625rem;
   font-weight: 600;
   color: var(--color-signal);
 }
@@ -620,7 +624,12 @@
   }
 
   .prof-agenda__row {
-    grid-template-columns: 3.75rem 1fr;
+    grid-template-columns: 5rem 1fr;
+  }
+
+  .prof-prompt__header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .prof-table th,
