@@ -835,7 +835,8 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
               'Genere cada salida con una instrucción concreta en su campo de texto: tema, extensión, nivel y uso.',
               'Revise datos, tildes y citas antes de descargar.',
               'Ajuste el texto o regenere con instrucciones más específicas; el audio no se edita, se vuelve a generar.',
-              'Lleve el resultado a Moodle: el mapa mental se descarga; el informe y el cuestionario se comparten con enlace o se copian.',
+              'El mapa mental se descarga y se puede subir a Moodle; el informe se comparte con enlace o se copia.',
+              'El cuestionario se puede convertir a preguntas de Moodle.',
             ],
           },
           {
@@ -862,7 +863,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               'Abra Compartir cuaderno y, en «Añade personas y grupos», agregue a sus estudiantes o el grupo del curso con el rol que corresponda.',
               'Use «Copiar enlace», o en Más opciones de copia «Copiar enlace a la vista de conversación» para que abran directo en el chat.',
-              'Pegue el enlace en Moodle con instrucciones de uso de tres líneas.',
+              'Comparta el enlace con sus estudiantes con instrucciones de uso de tres líneas.',
               'Pruébelo con una cuenta de estudiante o en una ventana sin sesión.',
               'Anote qué puede ver el estudiante: fuentes, respuestas, historial.',
             ],
@@ -890,7 +891,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             type: 'list',
             items: [
               'El enlace al cuaderno del curso, con las fuentes cargadas y los permisos definidos.',
-              'Un informe «Resumen de aprendizaje» revisado contra las fuentes, listo para Moodle.',
+              'Un informe «Resumen de aprendizaje» revisado contra las fuentes, listo para compartir.',
               'Tres citas verificadas: pregunta, respuesta y fuente abierta.',
             ],
           },
