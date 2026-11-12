@@ -892,7 +892,6 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               'El enlace al cuaderno del curso, con las fuentes cargadas y los permisos definidos.',
               'Un informe «Resumen de aprendizaje» revisado contra las fuentes, listo para compartir.',
-              'Tres citas verificadas: pregunta, respuesta y fuente abierta.',
             ],
           },
           {
