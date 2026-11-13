@@ -20,7 +20,7 @@ function App() {
         <Route path="/estudiantes/practica-agentes" element={<PinGate><PracticaAgentes /></PinGate>} />
         <Route path="/profesores" element={<Profesores />} />
         <Route path="/profesores/fundamentos" element={<ProfesorSesion sessionId="fundamentos" />} />
-        <Route path="/profesores/rag" element={<PinGate><ProfesorSesion sessionId="rag" /></PinGate>} />
+        <Route path="/profesores/rag" element={<ProfesorSesion sessionId="rag" />} />
         <Route path="/profesores/mcp" element={<PinGate><ProfesorSesion sessionId="mcp" /></PinGate>} />
         <Route path="/profesores/agentes" element={<PinGate><ProfesorSesion sessionId="agentes" /></PinGate>} />
         <Route path="/profesores/practica-rag" element={<Navigate to="/profesores/rag" replace />} />
