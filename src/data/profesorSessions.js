@@ -919,11 +919,11 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
     session: '03',
     title: 'IA dentro de las herramientas de trabajo',
     lead:
-      'Un caso de aula resuelto con Claude y sus conectores de Google (Drive, Sheets y Gmail) sobre la cuenta @unal. En la cuenta @unal, Gemini solo está activo dentro de Google Docs: ahí lo usamos para preparar la presentación.',
+      'Un caso de aula resuelto con Claude y sus conectores: Google Drive, Sheets y Gmail sobre la cuenta @unal, y Canva con una cuenta propia. En la cuenta @unal, Gemini solo está activo dentro de Google Docs: ahí lo usamos para preparar la presentación.',
     meta: [
       { label: 'Duración', value: '2 horas' },
       { label: 'Formato', value: '15 idea · 90 práctica · 15 entregable' },
-      { label: 'Requiere', value: 'Cuenta @unal y Claude con los conectores de Google' },
+      { label: 'Requiere', value: 'Cuenta @unal, Claude con los conectores de Google y una cuenta de Canva (la gratuita sirve)' },
       { label: 'Traer', value: 'Nada: los archivos de ejemplo están en Drive' },
     ],
     agenda: [
@@ -931,7 +931,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
       { time: '10 min', label: 'Práctica 1', detail: 'Activar los conectores de Claude y abrir la hoja de notas ficticia.' },
       { time: '25 min', label: 'Práctica 2', detail: 'Analizar el grupo: promedios, distribución, riesgo y gráfico.' },
       { time: '20 min', label: 'Práctica 3', detail: 'Tres retroalimentaciones personalizadas como borradores de correo.' },
-      { time: '20 min', label: 'Práctica 4', detail: 'De apuntes a presentación: esquema con Gemini en Docs y archivo con Claude.' },
+      { time: '20 min', label: 'Práctica 4', detail: 'De apuntes a presentación: esquema con Gemini en Docs y archivo con Claude, o diseño en Canva.' },
       { time: '15 min', label: 'Práctica 5', detail: 'Revisar permisos y desconectar al terminar.' },
       { time: '15 min', label: 'Entregable', detail: 'Socializar la hoja, los correos y la presentación.' },
     ],
@@ -964,6 +964,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
               ['Escribir retroalimentación', 'Claude + Gmail', 'Claude deja borradores en su Gmail; usted revisa y envía'],
               ['Preparar el esquema de una clase', 'Gemini en Google Docs', 'Panel «Pregúntale a Gemini» sobre el documento abierto'],
               ['Convertir apuntes en presentación', 'Claude + Google Drive', 'Claude lee el documento y entrega un PowerPoint'],
+              ['Convertir apuntes en presentación (en Canva)', 'Claude + Canva', 'Claude arma el diseño en Canva; usted lo ajusta y lo descarga'],
               ['Resumir una reunión', 'Granola', 'Notas y tareas a partir del audio, sin bot'],
             ],
           },
@@ -1000,6 +1001,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
             items: [
               'Entre a claude.ai con la cuenta @unal (Continuar con Google).',
               'En un chat nuevo pulse «+» y revise los conectores. Active Google Drive y Gmail; si no aparecen, pulse Añadir conectores y conéctelos con la cuenta @unal.',
+              'Active también el conector de Canva: en Configuración → Conectores busque Canva, pulse Conectar e inicie sesión con su cuenta de Canva (la gratuita sirve para crear y editar el diseño). En el chat nuevo, revise que Canva esté activo en el menú de herramientas.',
               'Abra la hoja de notas ficticia y haga una copia en su Drive (Archivo → Hacer una copia). Así trabaja sobre la suya.',
             ],
           },
@@ -1092,7 +1094,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         blocks: [
           {
             type: 'p',
-            text: 'Dos pasos: el esquema se piensa con Gemini dentro del documento y el archivo lo arma Claude. El objetivo son 5 diapositivas para abrir la clase.',
+            text: 'El esquema se piensa con Gemini dentro del documento. Después hay dos caminos para la misma presentación: un archivo PowerPoint que entrega Claude, o un diseño editable en Canva. El objetivo son 5 diapositivas para abrir la clase; haga una vía o las dos y compare.',
           },
           { type: 'links', items: [s234Docs.apuntes] },
           {
@@ -1100,11 +1102,13 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
             items: [
               'Abra los apuntes en Google Docs y pulse el ícono de Gemini arriba a la derecha («Pregúntale a Gemini»).',
               'Pegue el prompt del esquema y ajústelo hasta que le guste.',
-              'Vaya a Claude, pegue el prompt de la presentación y descargue el PowerPoint.',
-              'Revise que cada diapositiva tenga una sola idea y que los datos coincidan con los apuntes.',
-              'Ábralo en PowerPoint o Google Slides y pruébelo en el proyector.',
+              'Vía 1 — PowerPoint: en Claude, pegue el prompt de la presentación y descargue el archivo.',
+              'Vía 2 — Canva: en Claude, pegue el prompt para Canva; Claude le muestra opciones de diseño, elija una y abra el enlace en Canva.',
+              'En Canva, ajuste el diseño y descárguelo como PDF o PowerPoint (Compartir → Descargar). Si su cuenta no deja descargar como PowerPoint, exporte a PDF, que es el formato del entregable.',
+              'Revise que cada diapositiva tenga una sola idea y que los datos coincidan con los apuntes, y pruébelo en el proyector.',
             ],
           },
+          { type: 'links', items: [{ label: 'Canva', url: 'https://www.canva.com', provider: 'Canva' }] },
           {
             type: 'prompt',
             label: '1. En Gemini, dentro del documento',
@@ -1116,8 +1120,17 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
             text: `Busca en mi Drive el documento «S3-02 Apuntes · Unidad 2 Elasticidades» y prepara una presentación de 5 diapositivas siguiendo este esquema: [pegue el esquema de Gemini]. No agregues temas que no estén en el documento. Entrégamela como archivo de PowerPoint descargable.`,
           },
           {
+            type: 'prompt',
+            label: '3. En Claude, para Canva',
+            text: `Usa el conector de Canva y el documento «S3-02 Apuntes · Unidad 2 Elasticidades» para crear una presentación de 5 diapositivas siguiendo este esquema: [pegue el esquema de Gemini]. No agregues temas que no estén en el documento. Muéstrame las opciones y dame el enlace al diseño en Canva para revisarlo.`,
+          },
+          {
             type: 'note',
             text: 'En la prueba, Claude entregó el .pptx en menos de 2 minutos y dejó las respuestas en las notas del orador. Si inventa preguntas que no están en los apuntes, se lo dice: revíselas.',
+          },
+          {
+            type: 'note',
+            text: 'En Canva el diseño queda editable: mueva textos e imágenes y descargue cuando esté listo. Si el conector no aparece en el chat, revise en Configuración → Conectores que Canva siga conectado y que en el chat esté activo.',
           },
         ],
       },
@@ -1131,7 +1144,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
             type: 'numbered',
             items: [
               'En Claude, abra Configuración → Conectores y revise qué cuentas y servicios quedaron conectados.',
-              'Desconecte Gmail si no lo va a seguir usando; deje Drive solo si lo necesita.',
+              'Desconecte Gmail y Canva si no los va a seguir usando; deje Drive solo si lo necesita.',
               'Borre de Gmail los borradores de prueba y de Drive su copia de la hoja.',
               'Si tiene Granola instalado en su equipo personal, pruebe a tomar notas de una reunión corta.',
             ],
