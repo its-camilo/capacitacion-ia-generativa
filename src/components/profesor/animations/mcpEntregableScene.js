@@ -16,10 +16,9 @@ import {
 
 /**
  * Escena “Lo que se lleva” (Sesión 3, Entregable).
- * Loop de 16 s en 5 fases de 3,2 s:
+ * Loop de 16 s en 3 fases de ~5,33 s, con los 3 pasos:
  *   0 hoja analizada con gráfico y lista de riesgo · 1 tres borradores revisados, no enviados ·
- *   2 presentación de 5 diapositivas exportada a PDF · 3 nota de una página ·
- *   4 verificación con la lista de comprobación.
+ *   2 presentación de 5 diapositivas exportada a PDF.
  * `draw(t)` es una función pura del tiempo dentro del loop.
  */
 export const MCP_ENTREGABLE_DURATION = 16
@@ -29,7 +28,7 @@ const CYAN = 0x7fdcff
 const AMBER = 0xffd04b
 
 const PY = 3.1
-const PHASE = 3.2
+const PHASE = 16 / 3
 const SHEET = { x: -5.0, w: 3.4, h: 3.8 }
 const CHART = { x: -0.9, w: 4.2, h: 3.8 }
 const RISK = { x: 3.7, w: 3.0, h: 3.8 }
@@ -38,16 +37,6 @@ const DRAFT_CODES = ['E04', 'E11', 'E19']
 const DRAFT_Y = [PY + 0.8, PY - 0.1, PY - 1.0]
 const SLIDE_X = [-5.4, -4.1, -2.8, -1.5, -0.2]
 const PDF = { x: 3.6, w: 2.8, h: 3.4 }
-const NOTE = { w: 5.4, h: 4.2 }
-const NOTE_LINES = ['Suite que usé', 'Licencia que tengo', 'Qué haría sin ella']
-const CHECK = { w: 7.6, h: 4.4 }
-const CHECKS = [
-  'Promedios y gráfico coinciden',
-  'Correos sin datos inventados',
-  'Datos ficticios',
-  'Sé qué conector autoricé y cómo revocarlo',
-]
-const CHECK_Y = [0, 1, 2, 3].map((i) => PY + 1.0 - i * 0.78)
 const BARS = [
   { label: 'Corte 1', value: 3.61 },
   { label: 'Corte 2', value: 3.44 },
@@ -150,24 +139,6 @@ function drawPdf(ctx, w, h) {
   fitText(ctx, 'exportado', w * 0.5, h * 0.7, { weight: 500, size: h * 0.08, family: FONT_BODY, maxWidth: w * 0.88, color: 'rgba(4,35,97,0.65)', align: 'center' })
 }
 
-function drawNote(ctx, w, h) {
-  header(ctx, w, h, 'Nota de una página', '#7a5ac8')
-  NOTE_LINES.forEach((text, i) => {
-    const y = h * (0.3 + i * 0.22)
-    fitText(ctx, text, w * 0.07, y, { weight: 800, size: h * 0.07, maxWidth: w * 0.86, color: '#042361' })
-    line(ctx, w * 0.07, y + h * 0.04, w * 0.86, 13)
-    line(ctx, w * 0.07, y + h * 0.1, w * 0.6, 12, 'rgba(4,35,97,0.12)')
-  })
-}
-
-function drawChecklist(ctx, w, h) {
-  header(ctx, w, h, 'Verificación', '#1f8a5b')
-  CHECKS.forEach((text, i) => {
-    const py = h * (0.5 + (PY - CHECK_Y[i]) / CHECK.h)
-    fitText(ctx, text, w * 0.17, py + h * 0.02, { weight: 700, size: h * 0.062, family: FONT_BODY, maxWidth: w * 0.78, color: '#042361' })
-  })
-}
-
 function drawChip(ctx, w, h, text, fill, ink = '#042361') {
   ctx.fillStyle = fill
   roundRectPath(ctx, 0, 0, w, h, h / 2)
@@ -242,9 +213,7 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
     makeCard({ w: 1.2, h: 1.6 }, (ctx, w, h) => drawSlide(ctx, w, h, n), { emissive: '#7fdcff' }),
   )
   const pdf = makeCard(PDF, drawPdf, { emissive: '#ff6b5e' })
-  const note = makeCard(NOTE, drawNote, { emissive: '#a98bff' })
-  const checklist = makeCard(CHECK, drawChecklist, { emissive: '#3be09a' })
-  const allCards = [sheet, chart, risk, mail, ...slideCards, pdf, note, checklist]
+  const allCards = [sheet, chart, risk, mail, ...slideCards, pdf]
   allCards.forEach((card) => scene.add(card.group))
 
   /* paso 0: barras y códigos de riesgo */
@@ -266,9 +235,6 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
   const draftRows = DRAFT_CODES.map((code) => makePlane(6.4, 0.7, 150, (ctx, w, h) => drawDraftRow(ctx, w, h, code)))
   const draftChecks = DRAFT_CODES.map(() => makePlane(0.5, 0.5, 128, drawCheck, 6))
 
-  /* paso 4 */
-  const listChecks = CHECKS.map(() => makePlane(0.5, 0.5, 128, drawCheck, 6))
-
   const chip = (text, fill, wd) => {
     const mesh = makePlane(wd, 0.66, 200, (ctx, w, h) => drawChip(ctx, w, h, text, fill), 6)
     mesh.position.set(0, PY - 2.65, 0.3)
@@ -278,8 +244,6 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
     chip('Hoja analizada · gráfico · lista de riesgo', '#9fe8ff', 6.6),
     chip('Tres borradores revisados, no enviados', '#3be09a', 6.2),
     chip('Presentación exportada a PDF', '#ffb59f', 4.8),
-    chip('Suite, licencia y qué haría sin ella', '#cdb9ff', 6.0),
-    chip('Verificado antes de entregar', '#3be09a', 4.8),
   ]
 
   function place(card, x, y, s, opacity) {
@@ -301,8 +265,8 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
     const events = []
     stage.update(T, 0)
     stage.spot.position.set(0, 4.6, 5.5)
-    const op = [0, 1, 2, 3, 4].map((i) => phaseOpacity(T, i))
-    const e = [0, 1, 2, 3, 4].map((i) => enter(T, i))
+    const op = [0, 1, 2].map((i) => phaseOpacity(T, i))
+    const e = [0, 1, 2].map((i) => enter(T, i))
 
     /* ---------- paso 0: hoja, gráfico y lista de riesgo ---------- */
     place(sheet, SHEET.x, PY - e[0].drop, e[0].scale, op[0])
@@ -331,7 +295,7 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
     /* ---------- paso 1: tres borradores revisados, no enviados ---------- */
     place(mail, 0, PY - e[1].drop, e[1].scale, op[1])
     draftRows.forEach((row, i) => {
-      const a = 3.9 + i * 0.5
+      const a = 6.033 + i * 0.5
       row.position.set(lerp(-1.2, 0, easeOutCubic(seg(T, a, a + 0.5))), DRAFT_Y[i], 0.2)
       shown(row, op[1] * smooth(seg(T, a, a + 0.25)))
       const c = a + 1.3
@@ -340,39 +304,23 @@ export default function createMcpEntregableScene({ canvas, width, height, invali
       shown(draftChecks[i], op[1] * smooth(seg(T, c, c + 0.12)))
       if (T >= c && T < c + 1) events.push({ t: c, x: 3.45, y: DRAFT_Y[i], z: 0.9, color: greenColor, speed: 1.2, life: 0.8 })
     })
-    popChip(chips[1], T, 6.0, op[1])
+    popChip(chips[1], T, 8.133, op[1])
 
     /* ---------- paso 2: cinco diapositivas a PDF ---------- */
     slideCards.forEach((card, i) => {
-      const a = 7.0 + i * 0.3
-      const toPdf = easeOutCubic(seg(T, 8.6, 9.3))
+      const a = 11.267 + i * 0.3
+      const toPdf = easeOutCubic(seg(T, 12.867, 13.567))
       const x = lerp(SLIDE_X[i], PDF.x, toPdf)
       const y = PY + 0.2 - (1 - easeOutCubic(seg(T, a, a + 0.4))) * 0.4
-      place(card, x, y, safeScale(easeOutBack(seg(T, a, a + 0.4)) * lerp(1, 0.6, toPdf)), op[2] * smooth(seg(T, a, a + 0.2)) * (1 - smooth(seg(T, 9.0, 9.4))))
+      place(card, x, y, safeScale(easeOutBack(seg(T, a, a + 0.4)) * lerp(1, 0.6, toPdf)), op[2] * smooth(seg(T, a, a + 0.2)) * (1 - smooth(seg(T, 13.267, 13.667))))
     })
-    place(pdf, PDF.x, PY - e[2].drop, safeScale(e[2].scale * easeOutBack(seg(T, 9.0, 9.6))), op[2] * smooth(seg(T, 9.0, 9.3)))
-    flashCard(pdf, bump(seg(T, 9.1, 9.9)) * 0.45)
-    if (T >= 9.1 && T < 10.1) events.push({ t: 9.1, x: PDF.x, y: PY, z: 1.0, color: amberColor, speed: 1.4, life: 0.8 })
-    popChip(chips[2], T, 9.0, op[2])
-
-    /* ---------- paso 3: nota de una página ---------- */
-    place(note, 0, PY - e[3].drop, e[3].scale, op[3])
-    flashCard(note, bump(seg(T, 10.8, 12.4)) * 0.3)
-    popChip(chips[3], T, 11.6, op[3])
-
-    /* ---------- paso 4: verificación ---------- */
-    place(checklist, 0, PY - e[4].drop, e[4].scale, op[4])
-    listChecks.forEach((mesh, i) => {
-      const a = 13.0 + i * 0.5
-      mesh.position.set(-CHECK.w / 2 + 0.9, CHECK_Y[i], 0.3)
-      mesh.scale.setScalar(safeScale(easeOutBack(seg(T, a, a + 0.4))))
-      shown(mesh, op[4] * smooth(seg(T, a, a + 0.12)))
-      if (T >= a && T < a + 1) events.push({ t: a, x: -CHECK.w / 2 + 0.9, y: CHECK_Y[i], z: 0.9, color: greenColor, speed: 1.2, life: 0.8 })
-    })
-    popChip(chips[4], T, 14.9, op[4])
+    place(pdf, PDF.x, PY - e[2].drop, safeScale(e[2].scale * easeOutBack(seg(T, 13.267, 13.867))), op[2] * smooth(seg(T, 13.267, 13.567)))
+    flashCard(pdf, bump(seg(T, 13.367, 14.167)) * 0.45)
+    if (T >= 13.367 && T < 14.367) events.push({ t: 13.367, x: PDF.x, y: PY, z: 1.0, color: amberColor, speed: 1.4, life: 0.8 })
+    popChip(chips[2], T, 13.267, op[2])
 
     bursts.update(T, events)
-    return Math.min(4, Math.floor(T / PHASE))
+    return Math.min(2, Math.floor(T / PHASE))
   }
 
   function dispose() {
