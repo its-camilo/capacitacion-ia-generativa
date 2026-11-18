@@ -1176,16 +1176,6 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
               'La hoja de notas ficticia analizada, con gráfico y lista de estudiantes en riesgo.',
               'Tres borradores de retroalimentación revisados, listos para enviar (no enviados).',
               'Una presentación de 5 diapositivas exportada a PDF.',
-              'Una nota de una página: qué suite usó, qué licencia tiene y qué haría si no la tuviera.',
-            ],
-          },
-          {
-            type: 'checklist',
-            items: [
-              'Los promedios y el gráfico coinciden con la hoja.',
-              'Los correos no inventan datos ni mezclan estudiantes.',
-              'Los datos de la práctica son ficticios y los archivos de prueba quedaron identificados.',
-              'Sé qué conector autoricé y cómo revocarlo.',
             ],
           },
         ],
