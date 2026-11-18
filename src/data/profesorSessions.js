@@ -948,6 +948,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Idea · 15 min',
         title: 'De la pestaña del chat a la herramienta donde ya trabaja',
         blocks: [
+          { type: 'animation', animation: 'mcp-idea' },
           {
             type: 'p',
             text: 'Hasta ahora la IA vivió en una pestaña aparte: uno copia, pega y vuelve. La IA integrada trabaja sobre el documento abierto, la hoja y el correo. No cambia el modelo; cambia el lugar donde ocurre el trabajo y lo que el modelo puede ver.',
@@ -996,6 +997,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 1 · 10 min',
         title: 'Activar los conectores y abrir la hoja',
         blocks: [
+          { type: 'animation', animation: 'mcp-practica1' },
           {
             type: 'numbered',
             items: [
@@ -1018,6 +1020,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 2 · 25 min',
         title: 'Analizar el grupo',
         blocks: [
+          { type: 'animation', animation: 'mcp-practica2' },
           {
             type: 'p',
             text: 'Pegue el prompt en Claude. Claude busca la hoja en su Drive, calcula y dibuja el gráfico en el chat.',
@@ -1051,6 +1054,7 @@ Explica qué parte de mi solicitud o de tus instrucciones causó el error y prop
         eyebrow: 'Práctica 3 · 20 min',
         title: 'Retroalimentación personalizada, sin enviar',
         blocks: [
+          { type: 'animation', animation: 'mcp-practica3' },
           {
             type: 'p',
             text: 'En el mismo chat, pida tres borradores. Claude los deja en su Gmail como borradores; usted los revisa y decide si los envía.',
@@ -1092,6 +1096,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         eyebrow: 'Práctica 4 · 20 min',
         title: 'De apuntes a presentación de clase',
         blocks: [
+          { type: 'animation', animation: 'mcp-practica4' },
           {
             type: 'p',
             text: 'El esquema se piensa con Gemini dentro del documento. Después hay dos caminos para la misma presentación: un archivo PowerPoint que entrega Claude, o un diseño editable en Canva. El objetivo son 5 diapositivas para abrir la clase; haga una vía o las dos y compare.',
@@ -1140,6 +1145,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         eyebrow: 'Práctica 5 · 15 min',
         title: 'Revisar permisos y desconectar',
         blocks: [
+          { type: 'animation', animation: 'mcp-practica5' },
           {
             type: 'numbered',
             items: [
@@ -1163,6 +1169,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         eyebrow: 'Entregable · 15 min',
         title: 'Lo que se lleva',
         blocks: [
+          { type: 'animation', animation: 'mcp-entregable' },
           {
             type: 'list',
             items: [
