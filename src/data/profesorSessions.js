@@ -1203,10 +1203,10 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
     ],
     agenda: [
       { time: '10 min', label: 'Idea', detail: 'De chatbot a agente; qué datos se entregan y cuáles no.' },
-      { time: '5 min', label: 'Socialización', detail: 'Qué quedó de la sesión 3. Se salta si el grupo viene atrasado.' },
       { time: '20 min', label: 'Demo', detail: 'Ver un agente trabajar con Deep Research y revisar sus fuentes.' },
       { time: '30 min', label: 'Camino A', detail: 'App interactiva de clase con Claude Artifacts o Gemini Canvas.' },
       { time: '30 min', label: 'Camino B', detail: 'Flujo de retroalimentación con un agente (Instinct o Hark): formulario, hoja y borradores.' },
+      { time: '5 min', label: 'Exploración', detail: 'Otras alternativas: Muse, grokbot, Hermes Agent, OpenAI Dots, Claude Duet y Gemini Tasks.' },
       { time: '5 min', label: 'Cierre', detail: 'IA y evaluación: detectores, evidencia y tareas que piden proceso.' },
       { time: '20 min', label: 'Entregable', detail: 'Demo de 2 minutos por mesa y ficha del piloto.' },
     ],
@@ -1225,7 +1225,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         blocks: [
           {
             type: 'p',
-            text: 'Un chatbot responde. Un agente planea, usa herramientas y entrega un producto: busca fuentes, llena una hoja, crea una presentación, manda un correo. La diferencia no es magia: es un ciclo de planear, ejecutar, revisar y volver a intentar.',
+            text: 'Un chatbot responde. Un agente es como tener una IA con varios conectores (MCP) a la vez, viviendo en la nube: se le escribe desde el celular y ella planea, usa herramientas y entrega un producto: busca fuentes, llena una hoja, crea una presentación, manda un correo, y puede manejar el navegador como lo haría una persona. La diferencia no es magia: es un ciclo de planear, ejecutar, revisar y volver a intentar.',
           },
           {
             type: 'compare',
@@ -1275,22 +1275,6 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
             tone: 'warn',
             title: 'Cada herramienta recoge algo distinto',
             text: 'Cuenta, historial, archivos y uso se guardan según el plan y la configuración. Revise la política vigente de cada servicio y la normativa de la universidad antes de subir material institucional. Esta tabla es una guía de conversación, no asesoría legal.',
-          },
-        ],
-      },
-      {
-        id: 'socializacion',
-        mascot: 'feliz',
-        eyebrow: 'Práctica 0 · 5 min (opcional)',
-        title: 'Qué quedó de la sesión 3',
-        blocks: [
-          {
-            type: 'p',
-            text: 'Una mesa, una frase: qué hizo con la hoja de notas y qué no funcionó. Si el grupo viene atrasado, se salta y se recupera al final del entregable.',
-          },
-          {
-            type: 'note',
-            text: 'La idea es no repetir la sesión 3 ni abrir un debate largo: cinco minutos, dos mesas, y seguimos.',
           },
         ],
       },
@@ -1403,6 +1387,23 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
 5. Al final dame los enlaces del formulario, de la hoja y un resumen de qué filas necesitan revisión.`,
           },
           { type: 'links', items: [{ label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }, { label: 'Hark', url: 'https://hark.com', provider: 'Hark' }] },
+        ],
+      },
+      {
+        id: 'exploracion',
+        mascot: 'feliz',
+        eyebrow: 'Exploración · 5 min',
+        title: 'Otras alternativas para explorar',
+        blocks: [
+          {
+            type: 'p',
+            text: 'Instinct y Hark no son los únicos agentes. Cada empresa grande ya tiene el suyo: todos viven en la nube, se les escribe desde el celular y manejan el navegador como una persona. Eche un vistazo y compare qué pide cada uno antes de elegir.',
+          },
+          { type: 'links', items: [{ label: 'Muse', url: 'https://muse.ai', provider: 'Meta' }, { label: 'Grok Bot', url: 'https://x.ai/bot', provider: 'xAI' }, { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/', provider: 'Nous Research' }, { label: 'OpenAI Dots', url: 'https://openai.usethedots.com/', provider: 'OpenAI' }, { label: 'Claude Duet', url: 'https://claude.com/product/claude-duet', provider: 'Anthropic' }, { label: 'Gemini Tasks', url: 'https://gemini.google.com', provider: 'Google' }] },
+          {
+            type: 'note',
+            text: 'Ojo: varios piden plan de pago o cuenta personal de Google, y no todos están disponibles en Colombia todavía. Mírelos como un mapa del panorama, no como una tarea.',
+          },
         ],
       },
       {
