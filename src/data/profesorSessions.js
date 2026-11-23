@@ -1205,8 +1205,8 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
       { time: '10 min', label: 'Idea', detail: 'De chatbot a agente; qué datos se entregan y cuáles no.' },
       { time: '20 min', label: 'Demo', detail: 'Ver un agente trabajar con Deep Research y revisar sus fuentes.' },
       { time: '30 min', label: 'Camino A', detail: 'App interactiva de clase con Claude Artifacts o Gemini Canvas.' },
-      { time: '30 min', label: 'Camino B', detail: 'Flujo de retroalimentación con un agente (Instinct o Hark): formulario, hoja y borradores.' },
-      { time: '5 min', label: 'Exploración', detail: 'Otras alternativas: Muse, grokbot, Hermes Agent, OpenAI Dots, Claude Duet y Gemini Tasks.' },
+      { time: '30 min', label: 'Camino B', detail: 'Flujo de retroalimentación con un agente (Hark): formulario, hoja y borradores.' },
+      { time: '5 min', label: 'Exploración', detail: 'Otras alternativas: Muse, grokbot, Hermes Agent, OpenAI Dots, Claude Duet, Gemini Tasks e Instinct.' },
       { time: '5 min', label: 'Cierre', detail: 'IA y evaluación: detectores, evidencia y tareas que piden proceso.' },
       { time: '20 min', label: 'Entregable', detail: 'Demo de 2 minutos por mesa y ficha del piloto.' },
     ],
@@ -1363,12 +1363,12 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         id: 'camino-b',
         mascot: 'sorpresa',
         eyebrow: 'Práctica 3 · Camino B · 30 min',
-        title: 'Flujo de retroalimentación con un agente: Instinct o Hark',
+        title: 'Flujo de retroalimentación con un agente: Hark',
         blocks: [
           {
             type: 'numbered',
             items: [
-              'Abra el agente: **Instinct** se usa por WhatsApp o iMessage (requiere invitación); **Hark** se usa en el chat de la app o la web.',
+              'Abra el agente **Hark** en el chat de la app o la web.',
               'Si el agente lo pide, conecte su cuenta de Google @unal para que pueda crear el formulario, la hoja y los borradores.',
               'Copie el enlace de los dos archivos de ejemplo y péguelos en el prompt.',
               'Envíe el prompt y espere a que el agente le devuelva los enlaces.',
@@ -1386,7 +1386,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
 4. Deja los borradores en mi Gmail dirigidos a mí mismo. No envíes nada.
 5. Al final dame los enlaces del formulario, de la hoja y un resumen de qué filas necesitan revisión.`,
           },
-          { type: 'links', items: [{ label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }, { label: 'Hark', url: 'https://hark.com', provider: 'Hark' }] },
+          { type: 'links', items: [{ label: 'Hark', url: 'https://hark.com', provider: 'Hark' }] },
         ],
       },
       {
@@ -1397,9 +1397,9 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         blocks: [
           {
             type: 'p',
-            text: 'Instinct y Hark no son los únicos agentes. Cada empresa grande ya tiene el suyo: todos viven en la nube, se les escribe desde el celular y manejan el navegador como una persona. Eche un vistazo y compare qué pide cada uno antes de elegir.',
+            text: 'Hark no es el único agente. Cada empresa grande ya tiene el suyo: todos viven en la nube, se les escribe desde el celular y manejan el navegador como una persona. Eche un vistazo y compare qué pide cada uno antes de elegir.',
           },
-          { type: 'links', items: [{ label: 'Muse', url: 'https://muse.ai', provider: 'Meta' }, { label: 'Grok Bot', url: 'https://x.ai/bot', provider: 'xAI' }, { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/', provider: 'Nous Research' }, { label: 'OpenAI Dots', url: 'https://openai.usethedots.com/', provider: 'OpenAI' }, { label: 'Claude Duet', url: 'https://claude.com/product/claude-duet', provider: 'Anthropic' }, { label: 'Gemini Tasks', url: 'https://gemini.google.com', provider: 'Google' }] },
+          { type: 'links', items: [{ label: 'Muse', url: 'https://muse.ai', provider: 'Meta' }, { label: 'Grok Bot', url: 'https://x.ai/bot', provider: 'xAI' }, { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/', provider: 'Nous Research' }, { label: 'OpenAI Dots', url: 'https://openai.usethedots.com/', provider: 'OpenAI' }, { label: 'Claude Duet', url: 'https://claude.com/product/claude-duet', provider: 'Anthropic' }, { label: 'Gemini Tasks', url: 'https://gemini.google.com', provider: 'Google' }, { label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }] },
           {
             type: 'note',
             text: 'Ojo: varios piden plan de pago o cuenta personal de Google, y no todos están disponibles en Colombia todavía. Mírelos como un mapa del panorama, no como una tarea.',
