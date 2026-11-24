@@ -18,6 +18,13 @@ const ANIMATIONS = {
   'mcp-practica4': lazy(() => import('./animations/McpPractica4Animation')),
   'mcp-practica5': lazy(() => import('./animations/McpPractica5Animation')),
   'mcp-entregable': lazy(() => import('./animations/McpEntregableAnimation')),
+  'agentes-idea': lazy(() => import('./animations/AgentesIdeaAnimation')),
+  'agentes-practica1': lazy(() => import('./animations/AgentesPractica1Animation')),
+  'agentes-practica2': lazy(() => import('./animations/AgentesPractica2Animation')),
+  'agentes-practica3': lazy(() => import('./animations/AgentesPractica3Animation')),
+  'agentes-exploracion': lazy(() => import('./animations/AgentesExploracionAnimation')),
+  'agentes-cierre': lazy(() => import('./animations/AgentesCierreAnimation')),
+  'agentes-entregable': lazy(() => import('./animations/AgentesEntregableAnimation')),
 }
 
 function CopyButton({ text }) {
