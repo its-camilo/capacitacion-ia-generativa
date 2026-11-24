@@ -1286,7 +1286,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         blocks: [
           {
             type: 'p',
-            text: 'Antes de construir, observe uno. En Gemini, abra «Subidas y herramientas» y elija Deep Research. Gemini muestra un plan; revíselo y pulse «Empezar la investigación». Lance la investigación al comienzo: tarda varios minutos y puede cerrar el chat mientras trabaja.',
+            text: 'Antes de construir, observe uno. En Gemini, verifique que la cuenta activa sea la @unal y abra Deep Research desde el botón «+»: «Más herramientas» y ahí «Deep Research». Gemini muestra un plan; revíselo y, si busca en decenas de fuentes, acótelo con «Modificar plan» antes de pulsar «Empezar la investigación». Lance la investigación al comienzo: puede tardar 30–60 minutos o no terminar en clase.',
           },
           {
             type: 'prompt',
@@ -1299,7 +1299,8 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
           {
             type: 'numbered',
             items: [
-              'Observe el plan que propone el agente antes de ejecutar. Si no lo muestra, pídalo.',
+              'Observe el plan que propone el agente antes de ejecutar. Si busca en decenas de fuentes o en literatura académica para un tema básico, acote el alcance con «Modificar plan»: ese es el momento en que debe intervenir una persona.',
+              'Si aparece «Se ha producido un error» sin plan, pulse «Reintentar»: el plan suele aparecer en el segundo intento.',
               'Abra dos fuentes y compruebe que dicen lo que el informe afirma.',
               'Identifique en qué paso debió intervenir una persona: elegir fuentes, descartar datos o decidir el alcance.',
               'Guarde el informe y anote un error o un vacío que encontró.',
@@ -1334,14 +1335,14 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
           {
             type: 'prompt',
             label: '2. La app',
-            text: `Aprobadas. Crea una app HTML de una sola página para un quiz en vivo de clase con esas 8 preguntas: al responder muestra si es correcta, la explicación y la fuente; al final puntaje, preguntas falladas y botón para reiniciar. Diseño legible en proyector y celular, alto contraste, sin dependencias externas.`,
+            text: `Aprobadas. Crea una app HTML de una sola página para un quiz en vivo de clase con esas 8 preguntas: al responder muestra si es correcta, la explicación y la fuente; al final puntaje, preguntas falladas (incluidas las sin responder) y botón para reiniciar. Diseño legible en proyector y celular, alto contraste, sin dependencias externas.`,
           },
           {
             type: 'numbered',
             items: [
-              'En Claude, el conector de Drive encuentra los archivos. En Gemini, active Canvas en «Subidas y herramientas» y adjunte los archivos con «Añadir desde Drive».',
+              'En Claude, busque los archivos con el botón «+»: «Subir o agregar archivos» y «Desde Drive». Los títulos en Drive no llevan «·»: busque «S2-02 Lectura 1 Oferta, demanda y equilibrio» y «S2-04 Artículo Controles de precios». En Gemini, active Canvas en «Subidas y herramientas» y adjunte los archivos con «Añadir desde Drive».',
               'Revise las 8 preguntas antes de aprobar: la respuesta del equilibrio es P = 30 y Q = 80.',
-              'Responda dos preguntas en la vista previa y compruebe el puntaje y el botón «Reiniciar quiz».',
+              'Responda las 8 preguntas en la vista previa: el puntaje solo aparece al final, con la lista de falladas. Avance con clics en «Siguiente», no con Enter, y compruebe el botón «Reiniciar quiz».',
               'Pruébelo en el celular y en el proyector: tamaño de letra, contraste y botones.',
               'Guarde el enlace y prepare un plan B (las preguntas en un documento) por si falla el internet.',
             ],
@@ -1372,7 +1373,8 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
               'Si el agente lo pide, conecte su cuenta de Google @unal para que pueda crear el formulario, la hoja y los borradores.',
               'Copie el enlace de los dos archivos de ejemplo y péguelos en el prompt.',
               'Envíe el prompt y espere a que el agente le devuelva los enlaces.',
-              'Revise el formulario, la hoja y cada borrador. Nada se envía a estudiantes.',
+              'Revise el formulario, la hoja y cada borrador. Nada se envía a estudiantes. Los borradores quedan en el Gmail de la cuenta @unal: cambie de cuenta en Gmail para verlos, porque en la personal la carpeta de borradores se ve vacía.',
+              'Si el formulario «Reflexión de unidad» ya existe en su cuenta, Hark lo reutiliza en vez de crear uno nuevo: revise que tenga las 6 preguntas.',
             ],
           },
           { type: 'links', items: [s234Docs.reflexiones, s1Docs.rubrica] },
@@ -1385,6 +1387,10 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
 3. Con la rúbrica [enlace a 04 Rúbrica de desarrollo], escribe para cada fila un borrador de correo de máximo 120 palabras: un logro concreto, una dificultad y por qué importa, una acción para la próxima entrega con plazo. Tono respetuoso, sin comparar con otros estudiantes. Si falta un dato, escribe [verificar].
 4. Deja los borradores en mi Gmail dirigidos a mí mismo. No envíes nada.
 5. Al final dame los enlaces del formulario, de la hoja y un resumen de qué filas necesitan revisión.`,
+          },
+          {
+            type: 'note',
+            text: 'Si Hark dice que no encontró la rúbrica, pídale que la use y revise que los borradores la mencionen: puede seguir adelante con criterios genéricos sin avisar.',
           },
           { type: 'links', items: [{ label: 'Hark', url: 'https://hark.com', provider: 'Hark' }] },
         ],
@@ -1402,7 +1408,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
           { type: 'links', items: [{ label: 'Muse', url: 'https://muse.ai', provider: 'Meta' }, { label: 'Grok Bot', url: 'https://x.ai/bot', provider: 'xAI' }, { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/', provider: 'Nous Research' }, { label: 'OpenAI Dots', url: 'https://openai.usethedots.com/', provider: 'OpenAI' }, { label: 'Claude Duet', url: 'https://claude.com/product/claude-duet', provider: 'Anthropic' }, { label: 'Gemini Tasks', url: 'https://gemini.google.com', provider: 'Google' }, { label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }] },
           {
             type: 'note',
-            text: 'Ojo: varios piden plan de pago o cuenta personal de Google, y no todos están disponibles en Colombia todavía. Mírelos como un mapa del panorama, no como una tarea.',
+            text: 'Ojo: Grok Bot es de pago desde $30/mes, Claude Duet está solo en lista de espera y sus planes son solo en EE. UU., Instinct pide cuenta, y muse.ai a veces aparece bloqueada por una extensión del navegador. Mírelos como un mapa del panorama, no como una tarea.',
           },
         ],
       },
