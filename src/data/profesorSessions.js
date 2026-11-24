@@ -1223,6 +1223,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         eyebrow: 'Idea · 10 min',
         title: 'De chatbot a agente, sin perder el control',
         blocks: [
+          { type: 'animation', animation: 'agentes-idea' },
           {
             type: 'p',
             text: 'Un chatbot responde. Un agente es como tener una IA con varios conectores (MCP) a la vez, viviendo en la nube: se le escribe desde el celular y ella planea, usa herramientas y entrega un producto: busca fuentes, llena una hoja, crea una presentación, manda un correo, y puede manejar el navegador como lo haría una persona. La diferencia no es magia: es un ciclo de planear, ejecutar, revisar y volver a intentar.',
@@ -1284,6 +1285,7 @@ No inventes datos que no estén en la hoja. Si falta información, escribe [veri
         eyebrow: 'Práctica 1 · 20 min',
         title: 'Ver un agente trabajar',
         blocks: [
+          { type: 'animation', animation: 'agentes-practica1' },
           {
             type: 'p',
             text: 'Antes de construir, observe uno. En Gemini, verifique que la cuenta activa sea la @unal y abra Deep Research desde el botón «+»: «Más herramientas» y ahí «Deep Research». Gemini muestra un plan; revíselo y, si busca en decenas de fuentes, acótelo con «Modificar plan» antes de pulsar «Empezar la investigación». Lance la investigación al comienzo: puede tardar 30–60 minutos o no terminar en clase.',
@@ -1318,6 +1320,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         eyebrow: 'Práctica 2 · Camino A · 30 min',
         title: 'App interactiva de clase',
         blocks: [
+          { type: 'animation', animation: 'agentes-practica2' },
           {
             type: 'p',
             text: 'Elija este camino si quiere una actividad para la próxima clase: un quiz en vivo con los dos archivos de ejemplo. Se construye con Claude o con Gemini Canvas y se abre en el navegador del salón o del celular.',
@@ -1366,6 +1369,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         eyebrow: 'Práctica 3 · Camino B · 30 min',
         title: 'Flujo de retroalimentación con un agente: Hark',
         blocks: [
+          { type: 'animation', animation: 'agentes-practica3' },
           {
             type: 'numbered',
             items: [
@@ -1401,6 +1405,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         eyebrow: 'Exploración · 5 min',
         title: 'Otras alternativas para explorar',
         blocks: [
+          { type: 'animation', animation: 'agentes-exploracion' },
           {
             type: 'p',
             text: 'Hark no es el único agente. Cada empresa grande ya tiene el suyo: todos viven en la nube, se les escribe desde el celular y manejan el navegador como una persona. Eche un vistazo y compare qué pide cada uno antes de elegir.',
@@ -1408,7 +1413,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
           { type: 'links', items: [{ label: 'Muse', url: 'https://muse.ai', provider: 'Meta' }, { label: 'Grok Bot', url: 'https://x.ai/bot', provider: 'xAI' }, { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/', provider: 'Nous Research' }, { label: 'OpenAI Dots', url: 'https://openai.usethedots.com/', provider: 'OpenAI' }, { label: 'Claude Duet', url: 'https://claude.com/product/claude-duet', provider: 'Anthropic' }, { label: 'Gemini Tasks', url: 'https://gemini.google.com', provider: 'Google' }, { label: 'Instinct', url: 'https://instinct.com', provider: 'Instinct' }] },
           {
             type: 'note',
-            text: 'Ojo: Grok Bot es de pago desde $30/mes, Claude Duet está solo en lista de espera y sus planes son solo en EE. UU., Instinct pide cuenta, y muse.ai a veces aparece bloqueada por una extensión del navegador. Mírelos como un mapa del panorama, no como una tarea.',
+            text: 'Ojo: Grok Bot es de pago desde $30/mes, Claude Duet está solo en lista de espera y sus planes son solo en EE. UU., Instinct pide cuenta, y muse.ai está bloqueada desde Colombia. Mírelos como un mapa del panorama, no como una tarea.',
           },
         ],
       },
@@ -1418,6 +1423,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         eyebrow: 'Cierre · 5 min',
         title: 'IA y evaluación: lo que no se puede delegar',
         blocks: [
+          { type: 'animation', animation: 'agentes-cierre' },
           {
             type: 'list',
             items: [
@@ -1439,6 +1445,7 @@ Restricciones: solo fuentes de los últimos 5 años; marca lo que no puedas veri
         eyebrow: 'Entregable · 20 min',
         title: 'El piloto y su ficha',
         blocks: [
+          { type: 'animation', animation: 'agentes-entregable' },
           {
             type: 'p',
             text: 'Cada mesa elige un camino y entrega un piloto que se pueda probar. No hace falta que sea bonito: hace falta que funcione una vez y que se sepa dónde revisa una persona.',
